@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZEPP002">
+        <xsd:sequence>
+          <xsd:element name="ZORDERID" type="tns:char12" />
+          <xsd:element name="ZBUDAT" type="tns:date" />
+          <xsd:element name="ZENTRY_QNT" type="tns:quantum13.3" />
+          <xsd:element name="ZISM01" type="tns:quantum13.3" />
+          <xsd:element name="ZISM02" type="tns:quantum13.3" />
+          <xsd:element name="ZISM03" type="tns:quantum13.3" />
+          <xsd:element name="ZISMNGEH1" type="tns:unit3" />
+          <xsd:element name="ZISMNGEH2" type="tns:unit3" />
+          <xsd:element name="ZISMNGEH3" type="tns:unit3" />
+          <xsd:element name="ZVIRGIN" type="tns:quantum13.3" />
+          <xsd:element name="ZRECOVERED" type="tns:quantum13.3" />
+          <xsd:element name="ZMATNR_REC" type="tns:char18" />
+          <xsd:element name="ZCONSUME_REC" type="tns:quantum13.3" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="_-ISDFPS_-TCUPS_KEY">
+        <xsd:sequence>
+          <xsd:element name="RUECK" type="tns:numeric10" />
+          <xsd:element name="RMZHL" type="tns:numeric8" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZBAPIRET2">
+        <xsd:sequence>
+          <xsd:element name="ZTYPE" type="tns:char1" />
+          <xsd:element name="ZID" type="tns:char20" />
+          <xsd:element name="ZNUMBER" type="tns:numeric3" />
+          <xsd:element name="ZMESSAGE" type="tns:char220" />
+          <xsd:element name="ZLOG_NO" type="tns:char20" />
+          <xsd:element name="ZLOG_MSG_NO" type="tns:numeric6" />
+          <xsd:element name="ZMESSAGE_V1" type="tns:char50" />
+          <xsd:element name="ZMESSAGE_V2" type="tns:char50" />
+          <xsd:element name="ZMESSAGE_V3" type="tns:char50" />
+          <xsd:element name="ZMESSAGE_V4" type="tns:char50" />
+          <xsd:element name="ZPARAMETER" type="tns:char32" />
+          <xsd:element name="ZROW" type="xsd:int" />
+          <xsd:element name="ZFIELD" type="tns:char30" />
+          <xsd:element name="ZSYSTEM" type="tns:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZPPMXF001">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PA_TEXTO" type="tns:char40" />
+            <xsd:element minOccurs="0" name="TEXT_COMPONENTS" type="tns:char40" />
+            <xsd:element name="ZINPUT" type="tns:ZEPP002" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZPPMXF001Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ZOUTPUT" type="tns:_-ISDFPS_-TCUPS_KEY" />
+            <xsd:element name="ZRETURN" type="tns:ZBAPIRET2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZPPMXF001">
+    <wsdl:part name="parameters" element="tns:ZPPMXF001" />
+  </wsdl:message>
+  <wsdl:message name="ZPPMXF001Response">
+    <wsdl:part name="parameters" element="tns:ZPPMXF001Response" />
+  </wsdl:message>
+  <wsdl:portType name="ZPPMXF001">
+    <wsdl:operation name="ZPPMXF001">
+      <wsdl:input message="tns:ZPPMXF001" />
+      <wsdl:output message="tns:ZPPMXF001Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZPPMXF001SoapBinding" type="tns:ZPPMXF001">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZPPMXF001">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZPPMXF001Service">
+    <wsdl:port name="ZPPMXF001SoapBinding" binding="tns:ZPPMXF001SoapBinding">
+      <soap:address location="http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,2494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42166AB1-2CE0-472F-AD2D-CBF706BDD0D5}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>Resources\Fluent.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Atlas</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>Atlas</RootNamespace>
+    <StartupObject>Atlas.My.MyApplication</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>WindowsForms</MyType>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>2911CF38538CAFBA478ACCA323747E66E6272750</ManifestCertificateThumbprint>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Publicaciones A-tlas MSI 2016\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <UpdateUrl>http://10.1.2.31/MSI/</UpdateUrl>
+    <ProductName>Fluent</ProductName>
+    <PublisherName>Mexichem</PublisherName>
+    <SuiteName>Atlas Fluent</SuiteName>
+    <MinimumRequiredVersion>2.0.0.2</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Fluent, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WS, Version=1.0.4370.20542, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WS_Generic, Version=1.0.5711.16658, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WS_Generic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="CrystalDecisions.CrystalReports" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acceso_Datos\Conexion.vb" />
+    <Compile Include="Acceso_Datos\DAOSesion.vb" />
+    <Compile Include="Acceso_Datos\Sesion.vb" />
+    <Compile Include="Acceso_Datos\Usuario.vb" />
+    <Compile Include="Consultas\Entidad\ResultadoResumen.vb" />
+    <Compile Include="Consultas\FrmConsultaScrapInyeccion.Designer.vb">
+      <DependentUpon>FrmConsultaScrapInyeccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaScrapInyeccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaSobrePesos.Designer.vb">
+      <DependentUpon>FrmConsultaSobrePesos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaSobrePesos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\Entidad\ProduccionResumen.vb" />
+    <Compile Include="Produccion Piso\FrmPisoPT.Designer.vb">
+      <DependentUpon>FrmPisoPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion Piso\FrmPisoPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users Control Main\UC_Login.Designer.vb">
+      <DependentUpon>UC_Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Users Control Main\UC_Login.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\ApplicationEvents.vb" />
+    <Compile Include="Ventanas\Administracion Pesajes\Clases\PermisoAdminPesajes.vb" />
+    <Compile Include="Ventanas\Administracion Pesajes\FrmBaja_PTSC.Designer.vb">
+      <DependentUpon>FrmBaja_PTSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmBaja_PTSC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmConsulta_PTSC_EI.Designer.vb">
+      <DependentUpon>FrmConsulta_PTSC_EI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmConsulta_PTSC_EI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\User Control\Consulta.Designer.vb">
+      <DependentUpon>Consulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\User Control\Consulta.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\User Control\Usr_DGV.Designer.vb">
+      <DependentUpon>Usr_DGV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\User Control\Usr_DGV.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Causas.Designer.vb">
+      <DependentUpon>CAT_Causas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Causas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Causas_Defectos.Designer.vb">
+      <DependentUpon>CAT_Causas_Defectos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Causas_Defectos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Defectos.Designer.vb">
+      <DependentUpon>CAT_Defectos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Defectos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Equipo_Basico.Designer.vb">
+      <DependentUpon>CAT_Equipo_Basico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Equipo_Basico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Compuestos.Designer.vb">
+      <DependentUpon>CAT_Compuestos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Compuestos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultasExt.Designer.vb">
+      <DependentUpon>FrmConsultasExt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultasExt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Generica_DB.vb" />
+    <Compile Include="Negocio\OrdenProduccion.vb" />
+    <Compile Include="Negocio\ProductoTerminadoExtrusion.vb" />
+    <Compile Include="Ventanas\Acercade.Designer.vb">
+      <DependentUpon>Acercade.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Acercade.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_ProductosExtrusion.Designer.vb">
+      <DependentUpon>CAT_ProductosExtrusion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_ProductosExtrusion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Prod_Compuesto.Designer.vb">
+      <DependentUpon>CAT_Prod_Compuesto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Prod_Compuesto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Racks.Designer.vb">
+      <DependentUpon>CAT_Racks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Racks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Usuarios.Designer.vb">
+      <DependentUpon>CAT_Usuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_Usuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_ProductosInyeccion.Designer.vb">
+      <DependentUpon>CAT_ProductosInyeccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\CAT_ProductosInyeccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\CNF_Parametrizacion.Designer.vb">
+      <DependentUpon>CNF_Parametrizacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\CNF_Parametrizacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmNotMasiva.Designer.vb">
+      <DependentUpon>FrmNotMasiva.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmNotMasiva.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Master_Cat.Designer.vb">
+      <DependentUpon>Master_Cat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Master_Cat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Ventanas\Administracion\FrmStatusSAP.designer.vb">
+      <DependentUpon>FrmStatusSAP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmStatusSAP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmCtrlODF_AMEX.Designer.vb">
+      <DependentUpon>FrmCtrlODF_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmCtrlODF_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\Entidades\ListaCompuestos.vb" />
+    <Compile Include="Ventanas\Notifica Extrusión\FrmAlta_Comp.Designer.vb">
+      <DependentUpon>FrmAlta_Comp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\FrmAlta_Comp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\FrmEdit_Comp.Designer.vb">
+      <DependentUpon>FrmEdit_Comp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\FrmEdit_Comp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificaciób PE\MenuPE.Designer.vb">
+      <DependentUpon>MenuPE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificaciób PE\MenuPE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\Extrusion.Designer.vb">
+      <DependentUpon>Extrusion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notifica Extrusión\Extrusion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\NotificaExtrusion.Designer.vb">
+      <DependentUpon>NotificaExtrusion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\NotificaExtrusion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\NotificaPTE.Designer.vb">
+      <DependentUpon>NotificaPTE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\NotificaPTE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPTE_AMEX.designer.vb">
+      <DependentUpon>MenuPTE_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPTE_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuSC_AMEX.designer.vb">
+      <DependentUpon>MenuSC_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuSC_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaPT_AMEX.designer.vb">
+      <DependentUpon>FrmConsultaPT_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaPT_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\frmSpro.designer.vb">
+      <DependentUpon>frmSpro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\frmSpro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_PT.Designer.vb">
+      <DependentUpon>FrmIMP_PT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_PT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultasExtrusion.Designer.vb">
+      <DependentUpon>FrmConsultasExtrusion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultasExtrusion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmLoader.Designer.vb">
+      <DependentUpon>FrmLoader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmLoader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmSobreBajoPeso.Designer.vb">
+      <DependentUpon>FrmSobreBajoPeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmSobreBajoPeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_PT_AMEX.designer.vb">
+      <DependentUpon>FrmIMP_PT_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_PT_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_SC.Designer.vb">
+      <DependentUpon>FrmIMP_SC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_SC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\IAC_ODF.vb" />
+    <Compile Include="Negocio\MDPublicClass.vb" />
+    <Compile Include="Negocio\NotificationProcess.vb" />
+    <Compile Include="Negocio\ProductionOrder.vb" />
+    <Compile Include="Ventanas\Inyeccion\MenuPTI.Designer.vb">
+      <DependentUpon>MenuPTI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Inyeccion\MenuPTI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPTE.Designer.vb">
+      <DependentUpon>MenuPTE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPTE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaSP_AMEX.designer.vb">
+      <DependentUpon>FrmConsultaSP_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaSP_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_SC_AMEX.Designer.vb">
+      <DependentUpon>FrmIMP_SC_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMP_SC_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEfectos_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatEfectos_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEfectos_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\FrmAlmacen.Designer.vb">
+      <DependentUpon>FrmAlmacen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\FrmAlmacen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaOT_AMEX.designer.vb">
+      <DependentUpon>FrmConsultaOT_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmConsultaOT_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmProduccion.Designer.vb">
+      <DependentUpon>FrmProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMPAlm_AMEX.Designer.vb">
+      <DependentUpon>FrmIMPAlm_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Impresion\FrmIMPAlm_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Permisos.vb" />
+    <Compile Include="Negocio\Validaciones.vb" />
+    <Compile Include="Ventanas\NotificacionMasiva\FrmNotMasivaSC_AMEX.Designer.vb">
+      <DependentUpon>FrmNotMasivaSC_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\NotificacionMasiva\FrmNotMasivaSC_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\NotificacionMasiva\FrmNotMasiva_AMEX.designer.vb">
+      <DependentUpon>FrmNotMasiva_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\NotificacionMasiva\FrmNotMasiva_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Rotomoldeo\MenuRTO.Designer.vb">
+      <DependentUpon>MenuRTO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Rotomoldeo\MenuRTO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\SplashScreenMexichem.Designer.vb">
+      <DependentUpon>SplashScreenMexichem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\SplashScreenMexichem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_AMEX.Designer.vb">
+      <DependentUpon>FrmSupervision_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_Rol_AMEX.Designer.vb">
+      <DependentUpon>FrmSupervision_Rol_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_Rol_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_Rol_Ins_AMEX.Designer.vb">
+      <DependentUpon>FrmSupervision_Rol_Ins_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Supervision\FrmSupervision_Rol_Ins_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatGruposRTM_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatSecciones_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatSecciones_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatSecciones_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrupos_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatGrupos_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrupos_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEquipos_AMEX.designer.vb">
+      <DependentUpon>FrmAdmCatEquipos_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEquipos_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Generic_CB.vb" />
+    <Compile Include="Negocio\Generic_SAP.vb" />
+    <Compile Include="Negocio\MdFormControl.vb" />
+    <Compile Include="Negocio\Md_Leer_Pt_Scrap.vb" />
+    <Compile Include="Reportes\rptPTECalidadXProd_CR01.vb">
+      <DependentUpon>rptPTECalidadXProd_CR01.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSCOrdEntXODF_AMEX.vb">
+      <DependentUpon>rptSCOrdEntXODF_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptAlmProd_Boletas.vb">
+      <DependentUpon>rptAlmProd_Boletas.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptAlmBoletas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAlmBoletas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptPTEOrdEntXEqpResumen_AMEX.vb">
+      <DependentUpon>rptPTEOrdEntXEqpResumen_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSCIOrdEntXProd_AMEX.vb">
+      <DependentUpon>rptSCIOrdEntXProd_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmAdmin_PPT_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmin_PPT_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmAdmin_PPT_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSC_GM_AMEX.vb">
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSC_GM_AMEX.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProgramas_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatProgramas_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProgramas_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdEmb.Designer.vb">
+      <DependentUpon>FrmAdmCatProdEmb.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdEmb.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatMatIny_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatMatIny_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatMatIny_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdTinta_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatProdTinta_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdTinta_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Md_Notifica_Pt_Scrap.vb" />
+    <Compile Include="Reportes\rptPTECalidadXODF_AMEX.vb">
+      <DependentUpon>rptPTECalidadXODF_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptPTECalidadXProd_AMEX.vb">
+      <DependentUpon>rptPTECalidadXProd_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptCCEXProdDet_AMEX.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCCEXProdDet_AMEX.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmModificaSC.designer.vb">
+      <DependentUpon>FrmModificaSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmModificaSC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatCompExt_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatCompExt_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatCompExt_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEmpExt_AMEX.Designer.vb">
+      <DependentUpon>FrmAdmCatEmpExt_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatEmpExt_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmModificaPT.designer.vb">
+      <DependentUpon>FrmModificaPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion Pesajes\FrmModificaPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptCCEXODFDet_AMEX.vb">
+      <DependentUpon>rptCCEXODFDet_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptPTIOrdEntXProd_AMEX.vb">
+      <DependentUpon>rptPTIOrdEntXProd_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptPTIOrdEntXODF_AMEX.vb">
+      <DependentUpon>rptPTIOrdEntXODF_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmAdminODF.designer.vb">
+      <DependentUpon>FrmAdminODF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmAdminODF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\NotificacionMasiva\NotificacionMasiva.designer.vb">
+      <DependentUpon>NotificacionMasiva.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\NotificacionMasiva\NotificacionMasiva.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmStatusSAPE.designer.vb">
+      <DependentUpon>FrmStatusSAPE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmStatusSAPE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FrmStatusSAPI.designer.vb">
+      <DependentUpon>FrmStatusSAPI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FrmStatusSAPI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSCIOrdEntXODF_AMEX.vb">
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSCIOrdEntXODF_AMEX.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptSCOrdEntXProd_AMEX.vb">
+      <DependentUpon>rptSCOrdEntXProd_AMEX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormConfigurarCompuesto_AMEX.designer.vb">
+      <DependentUpon>FormConfigurarCompuesto_AMEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormConfigurarCompuesto_AMEX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\FREP.designer.vb">
+      <DependentUpon>FREP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\FREP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM.designer.vb">
+      <DependentUpon>FrmAdmCatGruposRTM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\RValeOT_GT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RValeOT_GT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RValePTE_GT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RValePTE_GT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptProducciondet.vb">
+      <DependentUpon>rptProducciondet.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormAutorizaOrdenesSobrepeso.Designer.vb">
+      <DependentUpon>FormAutorizaOrdenesSobrepeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormAutorizaOrdenesSobrepeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatPerfiles.Designer.vb">
+      <DependentUpon>FrmAdmCatPerfiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatPerfiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\frmSproadm.Designer.vb">
+      <DependentUpon>frmSproadm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\frmSproadm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminDelTPERIny.designer.vb">
+      <DependentUpon>FrmAdminDelTPERIny.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminDelTPERIny.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormSobrePesoTf.Designer.vb">
+      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FormSobrePesoTf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrpCausasGenerales.Designer.vb">
+      <DependentUpon>FrmAdmCatGrpCausasGenerales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrpCausasGenerales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatRacks.Designer.vb">
+      <DependentUpon>FrmAdmCatRacks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatRacks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\FrmMain.Designer.vb">
+      <DependentUpon>FrmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main\FrmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptProduccion.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProduccion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdmin.Designer.vb">
+      <DependentUpon>FrmAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminconfig.Designer.vb">
+      <DependentUpon>FrmAdminconfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminconfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminMaster.designer.vb">
+      <DependentUpon>FrmAdminMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Administracion\FrmAdminMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\MdSoloNumeros.vb" />
+    <Compile Include="Negocio\DataUsuarios.vb">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Acceso_Datos\MdOperaBD.vb" />
+    <Compile Include="Negocio\MdVarPublic.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Dev_Gen\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Dev_Read_ODF\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Graba_OF\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Graba_Pedido\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Leer_Pedido\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Lee_OFP\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Prd_Gen\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PTConProd\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PTConsumos\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PT_ConMat_Dev\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PT_ConMat_Prod\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Read\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Content Include="Fonts\IDAUHC39.TTF" />
+    <None Include="Resources\Supervisor 04.jpg" />
+    <None Include="Resources\GeoTextiles 03.jpg" />
+    <None Include="Resources\GeoTextiles 02.jpg" />
+    <None Include="Resources\GeoTextiles 01.jpg" />
+    <None Include="Resources\Fluent.png" />
+    <None Include="Resources\Fluent.ico" />
+    <None Include="Resources\Fluente.ico" />
+    <None Include="Resources\mexichem5.png" />
+    <None Include="Resources\mexichem3.png" />
+    <None Include="Resources\mexichem2.png" />
+    <None Include="Resources\mexichem1.png" />
+    <None Include="Resources\mexichem.png" />
+    <None Include="Resources\Logo Fluent.jpg" />
+    <None Include="Resources\Fabricacion_03.jpg" />
+    <None Include="Resources\Fabricacion_02.jpg" />
+    <None Include="Resources\Fabricacion_01.jpg" />
+    <None Include="Resources\soluciones.jpg" />
+    <None Include="Resources\fluor.jpg" />
+    <None Include="Resources\cloro_vinilo.jpg" />
+    <None Include="Resources\logo_solucionesintegrales.png" />
+    <None Include="Resources\logo_fluor.png" />
+    <None Include="Resources\logo_clorovinilo.png" />
+    <None Include="Resources\Rotomoldeo_04.jpg" />
+    <None Include="Resources\Rotomoldeo_03.jpg" />
+    <None Include="Resources\Rotomoldeo_02.jpg" />
+    <None Include="Resources\Rotomoldeo_01.jpg" />
+    <None Include="Resources\SAP Notificacion.jpg" />
+    <None Include="Resources\Importar.jpg" />
+    <None Include="Resources\Previsualizar_Documento_02.jpg" />
+    <None Include="Resources\Cancelar Impresion.jpg" />
+    <None Include="Resources\Actualiza_02.jpg" />
+    <None Include="Resources\Reactivar.png" />
+    <None Include="Resources\IDAUHC39.TTF" />
+    <None Include="Resources\Sign 08.ico" />
+    <None Include="Resources\Sign 06.ico" />
+    <None Include="Resources\reiniciarsesion.ico" />
+    <None Include="Resources\Supervisor_02.jpg" />
+    <None Include="Resources\report.png" />
+    <EmbeddedResource Include="Consultas\FrmConsultaScrapInyeccion.resx">
+      <DependentUpon>FrmConsultaScrapInyeccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultaSobrePesos.resx">
+      <DependentUpon>FrmConsultaSobrePesos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion Piso\FrmPisoPT.resx">
+      <DependentUpon>FrmPisoPT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users Control Main\UC_Login.resx">
+      <DependentUpon>UC_Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\FrmBaja_PTSC.resx">
+      <DependentUpon>FrmBaja_PTSC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\FrmConsulta_PTSC_EI.resx">
+      <DependentUpon>FrmConsulta_PTSC_EI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\User Control\Consulta.resx">
+      <DependentUpon>Consulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\User Control\Usr_DGV.resx">
+      <DependentUpon>Usr_DGV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Causas.resx">
+      <DependentUpon>CAT_Causas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Causas_Defectos.resx">
+      <DependentUpon>CAT_Causas_Defectos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Equipo_Basico.resx">
+      <DependentUpon>CAT_Equipo_Basico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Compuestos.resx">
+      <DependentUpon>CAT_Compuestos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Racks.resx">
+      <DependentUpon>CAT_Racks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultasExt.resx">
+      <DependentUpon>FrmConsultasExt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_ProductosInyeccion.resx">
+      <DependentUpon>CAT_ProductosInyeccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\CNF_Parametrizacion.resx">
+      <DependentUpon>CNF_Parametrizacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmStatusSAP.resx">
+      <DependentUpon>FrmStatusSAP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Ordenes de Produccion\FrmCtrlODF_AMEX.resx">
+      <DependentUpon>FrmCtrlODF_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notifica Extrusión\FrmAlta_Comp.resx">
+      <DependentUpon>FrmAlta_Comp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notifica Extrusión\FrmEdit_Comp.resx">
+      <DependentUpon>FrmEdit_Comp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificaciób PE\MenuPE.resx">
+      <DependentUpon>MenuPE.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notifica Extrusión\Extrusion.resx">
+      <DependentUpon>Extrusion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\NotificaExtrusion.resx">
+      <DependentUpon>NotificaExtrusion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\NotificaPTE.resx">
+      <DependentUpon>NotificaPTE.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\MenuPTE_AMEX.resx">
+      <DependentUpon>MenuPTE_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\MenuSC_AMEX.resx">
+      <DependentUpon>MenuSC_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmConsultaPT_AMEX.resx">
+      <DependentUpon>FrmConsultaPT_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\frmSpro.resx">
+      <DependentUpon>frmSpro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Impresion\FrmIMP_PT.resx">
+      <DependentUpon>FrmIMP_PT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultasExtrusion.resx">
+      <DependentUpon>FrmConsultasExtrusion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmSobreBajoPeso.resx">
+      <DependentUpon>FrmSobreBajoPeso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Impresion\FrmIMP_PT_AMEX.resx">
+      <DependentUpon>FrmIMP_PT_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Inyeccion\MenuPTI.resx">
+      <DependentUpon>MenuPTI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\NotificacionMasiva\FrmNotMasivaSC_AMEX.resx">
+      <DependentUpon>FrmNotMasivaSC_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\NotificacionMasiva\FrmNotMasiva_AMEX.resx">
+      <DependentUpon>FrmNotMasiva_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\preview.gif" />
+    <None Include="Resources\sap-notificar.png" />
+    <None Include="Resources\warning_shield.png" />
+    <None Include="Resources\question_shield.png" />
+    <None Include="Resources\msgWarning.png" />
+    <None Include="Resources\msgOk.png" />
+    <None Include="Resources\msgInformation.png" />
+    <None Include="Resources\msgError.png" />
+    <None Include="Resources\user_admin.png" />
+    <None Include="Resources\SalirAtlas.png" />
+    <None Include="Resources\reiniciarsesion.png" />
+    <None Include="Resources\Procesos_Esp_003.jpg" />
+    <None Include="Resources\Procesos_Esp_004.jpg" />
+    <EmbeddedResource Include="Ventanas\Acercade.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Acercade.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Master_Cat.resx">
+      <DependentUpon>Master_Cat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_ProductosExtrusion.resx">
+      <DependentUpon>CAT_ProductosExtrusion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Prod_Compuesto.resx">
+      <DependentUpon>CAT_Prod_Compuesto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\CAT_Usuarios.resx">
+      <DependentUpon>CAT_Usuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmNotMasiva.resx">
+      <DependentUpon>FrmNotMasiva.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\MenuPTE.resx">
+      <DependentUpon>MenuPTE.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmLoader.resx">
+      <DependentUpon>FrmLoader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Impresion\FrmIMP_SC.resx">
+      <DependentUpon>FrmIMP_SC.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmConsultaSP_AMEX.resx">
+      <DependentUpon>FrmConsultaSP_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Impresion\FrmIMP_SC_AMEX.resx">
+      <DependentUpon>FrmIMP_SC_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatEfectos_AMEX.resx">
+      <DependentUpon>FrmAdmCatEfectos_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\FrmAlmacen.resx">
+      <DependentUpon>FrmAlmacen.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmConsultaOT_AMEX.resx">
+      <DependentUpon>FrmConsultaOT_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmProduccion.resx">
+      <DependentUpon>FrmProduccion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Impresion\FrmIMPAlm_AMEX.resx">
+      <DependentUpon>FrmIMPAlm_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Rotomoldeo\MenuRTO.resx">
+      <DependentUpon>MenuRTO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\SplashScreenMexichem.resx">
+      <DependentUpon>SplashScreenMexichem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Supervision\FrmSupervision_AMEX.resx">
+      <DependentUpon>FrmSupervision_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Supervision\FrmSupervision_Rol_AMEX.resx">
+      <DependentUpon>FrmSupervision_Rol_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Supervision\FrmSupervision_Rol_Ins_AMEX.resx">
+      <DependentUpon>FrmSupervision_Rol_Ins_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM_AMEX.resx">
+      <DependentUpon>FrmAdmCatGruposRTM_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatSecciones_AMEX.resx">
+      <DependentUpon>FrmAdmCatSecciones_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrupos_AMEX.resx">
+      <DependentUpon>FrmAdmCatGrupos_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatEquipos_AMEX.resx">
+      <DependentUpon>FrmAdmCatEquipos_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTECalidadXProd_CR01.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTECalidadXProd_CR01.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSCOrdEntXODF_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSCOrdEntXODF_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptAlmProd_Boletas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAlmProd_Boletas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptAlmBoletas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAlmBoletas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTEOrdEntXEqpResumen_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTEOrdEntXEqpResumen_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSCIOrdEntXProd_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSCIOrdEntXProd_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\FrmAdmin_PPT_AMEX.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAdmin_PPT_AMEX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSC_GM_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSC_GM_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatProgramas_AMEX.resx">
+      <DependentUpon>FrmAdmCatProgramas_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdEmb.resx">
+      <DependentUpon>FrmAdmCatProdEmb.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatMatIny_AMEX.resx">
+      <DependentUpon>FrmAdmCatMatIny_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatProdTinta_AMEX.resx">
+      <DependentUpon>FrmAdmCatProdTinta_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTECalidadXODF_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTECalidadXODF_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTECalidadXProd_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTECalidadXProd_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptCCEXProdDet_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCCEXProdDet_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\FrmModificaSC.resx">
+      <DependentUpon>FrmModificaSC.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatCompExt_AMEX.resx">
+      <DependentUpon>FrmAdmCatCompExt_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatEmpExt_AMEX.resx">
+      <DependentUpon>FrmAdmCatEmpExt_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion Pesajes\FrmModificaPT.resx">
+      <DependentUpon>FrmModificaPT.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptCCEXODFDet_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCCEXODFDet_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTIOrdEntXProd_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTIOrdEntXProd_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptPTIOrdEntXODF_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPTIOrdEntXODF_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Ordenes de Produccion\FrmAdminODF.resx">
+      <DependentUpon>FrmAdminODF.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\NotificacionMasiva\NotificacionMasiva.resx">
+      <DependentUpon>NotificacionMasiva.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmStatusSAPE.resx">
+      <DependentUpon>FrmStatusSAPE.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FrmStatusSAPI.resx">
+      <DependentUpon>FrmStatusSAPI.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSCIOrdEntXODF_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSCIOrdEntXODF_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSCOrdEntXProd_AMEX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSCOrdEntXProd_AMEX.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FormConfigurarCompuesto_AMEX.resx">
+      <DependentUpon>FormConfigurarCompuesto_AMEX.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FREP.resx">
+      <DependentUpon>FREP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatGruposRTM.resx">
+      <DependentUpon>FrmAdmCatGruposRTM.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RValeOT_GT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RValeOT_GT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RValePTE_GT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RValePTE_GT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptProducciondet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProducciondet.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FormAutorizaOrdenesSobrepeso.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormAutorizaOrdenesSobrepeso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatPerfiles.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAdmCatPerfiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\frmSproadm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSproadm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmAdminDelTPERIny.resx">
+      <DependentUpon>FrmAdminDelTPERIny.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FormSobrePesoTf.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrpCausasGenerales.resx">
+      <DependentUpon>FrmAdmCatGrpCausasGenerales.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatRacks.resx">
+      <DependentUpon>FrmAdmCatRacks.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\FrmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptProduccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProduccion.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmAdminconfig.resx">
+      <DependentUpon>FrmAdminconfig.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Administracion\FrmAdminMaster.resx">
+      <DependentUpon>FrmAdminMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\code39.ttf" />
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Dev_Gen\document.wsdl" />
+    <None Include="Web References\Dev_Gen\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Dev_Gen\ZBAPIRET21.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Dev_Read_ODF\document.wsdl" />
+    <None Include="Web References\Dev_Read_ODF\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Dev_Read_ODF\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Dev_Read_ODF\ZEPP001.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Dev_Read_ODF\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Graba_OF\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Graba_OF\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Graba_OF\ZPP003_91.wsdl" />
+    <None Include="Web References\Graba_OF\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Graba_Pedido\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Graba_Pedido\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Graba_Pedido\ZSDMX_POST_SCALE_DATA.wsdl" />
+    <None Include="Web References\Leer_Pedido\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Leer_Pedido\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Leer_Pedido\ZMMMXS001.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Leer_Pedido\ZSDMXS002.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Leer_Pedido\ZSDMXS003.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Leer_Pedido\ZSDMX_READ_SCALE_DOCUMENTS.wsdl" />
+    <None Include="Web References\Lee_OFP\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Lee_OFP\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Lee_OFP\ZEPP001.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Lee_OFP\ZPP001_91.wsdl" />
+    <None Include="Web References\Prd_Gen\document.wsdl" />
+    <None Include="Web References\Prd_Gen\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Prd_Gen\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PTConProd\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PTConProd\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PTConProd\ZPPMXF001.wsdl" />
+    <None Include="Web References\PTConProd\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PTConsumos\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PTConsumos\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PTConsumos\ZPPMXF001.wsdl" />
+    <None Include="Web References\PTConsumos\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PT_ConMat_Dev\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PT_ConMat_Dev\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PT_ConMat_Dev\ZPPMXF002.wsdl" />
+    <None Include="Web References\PT_ConMat_Dev\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PT_ConMat_Prod\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PT_ConMat_Prod\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PT_ConMat_Prod\ZPPMXF002.wsdl" />
+    <None Include="Resources\Extrusion_mini.jpg" />
+    <None Include="Resources\Extrusion_002.jpg" />
+    <None Include="Resources\Inyeccion_003.jpg" />
+    <None Include="Resources\Exit-1.jpg" />
+    <None Include="Resources\connect_creating.png" />
+    <None Include="Resources\Config_004.jpg" />
+    <None Include="Resources\Config_001.png" />
+    <None Include="Resources\banner.png" />
+    <None Include="Resources\Configuracion.png" />
+    <None Include="Resources\Graficas.png" />
+    <None Include="Resources\fondo_arriba.jpg" />
+    <None Include="Resources\error_shield.png" />
+    <None Include="Resources\good_shield.png" />
+    <None Include="Resources\imprimir.png" />
+    <None Include="Resources\Consulta_01.png" />
+    <None Include="Resources\Calculadora_03.png" />
+    <None Include="Resources\application.ico" />
+    <None Include="Resources\bascula-.png" />
+    <None Include="Resources\catalog.png" />
+    <None Include="Resources\CompanyLogo.png" />
+    <None Include="Resources\Configuration.png" />
+    <None Include="Resources\inspeccion.png" />
+    <None Include="Resources\Btn_Cancel.png" />
+    <None Include="Resources\Btn_Consulta.png" />
+    <None Include="Resources\Btn_Elimina.png" />
+    <None Include="Resources\Btn_Excel.png" />
+    <None Include="Resources\Btn_Modifica.png" />
+    <None Include="Resources\Btn_Nuevo.png" />
+    <None Include="Resources\Calculadora.png" />
+    <None Include="Resources\document_save.png" />
+    <None Include="Resources\Consulta 1.jpg" />
+    <None Include="Resources\Bascula Camionera.jpg" />
+    <None Include="Resources\Import_01.png" />
+    <None Include="Resources\LogoMexichem_grande.png" />
+    <None Include="Resources\Logo Mexichem.JPG" />
+    <None Include="Resources\marca_agua7cm.bmp" />
+    <None Include="Resources\LM.ico" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\M.png" />
+    <None Include="Resources\Limpiar.png" />
+    <None Include="Resources\loader.gif" />
+    <Content Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Resources\MXM_LG_CORP_grande.png" />
+    <None Include="Resources\MXM_LG_CORP_chico2.gif" />
+    <None Include="Resources\ProgressGear.gif" />
+    <None Include="Resources\Reset_001.jpg" />
+    <None Include="Resources\Molino_001.jpg" />
+    <None Include="Resources\Scrap_001.jpg" />
+    <None Include="Resources\Scrap_Inyeccion_003.jpg" />
+    <None Include="Resources\btn_SAPOk.png" />
+    <None Include="Resources\btn_SAPFail.png" />
+    <None Include="Web References\PT_ConMat_Prod\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Read\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Read\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Read\ZEPP001.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Read\ZPP001_91.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+    <Service Include="{CF845C55-C321-4742-B673-E6212D061ED9}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Lee_OFP\</RelPath>
+      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Lee_OFP_ZPP001_91Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPP003_91%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Graba_OF\</RelPath>
+      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPP003_91%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Graba_OF_ZPP003_91Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PTConProd\</RelPath>
+      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_PTConProd_ZPPMXF001Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PT_ConMat_Prod\</RelPath>
+      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_PT_ConMat_Prod_ZPPMXF002Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Prd_Gen\</RelPath>
+      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Prd_Gen_ZGLMX_ATLAS_GR</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Read\</RelPath>
+      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Read_ZPP001_91Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PTConsumos\</RelPath>
+      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_PTConsumos_ZPPMXF001Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Graba_Pedido\</RelPath>
+      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Graba_Pedido_ZSDMX_POST_SCALE_DATAService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Dev_Read_ODF\</RelPath>
+      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Dev_Read_ODF_ZPPGL_READ_ORDER_300</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Dev_Gen\</RelPath>
+      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Dev_Materials_ZGLMX_ATLAS_GRService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PT_ConMat_Dev\</RelPath>
+      <UpdateFromURL>http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_PT_ConMat_Dev_ZPPMXF002Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Leer_Pedido\</RelPath>
+      <UpdateFromURL>http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>A_tlas_Leer_Pedido_ZSDMX_READ_SCALE_DOCUMENTSService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Acceso_Datos\DAO\" />
+    <Folder Include="Utili_Generales\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="CRVsPackageLib">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.CrystalReports.Engine">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.Framework">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.InfoStore">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.PluginManager">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.KeyCode">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportSource">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Shared">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Windows.Forms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="EnvDTE">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="EnvDTE80">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="es\Microsoft.Build.Utilities.v3.5.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="es\Microsoft.SqlServer.Types.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="FlashControlV71">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Fluent">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Fonts\IDAUHC39.TTF">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.MSXML">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Office.Interop.Excel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Types">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop.Forms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Data.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Data.Framework">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Data.Services">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Debugger.InteropA">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Designer.Interfaces">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Editors">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.ManagedInterfaces">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.ManagedInterfaces.WCF">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.OLE.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Package.LanguageService.9.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.ProjectAggregator">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.9.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Design">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.8.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.9.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TemplateWizardInterface">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TextManager.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.VSHelp">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.WCFReference.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.WizardFramework">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.XmlEditor">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VSDesigner">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="mscorcfg">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="My Project\Application.myapp">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="office">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\Kaluz_LogoIconSmall.ico">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\Mexichem.ico">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="ShockwaveFlashObjects">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="SMDiagnostics">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="System.Data.SqlServerCe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="System.ServiceModel.Internals">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="VSLangProj">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="VSLangProj2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="VSLangProj80">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="VsWebSite.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Atlas.Accesos\Atlas.Accesos.vbproj">
+      <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
+      <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="Reporting\Atlas.Reporting.vbproj">
+      <Project>{780B0EFB-251F-4774-9497-6FB6336D6552}</Project>
+      <Name>Atlas.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="SQL\SQL\Atlas.SQL_DATA.vbproj">
+      <Project>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</Project>
+      <Name>Atlas.SQL_DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="Utili_Generales\Atlas.Utili_Generales.vbproj">
+      <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
+      <Name>Atlas.Utili_Generales</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

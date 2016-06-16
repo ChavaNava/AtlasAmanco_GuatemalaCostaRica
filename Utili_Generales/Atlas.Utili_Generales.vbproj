@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{EA29C01C-682B-436A-85BD-39A820994405}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Utili_Generales</RootNamespace>
+    <AssemblyName>Utili_Generales</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigScales.vb" />
+    <Compile Include="ControlDataGridView.vb" />
+    <Compile Include="Crypto.vb" />
+    <Compile Include="Boot_Files.vb" />
+    <Compile Include="FrontUtils.vb" />
+    <Compile Include="ImageService.vb" />
+    <Compile Include="MensajeBox.Designer.vb">
+      <DependentUpon>MensajeBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Util.vb" />
+    <Compile Include="ValueText.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MensajeBox.resx">
+      <DependentUpon>MensajeBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Resources\code39.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bascula-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Consulta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Elimina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Modifica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_Nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_SAPFail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_SAPOk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculadora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculadora_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catalog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CompanyLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Config_001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Config_004.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Configuracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Configuration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connect_creating.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Consulta 1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Consulta_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Extrusion_002.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Extrusion_mini.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_arriba.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\good_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graficas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspeccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inyeccion_003.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LM.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loader.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Mexichem.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMexichem_grande.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marca_agua7cm.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Molino_001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\msgError.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\msgInformation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\msgOk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\msgWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MXM_LG_CORP_chico2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MXM_LG_CORP_grande.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Procesos_Esp_003.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Procesos_Esp_004.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProgressGear.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reiniciarsesion.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reiniciarsesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reset_001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SalirAtlas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sap-notificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scrap_001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scrap_Inyeccion_003.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Supervisor_02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fluent.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

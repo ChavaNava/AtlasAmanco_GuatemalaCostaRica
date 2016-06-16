@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SQL_DATA</RootNamespace>
+    <AssemblyName>SQL_DATA</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atlas.Accesos">
+      <HintPath>..\..\bin\Atlas.Accesos.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="WS_Generic, Version=1.0.5711.16658, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\WS_Generic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Deployment" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\AtlasUpdate.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Areas.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Causas.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Compuestos.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Defectos.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Empaques.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Familia_Producto.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Grupos.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Grupo_Materiales.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Marcas.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Materiales.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Material_Compuesto.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Operador_Puesto_Trabajo.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Ordenes_Produccion.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Perfiles.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Procesos.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Puestos_Trabajo.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Racks.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Scrap.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Secciones.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Tipo_Causas.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_UM.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Uso_Maquina.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Usuarios.vb" />
+    <Compile Include="Administración Pesajes\Consulta Pesajes.vb" />
+    <Compile Include="Clases\Centros.vb" />
+    <Compile Include="Clases\Conexion.vb" />
+    <Compile Include="Clases\Consulta_Produccion_Extrusion.vb" />
+    <Compile Include="Clases\Consulta_Scrap_Extrusion.vb" />
+    <Compile Include="Clases\Con_Sobrepesos.vb" />
+    <Compile Include="Clases\Compuestos.vb" />
+    <Compile Include="Clases\Extrusion\NotificaExtrusionSAP.vb" />
+    <Compile Include="Clases\Parametros\Parametros.vb" />
+    <Compile Include="DataBase\DataBase.vb" />
+    <Compile Include="DataBase\DB.vb" />
+    <Compile Include="Clases\Elimina_Pesajes_Extrusion.vb" />
+    <Compile Include="Entidades\Conexion\Atlas_Version.vb" />
+    <Compile Include="Entidades\Login\LoginNotifier.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\CompuestoSet.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Compuestos_1.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Compuestos_2.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\ConfigCompuestos.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Compuestos_3.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\ListaCompuestos.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\New_ODF.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\NotificacionPTE.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\NotificacionPTESAP.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\OrdenCantidades.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\OrdenDetalleSAP.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\OrdenSAP.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\OrderFill.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\PesosPiezas.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\ValidaExistaODF.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\ValidaODF.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Read_ODF.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\SessionUser.vb" />
+    <Compile Include="Entidades\Login\LoginExtrusion.vb" />
+    <Compile Include="Entidades\Login\LoginUser.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Modifica_Pesajes.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\ObjetosSeleccionados.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Tiempos_ODF.vb" />
+    <Compile Include="Entidades\Notificación Extrusión\Tiempo_Totales.vb" />
+    <Compile Include="Clases\Extrusion\OrdenProduccion.vb" />
+    <Compile Include="Clases\Parametrizar_Form.vb" />
+    <Compile Include="Clases\Proceso_Extrusion.vb" />
+    <Compile Include="Clases\Inyeccion.vb" />
+    <Compile Include="Clases\Log.vb" />
+    <Compile Include="Clases\LoggingService.vb" />
+    <Compile Include="Clases\MDVarPublic.vb" />
+    <Compile Include="Funciones\Funciones.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Clases\Produccion_Piso.vb" />
+    <Compile Include="Clases\Produccion_Scrap_Extrusion.vb" />
+    <Compile Include="Clases\Produccion_Scrap_Inyeccion.vb" />
+    <Compile Include="Clases\ProductionOrder.vb" />
+    <Compile Include="Clases\Prod_Piso.vb" />
+    <Compile Include="Clases\Reportes.vb" />
+    <Compile Include="Clases\Rotomoldeo.vb" />
+    <Compile Include="Clases\Conexion\SAP_Conexion.vb" />
+    <Compile Include="Clases\Catalogos\Catalogo_Turnos.vb" />
+    <Compile Include="Clases\Users.vb" />
+    <Compile Include="Clases\ValidacionesBascula.vb" />
+    <Compile Include="Clases\ValidacionesCompuestos.vb" />
+    <Compile Include="Clases\ValidationError.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Reporting\Atlas.Reporting.vbproj">
+      <Project>{780B0EFB-251F-4774-9497-6FB6336D6552}</Project>
+      <Name>Atlas.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utili_Generales\Atlas.Utili_Generales.vbproj">
+      <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
+      <Name>Atlas.Utili_Generales</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebServices\WebServices.vbproj">
+      <Project>{C6A6CDB6-F99D-4DCA-9D0B-B3155AC20EC2}</Project>
+      <Name>WebServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conexionSAP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desconexionSAP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_SAPFail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_SAPOk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mexichem.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
