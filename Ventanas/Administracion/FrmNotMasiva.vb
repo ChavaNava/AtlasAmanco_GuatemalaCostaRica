@@ -91,13 +91,31 @@ Public Class FrmNotMasiva
     End Sub
 
     Private Sub BtnNotPeriodo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNotPeriodo.Click
-        BtnNotPeriodo.Enabled = False
-        BtnConsulta.Enabled = False
-        pgbAvance.Visible = True
-        Label2.Visible = True
-        Label2.Text = ""
-        Avance_Notifica.WorkerReportsProgress = True
-        Avance_Notifica.RunWorkerAsync()
+        Dim MesEncurso As String = Date.Now.ToString("MM")
+        If rbNotCierrePer.Checked = True Then
+            Dim MesSeleccionado As String = DTPNotiMasiva.Value.ToString("MM")
+            If MesSeleccionado < MesEncurso Then
+                MensajeBox.Mostrar("Fecha Seleccionada esta en el pasado favor de verificar", "Fecha Erronea", MensajeBox.TipoMensaje.Critical)
+                Return
+            Else
+                BtnNotPeriodo.Enabled = False
+                BtnConsulta.Enabled = False
+                pgbAvance.Visible = True
+                Label2.Visible = True
+                Label2.Text = ""
+                Avance_Notifica.WorkerReportsProgress = True
+                Avance_Notifica.RunWorkerAsync()
+            End If
+        Else
+            BtnNotPeriodo.Enabled = False
+            BtnConsulta.Enabled = False
+            pgbAvance.Visible = True
+            Label2.Visible = True
+            Label2.Text = ""
+            Avance_Notifica.WorkerReportsProgress = True
+            Avance_Notifica.RunWorkerAsync()
+        End If
+        
     End Sub
 #End Region
 

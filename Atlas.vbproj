@@ -697,10 +697,10 @@
     <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmAdminODF.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\NotificacionMasiva\NotificacionMasiva.designer.vb">
+    <Compile Include="Ventanas\Administracion\NotificacionMasiva.designer.vb">
       <DependentUpon>NotificacionMasiva.vb</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\NotificacionMasiva\NotificacionMasiva.vb">
+    <Compile Include="Ventanas\Administracion\NotificacionMasiva.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\FrmStatusSAPE.designer.vb">
@@ -1260,7 +1260,7 @@
       <DependentUpon>FrmAdminODF.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\NotificacionMasiva\NotificacionMasiva.resx">
+    <EmbeddedResource Include="Ventanas\Administracion\NotificacionMasiva.resx">
       <DependentUpon>NotificacionMasiva.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
