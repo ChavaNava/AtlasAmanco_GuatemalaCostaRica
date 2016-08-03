@@ -5,7 +5,7 @@ Public Class Log
 
         Try
             Q = "PA_Log '" & Usuario.Trim & "', '" & Centro.Trim & "', '" & IdCadena & "', '" & Password & "', '" & Modulo & "', '" & Accion & "', '1'"
-            LecturaQry_ADM(Q, Usuario)
+            LecturaQry_ADM(Q)
         Catch ex As Exception
             MessageBox.Show("Error Conexion :" & ex.Message, "Login")
         End Try

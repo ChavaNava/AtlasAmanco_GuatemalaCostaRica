@@ -85,7 +85,7 @@ Public Class Util
     End Sub
 
     Public Shared Function ApplicationIcon() As Object
-        Return My.Resources.Fluent
+        Return My.Resources.LM
     End Function
 
     Public Shared Sub IdentificaBascula()

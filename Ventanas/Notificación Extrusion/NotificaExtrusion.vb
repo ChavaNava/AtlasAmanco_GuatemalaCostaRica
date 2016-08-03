@@ -420,7 +420,7 @@ Public Class NotificaExtrusion
 
     Private Sub Notifica_PT()
         Limpia_Variables()
-        Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         If TPesoTeorico.Text = "" Then
             MensajeBox.Mostrar("El producto no tiene Peso Teorico Avise al Administrador", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
@@ -472,7 +472,7 @@ Public Class NotificaExtrusion
                 '    Exit Sub
                 'End If
                 FrmSobreBajoPeso.ShowDialog()
-                If AutorizaSobrepeso = "2" Or AutorizaSobrepeso = "0" Then
+                If EstatusAutoriza = "2" Or EstatusAutoriza = "0" Then
                     MensajeBox.Mostrar("El Sobre/Bajo Peso no ha sido Autorizado ", "No Autorizado", MensajeBox.TipoMensaje.Information)
                     'LimpiaObjetos()
                     Exit Sub
@@ -617,7 +617,7 @@ Public Class NotificaExtrusion
     End Sub
 
     Private Sub Notifica_SC()
-          Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         Dim Lt_Compuestos As String = ""
         'If CB_Causas.Text = "" Then
         '    MensajeBox.Mostrar("Seleccione una Causa de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
@@ -1355,6 +1355,8 @@ Public Class NotificaExtrusion
             End If
         Else
             Timer1.Enabled = False
+            Timer2.Enabled = False
+            Timer3.Enabled = False
         End If
         'strNumeroBascula = ""
     End Sub
@@ -1628,30 +1630,17 @@ Public Class NotificaExtrusion
         Centro.Text = SessionUser._sCentro
         ' ---------------------------------------------------------------------------------
         'Se verifica conexi�n con SAP
-        Status("E")
+        SAP_Conexion.EstatusBarr("E", tsImagen)
         ' ---------------------------------------------------------------------------------
         'Inicializan fecha Turno y SAP
         Inicializa_Frm_PTEI(dtpFECHA, dtpFECHASAP, chkSAP)
         ' ---------------------------------------------------------------------------------
-        'Parametrizacion.Parametrized_Form(Me)
+        Parametrizacion.Parametrized_Form(Me)
         'Parametrizacion_Forma()
         ' ---------------------------------------------------------------------------------
         LimpiaObjetos()
         TSobrePeso.BackColor = Color.White
         TPassNotifier.Focus()
-    End Sub
-
-    Private Sub Status(ByVal Modulo As String)
-        Select Case SQL_DATA.Conexion.SAP(Modulo)
-            Case "True"
-                tsImagen.Image = Global.Atlas.My.Resources.btn_SAPOk
-                tsImagen.Text = "En comunicación con SAP"
-                tsImagen.ForeColor = Color.Blue
-            Case "False"
-                tsImagen.Image = Global.Atlas.My.Resources.btn_SAPFail
-                tsImagen.Text = "No hay comunicación con SAP"
-                tsImagen.ForeColor = Color.Red
-        End Select
     End Sub
 
     Private Sub SetFillOrden()

@@ -1376,7 +1376,7 @@ Public Class MenuPTE_AMEX
             End If
         Else
             TipoNotificacion = "4"
-            If xTIPOPROD = "T" And Not AutorizaSobrepeso <> 2 Then
+            If xTIPOPROD = "T" And Not EstatusAutoriza <> 2 Then
                 xTIPOPROD = "S"
             End If
             ' ---------------------------------------------------------------------------------
@@ -1626,7 +1626,7 @@ Public Class MenuPTE_AMEX
         End If
     End Sub
     Private Sub ProcesoSeparada()
-        AutorizaSobrepeso = 2
+        EstatusAutoriza = 2
         SuperAutoSobrepeso = "S/N"
         ObserSobrepeso = ""
         InQry = ""
@@ -1672,21 +1672,21 @@ Public Class MenuPTE_AMEX
         Else
             PorcentajeSobrePeso = Format(100, xFormato)
         End If
-        AutorizaSobrepeso = 0
+        EstatusAutoriza = 0
         TSobrePeso.Text = Format(PorcentajeSobrePeso, "#0.00")
         If PorcentajeSobrePeso < (SobrepesoPermitido * -1) Or PorcentajeSobrePeso > SobrepesoPermitido Then
             While TCausas.Text = ""
                 CausaSobrepeso()
             End While
-            FormSobrePesoTf.Label1.ForeColor = Color.RoyalBlue
-            FormSobrePesoTf.Label2.ForeColor = Color.RoyalBlue
-            FormSobrePesoTf.Label1.Text = "El pesaje  se  encuentra fuera de rango. "
-            FormSobrePesoTf.Label2.Text = "Por lo tanto se necesita  la autorización del supervisor en turno."
-            FormSobrePesoTf.ShowDialog()
+            'FormSobrePesoTf.Label1.ForeColor = Color.RoyalBlue
+            'FormSobrePesoTf.Label2.ForeColor = Color.RoyalBlue
+            'FormSobrePesoTf.Label1.Text = "El pesaje  se  encuentra fuera de rango. "
+            'FormSobrePesoTf.Label2.Text = "Por lo tanto se necesita  la autorización del supervisor en turno."
+            'FormSobrePesoTf.ShowDialog()
         End If
-        If AutorizaSobrepeso > 0 Then
+        If EstatusAutoriza > 0 Then
 
-            Select Case AutorizaSobrepeso
+            Select Case EstatusAutoriza
                 Case Is = 1 ' "SI" Autoriza Supervisor
                     StatusSobrepeso = "Aceptado"
                 Case Is = 2 ' " NO " Autoriza Supervisor

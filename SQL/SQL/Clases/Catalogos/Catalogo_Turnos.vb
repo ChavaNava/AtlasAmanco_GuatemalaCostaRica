@@ -19,7 +19,7 @@
         'la diferencia de horas
         Q = ""
         Q = "PA_Asigna_Turno '" & SessionUser._sCentro.Trim & "', '" & HoraPlanta.Trim & "' "
-        LecturaQry_ADM(Q, SessionUser._sAlias.Trim)
+        LecturaQry_ADM(Q)
 
         Do While (LecturaBD_ADM.Read)
             strTurno = LecturaBD_ADM(0)

@@ -6,6 +6,8 @@ Public Class DB
     Private Shared objCnn As SqlConnection
     Private Shared LecturaBD As SqlClient.SqlDataReader
     Public Shared LecturaBD_ADM As SqlClient.SqlDataReader
+    Public Shared DataSetCombo As New DataSet
+
     Public Shared Function MSI(ByVal Usr As String) As SqlConnection
         Dim objCnnMsi As SqlConnection
         Dim varString As String
@@ -45,8 +47,8 @@ Public Class DB
         Return DataSetCombo
     End Function
 
-    Public Shared Function LecturaQry_ADM(ByVal QRY_ADM As String, Usuario As String) As SqlDataReader
-        Usuarios(Usuario)
+    Public Shared Function LecturaQry_ADM(ByVal QRY_ADM As String) As SqlDataReader
+        Usuarios(SessionUser._sAlias.Trim)
         If objCnn.State <> ConnectionState.Open Then
             objCnn.Open()
         End If
@@ -60,5 +62,16 @@ Public Class DB
             MsgBox("Error Lectura: ", ex.Message)
         End Try
         Return LecturaBD_ADM
+    End Function
+
+    Public Shared Function Combo_ADM(ByVal Q As String) As DataSet
+        DataSetCombo.Reset()
+        Try
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(Q, Usuarios(SessionUser._sAlias.Trim))
+            SQLCombo.Fill(DataSetCombo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")
+        End Try
+        Return DataSetCombo
     End Function
 End Class

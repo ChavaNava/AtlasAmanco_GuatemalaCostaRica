@@ -1,4 +1,5 @@
 ﻿Public Class CLVarGlobales
+    Public Shared strNumeroBascula As String
     Public Shared Val_Bascula As String
     Public Shared Val_Bascula_2 As String
     Public Shared Val_Bascula_3 As String
@@ -38,6 +39,9 @@
     Public Shared xFD2 As String = "#####0.00"
 
     Public Shared WS_P As New WS_Generic.WSG
+
+    Public Shared PorcentajeSobrePeso As Decimal
+    Public Shared EstatusAutoriza As Integer  'Nota : a. 1 --> Sí autoriza ;  b. 2 --> No autoriza 
 
 
 End Class

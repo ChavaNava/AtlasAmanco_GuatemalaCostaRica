@@ -52,9 +52,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atlas.Accesos">
-      <HintPath>..\..\bin\Atlas.Accesos.dll</HintPath>
-    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -116,6 +113,8 @@
     <Compile Include="DataBase\DB.vb" />
     <Compile Include="Clases\Elimina_Pesajes_Extrusion.vb" />
     <Compile Include="Entidades\Conexion\Atlas_Version.vb" />
+    <Compile Include="Entidades\Estatus SAP\UserLogin.vb" />
+    <Compile Include="Entidades\Estatus SAP\ValidUserLogin.vb" />
     <Compile Include="Entidades\Login\LoginNotifier.vb" />
     <Compile Include="Entidades\Notificación Extrusión\CompuestoSet.vb" />
     <Compile Include="Entidades\Notificación Extrusión\Compuestos_1.vb" />

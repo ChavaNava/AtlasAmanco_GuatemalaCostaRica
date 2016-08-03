@@ -133,7 +133,7 @@ Public Class FrmStatusSAP
     Private Sub BtnActE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnActE.Click
         Dim StatusCnn As String
 
-        StrStatus = SAP_Conexion.SAP_Status(Seccion.Trim)
+        StrStatus = SAP_Conexion.Estatus(Seccion.Trim)
 
         If CBStatusE.Text.Trim() = "" Then
             MessageBox.Show(" Elija un Status de Conexión ")

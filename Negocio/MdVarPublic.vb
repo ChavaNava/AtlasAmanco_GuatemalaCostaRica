@@ -120,7 +120,6 @@ Module MdVarPublic
     Public LecturaBD_AMD As SqlClient.SqlDataReader
     Public InsertBD As Integer
     Public InsertBD_AMD As Integer
-    Public PorcentajeSobrePeso As Decimal
     Public NumEmpaques As String    'Número de Empaques 
     ' ---------------------------------------------------------------------------------
     Public ValPublic_CompuestoVirgen As String = ""
@@ -143,7 +142,7 @@ Module MdVarPublic
     Public DataSetGrid2 As New DataSet
     ' ---------------------------------------------------------------------------------
     Public SobrepesoPermitido As Decimal = "0"
-    Public AutorizaSobrepeso As Integer  'Nota : a. 1 --> Sí autoriza ;  b. 2 --> No autoriza 
+
     Public SuperAutoSobrepeso As String
     Public ObserSobrepeso As String
     Public StrProces As String = ""

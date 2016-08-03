@@ -340,7 +340,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_NEXT_Click(sender As System.Object, e As System.EventArgs) Handles MP_NEXT.Click
-        Permiso.Accesos("MP_NEXT", "1", SessionUser._sIdPerfil, "E", "Notifica ")
+        Atlas.ExtrusionProcess.Permissions.Access("MP_NEXT", SessionUser._sIdPerfil, "Notifica ")
     End Sub
 
     Private Sub MP_REP_PTE_Click(sender As System.Object, e As System.EventArgs) Handles MP_REP_PTE.Click

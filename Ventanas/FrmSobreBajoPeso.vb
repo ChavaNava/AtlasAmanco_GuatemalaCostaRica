@@ -9,7 +9,7 @@ Public Class FrmSobreBajoPeso
 
     Private Sub FrmSobreBajoPeso_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.Icon = Util.ApplicationIcon()
-        AutorizaSobrepeso = "0"
+        EstatusAutoriza = "0"
         TSBPeso.Text = SP
         TObs.Enabled = False
         RB_SA.Enabled = False
@@ -29,14 +29,14 @@ Public Class FrmSobreBajoPeso
                 MensajeBox.Mostrar("El campo observaciones no debe ir vacio ", "Campo vacio", MensajeBox.TipoMensaje.Critical)
                 Return
             End If
-            AutorizaSobrepeso = "1"
+            EstatusAutoriza = "1"
             Autoriza_SP = TUsr.Text.Trim
             Obs_Peso = TObs.Text.Trim
             Close()
         End If
 
         If RB_NA.Checked Then
-            AutorizaSobrepeso = "2"
+            EstatusAutoriza = "2"
             Close()
         End If
     End Sub

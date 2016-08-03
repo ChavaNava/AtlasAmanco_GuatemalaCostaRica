@@ -48,7 +48,7 @@ Module DataBase
         Return LecturaBD
     End Function
 
-    Public Function LecturaQry_ADM(ByVal QRY_ADM As String, Usuario As String) As SqlDataReader
+    Public Function LecturaQry_ADM(ByVal QRY_ADM As String) As SqlDataReader
         Usuarios()
         If objCnn.State <> ConnectionState.Open Then
             objCnn.Open()

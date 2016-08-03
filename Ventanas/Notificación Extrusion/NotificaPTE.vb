@@ -279,18 +279,18 @@ Public Class NotificaPTE
         Else
             PorcentajeSobrePeso = Format(100, xFormato)
         End If
-        AutorizaSobrepeso = 0
+        EstatusAutoriza = 0
         TSobrePeso.Text = Format(PorcentajeSobrePeso, "#0.00")
         If PorcentajeSobrePeso < (SobrepesoPermitido * -1) Or PorcentajeSobrePeso > SobrepesoPermitido Then
-            FormSobrePesoTf.Label1.ForeColor = Color.RoyalBlue
-            FormSobrePesoTf.Label2.ForeColor = Color.RoyalBlue
-            FormSobrePesoTf.Label1.Text = "El pesaje  se  encuentra fuera de rango. "
-            FormSobrePesoTf.Label2.Text = "Por lo tanto se necesita  la autorización del supervisor en turno."
-            FormSobrePesoTf.ShowDialog()
+            'FormSobrePesoTf.Label1.ForeColor = Color.RoyalBlue
+            'FormSobrePesoTf.Label2.ForeColor = Color.RoyalBlue
+            'FormSobrePesoTf.Label1.Text = "El pesaje  se  encuentra fuera de rango. "
+            'FormSobrePesoTf.Label2.Text = "Por lo tanto se necesita  la autorización del supervisor en turno."
+            'FormSobrePesoTf.ShowDialog()
         End If
-        If AutorizaSobrepeso > 0 Then
+        If EstatusAutoriza > 0 Then
 
-            Select Case AutorizaSobrepeso
+            Select Case EstatusAutoriza
                 Case Is = 1 ' "SI" Autoriza Supervisor
                     StatusSobrepeso = "Aceptado"
                 Case Is = 2 ' " NO " Autoriza Supervisor
@@ -419,7 +419,7 @@ Public Class NotificaPTE
     Private Sub Notifica_PT()
         Limpia_Variables()
         Asigna_Turno()
-        Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         If TPesoTeorico.Text = "" Then
             MensajeBox.Mostrar("El producto no tiene Peso Teorico Avise al Administrador", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
@@ -471,7 +471,7 @@ Public Class NotificaPTE
                 '    Exit Sub
                 'End If
                 FrmSobreBajoPeso.ShowDialog()
-                If AutorizaSobrepeso = "2" Or AutorizaSobrepeso = "0" Then
+                If EstatusAutoriza = "2" Or EstatusAutoriza = "0" Then
                     MensajeBox.Mostrar("El Sobre/Bajo Peso no ha sido Autorizado ", "No Autorizado", MensajeBox.TipoMensaje.Information)
                     'LimpiaObjetos()
                     Exit Sub
@@ -616,7 +616,7 @@ Public Class NotificaPTE
     End Sub
 
     Private Sub Notifica_SC()
-        Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         Dim Lt_Compuestos As String = ""
         'If CB_Causas.Text = "" Then
         '    MensajeBox.Mostrar("Seleccione una Causa de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)

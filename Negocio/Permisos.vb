@@ -94,6 +94,7 @@ Public Class Permisos
                 Else
 
                     Dim formName As String = "Atlas." & Form_Atlas.Trim
+
                     Frm = Activator.CreateInstance(Type.GetType(formName, True, True))
                     Frm.Icon = Util.ApplicationIcon()
                     'Valida parametrizacion de form
@@ -137,7 +138,7 @@ Public Class Permisos
     End Function
 
     Public Sub SAP_Status(ByVal Modulo As String, ByVal TSS As ToolStripStatusLabel)
-        StatusSap = SAP_Conexion.SAP_Status(Modulo)
+        StatusSap = SAP_Conexion.Estatus(Modulo)
         Select Case StatusSap
             Case "True"
                 TSS.Image = Global.Atlas.My.Resources.btn_SAPOk

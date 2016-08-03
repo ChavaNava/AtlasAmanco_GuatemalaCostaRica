@@ -477,7 +477,7 @@ Public Class MenuRTO
 
         TFolioAtlas.Text = FolioSiguiente
         'Se verifica status de conexión y se determina si se envia a SAP o no --------------------
-        Dim Conexion As Boolean = SAP_Conexion.SAP_Status("R")
+        Dim Conexion As Boolean = SAP_Conexion.Estatus("R")
         Select Case Conexion
             Case "False"
                 MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
@@ -636,7 +636,7 @@ Public Class MenuRTO
             MensajeBox.Mostrar("El pesaje quedara en proceso para su posterior notificación ", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
         Else
-            Select Case SAP_Conexion.SAP_Status(Modulo)
+            Select Case SAP_Conexion.Estatus(Modulo)
                 Case "False"
                     MensajeBox.Mostrar("No se realizara notificación a SAP se encuntra deshabilitada la conexión", "Aviso", MensajeBox.TipoMensaje.Information)
                     TNumNoti.Text = "0000000000"

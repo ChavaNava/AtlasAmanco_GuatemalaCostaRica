@@ -435,7 +435,7 @@ Public Class Extrusion
 
     Private Sub Notifica_PT()
         Limpia_Variables()
-        Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         If TPesoTeorico.Text = "" Then
             MensajeBox.Mostrar("El producto no tiene Peso Teorico Avise al Administrador", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
@@ -487,7 +487,7 @@ Public Class Extrusion
                 '    Exit Sub
                 'End If
                 FrmSobreBajoPeso.ShowDialog()
-                If AutorizaSobrepeso = "2" Or AutorizaSobrepeso = "0" Then
+                If EstatusAutoriza = "2" Or EstatusAutoriza = "0" Then
                     MensajeBox.Mostrar("El Sobre/Bajo Peso no ha sido Autorizado ", "No Autorizado", MensajeBox.TipoMensaje.Information)
                     'LimpiaObjetos()
                     Exit Sub
@@ -632,7 +632,7 @@ Public Class Extrusion
     End Sub
 
     Private Sub Notifica_SC()
-        Conexion_SAP = SAP_Conexion.SAP_Status(Seccion)
+        Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         Dim Lt_Compuestos As String = ""
         'If CB_Causas.Text = "" Then
         '    MensajeBox.Mostrar("Seleccione una Causa de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)

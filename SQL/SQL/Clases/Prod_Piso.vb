@@ -10,7 +10,7 @@ Public Class Prod_Piso
         Q = ""
         Q = "PA_Valida_Controlador '" & Centro & "', '" & Pass_Usr.Trim & "' "
 
-        LecturaQry_ADM(Q, Usuario)
+        LecturaQry_ADM(Q)
         If LecturaBD_ADM.Read Then
             Sta_Usr = LecturaBD_ADM(0)
             Nom_Usr = LecturaBD_ADM(1)

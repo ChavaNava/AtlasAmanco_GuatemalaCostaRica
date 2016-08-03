@@ -58,7 +58,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -787,12 +787,6 @@
     <Compile Include="Ventanas\Administracion\FrmAdminDelTPERIny.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Administracion\FormSobrePesoTf.Designer.vb">
-      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Ventanas\Administracion\FormSobrePesoTf.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrpCausasGenerales.Designer.vb">
       <DependentUpon>FrmAdmCatGrpCausasGenerales.vb</DependentUpon>
     </Compile>
@@ -1319,10 +1313,6 @@
     <EmbeddedResource Include="Ventanas\Administracion\FrmAdminDelTPERIny.resx">
       <DependentUpon>FrmAdminDelTPERIny.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Administracion\FormSobrePesoTf.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Administracion\Catalogos\FrmAdmCatGrpCausasGenerales.resx">
       <DependentUpon>FrmAdmCatGrpCausasGenerales.vb</DependentUpon>
@@ -2467,9 +2457,21 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutorizarSobrepeso\AutorizarSobrepeso.vbproj">
+      <Project>{34ACCB8D-C09B-4142-A6B9-3DC07941C0B6}</Project>
+      <Name>AutorizarSobrepeso</Name>
+    </ProjectReference>
     <ProjectReference Include="Atlas.Accesos\Atlas.Accesos.vbproj">
       <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
       <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.EstatusSAP\Atlas.EstatusSAP.vbproj">
+      <Project>{42F0ED88-5CAE-4D50-9C55-72F3472B822C}</Project>
+      <Name>Atlas.EstatusSAP</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.ExtrusionProcess\Atlas.ExtrusionProcess.vbproj">
+      <Project>{5151BC31-4476-470C-8EA9-E5E1F3991AF8}</Project>
+      <Name>Atlas.ExtrusionProcess</Name>
     </ProjectReference>
     <ProjectReference Include="Reporting\Atlas.Reporting.vbproj">
       <Project>{780B0EFB-251F-4774-9497-6FB6336D6552}</Project>

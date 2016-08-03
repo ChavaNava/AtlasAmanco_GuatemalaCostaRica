@@ -163,6 +163,17 @@
         End Set
     End Property
 
+
+    Public Shared _Supervisor As String
+    Public Shared Property Supervisor() As String
+        Get
+            Return _Supervisor
+        End Get
+        Set(ByVal value As String)
+            _Supervisor = value
+        End Set
+    End Property
+
     Public Shared _Sobrepeso As String
     Public Shared Property Sobrepeso() As String
         Get

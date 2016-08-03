@@ -112,10 +112,11 @@ Partial Class FrmSobreBajoPeso
         '
         'Btn_Aceptar
         '
+        Me.Btn_Aceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Btn_Aceptar.Enabled = False
-        Me.Btn_Aceptar.Location = New System.Drawing.Point(417, 151)
+        Me.Btn_Aceptar.Location = New System.Drawing.Point(417, 133)
         Me.Btn_Aceptar.Name = "Btn_Aceptar"
-        Me.Btn_Aceptar.Size = New System.Drawing.Size(111, 23)
+        Me.Btn_Aceptar.Size = New System.Drawing.Size(111, 41)
         Me.Btn_Aceptar.TabIndex = 8
         Me.Btn_Aceptar.Text = "Aceptar"
         Me.Btn_Aceptar.UseVisualStyleBackColor = True

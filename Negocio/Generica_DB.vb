@@ -14,13 +14,22 @@ Public Class Generica_DB
     Dim DGV_SP As Decimal
     Dim DGV_PNS As Decimal
     Dim DGV_SC As Decimal
+
+    Dim DGV2_Equipo As String
+    Dim DGV2_Tramos As Decimal
+    Dim DGV2_PN As Decimal
+    Dim DGV2_PT As Decimal
+    Dim DGV2_SP As Decimal
+    Dim DGV2_PNS As Decimal
+    Dim DGV2_SC As Decimal
+
     Dim Programado As Integer
     Dim Pzas_Entregado As Integer
     Dim Pzas_Proceso As Integer
     Dim Kilos_Entregado As Decimal
     Dim Kilos_Proceso As Decimal
-    Dim Kilos_Terminado As Decimal
-    Dim Kilos_Teoricos As Decimal
+    Dim Kilos_Terminado As String
+    Dim Kilos_Teoricos As String
 #End Region
 
     Public Function Insert_ODF(ByVal strOrdenProd As String, ByVal Centro As String, ByVal Equipo As String, _
@@ -419,19 +428,19 @@ Public Class Generica_DB
         Tk_Proceso.Text = Kilos_Proceso
         T_Saldo.Text = Format(Programado - (Pzas_Entregado + Pzas_Proceso), "#0.00")
 
-        'LecturaQry("PA_Consulta_Ordenes_Proceso " & Centro & "_Consulta_Produccion, '(0,1)', '" & Area & "',  '" & Seccion1 & "', 36, '" & Turno & "', '" & FI & "', '" & FF & "', '" & HI & "', '" & HF & "' ")
+        ''LecturaQry("PA_Consulta_Ordenes_Proceso " & Centro & "_Consulta_Produccion, '(0,1)', '" & Area & "',  '" & Seccion1 & "', 36, '" & Turno & "', '" & FI & "', '" & FF & "', '" & HI & "', '" & HF & "' ")
         LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(0,1)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
         Do While (LecturaBD.Read)
-            Kilos_Terminado = "" & LecturaBD(1)
-            Kilos_Teoricos = "" & LecturaBD(2)
+            Kilos_Terminado = LecturaBD(1)
+            Kilos_Teoricos = LecturaBD(2)
         Loop
         LecturaBD.Close()
 
-        'Tk_Sobrepeso.Text = (Kilos_Terminado - Tk_Sobrepeso)
+        'Tk_Sobrepeso.Text = Kilos_Terminado - Tk_Sobrepeso
 
     End Sub
 
-    Public Sub Consulta_Resumen_Produccion(ByRef Area As String, ByRef DG As DataGridView, ByVal P_Sobre_Peso As TextBox, _
+    Public Sub SummaryProductionOrder(ByRef Area As String, ByRef DG As DataGridView, ByVal P_Sobre_Peso As TextBox, _
                                            ByVal K_Sobrepeso As TextBox, ByVal Tk_Scrap As TextBox, ByVal Tp_Scrap As TextBox)
         LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1 ")
         Count = 0
@@ -470,6 +479,38 @@ Public Class Generica_DB
         K_Sobrepeso.Text = Kilos_Producto_Terminado(DGV_PN, DGV_PT)
         Tk_Scrap.Text = DGV_PNS
         Tp_Scrap.Text = DGV_SC
+    End Sub
+
+    Public Sub SummaryProductionMachine(ByRef Area As String, ByRef DG As DataGridView)
+        LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 2 ")
+        Count = 0
+        Do While (LecturaBD.Read)
+            Count = Count + 1
+            DGV2_Equipo = "" & LecturaBD(0)
+            DGV2_Tramos = "" & LecturaBD(1)
+            DGV2_PN = "" & LecturaBD(2)
+            DGV2_PT = "" & LecturaBD(3)
+            DGV2_SP = "" & LecturaBD(4)
+            DGV2_PNS = "" & LecturaBD(5)
+            DGV2_SC = "" & LecturaBD(6)
+            Dim arrConsulta() As Object = {DGV2_Equipo.Trim(), FormatNumber((DGV2_Tramos), 3), FormatNumber((DGV2_PN), 3), FormatNumber((DGV2_PT), 3), FormatNumber((DGV2_SP), 3), FormatNumber((DGV2_PNS), 2), FormatNumber((DGV2_SC), 3)} 'Creamos un nuevo arreglo con los datos a agregar.               
+            DG.Rows.Add(arrConsulta) 'Agregamos el arreglo de datos a las filas del DataGrid
+            DG.Refresh()
+        Loop
+        LecturaBD.Close()
+
+        DGV2_Equipo = "Totales"
+        DGV2_Tramos = Sumar("C_Tramos", DG)
+        DGV2_PN = Sumar("C_PN", DG)
+        DGV2_PT = Sumar("C_PT", DG)
+        DGV2_SP = Porcentaje_Producto_Terminado(DGV_PN, DGV_PT)
+        DGV2_PNS = Sumar("C_PNS", DG)
+        DGV2_SC = Porcentaje_Scrap(DGV2_PNS, DGV2_PN)
+
+        Dim arrDatos() As Object = {DGV2_Equipo.Trim(), FormatNumber((DGV2_Tramos), 3), FormatNumber((DGV2_PN), 3), FormatNumber((DGV2_PT), 3), FormatNumber((DGV2_SP), 3), FormatNumber((DGV2_PNS), 2), FormatNumber((DGV2_SC), 3)} 'Creamos un nuevo arreglo con los datos a agregar.               
+        DG.Rows.Add(arrDatos) 'Agregamos el arreglo de datos a las filas del DataGrid
+        DG.Refresh()
+
     End Sub
 
     Public Sub Pesajes_PT_SC(ByVal FI As String, FF As String, DataGV As DataGridView, AreaProd As String, TBProdKilos As TextBox, _

@@ -43,23 +43,27 @@ Public Class FrmConsultasExtrusion
         DGV1.Refresh()
         DGV1.DataSource = Nothing
 
-        ProduccionResumen.Status_Notif = CB_Notif.Checked
-        ProduccionResumen.Seccion = CB_Sub.Checked
-        ProduccionResumen.Turno = CB_Turno.Text
+        DGV2.Columns.Clear()
+        DGV2.Refresh()
+        DGV2.DataSource = Nothing
 
-        'If CB_Notif.Checked Then
-        '    Status_Notif = "(0,4,3)"
-        'Else
-        '    Status_Notif = "(0,4,3,1)"
-        'End If
+        'ProduccionResumen.Status_Notif = CB_Notif.Checked
+        'ProduccionResumen.Seccion = CB_Sub.Checked
+        ProduccionResumen.Turno = CB_Turno.Text.Trim
 
-        'If CB_Sub.Checked Then
-        '    Seccion = "in (''36'')"
-        '    Seccion1 = "="
-        'Else
-        '    Seccion = "<> ''36''"
-        '    Seccion1 = "<>"
-        'End If
+        If CB_Notif.Checked Then
+            ProduccionResumen.Status_Notif = "(0,4,3)"
+        Else
+            ProduccionResumen.Status_Notif = "(0,4,3,1)"
+        End If
+
+        If CB_Sub.Checked Then
+            ProduccionResumen.Seccion = "in (''36'')"
+            'ProduccionResumen.Seccion = "="
+        Else
+            ProduccionResumen.Seccion = "<> ''36''"
+            'ProduccionResumen.Seccion = "<>"
+        End If
 
         'If CB_Turno.Text = "" Or CB_Turno.Text = "0" Then
         '    CB_Turno.Text = "*"
@@ -79,8 +83,10 @@ Public Class FrmConsultasExtrusion
         End If
 
         If RB_Resumen.Checked Then
-            Utili_Generales.ControlDataGridView.Colums_ConsultaResumen(DGV1)
-            DBG.Consulta_Resumen_Produccion(Seccion, DGV1, txtPorcsobrepeso, txtSobrepeso, txtTotkilosscrap, txtPorscrap)
+            Utili_Generales.ControlDataGridView.SummaryOrder(DGV1)
+            Utili_Generales.ControlDataGridView.SummaryMachine(DGV2)
+            DBG.SummaryProductionOrder(Seccion, DGV1, txtPorcsobrepeso, txtSobrepeso, txtTotkilosscrap, txtPorscrap)
+            DBG.SummaryProductionMachine(Seccion, DGV2)
             DBG.Cantidades_Produccion_Detalle(Seccion, TCantProgra, TCantEntre, TCantEnproce, TCantpendi, txtTotunprod, _
                                               txtTotkilosprod, txtTotkilosproceso, txtTotunproceso, txtSobrepeso)
         End If
@@ -120,6 +126,13 @@ Public Class FrmConsultasExtrusion
 
     Private Sub DGV1_CellFormatting_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DGV1.CellFormatting
         With DGV1
+            .RowsDefaultCellStyle.BackColor = Color.White
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue
+        End With
+    End Sub
+
+    Private Sub DGV2_CellFormatting(sender As System.Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DGV2.CellFormatting
+        With DGV2
             .RowsDefaultCellStyle.BackColor = Color.White
             .AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue
         End With

@@ -25,6 +25,10 @@
 
     End Function
 
+    Public Shared Function ABC_PTE()
+
+    End Function
+
     Public Shared Function Alta_PT(ByVal Usuario As String, OrdenProduccion As String, Centro As String, Fecha_Pesaje As String, _
                                    Hora_Pesaje As String, Bascula As String, Rack As String, PB As String, PT As String, PN As String, _
                                    Empaques As String, Unidades As String, UsrReg As String, Fecha_Turno As String, Turno As String, _

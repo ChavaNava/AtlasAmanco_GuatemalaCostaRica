@@ -84,15 +84,18 @@ Partial Class FrmConsultasExtrusion
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtPorcsobrepeso = New System.Windows.Forms.TextBox()
+        Me.DGV2 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GB2.SuspendLayout()
         Me.GB3.SuspendLayout()
         Me.GB4.SuspendLayout()
         Me.GB5.SuspendLayout()
+        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -101,7 +104,7 @@ Partial Class FrmConsultasExtrusion
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GroupBox1.Location = New System.Drawing.Point(0, 268)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1246, 389)
+        Me.GroupBox1.Size = New System.Drawing.Size(1246, 422)
         Me.GroupBox1.TabIndex = 45
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Consulta"
@@ -114,7 +117,7 @@ Partial Class FrmConsultasExtrusion
         Me.TabControl1.Location = New System.Drawing.Point(3, 18)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1240, 368)
+        Me.TabControl1.Size = New System.Drawing.Size(1240, 401)
         Me.TabControl1.TabIndex = 52
         '
         'TabPage1
@@ -123,7 +126,7 @@ Partial Class FrmConsultasExtrusion
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1232, 339)
+        Me.TabPage1.Size = New System.Drawing.Size(1232, 372)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Consulta Producción X Orden"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -140,15 +143,16 @@ Partial Class FrmConsultasExtrusion
         Me.DGV1.Location = New System.Drawing.Point(3, 3)
         Me.DGV1.Name = "DGV1"
         Me.DGV1.ReadOnly = True
-        Me.DGV1.Size = New System.Drawing.Size(1226, 333)
+        Me.DGV1.Size = New System.Drawing.Size(1226, 366)
         Me.DGV1.TabIndex = 1
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.DGV2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1232, 341)
+        Me.TabPage2.Size = New System.Drawing.Size(1232, 372)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Consulta Producción X Puesto de Trabajo"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -336,7 +340,7 @@ Partial Class FrmConsultasExtrusion
         Me.GB3.Controls.Add(Me.CB_Notif)
         Me.GB3.Location = New System.Drawing.Point(293, 31)
         Me.GB3.Name = "GB3"
-        Me.GB3.Size = New System.Drawing.Size(326, 132)
+        Me.GB3.Size = New System.Drawing.Size(326, 231)
         Me.GB3.TabIndex = 52
         Me.GB3.TabStop = False
         Me.GB3.Text = "Tipo Consulta"
@@ -809,11 +813,26 @@ Partial Class FrmConsultasExtrusion
         Me.txtPorcsobrepeso.Text = "0.00"
         Me.txtPorcsobrepeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'DGV2
+        '
+        Me.DGV2.AllowUserToAddRows = False
+        Me.DGV2.AllowUserToDeleteRows = False
+        Me.DGV2.AllowUserToOrderColumns = True
+        Me.DGV2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.DGV2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DGV2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGV2.Location = New System.Drawing.Point(3, 3)
+        Me.DGV2.Name = "DGV2"
+        Me.DGV2.ReadOnly = True
+        Me.DGV2.Size = New System.Drawing.Size(1226, 366)
+        Me.DGV2.TabIndex = 2
+        '
         'FrmConsultasExtrusion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1246, 657)
+        Me.ClientSize = New System.Drawing.Size(1246, 690)
         Me.Controls.Add(Me.GB5)
         Me.Controls.Add(Me.GB4)
         Me.Controls.Add(Me.GB3)
@@ -830,6 +849,7 @@ Partial Class FrmConsultasExtrusion
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.GB2.ResumeLayout(False)
@@ -840,6 +860,7 @@ Partial Class FrmConsultasExtrusion
         Me.GB4.PerformLayout()
         Me.GB5.ResumeLayout(False)
         Me.GB5.PerformLayout()
+        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -906,4 +927,5 @@ Partial Class FrmConsultasExtrusion
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents txtPorcsobrepeso As System.Windows.Forms.TextBox
+    Friend WithEvents DGV2 As System.Windows.Forms.DataGridView
 End Class

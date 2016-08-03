@@ -3,6 +3,7 @@ Imports System.Configuration
 Imports Utili_Generales
 Imports Atlas.Accesos.CLVarGlobales
 Imports SQL_DATA
+Imports Atlas.EstatusSAP
 Public Class FrmAdmin
     Dim UsrLog As String  'el usuario actual logeado en el sistema
     Dim strNumeroPlanta As String
@@ -70,7 +71,7 @@ Public Class FrmAdmin
     End Sub
 
     Private Sub MA_SAP_EXT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MA_SAP_EXT.Click
-        Permiso.Accesos("MA_SAP_EXT", "1", SessionUser._sIdPerfil, "E", "Estatus de Conexión SAP Extrusion")
+        Atlas.EstatusSAP.Permissions.Access("MA_SAP_EXT", "1", SessionUser._sIdPerfil, "E", "Estatus de Conexión SAP Extrusion")
     End Sub
 
     Private Sub MA_SAP_INY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MA_SAP_INY.Click

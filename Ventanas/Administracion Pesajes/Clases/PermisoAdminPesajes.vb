@@ -31,7 +31,7 @@ Public Class PermisoAdminPesajes
         End If
 
         'Verifica permisos del usuario
-        DB.LecturaQry_ADM("PA_Permisos_Usuario '" & SessionUser._sCentro.Trim & "', '" & Modulo.Trim & "', '" & Perfil.Trim & "' ", SessionUser._sAlias.Trim)
+        DB.LecturaQry_ADM("PA_Permisos_Usuario '" & SessionUser._sCentro.Trim & "', '" & Modulo.Trim & "', '" & Perfil.Trim & "' ")
         'LecturaQry_ADM("PA_Permisos_Usuario '" & strPlanta.Trim & "', '" & Modulo.Trim & "', '" & Perfil.Trim & "' ")
         If (DB.LecturaBD_ADM.Read) Then
             strNameForm = DB.LecturaBD_ADM(1)

@@ -97,9 +97,9 @@ Public Class FrmStatusSAPE
                     habilitado = True
                 End If
                 If Me.StrStatus = "False" Then
-                    Me.TxtStDescE.Text = "Desactivado"
+                    Me.TxtStDescE.Text = "Desconectado de SAP"
                 ElseIf Me.StrStatus = "True" Then
-                    Me.TxtStDescE.Text = "Activado"
+                    Me.TxtStDescE.Text = "Conectado a SAP"
                 End If
                 TxtUsrE.Text = UsrLog
             Loop
@@ -135,7 +135,7 @@ Public Class FrmStatusSAPE
     Private Sub BtnActE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnActE.Click
         Dim StatusCnn As String
 
-        StrStatus = SAP_Conexion.SAP_Status(Seccion)
+        StrStatus = SAP_Conexion.Estatus(Seccion)
 
         If CBStatusE.Text.Trim() = "" Then
             MessageBox.Show(" Elija un Status de Conexión ")

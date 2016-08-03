@@ -3,32 +3,32 @@
 
     End Sub
 
-    Public Shared _Status_Notif As Integer
-    Public Shared Property Status_Notif() As Integer
+    Public Shared _Status_Notif As String
+    Public Shared Property Status_Notif() As String
         Get
             Return _Status_Notif
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _Status_Notif = value
         End Set
     End Property
 
-    Public Shared _Seccion As Integer
-    Public Shared Property Seccion() As Integer
+    Public Shared _Seccion As String
+    Public Shared Property Seccion() As String
         Get
             Return _Seccion
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _Seccion = value
         End Set
     End Property
 
-    Public Shared _Turno As Integer
-    Public Shared Property Turno() As Integer
+    Public Shared _Turno As String
+    Public Shared Property Turno() As String
         Get
             Return _Turno
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _Turno = value
         End Set
     End Property
