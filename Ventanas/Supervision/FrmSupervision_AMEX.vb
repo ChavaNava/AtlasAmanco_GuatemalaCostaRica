@@ -129,7 +129,7 @@ Public Class FrmSupervision_AMEX
         End If
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDRes = New DataSet
             objDa.Fill(objDRes)
             DGV_Resumen.DataSource = objDRes.Tables(0)
@@ -179,7 +179,7 @@ Public Class FrmSupervision_AMEX
         QRY_Grid = QRY_Grid & "Order by Fecha_pesaje,Turno,PuestoTrabajo "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDDet = New DataSet
             objDa.Fill(objDDet)
             DGV_Sup.DataSource = objDDet.Tables(0)

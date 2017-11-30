@@ -57,7 +57,7 @@ Public Class FrmAdmCatGruposRTM_AMEX
         QRY_Grid = QRY_Grid & "From CatSecciones "
         QRY_Grid = QRY_Grid & "Where Centro = '" & SessionUser._sCentro.Trim & "' "
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGVSecc.DataSource = objDs.Tables(0)

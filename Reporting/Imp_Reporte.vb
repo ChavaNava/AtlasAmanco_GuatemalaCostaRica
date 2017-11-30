@@ -30,6 +30,20 @@ Public Class IMP_Reporte
         REP.Show()
     End Sub
 
+    Public Shared Sub ImprimirBoletaDoble(ByVal Reporte As ReportClass, DS As List(Of BoletaInfo))
+        Dim REP As New FREP
+        Reporte.SetDataSource(DS)
+        REP.CRV1.ReportSource = Reporte
+        REP.Show()
+    End Sub
+
+    'Public Shared Sub ImprimirBoleta(ByVal Reporte As ReportClass, DS As List(Of BoletaInfo))
+    '    Dim REP As New FREP
+    '    Reporte.SetDataSource(DS)
+    '    REP.CRV1.ReportSource = Reporte
+    '    REP.Show()
+    'End Sub
+
     Public Shared Sub Parametros_Boleta_Pesaje(ByVal Reporte As ReportClass, Centro As String, St As String)
         Dim RpDatos As New CrystalDecisions.Shared.ParameterValues()
         Dim Firma1 As New CrystalDecisions.Shared.ParameterDiscreteValue()
@@ -86,4 +100,12 @@ Public Class IMP_Reporte
         Reporte.DataDefinition.ParameterFields("@Status").ApplyCurrentValues(RpDatos)
         RpDatos.Clear()
     End Sub
+
+    Public Shared Sub ImpReportes(ByVal Reporte As ReportClass, DS As List(Of ConsolidatedPeriod))
+        Dim REP As New FREP
+        Reporte.SetDataSource(DS)
+        REP.CRV1.ReportSource = Reporte
+        REP.Show()
+    End Sub
+
 End Class

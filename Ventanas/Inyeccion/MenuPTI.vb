@@ -18,13 +18,13 @@ Public Class MenuPTI
     Dim N_PB As Decimal
     Dim N_PT As Decimal
     Dim N_PN As Decimal
-    Dim N_Empaques As Integer
+    'Dim N_Empaques As Integer
     Dim N_Tramos As Integer
     Dim N_FechaTurno As String
     Dim N_Turno As Integer
     Dim N_Supervisor As String
-    Dim N_Sobrepeso As Decimal
-    Dim N_PesoTeorico As Decimal
+    'Dim N_Sobrepeso As Decimal
+    'Dim N_PesoTeorico As Decimal
     Dim N_Area As String
     Dim N_TipoScrap As String
     Dim N_StSobrePeso As String
@@ -44,6 +44,7 @@ Public Class MenuPTI
     Dim FechaTurno As String
     Dim FechaPesajeSAP As String
     Dim FolioSiguiente As String
+    Dim N_LTCompuestos As String
 
     Dim Reprocesado_Orig As String = ""
     Dim Reprocesado_Gen As String
@@ -51,7 +52,8 @@ Public Class MenuPTI
     'Variables para bascula
     Dim Cadena As String = ""
     Dim Lectura As String = ""
-
+    Dim Cod_Err As String
+    Dim CadenaTexto As String = ""
 
     'Variable que toma el peso neto resultado de la lectura de la bascula
     Dim V_PesoNeto As Decimal
@@ -89,50 +91,32 @@ Public Class MenuPTI
         Parametrizacion_Forma()
         ' ---------------------------------------------------------------------------------
         LimpiaObjetos()
-        CveOperador.Focus()
+        PassNotifier.Focus()
     End Sub
 
-    Private Sub ClaveOperador_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CveOperador.KeyPress
+    Private Sub ClaveOperador_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles PassNotifier.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub ClaveOperador_Leave(sender As System.Object, e As System.EventArgs) Handles CveOperador.Leave
-        'If P_VU = False Then
-        '    Pass_md5 = Crypto.MD5Calculate(CveOperador.Text.Trim)
-        '    Gen_Valida.Valida_Usuario(CveOperador.Text.Trim, Pass_md5.Trim)
-        '    CodOperador.Text = ""
-        '    NomOperador.Text = ""
-
-        '    If Gen_Valida.valContador = 0 Then
-        '        MessageBox.Show("*** USUARIO INEXISTENTE *** ")
-        '        CveOperador.Text = ""
-        '        CveOperador.Focus()
-        '    Else
-        '        CodOperador.Text = SessionUser._sAlias.Trim
-        '        NomOperador.Text = Gen_Valida.valNomUser.Trim
-        '        RB_PT.Focus()
-        '    End If
-        '    ' ---------------------------------------------------------------------------------
-        '    CveOperador.BackColor = Color.White
-        'Else
-        Pass_md5 = Crypto.MD5Calculate(CveOperador.Text.Trim)
-        'Gen_Valida.Valida_Usuario(SessionUser._sAlias.Trim, Pass_md5.Trim)
+    Private Sub ClaveOperador_Leave(sender As System.Object, e As System.EventArgs) Handles PassNotifier.Leave
+        Dim IdLogin As Boolean
+        Pass_md5 = Crypto.MD5Calculate(PassNotifier.Text.Trim)
+        IdLogin = Users.Login_Notifier(SessionUser._sAlias, Pass_md5.Trim)
         CodOperador.Text = ""
         NomOperador.Text = ""
 
-        If Gen_Valida.valContador = 0 Then
-            MessageBox.Show("*** USUARIO INEXISTENTE *** ")
-            CveOperador.Text = ""
-            CveOperador.Focus()
-        Else
-            CodOperador.Text = SessionUser._sAlias
-            NomOperador.Text = SessionUser._sNombre
+        If IdLogin = True Then
+            CodOperador.Text = LoginNotifier._nAlias
+            NomOperador.Text = LoginNotifier._nNombre
             RB_PT.Focus()
+        Else
+            MensajeBox.Mostrar("Nombre de usuario o contraseña incorrecta", "Verificar", MensajeBox.TipoMensaje.Exclamation)
+            PassNotifier.Text = ""
+            PassNotifier.Focus()
         End If
-        'End If
     End Sub
 
     Private Sub RB_PT_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_PT.CheckedChanged
@@ -142,8 +126,8 @@ Public Class MenuPTI
         TtramosNoti.ReadOnly = False
         TtramosNoti.BackColor = Color.White
         CB_Proceso.Checked = False
-        TC_Orden.Text = ""
-        TC_Orden.Enabled = True
+        TOrden.Text = ""
+        TOrden.Enabled = True
     End Sub
 
     Private Sub RB_SC_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_SC.CheckedChanged
@@ -152,34 +136,34 @@ Public Class MenuPTI
         CB_TipoSc.Enabled = True
         TtramosNoti.ReadOnly = True
         TtramosNoti.BackColor = Color.White
-        TC_Orden.Text = ""
-        TC_Orden.Enabled = True
+        TOrden.Text = ""
+        TOrden.Enabled = True
         BNotificar.Enabled = True
         CB_Proceso.Checked = True
-        TC_Orden.Focus()
+        TOrden.Focus()
     End Sub
 
-    Private Sub TC_Orden_Enter(sender As System.Object, e As System.EventArgs) Handles TC_Orden.Enter
-        TC_Orden.BackColor = Color.LightSkyBlue
+    Private Sub TC_Orden_Enter(sender As System.Object, e As System.EventArgs) Handles TOrden.Enter
+        TOrden.BackColor = Color.LightSkyBlue
     End Sub
 
-    Private Sub TC_Orden_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TC_Orden.KeyPress
+    Private Sub TC_Orden_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TOrden.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub TC_Orden_Leave(sender As System.Object, e As System.EventArgs) Handles TC_Orden.Leave
+    Private Sub TC_Orden_Leave(sender As System.Object, e As System.EventArgs) Handles TOrden.Leave
         ValidaOrden()
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        If TC_Orden.Text.Trim = "" Then
+        If TOrden.Text.Trim = "" Then
             MensajeBox.Mostrar("Ingrese un numero de Orden", "Aviso", MensajeBox.TipoMensaje.Exclamation)
             Exit Sub
         Else
-            PO.Actualiza_Orden_Produccion(TC_Orden.Text.Trim, "T")
+            PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
         End If
     End Sub
 
@@ -200,16 +184,16 @@ Public Class MenuPTI
     Private Sub TtramosNoti_Leave(sender As System.Object, e As System.EventArgs) Handles TtramosNoti.Leave
         Dim arryEmbalajes() As String
         If RB_PT.Checked Then
-            If TtramosNoti.Text.Trim <> 0 Then
-                TPesoEmpaque.Text = "0.00"
-                Utili_Generales.ControlDataGridView.Colums_CalculaEmbalajes(DGV_Emb)
-                arryEmbalajes = Inyeccion.Embalajes(DGV_Emb, SessionUser._sCentro.Trim, SessionUser._sCentro.Trim + "_OrdenProduccion", TC_Orden.Text.Trim, TtramosNoti.Text, SessionUser._sAlias, TPesoEmpaque).Split("|")
-                Pzas_Cajas = "0" & arryEmbalajes(0)
-                Peso_Cajas = "0" & arryEmbalajes(1)
-                Pzas_Bolsas = "0" & arryEmbalajes(2)
-                Peso_Bolsas = "0" & arryEmbalajes(3)
-                BNotificar.Enabled = True
-            End If
+            'If TtramosNoti.Text.Trim <> 0 Then
+            '    TPesoEmpaque.Text = "0.00"
+            '    Utili_Generales.ControlDataGridView.Colums_CalculaEmbalajes(DGV_Emb)
+            '    'arryEmbalajes = Inyeccion.Embalajes(DGV_Emb, SessionUser._sCentro.Trim, SessionUser._sCentro.Trim + "_OrdenProduccion", TOrden.Text.Trim, TtramosNoti.Text, SessionUser._sAlias, TPesoEmpaque).Split("|")
+            '    Pzas_Cajas = "0" & arryEmbalajes(0)
+            '    Peso_Cajas = "0" & arryEmbalajes(1)
+            '    Pzas_Bolsas = "0" & arryEmbalajes(2)
+            '    Peso_Bolsas = "0" & arryEmbalajes(3)
+            '    BNotificar.Enabled = True
+            'End If
         End If
         CB_Rack.Focus()
     End Sub
@@ -319,7 +303,7 @@ Public Class MenuPTI
             If CB_Com1.Text.Trim = "" Then
                 MsgBox("Debe de seleccionar un compuesto a consumir", MsgBoxStyle.Information)
                 CB_Com1.DataSource = Nothing
-                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, PO.r_CodigoProducto.Trim, "S", "1", True)
+                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, "S", "1", P_CC1)
             End If
         End If
     End Sub
@@ -457,7 +441,7 @@ Public Class MenuPTI
         TPesoTara.Text = "0.00"
         TPesoEmpaque.Text = "0.00"
         TPesoNeto.Text = "0.00"
-        CveOperador.Focus()
+        PassNotifier.Focus()
     End Sub
 
     Private Sub BPesar_Click(sender As System.Object, e As System.EventArgs) Handles BNotificar.Click
@@ -469,9 +453,9 @@ Public Class MenuPTI
             Return
         End If
 
-        If TC_Orden.Text.Trim = "" Then
+        If TOrden.Text.Trim = "" Then
             MensajeBox.Mostrar("Debe de asignar una orden de fabricación", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-            TC_Orden.Focus()
+            TOrden.Focus()
             Return
         End If
 
@@ -519,7 +503,7 @@ Public Class MenuPTI
                 Return
             End If
 
-            Notifica_PT()
+            Notifica_PTI()
 
         End If
 
@@ -528,7 +512,7 @@ Public Class MenuPTI
         End If
     End Sub
 
-    Private Sub Notifica_PT()
+    Private Sub Notifica_PTI()
         Btn_Notificar = "1"
 
         If TtramosNoti.Text = 0 Then
@@ -538,16 +522,16 @@ Public Class MenuPTI
         End If
 
         'Se asigna valor a variables --------------------------------------------------------------
-        N_CodUser = CodOperador.Text.Trim
-        N_Tramos = TtramosNoti.Text.Trim
+        'N_CodUser = CodOperador.Text.Trim
+        'N_Tramos = TtramosNoti.Text.Trim
         N_PB = TPesoBruto.Text.Trim
         N_PT = TPesoTara.Text.Trim
         N_PN = TPesoNeto.Text.Trim
-        N_FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
-        N_HoraPesaje = Date.Now.TimeOfDay.ToString()
-        N_Turno = cmbTurnos.Text.Trim
-        N_OperadorLinea = CB_Ope.SelectedValue
-        N_FechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
+        'N_FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
+        'N_HoraPesaje = Date.Now.TimeOfDay.ToString()
+        'N_Turno = cmbTurnos.Text.Trim
+        'N_OperadorLinea = CB_Ope.SelectedValue
+        'N_FechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
         FechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
         'Se valida peso bascula -------------------------------------------------------------------
         If ValidacionesBascula.ValidaPeso(N_PB, N_PT, N_PN) = False Then
@@ -578,24 +562,18 @@ Public Class MenuPTI
             N_Porc_3 = aryTextFile(8)
             N_Cant_3 = aryTextFile(9)
 
-            Select Case SessionUser._sCentro.Trim
-                Case Is <> "CR01"
-                    If N_Comp_1.Trim <> 0 Then
-                        Lista.Add(Util.QuitarCerosIzquierda(N_Comp_1.Trim) + "|" + N_Cant_1)
-                    End If
 
-                    If N_Comp_2.Trim <> 0 Then
-                        Lista.Add(Util.QuitarCerosIzquierda(N_Comp_2.Trim) + "|" + N_Cant_2)
-                    End If
+            If N_Comp_1.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_1.Trim) + "|" + N_Cant_1)
+            End If
 
-                    If N_Comp_3.Trim <> 0 Then
-                        Lista.Add(Util.QuitarCerosIzquierda(N_Comp_3.Trim) + "|" + N_Cant_3)
-                    End If
-                Case Is = "CR01"
-                    If N_Comp_1.Trim <> 0 Then
+            If N_Comp_2.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_2.Trim) + "|" + N_Cant_2)
+            End If
 
-                    End If
-            End Select
+            If N_Comp_3.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_3.Trim) + "|" + N_Cant_3)
+            End If
 
         End If
         'Se verifica conexión con SAP -------------------------------------------------------------
@@ -613,18 +591,51 @@ Public Class MenuPTI
         BNotificar.Enabled = False
         BLimpiar.Enabled = False
         'Se ingresa información de notificacion en la base de datos ------------------------------
-        LecturaQry("PA_Insert_PPT_Inyeccion '" & TC_Orden.Text.Trim & "','" & SessionUser._sCentro & "','" & N_FechaPesaje & _
-              "', '" & N_HoraPesaje & "','" & strNumeroBascula & "','" & CB_Rack.Text.Trim & "'," & N_PB & "," & N_PT & "," & N_PN & _
-               "," & N_Empaques & ", " & N_Tramos & ",'" & N_CodUser & "','" & N_FechaTurno & "','" & N_Turno & _
-               "','" & N_Supervisor & "','" & N_Sobrepeso & "','0','" & TPtoTrabajo.Text.Trim & _
-               "'," & N_PesoTeorico & ",I,'" & N_StSobrePeso & "','" & Peso_Cajas & "', '" & Pzas_Cajas & "', '" & Peso_Bolsas & _
-               "', '" & Pzas_Bolsas & "', '" & N_Comp_1 & "','" & N_Porc_1 & "','" & N_Cant_1 & "','" & N_Comp_2 & "','" & N_Porc_2 & _
-               "','" & N_Cant_2 & "','" & N_Comp_3 & "','" & N_Porc_3 & "','" & N_Cant_3 & "'")
+        NotificacionPtIny.Orden = TOrden.Text.Trim
+        NotificacionPtIny.FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
+        NotificacionPtIny.HoraPesaje = Date.Now.TimeOfDay.ToString()
+        NotificacionPtIny.Bascula = strNumeroBascula
+        NotificacionPtIny.Rack = CB_Rack.Text.Trim
+        NotificacionPtIny.PB = TPesoBruto.Text.Trim
+        NotificacionPtIny.PT = TPesoTara.Text.Trim
+        NotificacionPtIny.PN = TPesoNeto.Text.Trim
+        NotificacionPtIny.Empaques = "0"
+        NotificacionPtIny.Piezas = TtramosNoti.Text.Trim
+        NotificacionPtIny.Usuario = CodOperador.Text.Trim
+        NotificacionPtIny.FechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
+        NotificacionPtIny.Turno = cmbTurnos.Text.Trim
+        NotificacionPtIny.Supervisor = N_Supervisor
+        NotificacionPtIny.Sobrepeso = "0"
+        NotificacionPtIny.Tipocausa = "0"
+        NotificacionPtIny.PuestoTrabajo = TPtoTrabajo.Text.Trim
+        NotificacionPtIny.PesoTeorico = "0"
+        NotificacionPtIny.Area = Seccion.Trim
+        NotificacionPtIny.StatusSobrepeso = "0"
+        NotificacionPtIny.Peso_C = Peso_Cajas
+        NotificacionPtIny.Pzas_C = Pzas_Cajas
+        NotificacionPtIny.Peso_B = Peso_Bolsas
+        NotificacionPtIny.Pzas_B = Pzas_Bolsas
+        NotificacionPtIny.Comp1 = N_Comp_1
+        NotificacionPtIny.Porc1 = N_Porc_1
+        NotificacionPtIny.Cant1 = N_Cant_1
+        NotificacionPtIny.Comp2 = N_Comp_2
+        NotificacionPtIny.Porc2 = N_Porc_2
+        NotificacionPtIny.Cant2 = N_Cant_2
+        NotificacionPtIny.Comp3 = N_Comp_3
+        NotificacionPtIny.Porc3 = N_Porc_3
+        NotificacionPtIny.Cant3 = N_Cant_3
+
+        Try
+            Produccion_Scrap_Inyeccion.Notifica_PTI()
+        Catch ex As Exception
+            MensajeBox.Mostrar(ex.ToString, "Error registro de peso", MensajeBox.TipoMensaje.Critical)
+            Return
+        End Try
         'Se crea el folio correspondiente al pesaje
         FolioSiguiente = ""
         QRY = ""
         QRY = "Select isnull((Max(IdFolio)),0) as folioSiguiente from " & SessionUser._sCentro.Trim & "_PesoProductoTerminado  "
-        QRY = QRY & "Where Orden_Produccion = '" & TC_Orden.Text.Trim & "' "
+        QRY = QRY & "Where Orden_Produccion = '" & TOrden.Text.Trim & "' "
         QRY = QRY & "And  Area = 'I' "
         LecturaQry(QRY)
         If (LecturaBD.Read) Then
@@ -644,10 +655,10 @@ Public Class MenuPTI
                     Case True
                         'Lectura de WS Generico para realizar la notificación ------------------------------------
                         Label12.Visible = True
-                        Label12.Text = "Se esta Notificando la orden '" & TC_Orden.Text.Trim & "' a SAP"
+                        Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
                         Dim Head As String
-                        Head = "28|" + TC_Orden.Text.Trim + "|" + N_Tramos.ToString + "|" + FechaPesajeSAP + "|" + CompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioSiguiente
-                        NotificationProcess.Notifica_PTE(Head, Lista, FolioSiguiente.Trim, TNumNoti, TConsNoti, BNotificar, BImprimir, TC_Orden, CodOperador.Text.Trim)
+                        Head = "28|" + NotificacionPtIny._Orden.Trim + "|" + NotificacionPtIny._Piezas.Trim + "|" + FechaPesajeSAP + "|" + CompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioSiguiente
+                        NotificationProcess.Notifica_PTE(Head, Lista, FolioSiguiente.Trim, TNumNoti, TConsNoti, BNotificar, BImprimir, TOrden, CodOperador.Text.Trim)
                         Label12.Visible = False
                         Label12.Text = ""
                     Case False
@@ -657,7 +668,7 @@ Public Class MenuPTI
                 End Select
         End Select
         'Consulta cantidades
-        ProductionOrder.CalCantIny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TC_Orden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, TCantPiso)
+        ProductionOrder.CalCantIny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, TCantPiso)
         'Porcentaje de avance de la orden
         ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
         BLimpiar.Enabled = True
@@ -730,6 +741,7 @@ Public Class MenuPTI
 
             If N_Comp_1.Trim <> 0 Then
                 Lista.Add(Util.QuitarCerosIzquierda(N_Comp_1.Trim) + "|" + N_Cant_1)
+
             End If
 
             If N_Comp_2.Trim <> 0 Then
@@ -742,7 +754,7 @@ Public Class MenuPTI
 
         End If
         'Se verifica conexión con SAP --------------------------------------------------------------------------
-        Permiso.SAP_Status("E", tsImagen)
+        Permiso.SAP_Status(Seccion.Trim, tsImagen)
         'Identificar Supervisor en Turno -----------------------------------------------------------------------
         NP.Identifies_shift_supervisor(Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
         'Identificar Compuesto original de la bom --------------------------------------------------------------
@@ -753,28 +765,67 @@ Public Class MenuPTI
         CompOriginal = arryCompuesto(0)
         Reprocesado_Orig = arryCompuesto(1)
         If CompOriginal = "" Then
+            MensajeBox.Mostrar("El producto no tiene asignado compuesto original BOM, corrija y vuelva a intentar ", "Aviso", MensajeBox.TipoMensaje.Information)
             Return
         End If
         'Identifica si el compuesto es de paros y arranques o normal
         Reprocesado_Gen = NotificationProcess.Identifica_Reprocesado(Comp_1.Trim)
         'Se deshabilta boton de Notificación para evitar duplicidad
         BNotificar.Enabled = False
+        'Se genera campo LTCompuestos para notificacion de scrap de CR01
+
+        If N_Comp_1.Trim <> 0 Then
+            N_LTCompuestos = CompOriginal.Trim & "|" & N_Porc_1 & "|" & Util.QuitarCerosIzquierda(N_Comp_1.Trim)
+        End If
+
+        If N_Comp_2.Trim <> 0 Then
+            N_LTCompuestos = CompOriginal.Trim & "|" & N_Porc_1 & "|" & Util.QuitarCerosIzquierda(N_Comp_1.Trim) & "||" & CompOriginal & "|" & N_Porc_2 & "|" & Util.QuitarCerosIzquierda(N_Comp_2.Trim)
+        End If
+
+        If N_Comp_3.Trim <> 0 Then
+            N_LTCompuestos = CompOriginal.Trim & "|" & N_Porc_1 & "|" & Util.QuitarCerosIzquierda(N_Comp_1.Trim) & "||" & CompOriginal & "|" & N_Porc_2 & "|" & Util.QuitarCerosIzquierda(N_Comp_2.Trim) & "||" & CompOriginal & "|" & N_Porc_3 & "|" & Util.QuitarCerosIzquierda(N_Comp_3.Trim)
+        End If
+
         'Se ingresa información de notificacion en la base de datos --------------------------------------------
         Try
-            LecturaQry("PA_Insert_Scrap_Inyeccion " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TC_Orden.Text.Trim & "', '" & N_FechaPesaje & _
-                       "', '" & N_HoraPesaje & "','" & strNumeroBascula & "','" & N_TipoScrap & "'," & N_PB & "," & N_PT & "," & N_PN & _
-                       ",'" & N_CodUser & "','" & N_Turno & "','0','0','" & N_FechaTurno & "','" & TPtoTrabajo.Text.Trim & _
-                       "','" & Reprocesado_Gen & "', 'I', '" & N_OperadorLinea & "','Supervisor','" & N_Rack & "','" & N_Comp_1.Trim & _
-                       "'," & N_Porc_1 & "," & N_Cant_1 & ",'" & N_Comp_2.Trim & "'," & N_Porc_2 & "," & N_Cant_2 & ",'" & N_Comp_3.Trim & _
-                       "'," & N_Porc_3 & "," & N_Cant_3 & "")
+            NotificaScrapIny.Orden = TOrden.Text.Trim
+            NotificaScrapIny.FechaPesaje = N_FechaPesaje
+            NotificaScrapIny.HoraPesaje = N_HoraPesaje
+            NotificaScrapIny.Bascula = strNumeroBascula
+            NotificaScrapIny.TipoScrap = N_TipoScrap
+            NotificaScrapIny.PB = N_PB
+            NotificaScrapIny.PT = N_PT
+            NotificaScrapIny.PN = N_PN
+            NotificaScrapIny.Usuario = N_CodUser
+            NotificaScrapIny.Turno = N_Turno
+            NotificaScrapIny.FechaTurno = N_FechaTurno
+            NotificaScrapIny.PuestoTrabajo = TPtoTrabajo.Text.Trim
+            NotificaScrapIny.RepGenerado = Reprocesado_Gen
+            NotificaScrapIny.Area = "I"
+            NotificaScrapIny.OpePtoTrabajo = N_OperadorLinea
+            NotificaScrapIny.Supervisor = "Supervisor"
+            NotificaScrapIny.Rack = N_Rack
+            NotificaScrapIny.LTCompuestos = N_LTCompuestos
+            NotificaScrapIny.Comp1 = N_Comp_1.Trim
+            NotificaScrapIny.Porc1 = N_Porc_1
+            NotificaScrapIny.Cant1 = N_Cant_1
+            NotificaScrapIny.Comp2 = N_Comp_2.Trim
+            NotificaScrapIny.Porc2 = N_Porc_2
+            NotificaScrapIny.Cant2 = N_Cant_2
+            NotificaScrapIny.Comp3 = N_Comp_3.Trim
+            NotificaScrapIny.Porc3 = N_Porc_3
+            NotificaScrapIny.Cant3 = N_Cant_3
+
+            Produccion_Scrap_Inyeccion.Notifica_Scrap()
         Catch ex As Exception
             MensajeBox.Mostrar(ex.Message, "Critico", MensajeBox.TipoMensaje.Critical)
+            Return
         End Try
         'Se crea el folio correspondiente al pesaje
         FolioSiguiente = ""
         QRY = ""
         QRY = "Select isnull((Max(IdFolio)),0) as folioSiguiente from " & SessionUser._sCentro.Trim & "_PesoScrap "
-        QRY = QRY & "Where Orden_Produccion = '" & TC_Orden.Text.Trim & "' "
+        QRY = QRY & "Where Orden_Produccion = '" & TOrden.Text.Trim & "' "
         QRY = QRY & "And  Area = 'I' "
         LecturaQry(QRY)
         If (LecturaBD.Read) Then
@@ -787,7 +838,7 @@ Public Class MenuPTI
             MensajeBox.Mostrar("El pesaje quedara en proceso para su posterior notificación ", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
         Else
-            Select Case SAP_Conexion.Estatus(Modulo)
+            Select Case SAP_Conexion.Estatus(Seccion.Trim)
                 Case "False"
                     MensajeBox.Mostrar("No se realizara notificación a SAP se encuntra deshabilitada la conexión", "Aviso", MensajeBox.TipoMensaje.Information)
                     TNumNoti.Text = "0000000000"
@@ -795,22 +846,34 @@ Public Class MenuPTI
                 Case "True"
                     Select Case chkSAP.Checked
                         Case True
-                            'Lectura de WS Generico para realizar la notificación ------------------------------------
-                            Label12.Visible = True
-                            Label12.Text = "Se esta Notificando la orden '" & TC_Orden.Text.Trim & "' a SAP"
-                            Dim Head As String
-                            Head = "28|" + TC_Orden.Text.Trim + _
-                                     "|" + TPesoNeto.Text.Trim + _
-                                     "|" + FechaPesajeSAP + _
-                                     "|" + CompOriginal.Trim + _
-                                     "|" + "S" + _
-                                     "|" + SessionUser._sAlias.Trim + _
-                                     "|" + FolioSiguiente + _
-                                     "|" + Reprocesado_Gen
-                            NotificationProcess.Notifica_SCE(Head, Lista, FolioSiguiente.Trim, TNumNoti, TConsNoti, BNotificar, BImprimir, TC_Orden, _
-                                                             CodOperador.Text.Trim)
-                            Label12.Visible = False
-                            Label12.Text = ""
+                            Select Case SessionUser._sCentro
+                                Case Is = "CR01"
+                                    'Lectura de WS Generico para realizar la notificación ------------------------------------
+                                    Label12.Visible = True
+                                    Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                                    Dim Head As String
+                                    Head = "28|" + TOrden.Text.Trim + _
+                                             "|" + TPesoNeto.Text.Trim + _
+                                             "|" + FechaPesajeSAP + _
+                                             "|" + CompOriginal.Trim + _
+                                             "|" + "S" + _
+                                             "|" + SessionUser._sAlias.Trim + _
+                                             "|" + FolioSiguiente + _
+                                             "|" + Reprocesado_Gen
+                                    NotificationProcess.Notifica_SCE(Head, Lista, FolioSiguiente.Trim, TNumNoti, TConsNoti, BNotificar, BImprimir, TOrden, _
+                                                                     CodOperador.Text.Trim)
+                                    Label12.Visible = False
+                                    Label12.Text = ""
+                                Case Else
+                                    'Lectura de WS Generico para realizar la notificación ------------------------------------
+                                    Label12.Visible = True
+                                    Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                                    Dim CadenaTexto As String = ""
+                                    CadenaTexto = N_CodUser.Trim & "|" & FolioSiguiente.Trim
+                                    Consume_WS_CR01(SessionUser._sAmbiente.Trim, CadenaTexto.Trim, N_LTCompuestos.Trim, N_FechaPesaje, TOrden.Text.Trim, N_PN, FolioSiguiente.Trim, TNumNoti, TConsNoti)
+                                    Label12.Visible = False
+                                    Label12.Text = ""
+                            End Select
                         Case False
                             MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
                             TNumNoti.Text = "0000000000"
@@ -824,43 +887,56 @@ Public Class MenuPTI
 
 #Region "Metodos"
     Private Sub ValidaOrden()
-        Dim strOrden As String = ""
-        Dim aryTextFile() As String
-        Dim Exist_Ord As Integer = 0
         Dim Exist_Prd As Integer = 0
         '------------------------------------------------------------------------------------------
-        If TC_Orden.Text <> "" Then
+        If TOrden.Text <> "" Then
             'Verficia Orden Producción
             Dim Orden_Prod As String = ""
-            Orden_Prod = TC_Orden.Text.Trim
+            Orden_Prod = TOrden.Text.Trim
             '--------------------------------------------------------------------------------------
-            strOrden = ProductionOrder.Valida_Exis_ODF_Atlas(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Orden_Prod, EXTINY)
-            aryTextFile = strOrden.Split("|")
-            Exist_Ord = aryTextFile(0)
-            Producto = aryTextFile(1)
-            Select Case Exist_Ord
-                Case Is = 1
-                    Me.Cursor = Cursors.WaitCursor
-                    'Verficia la existencia del producto
-                    Exist_Prd = ProductionOrder.Valida_Existencia_Producto(SessionUser._sAlias.Trim, Producto.Trim, SessionUser._sCentro.Trim, EXTINY)
-                    'Lee la orden y presenta la información
-                    ProductionOrder.Read_Production_Order_Iny(SessionUser._sAlias.Trim, Orden_Prod.Trim, SessionUser._sCentro.Trim, Me, TCodPT, TCodPtDecr, _
-                                                          TPtoTrabajo, TGrpprod, TGrupo, TGrpproddesc, TNomPtoTrabajo)
-                    'Activa Combo Box de compuestos 1
-                    Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Producto, EXTINY, TipoProd, 1)
-                    CB_Com1.Enabled = True
-                    If TipoProd = "S" Then
-                        'Activa Combo Box de Tipo Scrap
-                        Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Seccion, TipoProd)
-                    End If
-                    'Activa Combo Box Operdores de Linea
-                    Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
-                    'Consulta cantidades
-                    ProductionOrder.CalCantIny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TC_Orden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, TCantPiso)
-                    'Porcentaje de avance de la orden
-                    ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
-                    Me.Cursor = Cursors.Default
-                Case Is = 0
+            Select Case ProductionOrder.Existe(Orden_Prod, EXTINY)
+                Case Is = True
+                    'Verifica si no esta inactiva
+                    Select Case OrdenProduccionExiste._Estatus
+                        Case Is = True
+                            'Verificar que la orden no este cerrada
+                            ProductionOrder.ValidaEstatus(Orden_Prod, "T")
+                            Dim Estatus_Orden As String = OrdenProductionSap._IdStatus
+                            Select Case Estatus_Orden
+                                Case Is = "LIB."
+                                    Me.Cursor = Cursors.WaitCursor
+                                    'Verficia la existencia del producto
+                                    Exist_Prd = ProductionOrder.Existencia_Producto(EXTINY)
+                                    'Lee la orden y presenta la información
+                                    ProductionOrder.Read_Production_Order_Iny(SessionUser._sAlias.Trim, Orden_Prod.Trim, SessionUser._sCentro.Trim, Me, TCodPT, TCodPtDecr, _
+                                                                          TPtoTrabajo, TGrpprod, TGrupo, TGrpproddesc, TNomPtoTrabajo)
+                                    'Activa Combo Box de compuestos 1
+                                    Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, True)
+                                    CB_Com1.Enabled = True
+                                    If TipoProd = "S" Then
+                                        'Activa Combo Box de Tipo Scrap
+                                        Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Seccion, TipoProd)
+                                    End If
+                                    'Activa Combo Box Operdores de Linea
+                                    Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
+                                    'Consulta cantidades
+                                    ProductionOrder.CalCantIny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, TCantPiso)
+                                    'Porcentaje de avance de la orden
+                                    ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
+                                    Me.Cursor = Cursors.Default
+                                Case Else
+                                    MensajeBox.Mostrar("La orden no puede ser notificada esta en estatus: " & OrdenProductionSap._Status & " ", " " & OrdenProductionSap._IdStatus & " ", MensajeBox.TipoMensaje.Critical)
+                                    TOrden.Text = ""
+                                    TOrden.Focus()
+                                    Exit Sub
+                            End Select
+                        Case Is = False
+                            MensajeBox.Mostrar("La orden esta inactiva", "Estatus", MensajeBox.TipoMensaje.Information)
+                            TOrden.Text = ""
+                            TOrden.Focus()
+                            Exit Sub
+                    End Select
+                Case Is = False
                     Me.Cursor = Cursors.WaitCursor
                     'Dar de alta la orden
                     MensajeBox.Mostrar("Orden de Producción no existe en A-tlas se procede a darla de alta ", "Aviso", MensajeBox.TipoMensaje.Information)
@@ -894,8 +970,8 @@ Public Class MenuPTI
         TCScrap.Text = "0"
         CB_Ope.DataSource = Nothing
         CBG.CB_Rack(CB_Rack)
-        TC_Orden.Text = ""            'Orden Producción
-        TC_Orden.Enabled = False
+        TOrden.Text = ""            'Orden Producción
+        TOrden.Enabled = False
         TtramosNoti.Text = "0"       'Tramos por Notificar
         CB_Rack.Text = "M"           'Rack
         TPesoRack.Text = "0"        'Peso Rack
@@ -938,7 +1014,7 @@ Public Class MenuPTI
         ' ---------------------------------------------------------------------------------
         BNotificar.Enabled = False
         BImprimir.Enabled = False
-        TC_Orden.Enabled = True
+        TOrden.Enabled = True
         Clean = "0"
         Btn_Notificar = "0"
     End Sub
@@ -950,7 +1026,7 @@ Public Class MenuPTI
         Dim xTCantpendi As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
-            LecturaQry("PA_Calcula_Cantidades '" & SessionUser._sCentro & "',  '" & TC_Orden.Text.Trim & "', '1'")
+            LecturaQry("PA_Calcula_Cantidades '" & SessionUser._sCentro & "',  '" & TOrden.Text.Trim & "', '1'")
             If (LecturaBD.Read) Then
                 xTCantProgra = LecturaBD(1)
                 xTCantEntre = LecturaBD(2)
@@ -980,6 +1056,99 @@ Public Class MenuPTI
 
         Return Sumatoria
     End Function
+
+    Private Sub Consume_WS_CR01(ByVal ID As String, CadenaTexto As String, Lt_Compuestos As String, _
+                              FechaPesajeSAP As String, Orden As String, PesoNeto As String, folio As String, TD As TextBox, _
+                              TC As TextBox)
+
+        Dim Err As String
+        Dim Mns As String
+        Dim reg As String = ""
+        Dim Cod_Err As String = ""
+
+        If ID.Trim = "D" Then
+            'Variables Desarrollo
+            Dim lo_wsamancomxr As New PTConsumos.ZPPMXF001Service
+            Dim ls_returnr As New PTConsumos.ZBAPIRET2
+            Dim ls_Notifica As New PTConsumos.ZEPP002
+            Dim ls_result As New PTConsumos._ISDFPS_TCUPS_KEY
+            Dim TNumNoti As String = ""
+            Dim TConsNoti As String = ""
+            Try
+                ls_Notifica.ZBUDAT = FechaPesajeSAP.Trim
+                ls_Notifica.ZCONSUME_REC = 0
+                ls_Notifica.ZENTRY_QNT = 0
+                ls_Notifica.ZISM01 = 0
+                ls_Notifica.ZISM02 = 0
+                ls_Notifica.ZISM03 = 0
+                ls_Notifica.ZISMNGEH1 = ""
+                ls_Notifica.ZISMNGEH2 = ""
+                ls_Notifica.ZISMNGEH3 = ""
+                ls_Notifica.ZMATNR_REC = ""
+                ls_Notifica.ZMATNR_REC = ""
+                ls_Notifica.ZORDERID = Orden.Trim
+                ls_Notifica.ZRECOVERED = PesoNeto
+                ls_Notifica.ZVIRGIN = 0
+                lo_wsamancomxr.Credentials = New System.Net.NetworkCredential("ATLAS", "m3x1ch3m4tl4s")
+                ls_result = lo_wsamancomxr.ZPPMXF001(CadenaTexto, Lt_Compuestos, ls_Notifica, ls_returnr)
+                TNumNoti = ls_result.RUECK
+                TConsNoti = ls_result.RMZHL
+                Err = ls_returnr.ZTYPE
+                Mns = ls_returnr.ZMESSAGE
+            Catch ex As Exception
+                MsgBox("No se realizar notificación a SAP ", MsgBoxStyle.Critical, ex.Message)
+            End Try
+        ElseIf ID.Trim = "P" Then
+            'Variables Productivo
+            Dim lo_wsamancomxp As New PTConProd.ZPPMXF001Service
+            Dim ls_returnp As New PTConProd.ZBAPIRET2
+            Dim ls_Notificap As New PTConProd.ZEPP002
+            Dim ls_resultp As New PTConProd._ISDFPS_TCUPS_KEY
+            Dim TNumNoti As String = ""
+            Dim TConsNoti As String = ""
+            ls_Notificap.ZBUDAT = FechaPesajeSAP.Trim
+            ls_Notificap.ZCONSUME_REC = 0.0
+            ls_Notificap.ZENTRY_QNT = 0
+            ls_Notificap.ZISM01 = 0.0
+            ls_Notificap.ZISM02 = 0.0
+            ls_Notificap.ZISM03 = 0.0
+            ls_Notificap.ZISMNGEH1 = ""
+            ls_Notificap.ZISMNGEH2 = ""
+            ls_Notificap.ZISMNGEH3 = ""
+            ls_Notificap.ZMATNR_REC = ""
+            ls_Notificap.ZORDERID = Orden.Trim
+            ls_Notificap.ZRECOVERED = PesoNeto
+            ls_Notificap.ZVIRGIN = 0.0
+            'lo_wsamancomxp.Credentials = New System.Net.NetworkCredential("ATLAS", "m3x1ch3m4tl4s")
+            ls_resultp = lo_wsamancomxp.ZPPMXF001(CadenaTexto, Lt_Compuestos, ls_Notificap, ls_returnp)
+            TNumNoti = ls_resultp.RUECK
+            TConsNoti = ls_resultp.RMZHL
+            Err = ls_returnp.ZTYPE
+            Mns = ls_returnp.ZMESSAGE
+
+            If Err = "E" Or Err = "505" Or Err = "S" Or Err = "W" Then
+                reg = "0"
+                MessageBox.Show(Mns + " " + Cod_Err + " ", "Error en SAP Notifique al Supervisor")
+                InQry = ""
+                InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
+                InQry = InQry & " Where Folio = '" & folio.Trim & "'"
+                InsertQry(InQry)
+                Exit Sub
+            Else
+                If (TNumNoti = "" Or TNumNoti = "NULL" Or TNumNoti = "0000000000") And (TConsNoti = "" Or TConsNoti = "NULL" Or TConsNoti = "00000000") Then
+                    reg = "0"
+                    LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
+                    MensajeBox.Mostrar("Error SAP: " & Mns & "", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                Else
+                    reg = "1"
+                    LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
+                    TD.Text = TNumNoti
+                    TC.Text = TConsNoti
+                    MensajeBox.Mostrar("Se realizó notificación a SAP de forma exitosa ", "Aviso", MensajeBox.TipoMensaje.Information)
+                End If
+            End If
+        End If
+    End Sub
 
 #End Region
 
@@ -1037,16 +1206,16 @@ Public Class MenuPTI
     Private Sub Parametrizacion_Forma()
         Permiso.Parametros_MenuPTE(Label16, CB_Ope, Me.Name, BNotificar, BImprimir, MP_PTE_Consulta)
         If P_VU = True Then
-            CveOperador.Text = SessionUser._sAlias.Trim
+            PassNotifier.Text = SessionUser._sAlias.Trim
             Gen_Valida.Valida_Usuario(SessionUser._sAlias.Trim, SessionUser._sPassword.Trim)
             CodOperador.Text = ""
             NomOperador.Text = ""
-            CveOperador.Enabled = False
+            PassNotifier.Enabled = False
 
             If Gen_Valida.valContador = 0 Then
                 MessageBox.Show("*** USUARIO INEXISTENTE *** ")
-                CveOperador.Text = ""
-                CveOperador.Focus()
+                PassNotifier.Text = ""
+                PassNotifier.Focus()
             Else
                 CodOperador.Text = SessionUser._sAlias
                 NomOperador.Text = SessionUser._sNombre
@@ -1054,7 +1223,7 @@ Public Class MenuPTI
             End If
             RB_PT.Focus()
         Else
-            CveOperador.Focus()
+            PassNotifier.Focus()
         End If
     End Sub
 
@@ -1099,11 +1268,11 @@ Public Class MenuPTI
 
     Private Sub BImprimir_Click(sender As System.Object, e As System.EventArgs) Handles BImprimir.Click
         If RB_PT.Checked Then
-            Reportes.Boleta_Pesaje_PTE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TC_Orden.Text.Trim, TFolioAtlas.Text.Trim, "0")
+            Reportes.Boleta_Pesaje_PTE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TFolioAtlas.Text.Trim, "0")
         End If
 
         If RB_SC.Checked Then
-            Reportes.Boleta_Pesaje_SCE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TC_Orden.Text.Trim, TFolioAtlas.Text.Trim, "0")
+            Reportes.Boleta_Pesaje_SCE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TFolioAtlas.Text.Trim, "0")
         End If
     End Sub
 

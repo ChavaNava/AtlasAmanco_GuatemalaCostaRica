@@ -19,15 +19,27 @@ Public Class Parametrizacion
                 P_VU = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "VALIDA_USR")
                 P_FV = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "FOLIOVALE")
                 P_TPA = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "TIEMPOS_PROD")
+                P_PS = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "PRODUCCIONSEPARADA")
+                P_PR = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "PRODUCCIONENPROCESO")
+                P_AT = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "ALERTATARA0")
+                P_CS = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "CALENDARIOSAP")
+                P_MP = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "MONITORPRODUCCION")
             Case Is = "I"
                 P_OP = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "OPERADOR_PT")
                 P_VU = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "VALIDA_USR")
-
+               
             Case Is = "R"
                 P_CC = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, N_form, "CONSUME_COMP")
 
             Case Else
 
         End Select
+    End Sub
+
+    Public Shared Sub ParametrizedFormTiempos(ByVal frmForm As Form)
+        Dim N_form As String = ""
+        N_form = frmForm.Name
+
+        P_CT = Parametrizar_Form.PTE(SessionUser._sCentro.Trim, SessionUser._sAlias, N_form, "CALCULATIEMPOS")
     End Sub
 End Class

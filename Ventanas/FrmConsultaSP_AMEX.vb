@@ -57,7 +57,7 @@ Public Class FrmConsultaSP_AMEX
         QRY_Grid = QRY_Grid & "And Fecha_Pesaje Between '" & Str_FI.Trim & "' and '" & Str_FF.Trim & "'  "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGV_BP.DataSource = objDs.Tables(0)

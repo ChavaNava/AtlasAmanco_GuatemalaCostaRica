@@ -57,6 +57,8 @@ Partial Class MenuPTE
         Me.ProductoTerminadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ScrapToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculadoraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsbMonitor = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MPE_A = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsImagen = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.TGrpproddesc = New System.Windows.Forms.TextBox()
@@ -114,14 +116,14 @@ Partial Class MenuPTE
         Me.Label11 = New System.Windows.Forms.Label()
         Me.RB_SC = New System.Windows.Forms.RadioButton()
         Me.RB_PT = New System.Windows.Forms.RadioButton()
-        Me.TPassNotifier = New System.Windows.Forms.TextBox()
+        Me.PassNotifier = New System.Windows.Forms.TextBox()
         Me.NomOperador = New System.Windows.Forms.TextBox()
         Me.CodOperador = New System.Windows.Forms.TextBox()
         Me.lblClave = New System.Windows.Forms.Label()
         Me.lblCentro = New System.Windows.Forms.Label()
         Me.Centro = New System.Windows.Forms.TextBox()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.CB_Proceso = New System.Windows.Forms.CheckBox()
+        Me.cmbProceso = New System.Windows.Forms.CheckBox()
         Me.GB_Basculas = New System.Windows.Forms.GroupBox()
         Me.RB3 = New System.Windows.Forms.RadioButton()
         Me.RB2 = New System.Windows.Forms.RadioButton()
@@ -167,7 +169,7 @@ Partial Class MenuPTE
         Me.lblLimpia.AutoSize = True
         Me.lblLimpia.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLimpia.ForeColor = System.Drawing.Color.Black
-        Me.lblLimpia.Location = New System.Drawing.Point(690, 586)
+        Me.lblLimpia.Location = New System.Drawing.Point(774, 623)
         Me.lblLimpia.Name = "lblLimpia"
         Me.lblLimpia.Size = New System.Drawing.Size(61, 17)
         Me.lblLimpia.TabIndex = 169
@@ -178,7 +180,7 @@ Partial Class MenuPTE
         Me.lblImprime.AutoSize = True
         Me.lblImprime.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblImprime.ForeColor = System.Drawing.Color.Black
-        Me.lblImprime.Location = New System.Drawing.Point(537, 586)
+        Me.lblImprime.Location = New System.Drawing.Point(574, 623)
         Me.lblImprime.Name = "lblImprime"
         Me.lblImprime.Size = New System.Drawing.Size(65, 17)
         Me.lblImprime.TabIndex = 168
@@ -187,7 +189,7 @@ Partial Class MenuPTE
         'lblPesotara2
         '
         Me.lblPesotara2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPesotara2.Location = New System.Drawing.Point(296, 398)
+        Me.lblPesotara2.Location = New System.Drawing.Point(315, 431)
         Me.lblPesotara2.Name = "lblPesotara2"
         Me.lblPesotara2.Size = New System.Drawing.Size(275, 20)
         Me.lblPesotara2.TabIndex = 155
@@ -199,7 +201,7 @@ Partial Class MenuPTE
         Me.TPesoBruto.BackColor = System.Drawing.Color.Black
         Me.TPesoBruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 42.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TPesoBruto.ForeColor = System.Drawing.Color.Lime
-        Me.TPesoBruto.Location = New System.Drawing.Point(12, 421)
+        Me.TPesoBruto.Location = New System.Drawing.Point(16, 454)
         Me.TPesoBruto.Multiline = True
         Me.TPesoBruto.Name = "TPesoBruto"
         Me.TPesoBruto.ReadOnly = True
@@ -213,7 +215,7 @@ Partial Class MenuPTE
         Me.lblGraba.AutoSize = True
         Me.lblGraba.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGraba.ForeColor = System.Drawing.Color.Black
-        Me.lblGraba.Location = New System.Drawing.Point(384, 586)
+        Me.lblGraba.Location = New System.Drawing.Point(386, 623)
         Me.lblGraba.Name = "lblGraba"
         Me.lblGraba.Size = New System.Drawing.Size(69, 17)
         Me.lblGraba.TabIndex = 167
@@ -227,7 +229,7 @@ Partial Class MenuPTE
         Me.TPesoNeto.BackColor = System.Drawing.Color.Black
         Me.TPesoNeto.Font = New System.Drawing.Font("Microsoft Sans Serif", 42.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TPesoNeto.ForeColor = System.Drawing.Color.Lime
-        Me.TPesoNeto.Location = New System.Drawing.Point(869, 421)
+        Me.TPesoNeto.Location = New System.Drawing.Point(914, 454)
         Me.TPesoNeto.Multiline = True
         Me.TPesoNeto.Name = "TPesoNeto"
         Me.TPesoNeto.ReadOnly = True
@@ -248,7 +250,7 @@ Partial Class MenuPTE
         Me.TPesoTara.BackColor = System.Drawing.Color.Black
         Me.TPesoTara.Font = New System.Drawing.Font("Microsoft Sans Serif", 42.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TPesoTara.ForeColor = System.Drawing.Color.Lime
-        Me.TPesoTara.Location = New System.Drawing.Point(299, 421)
+        Me.TPesoTara.Location = New System.Drawing.Point(318, 454)
         Me.TPesoTara.Multiline = True
         Me.TPesoTara.Name = "TPesoTara"
         Me.TPesoTara.ReadOnly = True
@@ -300,7 +302,7 @@ Partial Class MenuPTE
         Me.lblCntorden.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.lblCntorden.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCntorden.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblCntorden.Location = New System.Drawing.Point(14, 503)
+        Me.lblCntorden.Location = New System.Drawing.Point(16, 540)
         Me.lblCntorden.Name = "lblCntorden"
         Me.lblCntorden.Size = New System.Drawing.Size(288, 147)
         Me.lblCntorden.TabIndex = 157
@@ -385,7 +387,7 @@ Partial Class MenuPTE
         'lpbPesobruto
         '
         Me.lpbPesobruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lpbPesobruto.Location = New System.Drawing.Point(8, 398)
+        Me.lpbPesobruto.Location = New System.Drawing.Point(12, 431)
         Me.lpbPesobruto.Name = "lpbPesobruto"
         Me.lpbPesobruto.Size = New System.Drawing.Size(275, 20)
         Me.lpbPesobruto.TabIndex = 154
@@ -420,7 +422,7 @@ Partial Class MenuPTE
         Me.lblDocu.Controls.Add(Me.lblFolio)
         Me.lblDocu.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDocu.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblDocu.Location = New System.Drawing.Point(856, 503)
+        Me.lblDocu.Location = New System.Drawing.Point(901, 540)
         Me.lblDocu.Name = "lblDocu"
         Me.lblDocu.Size = New System.Drawing.Size(288, 147)
         Me.lblDocu.TabIndex = 159
@@ -451,7 +453,7 @@ Partial Class MenuPTE
         'lblPesoneto2
         '
         Me.lblPesoneto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPesoneto2.Location = New System.Drawing.Point(866, 398)
+        Me.lblPesoneto2.Location = New System.Drawing.Point(911, 431)
         Me.lblPesoneto2.Name = "lblPesoneto2"
         Me.lblPesoneto2.Size = New System.Drawing.Size(275, 20)
         Me.lblPesoneto2.TabIndex = 174
@@ -463,10 +465,10 @@ Partial Class MenuPTE
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.MP_PTE_Consulta, Me.ReportesToolStripMenuItem, Me.CalculadoraToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.MP_PTE_Consulta, Me.ReportesToolStripMenuItem, Me.CalculadoraToolStripMenuItem, Me.tsbMonitor})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1152, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1197, 40)
         Me.MenuStrip1.TabIndex = 175
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -535,6 +537,20 @@ Partial Class MenuPTE
         Me.CalculadoraToolStripMenuItem.Size = New System.Drawing.Size(110, 25)
         Me.CalculadoraToolStripMenuItem.Text = "Calculadora"
         '
+        'tsbMonitor
+        '
+        Me.tsbMonitor.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MPE_A})
+        Me.tsbMonitor.Image = CType(resources.GetObject("tsbMonitor.Image"), System.Drawing.Image)
+        Me.tsbMonitor.Name = "tsbMonitor"
+        Me.tsbMonitor.Size = New System.Drawing.Size(102, 36)
+        Me.tsbMonitor.Text = "Monitor"
+        '
+        'MPE_A
+        '
+        Me.MPE_A.Name = "MPE_A"
+        Me.MPE_A.Size = New System.Drawing.Size(124, 22)
+        Me.MPE_A.Text = "Activar"
+        '
         'tsImagen
         '
         Me.tsImagen.Name = "tsImagen"
@@ -544,16 +560,16 @@ Partial Class MenuPTE
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsImagen})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 653)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 708)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1152, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1197, 22)
         Me.StatusStrip1.TabIndex = 176
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'TGrpproddesc
         '
         Me.TGrpproddesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TGrpproddesc.Location = New System.Drawing.Point(763, 62)
+        Me.TGrpproddesc.Location = New System.Drawing.Point(808, 73)
         Me.TGrpproddesc.Name = "TGrpproddesc"
         Me.TGrpproddesc.ReadOnly = True
         Me.TGrpproddesc.Size = New System.Drawing.Size(247, 22)
@@ -564,7 +580,7 @@ Partial Class MenuPTE
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(1078, 265)
+        Me.Label5.Location = New System.Drawing.Point(1123, 275)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 16)
         Me.Label5.TabIndex = 419
@@ -576,7 +592,7 @@ Partial Class MenuPTE
         Me.CB_Com2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Com2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Com2.FormattingEnabled = True
-        Me.CB_Com2.Location = New System.Drawing.Point(681, 240)
+        Me.CB_Com2.Location = New System.Drawing.Point(726, 251)
         Me.CB_Com2.Name = "CB_Com2"
         Me.CB_Com2.Size = New System.Drawing.Size(363, 24)
         Me.CB_Com2.TabIndex = 8
@@ -586,7 +602,7 @@ Partial Class MenuPTE
         Me.CB_Com1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Com1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Com1.FormattingEnabled = True
-        Me.CB_Com1.Location = New System.Drawing.Point(681, 214)
+        Me.CB_Com1.Location = New System.Drawing.Point(726, 225)
         Me.CB_Com1.Name = "CB_Com1"
         Me.CB_Com1.Size = New System.Drawing.Size(363, 24)
         Me.CB_Com1.TabIndex = 7
@@ -595,7 +611,7 @@ Partial Class MenuPTE
         '
         Me.TPComp2.BackColor = System.Drawing.SystemColors.Window
         Me.TPComp2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPComp2.Location = New System.Drawing.Point(1072, 240)
+        Me.TPComp2.Location = New System.Drawing.Point(1117, 251)
         Me.TPComp2.Name = "TPComp2"
         Me.TPComp2.ReadOnly = True
         Me.TPComp2.Size = New System.Drawing.Size(72, 22)
@@ -606,7 +622,7 @@ Partial Class MenuPTE
         '
         Me.TPComp1.BackColor = System.Drawing.SystemColors.Window
         Me.TPComp1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPComp1.Location = New System.Drawing.Point(1072, 214)
+        Me.TPComp1.Location = New System.Drawing.Point(1117, 225)
         Me.TPComp1.Name = "TPComp1"
         Me.TPComp1.Size = New System.Drawing.Size(72, 22)
         Me.TPComp1.TabIndex = 413
@@ -616,7 +632,7 @@ Partial Class MenuPTE
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(1046, 215)
+        Me.Label3.Location = New System.Drawing.Point(1091, 226)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(24, 20)
         Me.Label3.TabIndex = 412
@@ -627,7 +643,7 @@ Partial Class MenuPTE
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(563, 241)
+        Me.Label2.Location = New System.Drawing.Point(608, 252)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(112, 20)
         Me.Label2.TabIndex = 410
@@ -638,7 +654,7 @@ Partial Class MenuPTE
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(560, 215)
+        Me.Label1.Location = New System.Drawing.Point(605, 226)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(115, 20)
         Me.Label1.TabIndex = 409
@@ -651,7 +667,7 @@ Partial Class MenuPTE
         Me.TPesoCaptura.Enabled = False
         Me.TPesoCaptura.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TPesoCaptura.ForeColor = System.Drawing.Color.White
-        Me.TPesoCaptura.Location = New System.Drawing.Point(354, 348)
+        Me.TPesoCaptura.Location = New System.Drawing.Point(380, 359)
         Me.TPesoCaptura.MaxLength = 10
         Me.TPesoCaptura.Name = "TPesoCaptura"
         Me.TPesoCaptura.Size = New System.Drawing.Size(183, 38)
@@ -664,7 +680,7 @@ Partial Class MenuPTE
         Me.LPesoCaptura.AutoSize = True
         Me.LPesoCaptura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LPesoCaptura.ForeColor = System.Drawing.Color.Black
-        Me.LPesoCaptura.Location = New System.Drawing.Point(376, 329)
+        Me.LPesoCaptura.Location = New System.Drawing.Point(402, 340)
         Me.LPesoCaptura.Name = "LPesoCaptura"
         Me.LPesoCaptura.Size = New System.Drawing.Size(138, 16)
         Me.LPesoCaptura.TabIndex = 408
@@ -674,7 +690,7 @@ Partial Class MenuPTE
         'TDAnillo
         '
         Me.TDAnillo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TDAnillo.Location = New System.Drawing.Point(763, 110)
+        Me.TDAnillo.Location = New System.Drawing.Point(808, 121)
         Me.TDAnillo.Name = "TDAnillo"
         Me.TDAnillo.ReadOnly = True
         Me.TDAnillo.Size = New System.Drawing.Size(303, 22)
@@ -684,7 +700,7 @@ Partial Class MenuPTE
         '
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(540, 113)
+        Me.Label15.Location = New System.Drawing.Point(585, 124)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(135, 17)
         Me.Label15.TabIndex = 404
@@ -695,7 +711,7 @@ Partial Class MenuPTE
         '
         Me.TCodAnillo.BackColor = System.Drawing.SystemColors.Control
         Me.TCodAnillo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCodAnillo.Location = New System.Drawing.Point(681, 110)
+        Me.TCodAnillo.Location = New System.Drawing.Point(726, 121)
         Me.TCodAnillo.Name = "TCodAnillo"
         Me.TCodAnillo.ReadOnly = True
         Me.TCodAnillo.Size = New System.Drawing.Size(75, 22)
@@ -704,7 +720,7 @@ Partial Class MenuPTE
         'TSP_Permitido
         '
         Me.TSP_Permitido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TSP_Permitido.Location = New System.Drawing.Point(893, 86)
+        Me.TSP_Permitido.Location = New System.Drawing.Point(938, 97)
         Me.TSP_Permitido.Name = "TSP_Permitido"
         Me.TSP_Permitido.ReadOnly = True
         Me.TSP_Permitido.Size = New System.Drawing.Size(54, 22)
@@ -715,7 +731,7 @@ Partial Class MenuPTE
         Me.lblSPpermitido.AutoSize = True
         Me.lblSPpermitido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSPpermitido.ForeColor = System.Drawing.Color.Black
-        Me.lblSPpermitido.Location = New System.Drawing.Point(759, 89)
+        Me.lblSPpermitido.Location = New System.Drawing.Point(804, 100)
         Me.lblSPpermitido.Name = "lblSPpermitido"
         Me.lblSPpermitido.Size = New System.Drawing.Size(125, 16)
         Me.lblSPpermitido.TabIndex = 403
@@ -725,7 +741,7 @@ Partial Class MenuPTE
         'TGrupo
         '
         Me.TGrupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TGrupo.Location = New System.Drawing.Point(1072, 62)
+        Me.TGrupo.Location = New System.Drawing.Point(1117, 73)
         Me.TGrupo.Name = "TGrupo"
         Me.TGrupo.ReadOnly = True
         Me.TGrupo.Size = New System.Drawing.Size(72, 22)
@@ -736,7 +752,7 @@ Partial Class MenuPTE
         Me.lblGrupo.AutoSize = True
         Me.lblGrupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGrupo.ForeColor = System.Drawing.Color.Black
-        Me.lblGrupo.Location = New System.Drawing.Point(1016, 65)
+        Me.lblGrupo.Location = New System.Drawing.Point(1061, 76)
         Me.lblGrupo.Name = "lblGrupo"
         Me.lblGrupo.Size = New System.Drawing.Size(50, 16)
         Me.lblGrupo.TabIndex = 400
@@ -747,7 +763,7 @@ Partial Class MenuPTE
         '
         Me.lblEmpaqueTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEmpaqueTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblEmpaqueTotal.Location = New System.Drawing.Point(783, 186)
+        Me.lblEmpaqueTotal.Location = New System.Drawing.Point(828, 197)
         Me.lblEmpaqueTotal.Name = "lblEmpaqueTotal"
         Me.lblEmpaqueTotal.Size = New System.Drawing.Size(284, 17)
         Me.lblEmpaqueTotal.TabIndex = 398
@@ -758,7 +774,7 @@ Partial Class MenuPTE
         '
         Me.lblArea.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblArea.ForeColor = System.Drawing.Color.Black
-        Me.lblArea.Location = New System.Drawing.Point(542, 66)
+        Me.lblArea.Location = New System.Drawing.Point(587, 77)
         Me.lblArea.Name = "lblArea"
         Me.lblArea.Size = New System.Drawing.Size(135, 17)
         Me.lblArea.TabIndex = 394
@@ -768,7 +784,7 @@ Partial Class MenuPTE
         'TGrpprod
         '
         Me.TGrpprod.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TGrpprod.Location = New System.Drawing.Point(681, 63)
+        Me.TGrpprod.Location = New System.Drawing.Point(726, 74)
         Me.TGrpprod.Name = "TGrpprod"
         Me.TGrpprod.ReadOnly = True
         Me.TGrpprod.Size = New System.Drawing.Size(75, 22)
@@ -777,7 +793,7 @@ Partial Class MenuPTE
         'TPesoTeorico
         '
         Me.TPesoTeorico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPesoTeorico.Location = New System.Drawing.Point(681, 86)
+        Me.TPesoTeorico.Location = New System.Drawing.Point(726, 97)
         Me.TPesoTeorico.Name = "TPesoTeorico"
         Me.TPesoTeorico.ReadOnly = True
         Me.TPesoTeorico.Size = New System.Drawing.Size(75, 22)
@@ -787,7 +803,7 @@ Partial Class MenuPTE
         '
         Me.lblTeorico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTeorico.ForeColor = System.Drawing.Color.Black
-        Me.lblTeorico.Location = New System.Drawing.Point(542, 89)
+        Me.lblTeorico.Location = New System.Drawing.Point(587, 100)
         Me.lblTeorico.Name = "lblTeorico"
         Me.lblTeorico.Size = New System.Drawing.Size(135, 17)
         Me.lblTeorico.TabIndex = 393
@@ -799,7 +815,7 @@ Partial Class MenuPTE
         Me.lblSobrepeso.AutoSize = True
         Me.lblSobrepeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSobrepeso.ForeColor = System.Drawing.Color.Black
-        Me.lblSobrepeso.Location = New System.Drawing.Point(953, 89)
+        Me.lblSobrepeso.Location = New System.Drawing.Point(998, 100)
         Me.lblSobrepeso.Name = "lblSobrepeso"
         Me.lblSobrepeso.Size = New System.Drawing.Size(117, 16)
         Me.lblSobrepeso.TabIndex = 383
@@ -810,7 +826,7 @@ Partial Class MenuPTE
         '
         Me.TSobrePeso.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.TSobrePeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TSobrePeso.Location = New System.Drawing.Point(1072, 86)
+        Me.TSobrePeso.Location = New System.Drawing.Point(1117, 97)
         Me.TSobrePeso.Name = "TSobrePeso"
         Me.TSobrePeso.ReadOnly = True
         Me.TSobrePeso.Size = New System.Drawing.Size(72, 22)
@@ -819,7 +835,7 @@ Partial Class MenuPTE
         'TempaquePesoTot
         '
         Me.TempaquePesoTot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TempaquePesoTot.Location = New System.Drawing.Point(1072, 181)
+        Me.TempaquePesoTot.Location = New System.Drawing.Point(1117, 192)
         Me.TempaquePesoTot.Name = "TempaquePesoTot"
         Me.TempaquePesoTot.ReadOnly = True
         Me.TempaquePesoTot.Size = New System.Drawing.Size(72, 22)
@@ -829,7 +845,7 @@ Partial Class MenuPTE
         'Tempaque
         '
         Me.Tempaque.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tempaque.Location = New System.Drawing.Point(1072, 110)
+        Me.Tempaque.Location = New System.Drawing.Point(1117, 121)
         Me.Tempaque.Name = "Tempaque"
         Me.Tempaque.ReadOnly = True
         Me.Tempaque.Size = New System.Drawing.Size(72, 22)
@@ -840,7 +856,7 @@ Partial Class MenuPTE
         '
         Me.lblMaterial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMaterial.ForeColor = System.Drawing.Color.Black
-        Me.lblMaterial.Location = New System.Drawing.Point(542, 42)
+        Me.lblMaterial.Location = New System.Drawing.Point(587, 53)
         Me.lblMaterial.Name = "lblMaterial"
         Me.lblMaterial.Size = New System.Drawing.Size(135, 17)
         Me.lblMaterial.TabIndex = 382
@@ -850,7 +866,7 @@ Partial Class MenuPTE
         'TCodPT
         '
         Me.TCodPT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCodPT.Location = New System.Drawing.Point(681, 39)
+        Me.TCodPT.Location = New System.Drawing.Point(726, 50)
         Me.TCodPT.Multiline = True
         Me.TCodPT.Name = "TCodPT"
         Me.TCodPT.ReadOnly = True
@@ -860,7 +876,7 @@ Partial Class MenuPTE
         'TCodPtDecr
         '
         Me.TCodPtDecr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCodPtDecr.Location = New System.Drawing.Point(763, 39)
+        Me.TCodPtDecr.Location = New System.Drawing.Point(808, 50)
         Me.TCodPtDecr.Name = "TCodPtDecr"
         Me.TCodPtDecr.ReadOnly = True
         Me.TCodPtDecr.Size = New System.Drawing.Size(381, 22)
@@ -871,7 +887,7 @@ Partial Class MenuPTE
         Me.TPesoEmpaque.BackColor = System.Drawing.Color.Black
         Me.TPesoEmpaque.Font = New System.Drawing.Font("Microsoft Sans Serif", 42.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TPesoEmpaque.ForeColor = System.Drawing.Color.Lime
-        Me.TPesoEmpaque.Location = New System.Drawing.Point(584, 421)
+        Me.TPesoEmpaque.Location = New System.Drawing.Point(612, 454)
         Me.TPesoEmpaque.Multiline = True
         Me.TPesoEmpaque.Name = "TPesoEmpaque"
         Me.TPesoEmpaque.ReadOnly = True
@@ -882,7 +898,7 @@ Partial Class MenuPTE
         'Label9
         '
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(581, 398)
+        Me.Label9.Location = New System.Drawing.Point(609, 431)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(275, 20)
         Me.Label9.TabIndex = 488
@@ -896,7 +912,7 @@ Partial Class MenuPTE
         Me.chkSAP.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkSAP.Enabled = False
         Me.chkSAP.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSAP.Location = New System.Drawing.Point(368, 73)
+        Me.chkSAP.Location = New System.Drawing.Point(372, 84)
         Me.chkSAP.Name = "chkSAP"
         Me.chkSAP.Size = New System.Drawing.Size(57, 20)
         Me.chkSAP.TabIndex = 497
@@ -908,7 +924,7 @@ Partial Class MenuPTE
         Me.dtpFECHASAP.Enabled = False
         Me.dtpFECHASAP.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFECHASAP.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFECHASAP.Location = New System.Drawing.Point(431, 73)
+        Me.dtpFECHASAP.Location = New System.Drawing.Point(435, 84)
         Me.dtpFECHASAP.Name = "dtpFECHASAP"
         Me.dtpFECHASAP.Size = New System.Drawing.Size(100, 22)
         Me.dtpFECHASAP.TabIndex = 498
@@ -918,7 +934,7 @@ Partial Class MenuPTE
         Me.dtpFECHA.Enabled = False
         Me.dtpFECHA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFECHA.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFECHA.Location = New System.Drawing.Point(243, 73)
+        Me.dtpFECHA.Location = New System.Drawing.Point(247, 84)
         Me.dtpFECHA.Name = "dtpFECHA"
         Me.dtpFECHA.Size = New System.Drawing.Size(100, 22)
         Me.dtpFECHA.TabIndex = 496
@@ -927,7 +943,7 @@ Partial Class MenuPTE
         '
         Me.cmbTurnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTurnos.FormattingEnabled = True
-        Me.cmbTurnos.Location = New System.Drawing.Point(94, 73)
+        Me.cmbTurnos.Location = New System.Drawing.Point(98, 84)
         Me.cmbTurnos.MaxLength = 15
         Me.cmbTurnos.Name = "cmbTurnos"
         Me.cmbTurnos.Size = New System.Drawing.Size(78, 24)
@@ -937,7 +953,7 @@ Partial Class MenuPTE
         '
         Me.lblTurno.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTurno.ForeColor = System.Drawing.Color.Black
-        Me.lblTurno.Location = New System.Drawing.Point(37, 76)
+        Me.lblTurno.Location = New System.Drawing.Point(41, 87)
         Me.lblTurno.Name = "lblTurno"
         Me.lblTurno.Size = New System.Drawing.Size(51, 17)
         Me.lblTurno.TabIndex = 500
@@ -948,7 +964,7 @@ Partial Class MenuPTE
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.Black
-        Me.Label30.Location = New System.Drawing.Point(181, 76)
+        Me.Label30.Location = New System.Drawing.Point(185, 87)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(56, 16)
         Me.Label30.TabIndex = 499
@@ -957,7 +973,7 @@ Partial Class MenuPTE
         'BtnActualiza
         '
         Me.BtnActualiza.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnActualiza.Location = New System.Drawing.Point(260, 185)
+        Me.BtnActualiza.Location = New System.Drawing.Point(264, 196)
         Me.BtnActualiza.Name = "BtnActualiza"
         Me.BtnActualiza.Size = New System.Drawing.Size(138, 23)
         Me.BtnActualiza.TabIndex = 546
@@ -968,7 +984,7 @@ Partial Class MenuPTE
         '
         Me.CB_Rack.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Rack.FormattingEnabled = True
-        Me.CB_Rack.Location = New System.Drawing.Point(94, 233)
+        Me.CB_Rack.Location = New System.Drawing.Point(98, 244)
         Me.CB_Rack.Name = "CB_Rack"
         Me.CB_Rack.Size = New System.Drawing.Size(80, 24)
         Me.CB_Rack.TabIndex = 5
@@ -978,16 +994,16 @@ Partial Class MenuPTE
         Me.CB_Ope.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Ope.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Ope.FormattingEnabled = True
-        Me.CB_Ope.Location = New System.Drawing.Point(94, 284)
+        Me.CB_Ope.Location = New System.Drawing.Point(98, 295)
         Me.CB_Ope.Name = "CB_Ope"
-        Me.CB_Ope.Size = New System.Drawing.Size(353, 24)
+        Me.CB_Ope.Size = New System.Drawing.Size(437, 24)
         Me.CB_Ope.TabIndex = 536
         '
         'Label16
         '
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(9, 286)
+        Me.Label16.Location = New System.Drawing.Point(13, 297)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(82, 21)
         Me.Label16.TabIndex = 545
@@ -997,7 +1013,7 @@ Partial Class MenuPTE
         'TDescrack
         '
         Me.TDescrack.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TDescrack.Location = New System.Drawing.Point(314, 233)
+        Me.TDescrack.Location = New System.Drawing.Point(318, 244)
         Me.TDescrack.Name = "TDescrack"
         Me.TDescrack.ReadOnly = True
         Me.TDescrack.Size = New System.Drawing.Size(217, 22)
@@ -1006,7 +1022,7 @@ Partial Class MenuPTE
         'TPtoTrabajo
         '
         Me.TPtoTrabajo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPtoTrabajo.Location = New System.Drawing.Point(94, 259)
+        Me.TPtoTrabajo.Location = New System.Drawing.Point(98, 270)
         Me.TPtoTrabajo.MaxLength = 10
         Me.TPtoTrabajo.Name = "TPtoTrabajo"
         Me.TPtoTrabajo.ReadOnly = True
@@ -1016,7 +1032,7 @@ Partial Class MenuPTE
         'TNomPtoTrabajo
         '
         Me.TNomPtoTrabajo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TNomPtoTrabajo.Location = New System.Drawing.Point(205, 259)
+        Me.TNomPtoTrabajo.Location = New System.Drawing.Point(209, 270)
         Me.TNomPtoTrabajo.Name = "TNomPtoTrabajo"
         Me.TNomPtoTrabajo.ReadOnly = True
         Me.TNomPtoTrabajo.Size = New System.Drawing.Size(326, 22)
@@ -1026,7 +1042,7 @@ Partial Class MenuPTE
         '
         Me.lblPtoTrabajo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPtoTrabajo.ForeColor = System.Drawing.Color.Black
-        Me.lblPtoTrabajo.Location = New System.Drawing.Point(8, 261)
+        Me.lblPtoTrabajo.Location = New System.Drawing.Point(12, 272)
         Me.lblPtoTrabajo.Name = "lblPtoTrabajo"
         Me.lblPtoTrabajo.Size = New System.Drawing.Size(80, 18)
         Me.lblPtoTrabajo.TabIndex = 542
@@ -1037,7 +1053,7 @@ Partial Class MenuPTE
         '
         Me.lblOrden.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOrden.ForeColor = System.Drawing.Color.Black
-        Me.lblOrden.Location = New System.Drawing.Point(8, 187)
+        Me.lblOrden.Location = New System.Drawing.Point(12, 198)
         Me.lblOrden.Name = "lblOrden"
         Me.lblOrden.Size = New System.Drawing.Size(80, 20)
         Me.lblOrden.TabIndex = 538
@@ -1051,8 +1067,8 @@ Partial Class MenuPTE
         Me.TOrden.Enabled = False
         Me.TOrden.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TOrden.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.TOrden.Location = New System.Drawing.Point(94, 185)
-        Me.TOrden.MaxLength = 12
+        Me.TOrden.Location = New System.Drawing.Point(98, 196)
+        Me.TOrden.MaxLength = 20
         Me.TOrden.Name = "TOrden"
         Me.TOrden.Size = New System.Drawing.Size(160, 22)
         Me.TOrden.TabIndex = 3
@@ -1061,7 +1077,7 @@ Partial Class MenuPTE
         '
         Me.lblcantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblcantidad.ForeColor = System.Drawing.Color.Black
-        Me.lblcantidad.Location = New System.Drawing.Point(5, 210)
+        Me.lblcantidad.Location = New System.Drawing.Point(9, 221)
         Me.lblcantidad.Name = "lblcantidad"
         Me.lblcantidad.Size = New System.Drawing.Size(83, 20)
         Me.lblcantidad.TabIndex = 541
@@ -1073,7 +1089,7 @@ Partial Class MenuPTE
         Me.TtramosNoti.BackColor = System.Drawing.SystemColors.Window
         Me.TtramosNoti.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TtramosNoti.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.TtramosNoti.Location = New System.Drawing.Point(94, 209)
+        Me.TtramosNoti.Location = New System.Drawing.Point(98, 220)
         Me.TtramosNoti.MaxLength = 10
         Me.TtramosNoti.Name = "TtramosNoti"
         Me.TtramosNoti.Size = New System.Drawing.Size(79, 22)
@@ -1084,7 +1100,7 @@ Partial Class MenuPTE
         '
         Me.lblRack.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRack.ForeColor = System.Drawing.Color.Black
-        Me.lblRack.Location = New System.Drawing.Point(17, 236)
+        Me.lblRack.Location = New System.Drawing.Point(21, 247)
         Me.lblRack.Name = "lblRack"
         Me.lblRack.Size = New System.Drawing.Size(71, 20)
         Me.lblRack.TabIndex = 539
@@ -1095,7 +1111,7 @@ Partial Class MenuPTE
         '
         Me.TPesoRack.BackColor = System.Drawing.SystemColors.Window
         Me.TPesoRack.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPesoRack.Location = New System.Drawing.Point(180, 233)
+        Me.TPesoRack.Location = New System.Drawing.Point(184, 244)
         Me.TPesoRack.Name = "TPesoRack"
         Me.TPesoRack.Size = New System.Drawing.Size(74, 22)
         Me.TPesoRack.TabIndex = 6
@@ -1106,7 +1122,7 @@ Partial Class MenuPTE
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(260, 236)
+        Me.Label11.Location = New System.Drawing.Point(264, 247)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(48, 16)
         Me.Label11.TabIndex = 540
@@ -1116,7 +1132,7 @@ Partial Class MenuPTE
         '
         Me.RB_SC.AutoSize = True
         Me.RB_SC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RB_SC.Location = New System.Drawing.Point(332, 159)
+        Me.RB_SC.Location = New System.Drawing.Point(336, 170)
         Me.RB_SC.Name = "RB_SC"
         Me.RB_SC.Size = New System.Drawing.Size(67, 20)
         Me.RB_SC.TabIndex = 2
@@ -1126,28 +1142,30 @@ Partial Class MenuPTE
         'RB_PT
         '
         Me.RB_PT.AutoSize = True
+        Me.RB_PT.Checked = True
         Me.RB_PT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RB_PT.Location = New System.Drawing.Point(94, 159)
+        Me.RB_PT.Location = New System.Drawing.Point(98, 170)
         Me.RB_PT.Name = "RB_PT"
         Me.RB_PT.Size = New System.Drawing.Size(167, 20)
         Me.RB_PT.TabIndex = 1
+        Me.RB_PT.TabStop = True
         Me.RB_PT.Text = "Producto Terminado"
         Me.RB_PT.UseVisualStyleBackColor = True
         '
-        'TPassNotifier
+        'PassNotifier
         '
-        Me.TPassNotifier.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPassNotifier.Location = New System.Drawing.Point(273, 103)
-        Me.TPassNotifier.MaxLength = 20
-        Me.TPassNotifier.Name = "TPassNotifier"
-        Me.TPassNotifier.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TPassNotifier.Size = New System.Drawing.Size(105, 22)
-        Me.TPassNotifier.TabIndex = 0
+        Me.PassNotifier.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PassNotifier.Location = New System.Drawing.Point(277, 114)
+        Me.PassNotifier.MaxLength = 20
+        Me.PassNotifier.Name = "PassNotifier"
+        Me.PassNotifier.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.PassNotifier.Size = New System.Drawing.Size(105, 22)
+        Me.PassNotifier.TabIndex = 0
         '
         'NomOperador
         '
         Me.NomOperador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NomOperador.Location = New System.Drawing.Point(260, 131)
+        Me.NomOperador.Location = New System.Drawing.Point(264, 142)
         Me.NomOperador.Name = "NomOperador"
         Me.NomOperador.ReadOnly = True
         Me.NomOperador.Size = New System.Drawing.Size(271, 22)
@@ -1156,7 +1174,7 @@ Partial Class MenuPTE
         'CodOperador
         '
         Me.CodOperador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CodOperador.Location = New System.Drawing.Point(94, 131)
+        Me.CodOperador.Location = New System.Drawing.Point(98, 142)
         Me.CodOperador.MaxLength = 10
         Me.CodOperador.Name = "CodOperador"
         Me.CodOperador.ReadOnly = True
@@ -1168,7 +1186,7 @@ Partial Class MenuPTE
         Me.lblClave.AutoSize = True
         Me.lblClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClave.ForeColor = System.Drawing.Color.Black
-        Me.lblClave.Location = New System.Drawing.Point(178, 106)
+        Me.lblClave.Location = New System.Drawing.Point(182, 117)
         Me.lblClave.Name = "lblClave"
         Me.lblClave.Size = New System.Drawing.Size(89, 16)
         Me.lblClave.TabIndex = 528
@@ -1179,7 +1197,7 @@ Partial Class MenuPTE
         Me.lblCentro.AutoSize = True
         Me.lblCentro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCentro.ForeColor = System.Drawing.Color.Black
-        Me.lblCentro.Location = New System.Drawing.Point(35, 106)
+        Me.lblCentro.Location = New System.Drawing.Point(39, 117)
         Me.lblCentro.Name = "lblCentro"
         Me.lblCentro.Size = New System.Drawing.Size(53, 16)
         Me.lblCentro.TabIndex = 525
@@ -1188,7 +1206,7 @@ Partial Class MenuPTE
         'Centro
         '
         Me.Centro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Centro.Location = New System.Drawing.Point(94, 103)
+        Me.Centro.Location = New System.Drawing.Point(98, 114)
         Me.Centro.Name = "Centro"
         Me.Centro.ReadOnly = True
         Me.Centro.Size = New System.Drawing.Size(80, 22)
@@ -1197,17 +1215,17 @@ Partial Class MenuPTE
         'Timer2
         '
         '
-        'CB_Proceso
+        'cmbProceso
         '
-        Me.CB_Proceso.AutoSize = True
-        Me.CB_Proceso.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CB_Proceso.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.CB_Proceso.Location = New System.Drawing.Point(100, 327)
-        Me.CB_Proceso.Name = "CB_Proceso"
-        Me.CB_Proceso.Size = New System.Drawing.Size(138, 28)
-        Me.CB_Proceso.TabIndex = 599
-        Me.CB_Proceso.Text = "En Proceso"
-        Me.CB_Proceso.UseVisualStyleBackColor = True
+        Me.cmbProceso.AutoSize = True
+        Me.cmbProceso.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbProceso.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.cmbProceso.Location = New System.Drawing.Point(98, 342)
+        Me.cmbProceso.Name = "cmbProceso"
+        Me.cmbProceso.Size = New System.Drawing.Size(138, 28)
+        Me.cmbProceso.TabIndex = 599
+        Me.cmbProceso.Text = "En Proceso"
+        Me.cmbProceso.UseVisualStyleBackColor = True
         '
         'GB_Basculas
         '
@@ -1215,7 +1233,7 @@ Partial Class MenuPTE
         Me.GB_Basculas.Controls.Add(Me.RB2)
         Me.GB_Basculas.Controls.Add(Me.RB1)
         Me.GB_Basculas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GB_Basculas.Location = New System.Drawing.Point(8, 32)
+        Me.GB_Basculas.Location = New System.Drawing.Point(12, 43)
         Me.GB_Basculas.Name = "GB_Basculas"
         Me.GB_Basculas.Size = New System.Drawing.Size(520, 34)
         Me.GB_Basculas.TabIndex = 602
@@ -1264,7 +1282,7 @@ Partial Class MenuPTE
         Me.CB_Defecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Defecto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Defecto.FormattingEnabled = True
-        Me.CB_Defecto.Location = New System.Drawing.Point(681, 335)
+        Me.CB_Defecto.Location = New System.Drawing.Point(726, 346)
         Me.CB_Defecto.Name = "CB_Defecto"
         Me.CB_Defecto.Size = New System.Drawing.Size(385, 24)
         Me.CB_Defecto.TabIndex = 481
@@ -1274,7 +1292,7 @@ Partial Class MenuPTE
         Me.CB_TipoSc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_TipoSc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_TipoSc.FormattingEnabled = True
-        Me.CB_TipoSc.Location = New System.Drawing.Point(681, 361)
+        Me.CB_TipoSc.Location = New System.Drawing.Point(726, 372)
         Me.CB_TipoSc.Name = "CB_TipoSc"
         Me.CB_TipoSc.Size = New System.Drawing.Size(385, 24)
         Me.CB_TipoSc.TabIndex = 485
@@ -1283,7 +1301,7 @@ Partial Class MenuPTE
         '
         Me.TCScrap.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TCScrap.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCScrap.Location = New System.Drawing.Point(1072, 361)
+        Me.TCScrap.Location = New System.Drawing.Point(1117, 372)
         Me.TCScrap.Name = "TCScrap"
         Me.TCScrap.ReadOnly = True
         Me.TCScrap.Size = New System.Drawing.Size(72, 22)
@@ -1294,7 +1312,7 @@ Partial Class MenuPTE
         '
         Me.TCDefecto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TCDefecto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCDefecto.Location = New System.Drawing.Point(1072, 335)
+        Me.TCDefecto.Location = New System.Drawing.Point(1117, 346)
         Me.TCDefecto.Name = "TCDefecto"
         Me.TCDefecto.ReadOnly = True
         Me.TCDefecto.Size = New System.Drawing.Size(72, 22)
@@ -1305,7 +1323,7 @@ Partial Class MenuPTE
         '
         Me.TCCausas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TCCausas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCCausas.Location = New System.Drawing.Point(1072, 309)
+        Me.TCCausas.Location = New System.Drawing.Point(1117, 320)
         Me.TCCausas.Name = "TCCausas"
         Me.TCCausas.ReadOnly = True
         Me.TCCausas.Size = New System.Drawing.Size(72, 22)
@@ -1317,7 +1335,7 @@ Partial Class MenuPTE
         Me.CB_Causas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Causas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Causas.FormattingEnabled = True
-        Me.CB_Causas.Location = New System.Drawing.Point(681, 309)
+        Me.CB_Causas.Location = New System.Drawing.Point(726, 320)
         Me.CB_Causas.Name = "CB_Causas"
         Me.CB_Causas.Size = New System.Drawing.Size(385, 24)
         Me.CB_Causas.TabIndex = 479
@@ -1327,7 +1345,7 @@ Partial Class MenuPTE
         Me.CB_SP_Causa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_SP_Causa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_SP_Causa.FormattingEnabled = True
-        Me.CB_SP_Causa.Location = New System.Drawing.Point(681, 283)
+        Me.CB_SP_Causa.Location = New System.Drawing.Point(726, 294)
         Me.CB_SP_Causa.Name = "CB_SP_Causa"
         Me.CB_SP_Causa.Size = New System.Drawing.Size(385, 24)
         Me.CB_SP_Causa.TabIndex = 9
@@ -1336,7 +1354,7 @@ Partial Class MenuPTE
         '
         Me.TCausas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TCausas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCausas.Location = New System.Drawing.Point(1072, 284)
+        Me.TCausas.Location = New System.Drawing.Point(1117, 294)
         Me.TCausas.Name = "TCausas"
         Me.TCausas.ReadOnly = True
         Me.TCausas.Size = New System.Drawing.Size(72, 22)
@@ -1347,7 +1365,7 @@ Partial Class MenuPTE
         '
         Me.lblCausa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCausa.ForeColor = System.Drawing.Color.Black
-        Me.lblCausa.Location = New System.Drawing.Point(564, 284)
+        Me.lblCausa.Location = New System.Drawing.Point(609, 295)
         Me.lblCausa.Name = "lblCausa"
         Me.lblCausa.Size = New System.Drawing.Size(111, 20)
         Me.lblCausa.TabIndex = 395
@@ -1358,7 +1376,7 @@ Partial Class MenuPTE
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(540, 312)
+        Me.Label6.Location = New System.Drawing.Point(585, 323)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(135, 17)
         Me.Label6.TabIndex = 478
@@ -1369,7 +1387,7 @@ Partial Class MenuPTE
         '
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(564, 338)
+        Me.Label4.Location = New System.Drawing.Point(609, 349)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(111, 17)
         Me.Label4.TabIndex = 480
@@ -1380,7 +1398,7 @@ Partial Class MenuPTE
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(574, 364)
+        Me.Label7.Location = New System.Drawing.Point(619, 375)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(101, 17)
         Me.Label7.TabIndex = 484
@@ -1392,7 +1410,7 @@ Partial Class MenuPTE
         Me.CB_Manual.AutoSize = True
         Me.CB_Manual.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Manual.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.CB_Manual.Location = New System.Drawing.Point(96, 361)
+        Me.CB_Manual.Location = New System.Drawing.Point(98, 376)
         Me.CB_Manual.Name = "CB_Manual"
         Me.CB_Manual.Size = New System.Drawing.Size(212, 28)
         Me.CB_Manual.TabIndex = 606
@@ -1403,7 +1421,7 @@ Partial Class MenuPTE
         'TDReten
         '
         Me.TDReten.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TDReten.Location = New System.Drawing.Point(763, 133)
+        Me.TDReten.Location = New System.Drawing.Point(808, 144)
         Me.TDReten.Name = "TDReten"
         Me.TDReten.ReadOnly = True
         Me.TDReten.Size = New System.Drawing.Size(303, 22)
@@ -1413,7 +1431,7 @@ Partial Class MenuPTE
         '
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(553, 136)
+        Me.Label10.Location = New System.Drawing.Point(598, 147)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(122, 17)
         Me.Label10.TabIndex = 607
@@ -1424,7 +1442,7 @@ Partial Class MenuPTE
         '
         Me.TCodReten.BackColor = System.Drawing.SystemColors.Control
         Me.TCodReten.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCodReten.Location = New System.Drawing.Point(681, 133)
+        Me.TCodReten.Location = New System.Drawing.Point(726, 144)
         Me.TCodReten.Name = "TCodReten"
         Me.TCodReten.ReadOnly = True
         Me.TCodReten.Size = New System.Drawing.Size(75, 22)
@@ -1433,7 +1451,7 @@ Partial Class MenuPTE
         'TPReten
         '
         Me.TPReten.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPReten.Location = New System.Drawing.Point(1072, 133)
+        Me.TPReten.Location = New System.Drawing.Point(1117, 144)
         Me.TPReten.Name = "TPReten"
         Me.TPReten.ReadOnly = True
         Me.TPReten.Size = New System.Drawing.Size(72, 22)
@@ -1445,7 +1463,7 @@ Partial Class MenuPTE
         Me.Label12.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.DarkRed
-        Me.Label12.Location = New System.Drawing.Point(322, 622)
+        Me.Label12.Location = New System.Drawing.Point(324, 659)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(522, 23)
         Me.Label12.TabIndex = 611
@@ -1456,7 +1474,7 @@ Partial Class MenuPTE
         '
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(1046, 241)
+        Me.Label13.Location = New System.Drawing.Point(1091, 252)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(24, 20)
         Me.Label13.TabIndex = 612
@@ -1466,7 +1484,7 @@ Partial Class MenuPTE
         'TPEmb
         '
         Me.TPEmb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TPEmb.Location = New System.Drawing.Point(1072, 157)
+        Me.TPEmb.Location = New System.Drawing.Point(1117, 168)
         Me.TPEmb.Name = "TPEmb"
         Me.TPEmb.ReadOnly = True
         Me.TPEmb.Size = New System.Drawing.Size(72, 22)
@@ -1476,7 +1494,7 @@ Partial Class MenuPTE
         'TDEmb
         '
         Me.TDEmb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TDEmb.Location = New System.Drawing.Point(763, 157)
+        Me.TDEmb.Location = New System.Drawing.Point(808, 168)
         Me.TDEmb.Name = "TDEmb"
         Me.TDEmb.ReadOnly = True
         Me.TDEmb.Size = New System.Drawing.Size(303, 22)
@@ -1486,7 +1504,7 @@ Partial Class MenuPTE
         '
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(540, 160)
+        Me.Label14.Location = New System.Drawing.Point(585, 171)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(135, 17)
         Me.Label14.TabIndex = 613
@@ -1497,7 +1515,7 @@ Partial Class MenuPTE
         '
         Me.TCodEmb.BackColor = System.Drawing.SystemColors.Control
         Me.TCodEmb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCodEmb.Location = New System.Drawing.Point(681, 157)
+        Me.TCodEmb.Location = New System.Drawing.Point(726, 168)
         Me.TCodEmb.Name = "TCodEmb"
         Me.TCodEmb.ReadOnly = True
         Me.TCodEmb.Size = New System.Drawing.Size(75, 22)
@@ -1507,7 +1525,7 @@ Partial Class MenuPTE
         '
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(225, 210)
+        Me.Label17.Location = New System.Drawing.Point(229, 221)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(83, 20)
         Me.Label17.TabIndex = 618
@@ -1519,7 +1537,7 @@ Partial Class MenuPTE
         Me.TFolioVale.BackColor = System.Drawing.SystemColors.Window
         Me.TFolioVale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TFolioVale.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.TFolioVale.Location = New System.Drawing.Point(314, 209)
+        Me.TFolioVale.Location = New System.Drawing.Point(318, 220)
         Me.TFolioVale.MaxLength = 10
         Me.TFolioVale.Name = "TFolioVale"
         Me.TFolioVale.Size = New System.Drawing.Size(111, 22)
@@ -1532,7 +1550,7 @@ Partial Class MenuPTE
         Me.BImprimir.BackgroundImage = Global.Atlas.My.Resources.Resources.imprimir
         Me.BImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.BImprimir.Enabled = False
-        Me.BImprimir.Location = New System.Drawing.Point(531, 503)
+        Me.BImprimir.Location = New System.Drawing.Point(566, 540)
         Me.BImprimir.Name = "BImprimir"
         Me.BImprimir.Size = New System.Drawing.Size(80, 80)
         Me.BImprimir.TabIndex = 12
@@ -1544,7 +1562,7 @@ Partial Class MenuPTE
         Me.BSiguiente.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.BSiguiente.BackgroundImage = Global.Atlas.My.Resources.Resources.Limpiar
         Me.BSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.BSiguiente.Location = New System.Drawing.Point(681, 503)
+        Me.BSiguiente.Location = New System.Drawing.Point(766, 540)
         Me.BSiguiente.Name = "BSiguiente"
         Me.BSiguiente.Size = New System.Drawing.Size(80, 80)
         Me.BSiguiente.TabIndex = 13
@@ -1556,7 +1574,7 @@ Partial Class MenuPTE
         Me.BPesar.BackgroundImage = Global.Atlas.My.Resources.Resources.SAP_Notificacion
         Me.BPesar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.BPesar.Enabled = False
-        Me.BPesar.Location = New System.Drawing.Point(378, 503)
+        Me.BPesar.Location = New System.Drawing.Point(380, 540)
         Me.BPesar.Name = "BPesar"
         Me.BPesar.Size = New System.Drawing.Size(80, 80)
         Me.BPesar.TabIndex = 11
@@ -1566,8 +1584,8 @@ Partial Class MenuPTE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Beige
-        Me.ClientSize = New System.Drawing.Size(1152, 675)
+        Me.BackColor = System.Drawing.Color.AliceBlue
+        Me.ClientSize = New System.Drawing.Size(1197, 730)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.TFolioVale)
         Me.Controls.Add(Me.TPEmb)
@@ -1583,7 +1601,7 @@ Partial Class MenuPTE
         Me.Controls.Add(Me.CB_Manual)
         Me.Controls.Add(Me.TCausas)
         Me.Controls.Add(Me.GB_Basculas)
-        Me.Controls.Add(Me.CB_Proceso)
+        Me.Controls.Add(Me.cmbProceso)
         Me.Controls.Add(Me.BtnActualiza)
         Me.Controls.Add(Me.CB_Rack)
         Me.Controls.Add(Me.CB_Ope)
@@ -1601,7 +1619,7 @@ Partial Class MenuPTE
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.RB_SC)
         Me.Controls.Add(Me.RB_PT)
-        Me.Controls.Add(Me.TPassNotifier)
+        Me.Controls.Add(Me.PassNotifier)
         Me.Controls.Add(Me.NomOperador)
         Me.Controls.Add(Me.CodOperador)
         Me.Controls.Add(Me.lblClave)
@@ -1788,7 +1806,7 @@ Partial Class MenuPTE
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents RB_SC As System.Windows.Forms.RadioButton
     Friend WithEvents RB_PT As System.Windows.Forms.RadioButton
-    Friend WithEvents TPassNotifier As System.Windows.Forms.TextBox
+    Friend WithEvents PassNotifier As System.Windows.Forms.TextBox
     Friend WithEvents NomOperador As System.Windows.Forms.TextBox
     Friend WithEvents CodOperador As System.Windows.Forms.TextBox
     Friend WithEvents lblClave As System.Windows.Forms.Label
@@ -1797,7 +1815,7 @@ Partial Class MenuPTE
     Friend WithEvents MP_CON_PROD As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MP_CON_SP As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
-    Friend WithEvents CB_Proceso As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbProceso As System.Windows.Forms.CheckBox
     Friend WithEvents GB_Basculas As System.Windows.Forms.GroupBox
     Friend WithEvents RB2 As System.Windows.Forms.RadioButton
     Friend WithEvents RB1 As System.Windows.Forms.RadioButton
@@ -1828,4 +1846,6 @@ Partial Class MenuPTE
     Friend WithEvents TCodEmb As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents TFolioVale As System.Windows.Forms.TextBox
+    Friend WithEvents tsbMonitor As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MPE_A As System.Windows.Forms.ToolStripMenuItem
 End Class

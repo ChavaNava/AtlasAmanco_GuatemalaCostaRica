@@ -67,6 +67,7 @@ Public Class CAT_ProductosExtrusion
         Catalogo_Secciones.CB_Secc(CB_Seccion, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", TCod_Seccion, EXTINY)
         Catalogo_Grupos.CB_Grupos(CB_Area, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", TCod_Area)
         Catalogo_Uso_Maquina.CB_Uso_Maq(CB_UsoMaq, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", TCod_UsoMaq)
+
         Dim_Pesos_Insert()
         RB_Dim_Pesos_Insert()
         CB_CC.Checked = False
@@ -240,7 +241,7 @@ Public Class CAT_ProductosExtrusion
         TCentro.Enabled = True
         TCentro.Text = SessionUser._sCentro.Trim
         TCodProd.Enabled = True
-        PT.cargarfuente()
+        'PT.cargarfuente()
         LCodBarr.Text = ""
         '--------------------------------------------------------------------------------------------
         'Parametrizacion de la Form

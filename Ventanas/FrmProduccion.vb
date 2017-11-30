@@ -209,7 +209,7 @@ Public Class FrmProduccion
             QRY_Grid = QRY_Grid & "Order by Equipo_basico "
 
             Try
-                objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+                objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
                 objDs = New DataSet
                 objDa.Fill(objDs)
                 DGV_ConProd.DataSource = objDs.Tables(0)
@@ -329,7 +329,7 @@ Public Class FrmProduccion
             QRY_Grid = QRY_Grid & "Order by a.Producto "
 
             Try
-                objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+                objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
                 objDs = New DataSet
                 objDa.Fill(objDs)
                 DGV_ConProd.DataSource = objDs.Tables(0)
@@ -720,7 +720,7 @@ Public Class FrmProduccion
             LecturaQry(QRY)
 
             Try
-                objDaC = New SqlDataAdapter(QRY, AbrirAmanco)
+                objDaC = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
                 objDsC = New DataSet
                 objDaC.Fill(objDsC)
                 DGV_ConProd.DataSource = objDsC.Tables(0)
@@ -781,7 +781,7 @@ Public Class FrmProduccion
         QRY = QRY & "group by a.Orden_Produccion)"
 
         Try
-            objDa = New SqlDataAdapter(QRY, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
 
@@ -821,7 +821,7 @@ Public Class FrmProduccion
         QRY = QRY & "And Notifica = '1' "
 
         Try
-            objDa = New SqlDataAdapter(QRY, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
 
@@ -859,7 +859,7 @@ Public Class FrmProduccion
         QRY = QRY & "And b.Notifica in ('0', '4', '3') "
 
         Try
-            objDa = New SqlDataAdapter(QRY, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
 

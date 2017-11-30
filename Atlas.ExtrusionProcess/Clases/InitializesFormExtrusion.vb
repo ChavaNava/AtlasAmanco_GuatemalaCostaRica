@@ -15,8 +15,8 @@ Public Class InitializesFormExtrusion
         Q = ""
         Q = "PA_Consulta_Turno '" & SessionUser._sCentro.Trim & "' "
 
-        DB.Combo_ADM(Q)
-        NDataSet1 = DB.DataSetCombo.Copy
+        Cnn.Combo_ADM(Q)
+        NDataSet1 = Cnn.DataSetCombo.Copy
         CB.DataSource = NDataSet1.Tables(0)
         CB.DisplayMember = "Descripcion"
         CB.ValueMember = "Turno"
@@ -30,13 +30,13 @@ Public Class InitializesFormExtrusion
         'la diferencia de horas
         Q = ""
         Q = "PA_Asigna_Turno '" & SessionUser._sCentro.Trim & "', '" & HoraPlanta.Trim & "' "
-        DB.LecturaQry_ADM(Q)
+        Cnn.LecturaQry_ADM(Q)
 
-        Do While (DB.LecturaBD_ADM.Read)
-            strTurno = DB.LecturaBD_ADM(0)
+        Do While (Cnn.LecturaBD_ADM.Read)
+            strTurno = Cnn.LecturaBD_ADM(0)
             CB.Text = strTurno
         Loop
-        DB.LecturaBD_ADM.Close()
+        Cnn.LecturaBD_ADM.Close()
     End Sub
 
 End Class

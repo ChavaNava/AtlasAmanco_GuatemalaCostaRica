@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
       <xsd:simpleType name="char1">
@@ -94,23 +94,6 @@
           <xsd:element name="ZDOCUMENT_NUMBER" type="tns:char10" />
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:complexType name="ZSDMXS002">
-        <xsd:sequence>
-          <xsd:element name="ZDOCUMENT_NUMBER" type="tns:char10" />
-          <xsd:element name="Z_TO_FROM" type="tns:char10" />
-          <xsd:element name="ZESTATUS" type="tns:char1" />
-          <xsd:element name="ZFECHA_DOC" type="tns:date" />
-        </xsd:sequence>
-      </xsd:complexType>
-      <xsd:complexType name="ZMMMXS001">
-        <xsd:sequence>
-          <xsd:element name="ZEBELP" type="tns:numeric5" />
-          <xsd:element name="ZMATNR" type="tns:char18" />
-          <xsd:element name="ZTXZ01" type="tns:char40" />
-          <xsd:element name="ZMENGE" type="tns:quantum13.3" />
-          <xsd:element name="ZMEINS" type="tns:unit3" />
-        </xsd:sequence>
-      </xsd:complexType>
       <xsd:complexType name="ZBAPIRET2">
         <xsd:sequence>
           <xsd:element name="ZTYPE" type="tns:char1" />
@@ -129,6 +112,15 @@
           <xsd:element name="ZSYSTEM" type="tns:char10" />
         </xsd:sequence>
       </xsd:complexType>
+      <xsd:complexType name="ZMMMXS001">
+        <xsd:sequence>
+          <xsd:element name="ZEBELP" type="tns:numeric5" />
+          <xsd:element name="ZMATNR" type="tns:char18" />
+          <xsd:element name="ZTXZ01" type="tns:char40" />
+          <xsd:element name="ZMENGE" type="tns:quantum13.3" />
+          <xsd:element name="ZMEINS" type="tns:unit3" />
+        </xsd:sequence>
+      </xsd:complexType>
       <xsd:complexType name="ZSDMXS003">
         <xsd:sequence>
           <xsd:element name="ZPOSNR" type="tns:numeric6" />
@@ -136,6 +128,14 @@
           <xsd:element name="ZARKTX" type="tns:char40" />
           <xsd:element name="ZKWMENG" type="tns:quantum15.3" />
           <xsd:element name="ZVRKME" type="tns:unit3" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSDMXS002">
+        <xsd:sequence>
+          <xsd:element name="ZDOCUMENT_NUMBER" type="tns:char10" />
+          <xsd:element name="Z_TO_FROM" type="tns:char10" />
+          <xsd:element name="ZESTATUS" type="tns:char1" />
+          <xsd:element name="ZFECHA_DOC" type="tns:date" />
         </xsd:sequence>
       </xsd:complexType>
       <xsd:complexType name="ZMMMXTT001">
@@ -193,7 +193,7 @@
   </wsdl:binding>
   <wsdl:service name="ZSDMX_READ_SCALE_DOCUMENTSService">
     <wsdl:port name="ZSDMX_READ_SCALE_DOCUMENTSSoapBinding" binding="tns:ZSDMX_READ_SCALE_DOCUMENTSSoapBinding">
-      <soap:address location="http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS?sap-client=300" />
+      <soap:address location="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS?sap-client=300" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

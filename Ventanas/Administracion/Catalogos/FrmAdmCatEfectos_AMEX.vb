@@ -62,7 +62,7 @@ Public Class FrmAdmCatEfecto_AMEX
         QRY_Grid = QRY_Grid & "And a.Centro = '" & SessionUser._sCentro.Trim & "' "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGV_Efectos.DataSource = objDs.Tables(0)

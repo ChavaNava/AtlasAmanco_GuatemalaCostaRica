@@ -45,7 +45,7 @@ Public Class FrmSupervision_Rol_Ins_AMEX
         QRY = "Select DATENAME(month,'" & Str_FI.Trim & "') as Mes "
 
         Try
-            objDa = New SqlDataAdapter(QRY, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
 

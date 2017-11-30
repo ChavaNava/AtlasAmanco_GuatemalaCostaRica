@@ -26,6 +26,7 @@ Partial Class CAT_ProductosExtrusion
         Me.DGV = New System.Windows.Forms.DataGridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.CB_SoloPiezas = New System.Windows.Forms.CheckBox()
         Me.TCod_Reten = New System.Windows.Forms.TextBox()
         Me.CB_Reten = New System.Windows.Forms.ComboBox()
         Me.Label30 = New System.Windows.Forms.Label()
@@ -105,7 +106,6 @@ Partial Class CAT_ProductosExtrusion
         Me.TTotal = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.CB_SoloPiezas = New System.Windows.Forms.CheckBox()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -173,6 +173,18 @@ Partial Class CAT_ProductosExtrusion
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Descripción Producto"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'CB_SoloPiezas
+        '
+        Me.CB_SoloPiezas.AutoSize = True
+        Me.CB_SoloPiezas.BackColor = System.Drawing.SystemColors.Control
+        Me.CB_SoloPiezas.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CB_SoloPiezas.Location = New System.Drawing.Point(718, 149)
+        Me.CB_SoloPiezas.Name = "CB_SoloPiezas"
+        Me.CB_SoloPiezas.Size = New System.Drawing.Size(167, 20)
+        Me.CB_SoloPiezas.TabIndex = 395
+        Me.CB_SoloPiezas.Text = "Notifica Solo Piezas"
+        Me.CB_SoloPiezas.UseVisualStyleBackColor = False
         '
         'TCod_Reten
         '
@@ -984,18 +996,6 @@ Partial Class CAT_ProductosExtrusion
         Me.Label22.TabIndex = 371
         Me.Label22.Text = "Label22"
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'CB_SoloPiezas
-        '
-        Me.CB_SoloPiezas.AutoSize = True
-        Me.CB_SoloPiezas.BackColor = System.Drawing.SystemColors.Control
-        Me.CB_SoloPiezas.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CB_SoloPiezas.Location = New System.Drawing.Point(718, 149)
-        Me.CB_SoloPiezas.Name = "CB_SoloPiezas"
-        Me.CB_SoloPiezas.Size = New System.Drawing.Size(167, 20)
-        Me.CB_SoloPiezas.TabIndex = 395
-        Me.CB_SoloPiezas.Text = "Notifica Solo Piezas"
-        Me.CB_SoloPiezas.UseVisualStyleBackColor = False
         '
         'CAT_ProductosExtrusion
         '

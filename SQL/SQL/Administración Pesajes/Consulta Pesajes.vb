@@ -1,6 +1,7 @@
 ﻿Imports SQL_DATA
 Imports System.Data.SqlClient
 Imports Utili_Generales
+Imports Reporting
 Public Class Consulta_Pesajes
     Public Shared Sub Pesajes(ByVal DataGV As DataGridView, Usuario As String, Centro As String, FI As String, FF As String, ODF As String, _
                               Folio As String, Turno As String, Area As String)
@@ -12,7 +13,7 @@ Public Class Consulta_Pesajes
         Q = ""
         Q = "PA_Consulta_Produccion_1 '" & Centro & "', '" & FI & "', '" & FF & "', '" & ODF & "', '" & Folio & "', '" & Turno & "', '" & Area & "' "
         Try
-            objDa = New SqlDataAdapter(Q, MSI(Usuario))
+            objDa = New SqlDataAdapter(Q, MSI(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)

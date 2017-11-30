@@ -36,7 +36,7 @@ Public Class IAC_ODF
     Public Sub I_New_ODF(odf As String, Tipo As String, frmForm As Form, Grupo As String, CodOperador As String)
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
 
-        WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, SessionUser._sAmbiente)
+        WS_P.Consume_WS(Head, Lista, SessionUser._sAmbiente)
         Tbl = WS_P.Tbl_resultado
         SAP_Return = WS_P.Return_SAP
         ' ---------------------------------------------------------------------------------

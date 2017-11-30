@@ -17,8 +17,7 @@ Public Class MensajeBox
         Return m_regreso
     End Function
 
-    Sub New(ByVal mensaje As String, ByVal titulo As String, ByVal tipoMsg As TipoMensaje, _
-                            Optional ByVal botones As TipoBoton = TipoBoton.OkOnly)
+    Sub New(ByVal mensaje As String, ByVal titulo As String, ByVal tipoMsg As TipoMensaje, Optional ByVal botones As TipoBoton = TipoBoton.OkOnly)
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
 

@@ -4,6 +4,7 @@ Imports Utili_Generales
 Imports Atlas.Accesos.CLVarGlobales
 Imports SQL_DATA
 Imports Atlas.EstatusSAP
+Imports Atlas.Administracion
 Public Class FrmAdmin
     Dim UsrLog As String  'el usuario actual logeado en el sistema
     Dim strNumeroPlanta As String
@@ -75,7 +76,7 @@ Public Class FrmAdmin
     End Sub
 
     Private Sub MA_SAP_INY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MA_SAP_INY.Click
-        Permiso.Accesos("MA_SAP_INY", "2", SessionUser._sIdPerfil, "I", "Estatus de Conexión SAP Inyección")
+        Atlas.EstatusSAP.Permissions.Access("MA_SAP_INY", "2", SessionUser._sIdPerfil, "I", "Estatus de Conexión SAP Inyección")
     End Sub
 
     Private Sub ArchivoToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArchivoToolStripMenuItem1.Click
@@ -157,11 +158,6 @@ Public Class FrmAdmin
         Permiso.Accesos("MA_NOTMAS", "", SessionUser._sIdPerfil, "", "Notificación Masiva")
     End Sub
 
-    Private Sub ParametrosDelSistemaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ParametrosDelSistemaToolStripMenuItem.Click
-
-        Permiso.Accesos("MA_PARAMETRIZA", "", SessionUser._sIdPerfil, "", "")
-    End Sub
-
     Private Sub MA_CAT_COMP_EXT_Click(sender As System.Object, e As System.EventArgs) Handles MA_CAT_COMP_EXT.Click
         Permiso.Accesos("MA_CAT_COMP_EXT", "1", SessionUser._sIdPerfil, "E", "Catalogo de Compuestos ")
     End Sub
@@ -236,5 +232,13 @@ Public Class FrmAdmin
 
     Private Sub MA_PTEXT_MOD_Click(sender As System.Object, e As System.EventArgs) Handles MA_PTEXT_MOD.Click
         Permiso.Accesos("MA_PTEXT_MOD", "1", SessionUser._sIdPerfil, "E", "Modificación Pesajes ")
+    End Sub
+
+    Private Sub MA_Parametros_Click(sender As System.Object, e As System.EventArgs) Handles MA_Parametros.Click
+        Atlas.Administracion.Permissions.Access("MA_Parametros", SessionUser._sIdPerfil, "Parametrización del sistema")
+    End Sub
+
+    Private Sub MA_Monitor_Click(sender As System.Object, e As System.EventArgs) Handles MA_Monitor.Click
+        Atlas.Consultations.Permissions.Access("MA_Monitor", "1", SessionUser._sIdPerfil, "E", "Monitor Indicadores Extrusión", 0)
     End Sub
 End Class

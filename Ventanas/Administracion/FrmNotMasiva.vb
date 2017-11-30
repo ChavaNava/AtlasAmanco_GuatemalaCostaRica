@@ -263,65 +263,18 @@ Public Class FrmNotMasiva
                     Dim Mns_dup As String = ""
                     Dim Return_dup As Object
                     Dim Tbl_dup As String()
-                    WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Duplicado, Lista, SessionUser._sAmbiente)
+                    WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
                     Tbl_dup = WS_P.Tbl_resultado
                     Return_dup = WS_P.Return_SAP
                     Err_dup = Return_dup.ZTYPE
                     Mns_dup = Return_dup.ZMESSAGE
                     'Si no existe la notificacion regresa Error y se realiza la notificación normal
                     If Err_dup = "E" Then
-                        Select Case SessionUser._sCentro
-                            Case Is <> "CR01"
-                                '------Inicio Se ejecuta el WS Notificación
-                                WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Notifica, Lista, SessionUser._sAmbiente.Trim)
-                                Tbl = WS_P.Tbl_resultado
-                                SAP_Return = WS_P.Return_SAP
-                                Err = SAP_Return.ZTYPE
-                                Mns = SAP_Return.ZMESSAGE
-                                Doc_Con = SAP_Return.zmessage_v1
-                                SAP.agregarConsecutivosSAP(Doc_Con)
-                                System.Threading.Thread.Sleep(1000)
-                                'Regresa error se registra mensaje devuelto por sap
-                                If Err = "E" Or Err = "505" Or Err = "S" Or Err = "W" Then
-                                    MessageBox.Show(Mns + " ", "Error en SAP Notifique al Supervisor")
-                                    System.Threading.Thread.Sleep(1500)
-                                    InQry = ""
-                                    If RB_PT.Checked Then
-                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set MsgSAP = '" & Mns.Trim & "' "
-                                    Else
-                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
-                                    End If
-                                    InQry = InQry & " Where Folio = '" & Notifica_Folio.Trim & "'"
-                                    InsertQry(InQry)
-                                    'Sin error se actualiza estatus y se registra mensaje devuelto por sap
-                                Else
-                                    System.Threading.Thread.Sleep(1000)
-                                    If SAP.DocumentoSAP = "" And SAP.ConsecutivoSAP = "" Or SAP.DocumentoSAP = "0000000000" And SAP.ConsecutivoSAP = "00000000" Then
-                                        reg = "0"
-                                    Else
-                                        reg = "1"
-                                        InQry = ""
-                                        If RB_PT.Checked Then
-                                            InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set Notifica = '" & reg.Trim & "', "
-                                        Else
-                                            InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set Notifica = '" & reg.Trim & "', "
-                                        End If
-                                        InQry = InQry & "notificacionmasiva = '" & reg.Trim & "', "
-                                        InQry = InQry & "Documento_SAP = '" & SAP.DocumentoSAP & "', "
-                                        InQry = InQry & "Consecutivo_SAP = '" & SAP.ConsecutivoSAP & "', "
-                                        InQry = InQry & "MsgSAP = '" & Mns.Trim & "' "
-                                        InQry = InQry & " Where Folio = '" & Notifica_Folio.Trim & "'"
-                                        InsertQry(InQry)
-                                        System.Threading.Thread.Sleep(1500)
-                                        Avance_Notifica.ReportProgress((j / Contador) * 100)
-                                    End If
-                                End If
-                                '------Fin Se ejecuta el WS Notificación 
-                            Case Is = "CR01"
-
+                        Select Case SessionUser._sCentro.Trim
+                            Case Is = "CR01", "A001"
                                 If RB_PT.Checked Then
                                     '------Inicio Se ejecuta el WS Notificación
-                                    WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Notifica, Lista, SessionUser._sAmbiente.Trim)
+                                    WS_P.Consume_WS(Header_Notifica, Lista, SessionUser._sAmbiente.Trim)
                                     Tbl = WS_P.Tbl_resultado
                                     SAP_Return = WS_P.Return_SAP
                                     Err = SAP_Return.ZTYPE
@@ -370,10 +323,52 @@ Public Class FrmNotMasiva
                                     System.Threading.Thread.Sleep(1000)
                                     Dim CadenaTexto As String = ""
                                     CadenaTexto = Notifica_Usuario.Trim & "|" & Notifica_Folio.Trim
-                                    Consume_WS_CR01(SessionUser._sAlias.Trim, SessionUser._sAmbiente.Trim, CadenaTexto.Trim, Notifica_Compuestos.Trim, FechaPesajeSAP_CR, Notifica_ODF.Trim, P_Neto, Notifica_Folio.Trim)
+                                    Consume_WS_CR01(SessionUser._sAmbiente.Trim, CadenaTexto.Trim, Notifica_Compuestos.Trim, FechaPesajeSAP_CR, Notifica_ODF.Trim, P_Neto, Notifica_Folio.Trim)
                                     System.Threading.Thread.Sleep(1500)
                                     Avance_Notifica.ReportProgress((j / Contador) * 100)
                                     '------Fin Se ejecuta el WS Notificación de Scrap para CR01
+                                End If
+
+                            Case Else
+                                '------Inicio Se ejecuta el WS Notificación
+                                WS_P.Consume_WS(Header_Notifica, Lista, SessionUser._sAmbiente.Trim)
+                                Tbl = WS_P.Tbl_resultado
+                                SAP_Return = WS_P.Return_SAP
+                                Err = SAP_Return.ZTYPE
+                                Mns = SAP_Return.ZMESSAGE
+                                Doc_Con = SAP_Return.zmessage_v1
+                                SAP.agregarConsecutivosSAP(Doc_Con)
+                                System.Threading.Thread.Sleep(1000)
+                                'Regresa error se registra mensaje devuelto por sap
+                                If Err = "E" Or Err = "505" Or Err = "S" Or Err = "W" Then
+                                    MessageBox.Show(Mns + " ", "Error en SAP Notifique al Supervisor")
+                                    System.Threading.Thread.Sleep(1500)
+                                    InQry = ""
+                                    If RB_PT.Checked Then
+                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set MsgSAP = '" & Mns.Trim & "' "
+                                    Else
+                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
+                                    End If
+                                    InQry = InQry & " Where Folio = '" & Notifica_Folio.Trim & "'"
+                                    InsertQry(InQry)
+                                Else
+                                    'Sin error se actualiza estatus y se registra mensaje devuelto por sap
+                                    reg = "1"
+                                    InQry = ""
+                                    If RB_PT.Checked Then
+                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set Notifica = '" & reg.Trim & "', "
+                                    Else
+                                        InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set Notifica = '" & reg.Trim & "', "
+                                    End If
+                                    InQry = InQry & "notificacionmasiva = '" & reg.Trim & "', "
+                                    InQry = InQry & "Documento_SAP = '" & SAP.DocumentoSAP & "', "
+                                    InQry = InQry & "Consecutivo_SAP = '" & SAP.ConsecutivoSAP & "', "
+                                    InQry = InQry & "MsgSAP = '" & Mns.Trim & "' "
+                                    InQry = InQry & " Where Folio = '" & Notifica_Folio.Trim & "'"
+                                    InsertQry(InQry)
+                                    System.Threading.Thread.Sleep(1500)
+                                    Avance_Notifica.ReportProgress((j / Contador) * 100)
+                                    '------Fin Se ejecuta el WS Notificación 
                                 End If
                         End Select
                         'Si fue notificado se actualiza el registro
@@ -425,7 +420,7 @@ Public Class FrmNotMasiva
         DGV.Refresh()
     End Sub
 
-    Private Sub Consume_WS_CR01(ByVal Usr_Atlas As String, ID As String, CadenaTexto As String, Lt_Compuestos As String, _
+    Private Sub Consume_WS_CR01(ByVal ID As String, CadenaTexto As String, Lt_Compuestos As String, _
                                   FechaPesajeSAP As String, Orden As String, PesoNeto As String, folio As String)
 
         Dim Err As String
@@ -473,48 +468,43 @@ Public Class FrmNotMasiva
             Dim ls_resultp As New PTConProd._ISDFPS_TCUPS_KEY
             Dim TNumNoti As String = ""
             Dim TConsNoti As String = ""
-            Try
-                ls_Notificap.ZBUDAT = FechaPesajeSAP.Trim
-                ls_Notificap.ZCONSUME_REC = 0.0
-                ls_Notificap.ZENTRY_QNT = 0
-                ls_Notificap.ZISM01 = 0.0
-                ls_Notificap.ZISM02 = 0.0
-                ls_Notificap.ZISM03 = 0.0
-                ls_Notificap.ZISMNGEH1 = ""
-                ls_Notificap.ZISMNGEH2 = ""
-                ls_Notificap.ZISMNGEH3 = ""
-                ls_Notificap.ZMATNR_REC = ""
-                ls_Notificap.ZORDERID = Orden.Trim
-                ls_Notificap.ZRECOVERED = PesoNeto
-                ls_Notificap.ZVIRGIN = 0.0
-                'lo_wsamancomxp.Credentials = New System.Net.NetworkCredential("ATLAS", "m3x1ch3m4tl4s")
-                ls_resultp = lo_wsamancomxp.ZPPMXF001(CadenaTexto, Lt_Compuestos, ls_Notificap, ls_returnp)
-                TNumNoti = ls_resultp.RUECK
-                TConsNoti = ls_resultp.RMZHL
-                Err = ls_returnp.ZTYPE
-                Mns = ls_returnp.ZMESSAGE
+            ls_Notificap.ZBUDAT = FechaPesajeSAP.Trim
+            ls_Notificap.ZCONSUME_REC = 0.0
+            ls_Notificap.ZENTRY_QNT = 0
+            ls_Notificap.ZISM01 = 0.0
+            ls_Notificap.ZISM02 = 0.0
+            ls_Notificap.ZISM03 = 0.0
+            ls_Notificap.ZISMNGEH1 = ""
+            ls_Notificap.ZISMNGEH2 = ""
+            ls_Notificap.ZISMNGEH3 = ""
+            ls_Notificap.ZMATNR_REC = ""
+            ls_Notificap.ZORDERID = Orden.Trim
+            ls_Notificap.ZRECOVERED = PesoNeto
+            ls_Notificap.ZVIRGIN = 0.0
+            'lo_wsamancomxp.Credentials = New System.Net.NetworkCredential("ATLAS", "m3x1ch3m4tl4s")
+            ls_resultp = lo_wsamancomxp.ZPPMXF001(CadenaTexto, Lt_Compuestos, ls_Notificap, ls_returnp)
+            TNumNoti = ls_resultp.RUECK
+            TConsNoti = ls_resultp.RMZHL
+            Err = ls_returnp.ZTYPE
+            Mns = ls_returnp.ZMESSAGE
 
-                If Err = "E" Or Err = "505" Or Err = "S" Or Err = "W" Then
+            If Err = "E" Or Err = "505" Or Err = "S" Or Err = "W" Then
+                reg = "0"
+                MessageBox.Show(Mns + " " + Cod_Err + " ", "Error en SAP Notifique al Supervisor")
+                InQry = ""
+                InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
+                InQry = InQry & " Where Folio = '" & folio.Trim & "'"
+                InsertQry(InQry)
+                Exit Sub
+            Else
+                If (TNumNoti = "" Or TNumNoti = "NULL" Or TNumNoti = "0000000000") And (TConsNoti = "" Or TConsNoti = "NULL" Or TConsNoti = "00000000") Then
                     reg = "0"
-                    MessageBox.Show(Mns + " " + Cod_Err + " ", "Error en SAP Notifique al Supervisor")
-                    InQry = ""
-                    InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
-                    InQry = InQry & " Where Folio = '" & folio.Trim & "'"
-                    InsertQry(InQry)
-                    Exit Sub
+                    LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
                 Else
-                    If (TNumNoti = "" Or TNumNoti = "NULL" Or TNumNoti = "0000000000") And (TConsNoti = "" Or TConsNoti = "NULL" Or TConsNoti = "00000000") Then
-                        reg = "0"
-                        MsgBox("No Notifico a SAP")
-                        Return
-                    Else
-                        reg = "1"
-                        LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
-                    End If
+                    reg = "1"
+                    LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
                 End If
-            Catch ex As Exception
-                MsgBox("No se realizar notificación a SAP ", MsgBoxStyle.Critical, ex.Message)
-            End Try
+            End If
         End If
     End Sub
 

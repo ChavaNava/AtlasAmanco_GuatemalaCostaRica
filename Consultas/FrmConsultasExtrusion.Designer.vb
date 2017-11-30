@@ -27,6 +27,7 @@ Partial Class FrmConsultasExtrusion
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.DGV1 = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.DGV2 = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CerrarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -84,18 +85,17 @@ Partial Class FrmConsultasExtrusion
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtPorcsobrepeso = New System.Windows.Forms.TextBox()
-        Me.DGV2 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
+        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.GB2.SuspendLayout()
         Me.GB3.SuspendLayout()
         Me.GB4.SuspendLayout()
         Me.GB5.SuspendLayout()
-        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -104,7 +104,7 @@ Partial Class FrmConsultasExtrusion
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GroupBox1.Location = New System.Drawing.Point(0, 268)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1246, 422)
+        Me.GroupBox1.Size = New System.Drawing.Size(1428, 506)
         Me.GroupBox1.TabIndex = 45
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Consulta"
@@ -114,19 +114,19 @@ Partial Class FrmConsultasExtrusion
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(3, 18)
+        Me.TabControl1.Location = New System.Drawing.Point(3, 22)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1240, 401)
+        Me.TabControl1.Size = New System.Drawing.Size(1422, 481)
         Me.TabControl1.TabIndex = 52
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.DGV1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1232, 372)
+        Me.TabPage1.Size = New System.Drawing.Size(1414, 448)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Consulta Producción X Orden"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -143,19 +143,34 @@ Partial Class FrmConsultasExtrusion
         Me.DGV1.Location = New System.Drawing.Point(3, 3)
         Me.DGV1.Name = "DGV1"
         Me.DGV1.ReadOnly = True
-        Me.DGV1.Size = New System.Drawing.Size(1226, 366)
+        Me.DGV1.Size = New System.Drawing.Size(1408, 442)
         Me.DGV1.TabIndex = 1
         '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.DGV2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1232, 372)
+        Me.TabPage2.Size = New System.Drawing.Size(1232, 393)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Consulta Producción X Puesto de Trabajo"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'DGV2
+        '
+        Me.DGV2.AllowUserToAddRows = False
+        Me.DGV2.AllowUserToDeleteRows = False
+        Me.DGV2.AllowUserToOrderColumns = True
+        Me.DGV2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.DGV2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DGV2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGV2.Location = New System.Drawing.Point(3, 3)
+        Me.DGV2.Name = "DGV2"
+        Me.DGV2.ReadOnly = True
+        Me.DGV2.Size = New System.Drawing.Size(1226, 387)
+        Me.DGV2.TabIndex = 2
         '
         'MenuStrip1
         '
@@ -164,7 +179,7 @@ Partial Class FrmConsultasExtrusion
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CerrarToolStripMenuItem, Me.ConsultarToolStripMenuItem, Me.ExportarAExcelToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1246, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1428, 29)
         Me.MenuStrip1.TabIndex = 46
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -172,21 +187,21 @@ Partial Class FrmConsultasExtrusion
         '
         Me.CerrarToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Exit_1
         Me.CerrarToolStripMenuItem.Name = "CerrarToolStripMenuItem"
-        Me.CerrarToolStripMenuItem.Size = New System.Drawing.Size(82, 24)
+        Me.CerrarToolStripMenuItem.Size = New System.Drawing.Size(94, 25)
         Me.CerrarToolStripMenuItem.Text = "Cerrar"
         '
         'ConsultarToolStripMenuItem
         '
         Me.ConsultarToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Btn_Consulta
         Me.ConsultarToolStripMenuItem.Name = "ConsultarToolStripMenuItem"
-        Me.ConsultarToolStripMenuItem.Size = New System.Drawing.Size(96, 24)
+        Me.ConsultarToolStripMenuItem.Size = New System.Drawing.Size(117, 25)
         Me.ConsultarToolStripMenuItem.Text = "Consulta"
         '
         'ExportarAExcelToolStripMenuItem
         '
         Me.ExportarAExcelToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Btn_Excel
         Me.ExportarAExcelToolStripMenuItem.Name = "ExportarAExcelToolStripMenuItem"
-        Me.ExportarAExcelToolStripMenuItem.Size = New System.Drawing.Size(144, 24)
+        Me.ExportarAExcelToolStripMenuItem.Size = New System.Drawing.Size(179, 25)
         Me.ExportarAExcelToolStripMenuItem.Text = "Exportar a Excel"
         '
         'GB2
@@ -207,7 +222,7 @@ Partial Class FrmConsultasExtrusion
         Me.GB2.Controls.Add(Me.Label1)
         Me.GB2.Location = New System.Drawing.Point(0, 31)
         Me.GB2.Name = "GB2"
-        Me.GB2.Size = New System.Drawing.Size(287, 231)
+        Me.GB2.Size = New System.Drawing.Size(349, 231)
         Me.GB2.TabIndex = 51
         Me.GB2.TabStop = False
         Me.GB2.Text = "Filtros Consulta"
@@ -217,15 +232,15 @@ Partial Class FrmConsultasExtrusion
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(114, 169)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(53, 16)
+        Me.Label7.Size = New System.Drawing.Size(65, 20)
         Me.Label7.TabIndex = 64
         Me.Label7.Text = "Centro"
         '
         'TCentro
         '
-        Me.TCentro.Location = New System.Drawing.Point(173, 166)
+        Me.TCentro.Location = New System.Drawing.Point(205, 165)
         Me.TCentro.Name = "TCentro"
-        Me.TCentro.Size = New System.Drawing.Size(108, 22)
+        Me.TCentro.Size = New System.Drawing.Size(125, 26)
         Me.TCentro.TabIndex = 63
         '
         'Label6
@@ -233,15 +248,15 @@ Partial Class FrmConsultasExtrusion
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(13, 29)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(154, 16)
+        Me.Label6.Size = New System.Drawing.Size(186, 20)
         Me.Label6.TabIndex = 62
         Me.Label6.Text = "Orden de Producción"
         '
         'TOrden
         '
-        Me.TOrden.Location = New System.Drawing.Point(173, 26)
+        Me.TOrden.Location = New System.Drawing.Point(205, 25)
         Me.TOrden.Name = "TOrden"
-        Me.TOrden.Size = New System.Drawing.Size(108, 22)
+        Me.TOrden.Size = New System.Drawing.Size(125, 26)
         Me.TOrden.TabIndex = 61
         Me.TOrden.Text = "*"
         '
@@ -250,23 +265,23 @@ Partial Class FrmConsultasExtrusion
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(47, 141)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(120, 16)
+        Me.Label5.Size = New System.Drawing.Size(145, 20)
         Me.Label5.TabIndex = 60
         Me.Label5.Text = "Hora Fin Pesaje"
         '
         'THF
         '
-        Me.THF.Location = New System.Drawing.Point(173, 138)
+        Me.THF.Location = New System.Drawing.Point(205, 137)
         Me.THF.Name = "THF"
-        Me.THF.Size = New System.Drawing.Size(108, 22)
+        Me.THF.Size = New System.Drawing.Size(125, 26)
         Me.THF.TabIndex = 59
         Me.THF.Text = "23:59:59"
         '
         'THI
         '
-        Me.THI.Location = New System.Drawing.Point(173, 82)
+        Me.THI.Location = New System.Drawing.Point(205, 81)
         Me.THI.Name = "THI"
-        Me.THI.Size = New System.Drawing.Size(108, 22)
+        Me.THI.Size = New System.Drawing.Size(125, 26)
         Me.THI.TabIndex = 58
         Me.THI.Text = "00:00:01"
         '
@@ -275,16 +290,16 @@ Partial Class FrmConsultasExtrusion
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(31, 85)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 16)
+        Me.Label4.Size = New System.Drawing.Size(164, 20)
         Me.Label4.TabIndex = 57
         Me.Label4.Text = "Hora Inicio Pesaje"
         '
         'CB_Turno
         '
         Me.CB_Turno.FormattingEnabled = True
-        Me.CB_Turno.Location = New System.Drawing.Point(173, 194)
+        Me.CB_Turno.Location = New System.Drawing.Point(205, 193)
         Me.CB_Turno.Name = "CB_Turno"
-        Me.CB_Turno.Size = New System.Drawing.Size(108, 24)
+        Me.CB_Turno.Size = New System.Drawing.Size(125, 28)
         Me.CB_Turno.TabIndex = 56
         '
         'Label3
@@ -292,7 +307,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(119, 197)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 16)
+        Me.Label3.Size = New System.Drawing.Size(57, 20)
         Me.Label3.TabIndex = 55
         Me.Label3.Text = "Turno"
         '
@@ -300,18 +315,18 @@ Partial Class FrmConsultasExtrusion
         '
         Me.DTP_FF.CustomFormat = "yyyy-MM-dd"
         Me.DTP_FF.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP_FF.Location = New System.Drawing.Point(173, 110)
+        Me.DTP_FF.Location = New System.Drawing.Point(205, 109)
         Me.DTP_FF.Name = "DTP_FF"
-        Me.DTP_FF.Size = New System.Drawing.Size(108, 22)
+        Me.DTP_FF.Size = New System.Drawing.Size(125, 26)
         Me.DTP_FF.TabIndex = 54
         '
         'DTP_FI
         '
         Me.DTP_FI.CustomFormat = "yyyy-MM-dd"
         Me.DTP_FI.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP_FI.Location = New System.Drawing.Point(173, 54)
+        Me.DTP_FI.Location = New System.Drawing.Point(205, 53)
         Me.DTP_FI.Name = "DTP_FI"
-        Me.DTP_FI.Size = New System.Drawing.Size(108, 22)
+        Me.DTP_FI.Size = New System.Drawing.Size(125, 26)
         Me.DTP_FI.TabIndex = 53
         '
         'Label2
@@ -319,7 +334,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(38, 115)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(129, 16)
+        Me.Label2.Size = New System.Drawing.Size(155, 20)
         Me.Label2.TabIndex = 52
         Me.Label2.Text = "Fecha Fin Pesaje"
         '
@@ -328,7 +343,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(22, 59)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(145, 16)
+        Me.Label1.Size = New System.Drawing.Size(174, 20)
         Me.Label1.TabIndex = 51
         Me.Label1.Text = "Fecha Inicio Pesaje"
         '
@@ -338,9 +353,9 @@ Partial Class FrmConsultasExtrusion
         Me.GB3.Controls.Add(Me.RB_Detalle)
         Me.GB3.Controls.Add(Me.CB_Sub)
         Me.GB3.Controls.Add(Me.CB_Notif)
-        Me.GB3.Location = New System.Drawing.Point(293, 31)
+        Me.GB3.Location = New System.Drawing.Point(355, 31)
         Me.GB3.Name = "GB3"
-        Me.GB3.Size = New System.Drawing.Size(326, 231)
+        Me.GB3.Size = New System.Drawing.Size(391, 231)
         Me.GB3.TabIndex = 52
         Me.GB3.TabStop = False
         Me.GB3.Text = "Tipo Consulta"
@@ -348,9 +363,9 @@ Partial Class FrmConsultasExtrusion
         'RB_Resumen
         '
         Me.RB_Resumen.AutoSize = True
-        Me.RB_Resumen.Location = New System.Drawing.Point(6, 54)
+        Me.RB_Resumen.Location = New System.Drawing.Point(6, 57)
         Me.RB_Resumen.Name = "RB_Resumen"
-        Me.RB_Resumen.Size = New System.Drawing.Size(296, 20)
+        Me.RB_Resumen.Size = New System.Drawing.Size(363, 24)
         Me.RB_Resumen.TabIndex = 52
         Me.RB_Resumen.Text = "Consulta Producción X Orden Resumen"
         Me.RB_Resumen.UseVisualStyleBackColor = True
@@ -359,9 +374,9 @@ Partial Class FrmConsultasExtrusion
         '
         Me.RB_Detalle.AutoSize = True
         Me.RB_Detalle.Checked = True
-        Me.RB_Detalle.Location = New System.Drawing.Point(6, 28)
+        Me.RB_Detalle.Location = New System.Drawing.Point(6, 27)
         Me.RB_Detalle.Name = "RB_Detalle"
-        Me.RB_Detalle.Size = New System.Drawing.Size(281, 20)
+        Me.RB_Detalle.Size = New System.Drawing.Size(345, 24)
         Me.RB_Detalle.TabIndex = 51
         Me.RB_Detalle.TabStop = True
         Me.RB_Detalle.Text = "Consulta Producción X Orden Detalle"
@@ -370,9 +385,9 @@ Partial Class FrmConsultasExtrusion
         'CB_Sub
         '
         Me.CB_Sub.AutoSize = True
-        Me.CB_Sub.Location = New System.Drawing.Point(6, 106)
+        Me.CB_Sub.Location = New System.Drawing.Point(6, 117)
         Me.CB_Sub.Name = "CB_Sub"
-        Me.CB_Sub.Size = New System.Drawing.Size(180, 20)
+        Me.CB_Sub.Size = New System.Drawing.Size(219, 24)
         Me.CB_Sub.TabIndex = 50
         Me.CB_Sub.Text = "Incluir Sub Ensambles"
         Me.CB_Sub.UseVisualStyleBackColor = True
@@ -380,9 +395,9 @@ Partial Class FrmConsultasExtrusion
         'CB_Notif
         '
         Me.CB_Notif.AutoSize = True
-        Me.CB_Notif.Location = New System.Drawing.Point(6, 80)
+        Me.CB_Notif.Location = New System.Drawing.Point(6, 87)
         Me.CB_Notif.Name = "CB_Notif"
-        Me.CB_Notif.Size = New System.Drawing.Size(156, 20)
+        Me.CB_Notif.Size = New System.Drawing.Size(190, 24)
         Me.CB_Notif.TabIndex = 49
         Me.CB_Notif.Text = "Excluir Notificados"
         Me.CB_Notif.UseVisualStyleBackColor = True
@@ -399,9 +414,9 @@ Partial Class FrmConsultasExtrusion
         Me.GB4.Controls.Add(Me.Label16)
         Me.GB4.Controls.Add(Me.Label10)
         Me.GB4.Controls.Add(Me.TCantProgra)
-        Me.GB4.Location = New System.Drawing.Point(625, 31)
+        Me.GB4.Location = New System.Drawing.Point(752, 31)
         Me.GB4.Name = "GB4"
-        Me.GB4.Size = New System.Drawing.Size(239, 231)
+        Me.GB4.Size = New System.Drawing.Size(236, 231)
         Me.GB4.TabIndex = 53
         Me.GB4.TabStop = False
         Me.GB4.Text = "Cantidades"
@@ -413,7 +428,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label14.ForeColor = System.Drawing.Color.Black
         Me.Label14.Location = New System.Drawing.Point(8, 135)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(78, 16)
+        Me.Label14.Size = New System.Drawing.Size(92, 20)
         Me.Label14.TabIndex = 131
         Me.Label14.Text = "Pendiente"
         '
@@ -424,7 +439,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label15.ForeColor = System.Drawing.Color.Black
         Me.Label15.Location = New System.Drawing.Point(6, 51)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(47, 16)
+        Me.Label15.Size = New System.Drawing.Size(58, 20)
         Me.Label15.TabIndex = 134
         Me.Label15.Text = "O.D.F"
         '
@@ -436,7 +451,7 @@ Partial Class FrmConsultasExtrusion
         Me.TCantpendi.Location = New System.Drawing.Point(126, 135)
         Me.TCantpendi.Name = "TCantpendi"
         Me.TCantpendi.ReadOnly = True
-        Me.TCantpendi.Size = New System.Drawing.Size(87, 15)
+        Me.TCantpendi.Size = New System.Drawing.Size(87, 19)
         Me.TCantpendi.TabIndex = 132
         Me.TCantpendi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -447,7 +462,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label17.ForeColor = System.Drawing.Color.Black
         Me.Label17.Location = New System.Drawing.Point(6, 114)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(87, 16)
+        Me.Label17.Size = New System.Drawing.Size(104, 20)
         Me.Label17.TabIndex = 127
         Me.Label17.Text = "En proceso"
         '
@@ -459,7 +474,7 @@ Partial Class FrmConsultasExtrusion
         Me.TCantEntre.Location = New System.Drawing.Point(126, 93)
         Me.TCantEntre.Name = "TCantEntre"
         Me.TCantEntre.ReadOnly = True
-        Me.TCantEntre.Size = New System.Drawing.Size(87, 15)
+        Me.TCantEntre.Size = New System.Drawing.Size(87, 19)
         Me.TCantEntre.TabIndex = 129
         Me.TCantEntre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -471,7 +486,7 @@ Partial Class FrmConsultasExtrusion
         Me.TCantEnproce.Location = New System.Drawing.Point(126, 114)
         Me.TCantEnproce.Name = "TCantEnproce"
         Me.TCantEnproce.ReadOnly = True
-        Me.TCantEnproce.Size = New System.Drawing.Size(87, 15)
+        Me.TCantEnproce.Size = New System.Drawing.Size(87, 19)
         Me.TCantEnproce.TabIndex = 130
         Me.TCantEnproce.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -484,7 +499,7 @@ Partial Class FrmConsultasExtrusion
         Me.TOrdProdSel.Location = New System.Drawing.Point(126, 51)
         Me.TOrdProdSel.Name = "TOrdProdSel"
         Me.TOrdProdSel.ReadOnly = True
-        Me.TOrdProdSel.Size = New System.Drawing.Size(87, 15)
+        Me.TOrdProdSel.Size = New System.Drawing.Size(87, 19)
         Me.TOrdProdSel.TabIndex = 133
         Me.TOrdProdSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -495,7 +510,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label16.ForeColor = System.Drawing.Color.Black
         Me.Label16.Location = New System.Drawing.Point(6, 93)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(80, 16)
+        Me.Label16.Size = New System.Drawing.Size(94, 20)
         Me.Label16.TabIndex = 126
         Me.Label16.Text = "Entregada"
         '
@@ -506,7 +521,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label10.ForeColor = System.Drawing.Color.Black
         Me.Label10.Location = New System.Drawing.Point(6, 72)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(94, 16)
+        Me.Label10.Size = New System.Drawing.Size(110, 20)
         Me.Label10.TabIndex = 125
         Me.Label10.Text = "Programada"
         '
@@ -518,7 +533,7 @@ Partial Class FrmConsultasExtrusion
         Me.TCantProgra.Location = New System.Drawing.Point(126, 72)
         Me.TCantProgra.Name = "TCantProgra"
         Me.TCantProgra.ReadOnly = True
-        Me.TCantProgra.Size = New System.Drawing.Size(87, 15)
+        Me.TCantProgra.Size = New System.Drawing.Size(87, 19)
         Me.TCantProgra.TabIndex = 128
         Me.TCantProgra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -545,9 +560,9 @@ Partial Class FrmConsultasExtrusion
         Me.GB5.Controls.Add(Me.Label20)
         Me.GB5.Controls.Add(Me.Label21)
         Me.GB5.Controls.Add(Me.txtPorcsobrepeso)
-        Me.GB5.Location = New System.Drawing.Point(870, 31)
+        Me.GB5.Location = New System.Drawing.Point(994, 31)
         Me.GB5.Name = "GB5"
-        Me.GB5.Size = New System.Drawing.Size(376, 231)
+        Me.GB5.Size = New System.Drawing.Size(427, 231)
         Me.GB5.TabIndex = 54
         Me.GB5.TabStop = False
         Me.GB5.Text = "Totales"
@@ -562,7 +577,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtPorsprut.Location = New System.Drawing.Point(316, 135)
         Me.txtPorsprut.Name = "txtPorsprut"
         Me.txtPorsprut.ReadOnly = True
-        Me.txtPorsprut.Size = New System.Drawing.Size(48, 15)
+        Me.txtPorsprut.Size = New System.Drawing.Size(48, 19)
         Me.txtPorsprut.TabIndex = 122
         Me.txtPorsprut.Text = "0.00"
         Me.txtPorsprut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -573,7 +588,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(313, 18)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(21, 16)
+        Me.Label8.Size = New System.Drawing.Size(25, 20)
         Me.Label8.TabIndex = 121
         Me.Label8.Text = "%"
         '
@@ -583,7 +598,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(206, 18)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(75, 16)
+        Me.Label9.Size = New System.Drawing.Size(87, 20)
         Me.Label9.TabIndex = 120
         Me.Label9.Text = "Unidades"
         '
@@ -593,7 +608,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(108, 18)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(42, 16)
+        Me.Label11.Size = New System.Drawing.Size(51, 20)
         Me.Label11.TabIndex = 119
         Me.Label11.Text = "Kilos"
         '
@@ -606,7 +621,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotunproceso.Location = New System.Drawing.Point(209, 72)
         Me.txtTotunproceso.Name = "txtTotunproceso"
         Me.txtTotunproceso.ReadOnly = True
-        Me.txtTotunproceso.Size = New System.Drawing.Size(78, 15)
+        Me.txtTotunproceso.Size = New System.Drawing.Size(78, 19)
         Me.txtTotunproceso.TabIndex = 118
         Me.txtTotunproceso.Text = "0.00"
         Me.txtTotunproceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -620,7 +635,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotunprod.Location = New System.Drawing.Point(209, 51)
         Me.txtTotunprod.Name = "txtTotunprod"
         Me.txtTotunprod.ReadOnly = True
-        Me.txtTotunprod.Size = New System.Drawing.Size(78, 15)
+        Me.txtTotunprod.Size = New System.Drawing.Size(78, 19)
         Me.txtTotunprod.TabIndex = 117
         Me.txtTotunprod.Text = "0.00"
         Me.txtTotunprod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -634,7 +649,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotunscrap.Location = New System.Drawing.Point(209, 114)
         Me.txtTotunscrap.Name = "txtTotunscrap"
         Me.txtTotunscrap.ReadOnly = True
-        Me.txtTotunscrap.Size = New System.Drawing.Size(78, 15)
+        Me.txtTotunscrap.Size = New System.Drawing.Size(78, 19)
         Me.txtTotunscrap.TabIndex = 116
         Me.txtTotunscrap.Text = "0.00"
         Me.txtTotunscrap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -648,7 +663,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotkilosproceso.Location = New System.Drawing.Point(111, 72)
         Me.txtTotkilosproceso.Name = "txtTotkilosproceso"
         Me.txtTotkilosproceso.ReadOnly = True
-        Me.txtTotkilosproceso.Size = New System.Drawing.Size(84, 15)
+        Me.txtTotkilosproceso.Size = New System.Drawing.Size(84, 19)
         Me.txtTotkilosproceso.TabIndex = 115
         Me.txtTotkilosproceso.Text = "0.00"
         Me.txtTotkilosproceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -659,7 +674,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(6, 72)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(66, 16)
+        Me.Label12.Size = New System.Drawing.Size(78, 20)
         Me.Label12.TabIndex = 114
         Me.Label12.Text = "Proceso"
         '
@@ -672,7 +687,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotkilospurga.Location = New System.Drawing.Point(111, 156)
         Me.txtTotkilospurga.Name = "txtTotkilospurga"
         Me.txtTotkilospurga.ReadOnly = True
-        Me.txtTotkilospurga.Size = New System.Drawing.Size(84, 15)
+        Me.txtTotkilospurga.Size = New System.Drawing.Size(84, 19)
         Me.txtTotkilospurga.TabIndex = 113
         Me.txtTotkilospurga.Text = "0.00"
         Me.txtTotkilospurga.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -683,7 +698,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(6, 156)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(49, 16)
+        Me.Label13.Size = New System.Drawing.Size(58, 20)
         Me.Label13.TabIndex = 112
         Me.Label13.Text = "Purga"
         '
@@ -696,7 +711,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotkilossprut.Location = New System.Drawing.Point(111, 135)
         Me.txtTotkilossprut.Name = "txtTotkilossprut"
         Me.txtTotkilossprut.ReadOnly = True
-        Me.txtTotkilossprut.Size = New System.Drawing.Size(84, 15)
+        Me.txtTotkilossprut.Size = New System.Drawing.Size(84, 19)
         Me.txtTotkilossprut.TabIndex = 111
         Me.txtTotkilossprut.Text = "0.00"
         Me.txtTotkilossprut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -707,7 +722,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(6, 135)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(44, 16)
+        Me.Label18.Size = New System.Drawing.Size(54, 20)
         Me.Label18.TabIndex = 110
         Me.Label18.Text = "Sprut"
         '
@@ -721,7 +736,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtPorscrap.Location = New System.Drawing.Point(316, 114)
         Me.txtPorscrap.Name = "txtPorscrap"
         Me.txtPorscrap.ReadOnly = True
-        Me.txtPorscrap.Size = New System.Drawing.Size(48, 15)
+        Me.txtPorscrap.Size = New System.Drawing.Size(48, 19)
         Me.txtPorscrap.TabIndex = 109
         Me.txtPorscrap.Text = "0.00"
         Me.txtPorscrap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -735,7 +750,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotkilosprod.Location = New System.Drawing.Point(111, 51)
         Me.txtTotkilosprod.Name = "txtTotkilosprod"
         Me.txtTotkilosprod.ReadOnly = True
-        Me.txtTotkilosprod.Size = New System.Drawing.Size(84, 15)
+        Me.txtTotkilosprod.Size = New System.Drawing.Size(84, 19)
         Me.txtTotkilosprod.TabIndex = 108
         Me.txtTotkilosprod.Text = "0.00"
         Me.txtTotkilosprod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -749,7 +764,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtSobrepeso.Location = New System.Drawing.Point(111, 93)
         Me.txtSobrepeso.Name = "txtSobrepeso"
         Me.txtSobrepeso.ReadOnly = True
-        Me.txtSobrepeso.Size = New System.Drawing.Size(84, 15)
+        Me.txtSobrepeso.Size = New System.Drawing.Size(84, 19)
         Me.txtSobrepeso.TabIndex = 107
         Me.txtSobrepeso.Text = "0.00"
         Me.txtSobrepeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -763,7 +778,7 @@ Partial Class FrmConsultasExtrusion
         Me.txtTotkilosscrap.Location = New System.Drawing.Point(111, 114)
         Me.txtTotkilosscrap.Name = "txtTotkilosscrap"
         Me.txtTotkilosscrap.ReadOnly = True
-        Me.txtTotkilosscrap.Size = New System.Drawing.Size(84, 15)
+        Me.txtTotkilosscrap.Size = New System.Drawing.Size(84, 19)
         Me.txtTotkilosscrap.TabIndex = 106
         Me.txtTotkilosscrap.Text = "0.00"
         Me.txtTotkilosscrap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -774,7 +789,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.Location = New System.Drawing.Point(6, 114)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(49, 16)
+        Me.Label19.Size = New System.Drawing.Size(58, 20)
         Me.Label19.TabIndex = 105
         Me.Label19.Text = "Scrap"
         '
@@ -784,7 +799,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(6, 51)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(86, 16)
+        Me.Label20.Size = New System.Drawing.Size(103, 20)
         Me.Label20.TabIndex = 104
         Me.Label20.Text = "Producción"
         '
@@ -794,7 +809,7 @@ Partial Class FrmConsultasExtrusion
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.Location = New System.Drawing.Point(6, 93)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(85, 16)
+        Me.Label21.Size = New System.Drawing.Size(98, 20)
         Me.Label21.TabIndex = 103
         Me.Label21.Text = "Sobrepeso"
         '
@@ -808,31 +823,16 @@ Partial Class FrmConsultasExtrusion
         Me.txtPorcsobrepeso.Location = New System.Drawing.Point(316, 93)
         Me.txtPorcsobrepeso.Name = "txtPorcsobrepeso"
         Me.txtPorcsobrepeso.ReadOnly = True
-        Me.txtPorcsobrepeso.Size = New System.Drawing.Size(48, 15)
+        Me.txtPorcsobrepeso.Size = New System.Drawing.Size(48, 19)
         Me.txtPorcsobrepeso.TabIndex = 102
         Me.txtPorcsobrepeso.Text = "0.00"
         Me.txtPorcsobrepeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'DGV2
-        '
-        Me.DGV2.AllowUserToAddRows = False
-        Me.DGV2.AllowUserToDeleteRows = False
-        Me.DGV2.AllowUserToOrderColumns = True
-        Me.DGV2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        Me.DGV2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.DGV2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGV2.Location = New System.Drawing.Point(3, 3)
-        Me.DGV2.Name = "DGV2"
-        Me.DGV2.ReadOnly = True
-        Me.DGV2.Size = New System.Drawing.Size(1226, 366)
-        Me.DGV2.TabIndex = 2
-        '
         'FrmConsultasExtrusion
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1246, 690)
+        Me.ClientSize = New System.Drawing.Size(1428, 774)
         Me.Controls.Add(Me.GB5)
         Me.Controls.Add(Me.GB4)
         Me.Controls.Add(Me.GB3)
@@ -850,6 +850,7 @@ Partial Class FrmConsultasExtrusion
         Me.TabPage1.ResumeLayout(False)
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
+        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.GB2.ResumeLayout(False)
@@ -860,7 +861,6 @@ Partial Class FrmConsultasExtrusion
         Me.GB4.PerformLayout()
         Me.GB5.ResumeLayout(False)
         Me.GB5.PerformLayout()
-        CType(Me.DGV2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

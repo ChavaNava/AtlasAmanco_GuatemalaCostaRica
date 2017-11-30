@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports SQL_DATA
 Imports Atlas.Accesos.CLVarGlobales
+Imports Utili_Generales
 Public Class Generica_DB
 #Region "Variables Miembro"
     'Con_Resumen_Produccion
@@ -323,7 +324,7 @@ Public Class Generica_DB
         QRY_Grid = QRY_Grid & "Order by a.C_Material "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
@@ -351,7 +352,7 @@ Public Class Generica_DB
         Q = ""
         Q = "PA_ProduccionDetalle '" & SessionUser._sCentro.Trim & "', '" & ProduccionResumen._Status_Notif & "', '" & Area & "',  '" & ProduccionResumen.Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1"
 
-        objDa = New SqlDataAdapter(Q, AbrirAmanco)
+        objDa = New SqlDataAdapter(Q, AbrirAmanco(SessionUser._sAmbiente))
         objDs = New DataSet
         objDa.Fill(objDs)
         DG.DataSource = objDs.Tables(0)
@@ -442,7 +443,7 @@ Public Class Generica_DB
 
     Public Sub SummaryProductionOrder(ByRef Area As String, ByRef DG As DataGridView, ByVal P_Sobre_Peso As TextBox, _
                                            ByVal K_Sobrepeso As TextBox, ByVal Tk_Scrap As TextBox, ByVal Tp_Scrap As TextBox)
-        LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1 ")
+        LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro.Trim & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1 ")
         Count = 0
         Do While (LecturaBD.Read)
             Count = Count + 1
@@ -482,7 +483,7 @@ Public Class Generica_DB
     End Sub
 
     Public Sub SummaryProductionMachine(ByRef Area As String, ByRef DG As DataGridView)
-        LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 2 ")
+        LecturaQry("PA_ProduccionResumen '" & SessionUser._sCentro.Trim & "', '" & ProduccionResumen.Status_Notif & "', '" & Area & "', '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 2 ")
         Count = 0
         Do While (LecturaBD.Read)
             Count = Count + 1
@@ -519,95 +520,136 @@ Public Class Generica_DB
                              TBScrapPurgaPorc As TextBox, TBProg As TextBox, TBEnt As TextBox, TBProc As TextBox, TBPend As TextBox, _
                              Orden As String)
 
-        Q = ""
-        Q = "PA_Consulta_Produccion_Scrap " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "' "
+        If SessionUser._sCentro.Trim = "PE01" Or SessionUser._sCentro.Trim = "PE12" Then
+            Q = ""
+            Q = "PA_ConsultaProduccionScrap_1 " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "' "
+
+        Else
+            Q = ""
+            Q = "PA_Consulta_Produccion_Scrap " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "' "
+
+        End If
+
         Try
-            objDa = New SqlDataAdapter(Q, AbrirAmanco)
+            objDa = New SqlDataAdapter(Q, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
         Catch ex As Exception
+            LoadingForm.CloseForm()
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
-        DataGV.Columns(0).HeaderText = "Folio"
-        DataGV.Columns(1).HeaderText = "Tipo Producción"
-        DataGV.Columns(2).HeaderText = "Orden Producción"
-        DataGV.Columns(3).HeaderText = "Codigo Producto"
-        DataGV.Columns(4).HeaderText = "Fecha_Pesaje"
-        DataGV.Columns(5).HeaderText = "Hora Pesaje"
-        DataGV.Columns(6).HeaderText = "Bascula"
-        DataGV.Columns(7).HeaderText = "Tramos"
-        DataGV.Columns(7).Name = "Tramos"
-        DataGV.Columns(8).HeaderText = "Rack"
-        DataGV.Columns(9).HeaderText = "Peso Bruto"
-        DataGV.Columns(10).HeaderText = "Peso Tara"
-        DataGV.Columns(11).HeaderText = "Peso Neto"
-        DataGV.Columns(11).Name = "PesoNeto"
-        DataGV.Columns(12).Visible = False  'Peso Teorico"
-        DataGV.Columns(13).HeaderText = "Empaques"
-        DataGV.Columns(14).HeaderText = "Usuario"
-        DataGV.Columns(15).HeaderText = "Turno"
-        DataGV.Columns(16).HeaderText = "Documento SAP"
-        DataGV.Columns(17).HeaderText = "Consecutivo SAP"
-        DataGV.Columns(18).HeaderText = "Sobre Peso"
-        DataGV.Columns(19).HeaderText = "Puesto Trabajo"
-        DataGV.Columns(20).Visible = False  'Status Notificación
-        DataGV.Columns(21).Visible = False  'Mensaje
-        DataGV.Columns(22).Visible = False  'Tipo Produccion 1 = Producto Terminado 2 Scrap
 
-        LecturaQry("PA_Consulta_Produccion_Totales " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "' ")
-        If (LecturaBD.Read) Then
-            TBProrUnidades.Text = Format(LecturaBD(0), "#,##0.00")
-            TBProdKilos.Text = Format(LecturaBD(1), "#,##0.00")
-            TBSobrePesoPorc.Text = Format(LecturaBD(2), "#0.000")
-            TBSobrePesoKilos.Text = Format(LecturaBD(3), "#,##0.00")
+        If SessionUser._sCentro.Trim = "PE01" Or SessionUser._sCentro.Trim = "PE12" Then
+            DataGV.Columns(0).HeaderText = "Folio"
+            DataGV.Columns(1).HeaderText = "Tipo Producción"
+            DataGV.Columns(2).HeaderText = "Orden Producción"
+            DataGV.Columns(3).HeaderText = "Codigo Producto"
+            DataGV.Columns(4).HeaderText = "Descripción Producto"
+            DataGV.Columns(5).HeaderText = "Fecha_Turno"
+            DataGV.Columns(6).HeaderText = "Fecha_Pesaje"
+            DataGV.Columns(7).HeaderText = "Hora Pesaje"
+            DataGV.Columns(8).HeaderText = "Bascula"
+            DataGV.Columns(9).HeaderText = "Tramos"
+            DataGV.Columns(9).Name = "Tramos"
+            DataGV.Columns(10).HeaderText = "Rack"
+            DataGV.Columns(11).HeaderText = "Peso Bruto"
+            DataGV.Columns(12).HeaderText = "Peso Tara"
+            DataGV.Columns(13).HeaderText = "Peso Neto"
+            DataGV.Columns(13).Name = "PesoNeto"
+            DataGV.Columns(14).Visible = False  'Peso Teorico"
+            DataGV.Columns(15).HeaderText = "Empaques"
+            DataGV.Columns(16).HeaderText = "Usuario"
+            DataGV.Columns(17).HeaderText = "Turno"
+            DataGV.Columns(18).HeaderText = "Documento SAP"
+            DataGV.Columns(19).HeaderText = "Consecutivo SAP"
+            DataGV.Columns(20).HeaderText = "Sobre Peso"
+            DataGV.Columns(21).HeaderText = "Puesto Trabajo"
+            DataGV.Columns(22).Visible = False  'Status Notificación
+            DataGV.Columns(23).Visible = False  'Mensaje
+            DataGV.Columns(24).Visible = False  'Tipo Produccion 1 = Producto Terminado 2 Scrap
+        Else
+            DataGV.Columns(0).HeaderText = "Folio"
+            DataGV.Columns(1).HeaderText = "Tipo Producción"
+            DataGV.Columns(2).HeaderText = "Orden Producción"
+            DataGV.Columns(3).HeaderText = "Codigo Producto"
+            DataGV.Columns(4).HeaderText = "Fecha_Pesaje"
+            DataGV.Columns(5).HeaderText = "Hora Pesaje"
+            DataGV.Columns(6).HeaderText = "Bascula"
+            DataGV.Columns(7).HeaderText = "Tramos"
+            DataGV.Columns(7).Name = "Tramos"
+            DataGV.Columns(8).HeaderText = "Rack"
+            DataGV.Columns(9).HeaderText = "Peso Bruto"
+            DataGV.Columns(10).HeaderText = "Peso Tara"
+            DataGV.Columns(11).HeaderText = "Peso Neto"
+            DataGV.Columns(11).Name = "PesoNeto"
+            DataGV.Columns(12).Visible = False  'Peso Teorico"
+            DataGV.Columns(13).HeaderText = "Empaques"
+            DataGV.Columns(14).HeaderText = "Usuario"
+            DataGV.Columns(15).HeaderText = "Turno"
+            DataGV.Columns(16).HeaderText = "Documento SAP"
+            DataGV.Columns(17).HeaderText = "Consecutivo SAP"
+            DataGV.Columns(18).HeaderText = "Sobre Peso"
+            DataGV.Columns(19).HeaderText = "Puesto Trabajo"
+            DataGV.Columns(20).Visible = False  'Status Notificación
+            DataGV.Columns(21).Visible = False  'Mensaje
+            DataGV.Columns(22).Visible = False  'Tipo Produccion 1 = Producto Terminado 2 Scrap
         End If
-        LecturaBD.Close()
+               
 
-        LecturaQry("PA_Consulta_Produccion_Scrap_Proceso " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBProcUnidades.Text = Format(LecturaBD(0), "#,##0.00")
-            TBProcKilos.Text = Format(LecturaBD(1), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                LecturaQry("PA_Consulta_Produccion_Totales " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "' ")
+                If (LecturaBD.Read) Then
+                    TBProrUnidades.Text = Format(LecturaBD(0), "#,##0.00")
+                    TBProdKilos.Text = Format(LecturaBD(1), "#,##0.00")
+                    TBSobrePesoPorc.Text = Format(LecturaBD(2), "#0.000")
+                    TBSobrePesoKilos.Text = Format(LecturaBD(3), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        LecturaQry("PA_Consulta_Scrap_Totales " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '1', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBScrapKilos.Text = Format(LecturaBD(0), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                LecturaQry("PA_Consulta_Produccion_Scrap_Proceso " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBProcUnidades.Text = Format(LecturaBD(0), "#,##0.00")
+                    TBProcKilos.Text = Format(LecturaBD(1), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        LecturaQry("PA_Consulta_Scrap_Totales " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '2', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBScrapPurgaKilos.Text = Format(LecturaBD(0), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                LecturaQry("PA_Consulta_Scrap_Totales " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '1', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBScrapKilos.Text = Format(LecturaBD(0), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        'Consulta Cantidad Programada
-        LecturaQry("PA_Consulta_Cantidad_Programada " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBProg.Text = Format(LecturaBD(0), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                LecturaQry("PA_Consulta_Scrap_Totales " & SessionUser._sCentro.Trim & "_PesoScrap, '" & FI & "', '" & FF & "', '" & AreaProd & "', '2', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBScrapPurgaKilos.Text = Format(LecturaBD(0), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        'Consulta Cantidad Entregada
-        LecturaQry("PA_Consulta_Cantidad_Entregadas  '" & SessionUser._sCentro.Trim & "', '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBEnt.Text = Format(LecturaBD(0), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                'Consulta Cantidad Programada
+                LecturaQry("PA_Consulta_Cantidad_Programada " & SessionUser._sCentro.Trim & "_OrdenProduccion, " & SessionUser._sCentro.Trim & "_PesoProductoTerminado, '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBProg.Text = Format(LecturaBD(0), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        'Consulta Cantidad En Proceso
-        LecturaQry("PA_Consulta_Cantidad_Proceso  '" & SessionUser._sCentro.Trim & "', '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
-        If (LecturaBD.Read) Then
-            TBProc.Text = Format(LecturaBD(0), "#,##0.00")
-        End If
-        LecturaBD.Close()
+                'Consulta Cantidad Entregada
+                LecturaQry("PA_Consulta_Cantidad_Entregadas  '" & SessionUser._sCentro.Trim & "', '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBEnt.Text = Format(LecturaBD(0), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        TBPend.Text = Format((TBProg.Text - (TBEnt.Text - TBProc.Text)), "#,##0.00")
+                'Consulta Cantidad En Proceso
+                LecturaQry("PA_Consulta_Cantidad_Proceso  '" & SessionUser._sCentro.Trim & "', '" & FI & "', '" & FF & "', '" & AreaProd & "', '" & Orden & "'")
+                If (LecturaBD.Read) Then
+                    TBProc.Text = Format(LecturaBD(0), "#,##0.00")
+                End If
+                LecturaBD.Close()
 
-        TBScrapPorc.Text = Format((TBScrapKilos.Text / TBProdKilos.Text), "#0.000")
-        TBScrapPurgaPorc.Text = Format((TBScrapPurgaKilos.Text / TBProdKilos.Text), "#0.000")
+                TBPend.Text = Format((TBProg.Text - (TBEnt.Text - TBProc.Text)), "#,##0.00")
+
+                TBScrapPorc.Text = Format((TBScrapKilos.Text / TBProdKilos.Text), "#0.000")
+                TBScrapPurgaPorc.Text = Format((TBScrapPurgaKilos.Text / TBProdKilos.Text), "#0.000")
 
     End Sub
 
@@ -615,7 +657,7 @@ Public Class Generica_DB
         Q = ""
         Q = "PA_Consulta_ODF " & SessionUser._sCentro.Trim & "_OrdenProduccion, '" & FI & "', '" & FF & "', '" & ODF & "', '" & Area & "' "
         Try
-            objDa = New SqlDataAdapter(Q, AbrirAmanco)
+            objDa = New SqlDataAdapter(Q, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)

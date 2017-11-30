@@ -34,7 +34,7 @@ Public Class FrmAdmCatGrpcausasGenerales
 
         If txtCodigo.Text <> "" Then
 
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente)
 
 
             objCmd = New SqlCommand
@@ -78,7 +78,7 @@ Public Class FrmAdmCatGrpcausasGenerales
     Private Sub CargaGrid()
         Dim xSQL As String
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         Try
             If objCnnAmanco.State <> ConnectionState.Open Then
@@ -139,7 +139,7 @@ Public Class FrmAdmCatGrpcausasGenerales
 
         If txtCodigo.Text <> "" Then
 
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente)
 
             objCmd = New SqlCommand
             objCmd.CommandType = CommandType.Text
@@ -201,7 +201,7 @@ Public Class FrmAdmCatGrpcausasGenerales
 
         If txtCodigo.Text <> "" Then
 
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente)
 
             objCmd = New SqlCommand
             objCmd.CommandType = CommandType.Text

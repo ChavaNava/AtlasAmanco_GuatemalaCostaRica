@@ -258,13 +258,13 @@ Public Class ProductoTerminadoExtrusion
 
 #Region "Métodos"
     Public Sub cargarfuente()
-        Dim pfc As PrivateFontCollection = New PrivateFontCollection()
-        Dim fontFamily As FontFamily
-        'Obtenemos la fuente que se encuentra en el directorio de la aplicacion
-        'y la cargamos 
-        pfc.AddFontFile(My.Application.Info.DirectoryPath & "\IDAUHC39.TTF")
-        fontFamily = pfc.Families(0)
-        fuente = New Font(fontFamily, 16)
+        'Dim pfc As PrivateFontCollection = New PrivateFontCollection()
+        'Dim fontFamily As FontFamily
+        ''Obtenemos la fuente que se encuentra en el directorio de la aplicacion
+        ''y la cargamos 
+        'pfc.AddFontFile(My.Application.Info.DirectoryPath & "\IDAUHC39.TTF")
+        'fontFamily = pfc.Families(0)
+        'fuente = New Font(fontFamily, 16)
     End Sub
 
     Public Function FormatoCodigoBarras(ByVal code As String) As String

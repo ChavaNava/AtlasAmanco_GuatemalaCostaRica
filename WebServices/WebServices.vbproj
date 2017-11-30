@@ -182,21 +182,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServices_Prd_Gen_ZGLMX_ATLAS_GR</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.2.3.20:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Dev_Gen\</RelPath>
-      <UpdateFromURL>http://10.2.3.20:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebServices_Dev_Gen_ZGLMX_ATLAS_GRService</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://10.1.3.171:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PTConProd\</RelPath>
-      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://10.1.3.171:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -204,10 +193,21 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServices_PTConProd_ZPPMXF001Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Dev_Gen\</RelPath>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebServices_Dev_Gen_ZGLMX_ATLAS_GRService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PTConsumos\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -547,7 +547,7 @@ Public Class MenuPE
         FolioSiguiente = Proceso_Extrusion.Alta_PT(SessionUser._sAlias.Trim, N_Orden, SessionUser._sCentro, N_FechaPesaje, N_HoraPesaje, strNumeroBascula, CB_Rack.Text.Trim,
                                         N_PB, N_PT, N_PN, N_Empaques, N_Tramos, N_CodUser, N_FechaTurno, N_Turno, NP.r_Supervisor, N_Sobrepeso,
                                         N_Causa_SP.Trim, TPtoTrabajo.Text.Trim, N_PesoTeorico, N_StSobrePeso, N_Comp_1.Trim, N_Porc_1, N_Cant_1,
-                                        N_Comp_2.Trim, N_Porc_2, N_Cant_2, Ver_Atlas, N_Folio_Vale)
+                                        N_Comp_2.Trim, N_Porc_2, N_Cant_2, Atlas_Version._Version.Trim, N_Folio_Vale)
         TFolioAtlas.Text = FolioSiguiente
         'Se registra el Sobre / Bajo Peso
         If P_SP = True And N_StSobrePeso = "1" Then
@@ -577,7 +577,7 @@ Public Class MenuPE
                         Dim Mns_dup As String = ""
                         Dim Return_dup As Object
                         Dim Tbl_dup As String()
-                        WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Duplicado, Lista, SessionUser._sAmbiente)
+                        WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
                         Tbl_dup = WS_P.Tbl_resultado
                         Return_dup = WS_P.Return_SAP
                         Err_dup = Return_dup.ZTYPE
@@ -618,7 +618,7 @@ Public Class MenuPE
                 End Select
         End Select
         'Consulta cantidades
-        ProductionOrder.CalCantExt(SessionUser._sAlias.Trim, TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, SessionUser._sCentro.Trim)
+        ProductionOrder.CalCantExt(TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
         'Porcentaje de avance de la orden
         ProductionOrder_2.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8)
         BSiguiente.Enabled = True
@@ -753,7 +753,7 @@ Public Class MenuPE
                                                N_TipoScrap, N_PB, N_PT, N_PN, N_CodUser, N_Turno, CB_Causas.SelectedValue.Trim,
                                                CB_Defecto.SelectedValue.Trim, N_FechaTurno, TPtoTrabajo.Text.Trim, Reprocesado_Gen,
                                                N_OperadorLinea.Trim, N_Rack, N_Comp_1, N_Porc_1, N_Cant_1, N_Comp_2, N_Porc_2, N_Cant_2,
-                                               Lt_Compuestos.Trim, Ver_Atlas.Trim)
+                                               Lt_Compuestos.Trim, Atlas_Version._Version.Trim.Trim)
         Catch ex As Exception
             MensajeBox.Mostrar(ex.Message, "Critico", MensajeBox.TipoMensaje.Critical)
         End Try
@@ -901,20 +901,15 @@ Public Class MenuPE
         Dim Exist_Prd As Integer = 0
         Dim strOrden As String = ""
         Dim Producto As String = ""
-        Dim aryTextFile() As String
         If TOrden.Text <> "" Then
             'Verficia Orden Producción
             Dim Orden_Prod As String = ""
             Orden_Prod = TOrden.Text.Trim
             '--------------------------------------------------------------------------------------
-            strOrden = ProductionOrder.Valida_Exis_ODF_Atlas(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Orden_Prod, EXTINY)
-            aryTextFile = strOrden.Split("|")
-            Exist_Ord = aryTextFile(0)
-            Producto = aryTextFile(1)
-            Select Case Exist_Ord
-                Case Is = 1
+            Select Case ProductionOrder.Existe(Orden_Prod, EXTINY)
+                Case Is = True
                     'Verficia la existencia del producto
-                    Exist_Prd = ProductionOrder.Valida_Existencia_Producto(SessionUser._sAlias.Trim, Producto.Trim, SessionUser._sCentro.Trim, EXTINY)
+                    Exist_Prd = ProductionOrder.Existencia_Producto(EXTINY)
                     Select Case Exist_Prd
                         Case Is = 1
                             'Lee la orden y presenta la información
@@ -935,7 +930,7 @@ Public Class MenuPE
                             'Activa Combo Box Operdores de Linea
                             Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
                             'Consulta cantidades
-                            ProductionOrder.CalCantExt(SessionUser._sAlias.Trim, Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, SessionUser._sCentro.Trim)
+                            ProductionOrder.CalCantExt(Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
                             'Porcentaje de avance de la orden
                             ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
                             'Asigan Peso Teorico
@@ -945,7 +940,7 @@ Public Class MenuPE
                             TOrden.Focus()
                             Exit Sub
                     End Select
-                Case Is = 0
+                Case Is = False
                     'Dar de alta la orden
                     MensajeBox.Mostrar("Orden de Producción no existe en A-tlas se procede a darla de alta ", "Aviso", MensajeBox.TipoMensaje.Information)
                     'ProductionOrder.Inserta_ODF_EXT(Orden_Prod.Trim, "T", Me, CodOperador.Text.Trim, EXTINY, SessionUser._sAlias.Trim, _
@@ -1447,7 +1442,7 @@ Public Class MenuPE
             Exit Sub
         Else
             'PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
-            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TipoProd.Trim, SessionUser._sAmbiente)
+            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, TipoProd.Trim)
             LimpiaObjetos()
             MensajeBox.Mostrar("La orden de producción a sido actualizada ingrese nuevamente el numero de orden", "Actualizado", MensajeBox.TipoMensaje.Good)
             TOrden.Focus()

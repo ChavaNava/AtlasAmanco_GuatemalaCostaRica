@@ -34,9 +34,14 @@ Public Class FrmConsultasExt
     End Sub
 
     Private Sub DGV_CellFormatting(sender As System.Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DGV.CellFormatting
-        Status_Not = (DGV.Rows(e.RowIndex).Cells(20).Value)
+        If SessionUser._sCentro.Trim = "PE01" Or SessionUser._sCentro.Trim = "PE12" Then
+            Status_Not = (DGV.Rows(e.RowIndex).Cells(22).Value)
+        Else
+            Status_Not = (DGV.Rows(e.RowIndex).Cells(20).Value)
+        End If
 
-        If Status_Not = "1" Then
+
+        If Status_Not = "1" Or Status_Not = "5" Then
             e.CellStyle.BackColor = Color.LightGreen
             e.CellStyle.ForeColor = Color.Black
         ElseIf Status_Not = "0" Or Status_Not = "4" Or Status_Not = "3" Then
@@ -56,18 +61,29 @@ Public Class FrmConsultasExt
         If oldRowIndex <> -1 Then
 
             Try
-
-                N_Folio = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(0).Value.ToString
-                N_Ord = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(2).Value.ToString
-                N_Prod = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(3).Value.ToString
-                N_Tramos = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(7).Value.ToString
-                N_PN = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(11).Value.ToString
-                N_DocSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(16).Value.ToString
-                N_FolioSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(17).Value.ToString
-                N_Status = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(20).Value.ToString
-                TMensajes.Text = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(21).Value.ToString
-                N_TipoProd = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(22).Value.ToString
-
+                If SessionUser._sCentro.Trim = "PE01" Or SessionUser._sCentro.Trim = "PE12" Then
+                    N_Folio = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(0).Value.ToString
+                    N_Ord = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(2).Value.ToString
+                    N_Prod = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(3).Value.ToString
+                    N_Tramos = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(9).Value.ToString
+                    N_PN = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(13).Value.ToString
+                    N_DocSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(18).Value.ToString
+                    N_FolioSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(19).Value.ToString
+                    N_Status = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(22).Value.ToString
+                    TMensajes.Text = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(23).Value.ToString
+                    N_TipoProd = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(24).Value.ToString
+                Else
+                    N_Folio = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(0).Value.ToString
+                    N_Ord = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(2).Value.ToString
+                    N_Prod = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(3).Value.ToString
+                    N_Tramos = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(7).Value.ToString
+                    N_PN = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(11).Value.ToString
+                    N_DocSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(16).Value.ToString
+                    N_FolioSAP = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(17).Value.ToString
+                    N_Status = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(20).Value.ToString
+                    TMensajes.Text = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(21).Value.ToString
+                    N_TipoProd = DGV.Rows(DGV.CurrentCell.RowIndex).Cells(22).Value.ToString
+                End If
 
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "VENTANA DE ERROR * * * ")
@@ -132,13 +148,17 @@ Public Class FrmConsultasExt
 
 #Region "Metodos"
     Public Sub Grid_Load()
-
+        LoadingForm.ShowLoading()
         Str_FI = DTP_FI.Text.Trim
         Str_FF = DTP_FF.Text.Trim
-
-        DBG.Pesajes_PT_SC(Str_FI, Str_FF, DGV, Seccion, TProdKilos, TProdUnidades, TProcKilos, TProcUnidades, TSobPesoKilos, TSobPesoPorc, TScrapKilos, _
+        Try
+            DBG.Pesajes_PT_SC(Str_FI, Str_FF, DGV, Seccion, TProdKilos, TProdUnidades, TProcKilos, TProcUnidades, TSobPesoKilos, TSobPesoPorc, TScrapKilos, _
                           TScrapPorc, TScrapPurKilos, TScrapPurPorc, TProg, TEnt, TProc, TPend, TOrdProd.Text.Trim)
-
+            LoadingForm.CloseForm()
+        Catch ex As Exception
+            LoadingForm.CloseForm()
+            MensajeBox.Mostrar(ex.ToString, "Error", MensajeBox.TipoMensaje.Critical)
+        End Try
     End Sub
 #End Region
 

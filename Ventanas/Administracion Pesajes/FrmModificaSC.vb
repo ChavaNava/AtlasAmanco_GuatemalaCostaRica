@@ -158,7 +158,7 @@ Public Class FrmModificaSC
         QRY_Grid = QRY_Grid & "Order by b.Folio"
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGV_BP.DataSource = objDs.Tables(0)

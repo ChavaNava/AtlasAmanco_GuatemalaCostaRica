@@ -543,6 +543,11 @@ Module MdFormControl
                         item.Visible = False
                         item.Enabled = False
                     Next
+                    For Each item In FrmMain.MP_ORDENES.DropDownItems
+                        Item_Name = item.Name
+                        item.Visible = False
+                        item.Enabled = False
+                    Next
                     For Each item In FrmMain.MP_ALM.DropDownItems
                         Item_Name = item.Name
                         item.Visible = False
@@ -650,7 +655,42 @@ Module MdFormControl
                             item.Enabled = True
                         End If
                     Next
+                    For Each item In FrmMain.MP_ROT.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
+                    For Each item In FrmMain.MP_GEO.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
                     For Each item In FrmMain.MP_SUP.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
+                    For Each item In FrmMain.MP_ORDENES.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
+                    For Each item In FrmMain.MP_CALIDAD.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
+                    For Each item In FrmMain.MP_PLANEACION.DropDownItems
                         Item_Name = item.Name
                         If Item_Name = Modulo.Trim Then
                             item.Visible = True

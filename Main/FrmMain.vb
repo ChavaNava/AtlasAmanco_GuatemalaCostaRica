@@ -9,6 +9,14 @@ Imports System.IO
 Imports System.Drawing.Text
 Imports System.IO.Ports
 Imports Atlas.Accesos.CLVarGlobales
+Imports Atlas.Accesos.Puertos
+Imports Atlas.Consultations
+Imports Atlas.Calidad
+Imports Atlas.Planeacion
+Imports Atlas.Tiempos
+Imports Atlas.ProduccionProceso
+Imports Atlas.ExtrusionPeru
+
 
 Public Class FrmMain
 #Region "Variables miembro"
@@ -73,14 +81,8 @@ Public Class FrmMain
     End Sub
 
     Public Sub Logo(ByVal Cadena As Integer)
-
-        Select Case Cadena
-            Case Is = 1
-                Panel3.BackgroundImage = Global.Atlas.My.Resources.soluciones
-                Panel3.BackgroundImageLayout = ImageLayout.Zoom
                 Me.Text = "MEXICHEM SOLUCIONES INTEGRALES"
                 MenuStrip1.Visible = True
-        End Select
     End Sub
 
     Private Sub Files()
@@ -165,15 +167,25 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_PTE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_PTE.Click
-        Permiso.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
+        Select Case SessionUser._sCentro.Trim
+            Case Is = "PE01"
+                PermisosExtrusionPeru.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
+            Case Else
+                Permiso.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
+        End Select
     End Sub
 
-    Private Sub MP_SUP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_SUP.Click
-        Permiso.Accesos("MP_SUP", "", SessionUser._sIdPerfil, "", "Supervisión")
-    End Sub
+    'Private Sub MP_SUP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_SUP.Click
+    '    Permiso.Accesos("MP_SUP", "", SessionUser._sIdPerfil, "", "Supervisión")
+    'End Sub
 
     Private Sub MP_PTI_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_PTI.Click
-        Permiso.Accesos("MP_PTI", "2", SessionUser._sIdPerfil, "I", "Captura Pesaje")
+        Select Case SessionUser.sCentro
+            Case Is = "AR01"
+
+            Case Else
+                Permiso.Accesos("MP_PTI", "2", SessionUser._sIdPerfil, "I", "Captura Pesaje")
+        End Select
     End Sub
 
     Private Sub MP_CINY_Click(sender As System.Object, e As System.EventArgs)
@@ -248,11 +260,11 @@ Public Class FrmMain
                     strNumeroBascula = "M"
                 Case Else
                     If C = 0 Then
-                        SP = SerialPort1
+                        SP = SerialPort_1
                     ElseIf C = 1 Then
-                        SP = SerialPort2
+                        SP = SerialPort_2
                     ElseIf C = 2 Then
-                        SP = SerialPort3
+                        SP = SerialPort_3
                     End If
                     QRY = "Select Puerto,Baudios,BitsDatos,Ch1,Ch2,LenghtLec,AddChar "
                     QRY = QRY & "From CNF_basculas "
@@ -340,7 +352,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_NEXT_Click(sender As System.Object, e As System.EventArgs) Handles MP_NEXT.Click
-        Atlas.ExtrusionProcess.Permissions.Access("MP_NEXT", SessionUser._sIdPerfil, "Notifica ")
+        ExtrusionProcess.Permissions.Access("MP_NEXT", SessionUser._sIdPerfil, "Notifica ")
     End Sub
 
     Private Sub MP_REP_PTE_Click(sender As System.Object, e As System.EventArgs) Handles MP_REP_PTE.Click
@@ -357,6 +369,37 @@ Public Class FrmMain
 
     Private Sub MP_Control_Tiempos_Iny_Click(sender As Object, e As EventArgs) Handles MP_Control_Tiempos_Iny.Click
         'PermisoTiempos.Accesos("MP_Control_Tiempos_Iny", "2", SessionUser._sIdPerfil, "I", "Captura Tiempos Productivos / Paro")
+    End Sub
+
+    Private Sub MP_REXT_Click(sender As System.Object, e As System.EventArgs) Handles MP_REXT.Click
+        Consultations.Permissions.Access("MP_REXT", "1", SessionUser._sIdPerfil, "E", "Reportes Producción ", 0)
+    End Sub
+
+    Private Sub MPE_A_Click(sender As System.Object, e As System.EventArgs) Handles MPE_A.Click
+        Consultations.Permissions.Access("MP_MPEA", "1", SessionUser._sIdPerfil, "E", "Monitor Producción ", 1)
+    End Sub
+
+    Private Sub MP_AvanceProduccion_Click(sender As Object, e As EventArgs) Handles MP_AvanceProduccion.Click
+        Calidad.Permissions.Access("MP_AvanceProduccion", "1", SessionUser._sIdPerfil, "E", "Consulta Avance Producción ", 0)
+    End Sub
+
+    Private Sub MP_ProduccionPlaneacion_Click(sender As Object, e As EventArgs) Handles MP_ProduccionPlaneacion.Click
+        Planeacion.Permissions.Access("MP_ProduccionPlaneacion", "1", SessionUser._sIdPerfil, "E", "Consulta Avance Producción ", 1)
+    End Sub
+
+    Private Sub MP_RHE_Click(sender As Object, e As EventArgs) Handles MP_RHE.Click
+        PermisoTiempos.Accesos("MP_RHE", 1, SessionUser._sIdPerfil, "E", "Registro Horas Paro Extrusion")
+    End Sub
+
+    Private Sub MP_RHI_Click(sender As Object, e As EventArgs) Handles MP_RHI.Click
+        PermisoTiempos.Accesos("MP_RHI", 2, SessionUser._sIdPerfil, "I", "Registro Horas Paro Inyección")
+    End Sub
+    Private Sub MP_ORDEXT_Click(sender As Object, e As EventArgs) Handles MP_ORDEXT.Click
+        PermisoProduccionProceso.Accesos("MP_ORDEXT", 1, SessionUser._sIdPerfil, "E", "Producción en Proceso Extrusión")
+    End Sub
+
+    Private Sub MP_ORDINY_Click(sender As Object, e As EventArgs) Handles MP_ORDINY.Click
+        PermisoProduccionProceso.Accesos("MP_PPI", 2, SessionUser._sIdPerfil, "I", "Producción en Proceso Inyección")
     End Sub
 
 End Class

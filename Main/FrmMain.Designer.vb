@@ -26,8 +26,6 @@ Partial Class FrmMain
         Me.SerialPort3 = New System.IO.Ports.SerialPort(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.LVersion = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.Salir = New System.Windows.Forms.ToolStripMenuItem()
         Me.Reiniciar = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,6 +40,9 @@ Partial Class FrmMain
         Me.MP_NEXT = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_REP_PTE = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_REP_SCE = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_MPE = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MPE_A = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MPE_D = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_INY = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_PTI = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_ENS = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,15 +53,42 @@ Partial Class FrmMain
         Me.MP_ROT = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_PTR = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_GEO = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MP_SUP = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MP_ALM = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MP_ALE = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MP_ALI = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_CON = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_PROD_DR = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_PROD_DR_EXT = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_PROD_DR_INY = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_CPROD = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CEXT = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CEXTR = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MR_CESC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CEHP = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_REXT = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RESC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_REHP = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CINY = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CINYEC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CISC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CIHP = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RPINY = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RISC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RIHP = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_CALIDAD = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_AvanceProduccion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_PLANEACION = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ProduccionPlaneacion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_SUP = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RHE = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_RHI = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ORDENES = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ORDEXT = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ORDINY = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ALM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ALE = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MP_ALI = New System.Windows.Forms.ToolStripMenuItem()
         Me.CNFG = New System.Windows.Forms.ToolStripMenuItem()
         Me.MP_ACTUALIZA = New System.Windows.Forms.ToolStripMenuItem()
         Me.Acerca_de = New System.Windows.Forms.ToolStripMenuItem()
@@ -75,11 +103,12 @@ Partial Class FrmMain
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LVersion})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 683)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StatusStrip1.Size = New System.Drawing.Size(1368, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1735, 22)
         Me.StatusStrip1.TabIndex = 313
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -91,24 +120,6 @@ Partial Class FrmMain
         Me.LVersion.Size = New System.Drawing.Size(52, 17)
         Me.LVersion.Text = "1.0.0.1"
         '
-        'Panel3
-        '
-        Me.Panel3.BackgroundImage = Global.Atlas.My.Resources.Resources.Logo_Fluent
-        Me.Panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel3.Location = New System.Drawing.Point(647, 368)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(142, 144)
-        Me.Panel3.TabIndex = 316
-        '
-        'Panel4
-        '
-        Me.Panel4.BackgroundImage = Global.Atlas.My.Resources.Resources.mexichem
-        Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel4.Location = New System.Drawing.Point(199, 186)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1039, 164)
-        Me.Panel4.TabIndex = 317
-        '
         'MenuStrip1
         '
         Me.MenuStrip1.AutoSize = False
@@ -116,10 +127,10 @@ Partial Class FrmMain
         Me.MenuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.MenuStrip1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(30, 30)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Salir, Me.Reiniciar, Me.MP_ADM, Me.MP_EXT, Me.MP_INY, Me.MP_ROT, Me.MP_GEO, Me.MP_SUP, Me.MP_ALM, Me.MP_CON, Me.CNFG, Me.Acerca_de})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Salir, Me.Reiniciar, Me.MP_ADM, Me.MP_EXT, Me.MP_INY, Me.MP_ROT, Me.MP_GEO, Me.MP_CON, Me.MP_CALIDAD, Me.MP_PLANEACION, Me.MP_SUP, Me.MP_ORDENES, Me.MP_ALM, Me.CNFG, Me.Acerca_de})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1368, 44)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1735, 38)
         Me.MenuStrip1.TabIndex = 312
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -127,29 +138,29 @@ Partial Class FrmMain
         '
         Me.Salir.Image = Global.Atlas.My.Resources.Resources.SalirAtlas
         Me.Salir.Name = "Salir"
-        Me.Salir.Size = New System.Drawing.Size(92, 40)
-        Me.Salir.Text = "Salir    "
+        Me.Salir.Size = New System.Drawing.Size(80, 34)
+        Me.Salir.Text = "Salir "
         '
         'Reiniciar
         '
         Me.Reiniciar.Image = Global.Atlas.My.Resources.Resources.reiniciarsesion
         Me.Reiniciar.Name = "Reiniciar"
-        Me.Reiniciar.Size = New System.Drawing.Size(141, 40)
+        Me.Reiniciar.Size = New System.Drawing.Size(141, 34)
         Me.Reiniciar.Text = "Reiniciar Sesión"
         '
         'MP_ADM
         '
         Me.MP_ADM.Image = Global.Atlas.My.Resources.Resources.user_admin
         Me.MP_ADM.Name = "MP_ADM"
-        Me.MP_ADM.Size = New System.Drawing.Size(134, 40)
+        Me.MP_ADM.Size = New System.Drawing.Size(134, 34)
         Me.MP_ADM.Text = "Administración"
         '
         'MP_EXT
         '
-        Me.MP_EXT.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PTE, Me.MP_PTEC, Me.MP_PTE_OLD, Me.MP_SCE_OLD, Me.MP_Control_Tiempos_Ext, Me.MP_MPExtrusion, Me.MP_NEXT, Me.MP_REP_PTE, Me.MP_REP_SCE})
+        Me.MP_EXT.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PTE, Me.MP_PTEC, Me.MP_PTE_OLD, Me.MP_SCE_OLD, Me.MP_Control_Tiempos_Ext, Me.MP_MPExtrusion, Me.MP_NEXT, Me.MP_REP_PTE, Me.MP_REP_SCE, Me.MP_MPE})
         Me.MP_EXT.Image = Global.Atlas.My.Resources.Resources.Extrusion_002
         Me.MP_EXT.Name = "MP_EXT"
-        Me.MP_EXT.Size = New System.Drawing.Size(102, 40)
+        Me.MP_EXT.Size = New System.Drawing.Size(102, 34)
         Me.MP_EXT.Text = "Extrusión"
         '
         'MP_PTE
@@ -206,12 +217,31 @@ Partial Class FrmMain
         Me.MP_REP_SCE.Size = New System.Drawing.Size(315, 22)
         Me.MP_REP_SCE.Text = "Reportes Scrap"
         '
+        'MP_MPE
+        '
+        Me.MP_MPE.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MPE_A, Me.MPE_D})
+        Me.MP_MPE.Name = "MP_MPE"
+        Me.MP_MPE.Size = New System.Drawing.Size(315, 22)
+        Me.MP_MPE.Text = "Monitor de Producción Extrusión"
+        '
+        'MPE_A
+        '
+        Me.MPE_A.Name = "MPE_A"
+        Me.MPE_A.Size = New System.Drawing.Size(152, 22)
+        Me.MPE_A.Text = "Activar"
+        '
+        'MPE_D
+        '
+        Me.MPE_D.Name = "MPE_D"
+        Me.MPE_D.Size = New System.Drawing.Size(152, 22)
+        Me.MPE_D.Text = "Detener"
+        '
         'MP_INY
         '
         Me.MP_INY.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PTI, Me.MP_ENS, Me.MP_SCI, Me.MP_PTP, Me.MP_Control_Tiempos_Iny, Me.ControlProgramaDeProducciónToolStripMenuItem})
         Me.MP_INY.Image = Global.Atlas.My.Resources.Resources.Inyeccion_003
         Me.MP_INY.Name = "MP_INY"
-        Me.MP_INY.Size = New System.Drawing.Size(103, 40)
+        Me.MP_INY.Size = New System.Drawing.Size(103, 34)
         Me.MP_INY.Text = "Inyección"
         '
         'MP_PTI
@@ -253,9 +283,9 @@ Partial Class FrmMain
         'MP_ROT
         '
         Me.MP_ROT.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PTR})
-        Me.MP_ROT.Image = Global.Atlas.My.Resources.Resources.Rotomoldeo_03
+        Me.MP_ROT.Image = Global.Atlas.My.Resources.Resources.Rotomoldeo_021
         Me.MP_ROT.Name = "MP_ROT"
-        Me.MP_ROT.Size = New System.Drawing.Size(118, 40)
+        Me.MP_ROT.Size = New System.Drawing.Size(118, 34)
         Me.MP_ROT.Text = "Rotomoldeo"
         Me.MP_ROT.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
@@ -269,42 +299,15 @@ Partial Class FrmMain
         '
         Me.MP_GEO.Image = Global.Atlas.My.Resources.Resources.GeoTextiles_01
         Me.MP_GEO.Name = "MP_GEO"
-        Me.MP_GEO.Size = New System.Drawing.Size(116, 40)
+        Me.MP_GEO.Size = New System.Drawing.Size(116, 34)
         Me.MP_GEO.Text = "GeoTextiles"
-        '
-        'MP_SUP
-        '
-        Me.MP_SUP.Image = CType(resources.GetObject("MP_SUP.Image"), System.Drawing.Image)
-        Me.MP_SUP.Name = "MP_SUP"
-        Me.MP_SUP.Size = New System.Drawing.Size(116, 40)
-        Me.MP_SUP.Text = "Supervisión"
-        '
-        'MP_ALM
-        '
-        Me.MP_ALM.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_ALE, Me.MP_ALI})
-        Me.MP_ALM.Image = CType(resources.GetObject("MP_ALM.Image"), System.Drawing.Image)
-        Me.MP_ALM.Name = "MP_ALM"
-        Me.MP_ALM.Size = New System.Drawing.Size(99, 40)
-        Me.MP_ALM.Text = "Almacen"
-        '
-        'MP_ALE
-        '
-        Me.MP_ALE.Name = "MP_ALE"
-        Me.MP_ALE.Size = New System.Drawing.Size(129, 22)
-        Me.MP_ALE.Text = "Extrusión"
-        '
-        'MP_ALI
-        '
-        Me.MP_ALI.Name = "MP_ALI"
-        Me.MP_ALI.Size = New System.Drawing.Size(129, 22)
-        Me.MP_ALI.Text = "Inyección"
         '
         'MP_CON
         '
-        Me.MP_CON.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PROD_DR, Me.MP_CPROD})
-        Me.MP_CON.Image = Global.Atlas.My.Resources.Resources.Consulta_1
+        Me.MP_CON.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_PROD_DR, Me.MP_CPROD, Me.MP_CEXT, Me.MP_CINY})
+        Me.MP_CON.Image = Global.Atlas.My.Resources.Resources.Consulta_02
         Me.MP_CON.Name = "MP_CON"
-        Me.MP_CON.Size = New System.Drawing.Size(105, 40)
+        Me.MP_CON.Size = New System.Drawing.Size(105, 34)
         Me.MP_CON.Text = "Consultas"
         '
         'MP_PROD_DR
@@ -332,12 +335,214 @@ Partial Class FrmMain
         Me.MP_CPROD.Size = New System.Drawing.Size(239, 22)
         Me.MP_CPROD.Text = "Producción"
         '
+        'MP_CEXT
+        '
+        Me.MP_CEXT.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultasToolStripMenuItem, Me.ReportesToolStripMenuItem})
+        Me.MP_CEXT.Name = "MP_CEXT"
+        Me.MP_CEXT.Size = New System.Drawing.Size(239, 22)
+        Me.MP_CEXT.Text = "Extrusión"
+        '
+        'ConsultasToolStripMenuItem
+        '
+        Me.ConsultasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_CEXTR, Me.MR_CESC, Me.MP_CEHP})
+        Me.ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
+        Me.ConsultasToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ConsultasToolStripMenuItem.Text = "Consultas"
+        '
+        'MP_CEXTR
+        '
+        Me.MP_CEXTR.Name = "MP_CEXTR"
+        Me.MP_CEXTR.Size = New System.Drawing.Size(139, 22)
+        Me.MP_CEXTR.Text = "Producción"
+        '
+        'MR_CESC
+        '
+        Me.MR_CESC.Name = "MR_CESC"
+        Me.MR_CESC.Size = New System.Drawing.Size(139, 22)
+        Me.MR_CESC.Text = "Scrap"
+        '
+        'MP_CEHP
+        '
+        Me.MP_CEHP.Name = "MP_CEHP"
+        Me.MP_CEHP.Size = New System.Drawing.Size(139, 22)
+        Me.MP_CEHP.Text = "Horas Paro"
+        '
+        'ReportesToolStripMenuItem
+        '
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_REXT, Me.MP_RESC, Me.MP_REHP})
+        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ReportesToolStripMenuItem.Text = "Reportes"
+        '
+        'MP_REXT
+        '
+        Me.MP_REXT.Name = "MP_REXT"
+        Me.MP_REXT.Size = New System.Drawing.Size(139, 22)
+        Me.MP_REXT.Text = "Producción"
+        '
+        'MP_RESC
+        '
+        Me.MP_RESC.Name = "MP_RESC"
+        Me.MP_RESC.Size = New System.Drawing.Size(139, 22)
+        Me.MP_RESC.Text = "Scrap"
+        '
+        'MP_REHP
+        '
+        Me.MP_REHP.Name = "MP_REHP"
+        Me.MP_REHP.Size = New System.Drawing.Size(139, 22)
+        Me.MP_REHP.Text = "Horas Paro"
+        '
+        'MP_CINY
+        '
+        Me.MP_CINY.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultasToolStripMenuItem1, Me.ReportesToolStripMenuItem1})
+        Me.MP_CINY.Name = "MP_CINY"
+        Me.MP_CINY.Size = New System.Drawing.Size(239, 22)
+        Me.MP_CINY.Text = "Inyección"
+        '
+        'ConsultasToolStripMenuItem1
+        '
+        Me.ConsultasToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_CINYEC, Me.MP_CISC, Me.MP_CIHP})
+        Me.ConsultasToolStripMenuItem1.Name = "ConsultasToolStripMenuItem1"
+        Me.ConsultasToolStripMenuItem1.Size = New System.Drawing.Size(131, 22)
+        Me.ConsultasToolStripMenuItem1.Text = "Consultas"
+        '
+        'MP_CINYEC
+        '
+        Me.MP_CINYEC.Name = "MP_CINYEC"
+        Me.MP_CINYEC.Size = New System.Drawing.Size(139, 22)
+        Me.MP_CINYEC.Text = "Producción"
+        '
+        'MP_CISC
+        '
+        Me.MP_CISC.Name = "MP_CISC"
+        Me.MP_CISC.Size = New System.Drawing.Size(139, 22)
+        Me.MP_CISC.Text = "Scrap"
+        '
+        'MP_CIHP
+        '
+        Me.MP_CIHP.Name = "MP_CIHP"
+        Me.MP_CIHP.Size = New System.Drawing.Size(139, 22)
+        Me.MP_CIHP.Text = "Horas Paro"
+        '
+        'ReportesToolStripMenuItem1
+        '
+        Me.ReportesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_RPINY, Me.MP_RISC, Me.MP_RIHP})
+        Me.ReportesToolStripMenuItem1.Name = "ReportesToolStripMenuItem1"
+        Me.ReportesToolStripMenuItem1.Size = New System.Drawing.Size(131, 22)
+        Me.ReportesToolStripMenuItem1.Text = "Reportes"
+        '
+        'MP_RPINY
+        '
+        Me.MP_RPINY.Name = "MP_RPINY"
+        Me.MP_RPINY.Size = New System.Drawing.Size(139, 22)
+        Me.MP_RPINY.Text = "Producción"
+        '
+        'MP_RISC
+        '
+        Me.MP_RISC.Name = "MP_RISC"
+        Me.MP_RISC.Size = New System.Drawing.Size(139, 22)
+        Me.MP_RISC.Text = "Scrap"
+        '
+        'MP_RIHP
+        '
+        Me.MP_RIHP.Name = "MP_RIHP"
+        Me.MP_RIHP.Size = New System.Drawing.Size(139, 22)
+        Me.MP_RIHP.Text = "Horas Paro"
+        '
+        'MP_CALIDAD
+        '
+        Me.MP_CALIDAD.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_AvanceProduccion})
+        Me.MP_CALIDAD.Image = Global.Atlas.My.Resources.Resources.Calidad_06
+        Me.MP_CALIDAD.Name = "MP_CALIDAD"
+        Me.MP_CALIDAD.Size = New System.Drawing.Size(92, 34)
+        Me.MP_CALIDAD.Text = "Calidad"
+        '
+        'MP_AvanceProduccion
+        '
+        Me.MP_AvanceProduccion.Name = "MP_AvanceProduccion"
+        Me.MP_AvanceProduccion.Size = New System.Drawing.Size(236, 22)
+        Me.MP_AvanceProduccion.Text = "Consulta Avance Producción"
+        '
+        'MP_PLANEACION
+        '
+        Me.MP_PLANEACION.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_ProduccionPlaneacion})
+        Me.MP_PLANEACION.Image = Global.Atlas.My.Resources.Resources.Planeacion_01
+        Me.MP_PLANEACION.Name = "MP_PLANEACION"
+        Me.MP_PLANEACION.Size = New System.Drawing.Size(111, 34)
+        Me.MP_PLANEACION.Text = "Planeación"
+        '
+        'MP_ProduccionPlaneacion
+        '
+        Me.MP_ProduccionPlaneacion.Name = "MP_ProduccionPlaneacion"
+        Me.MP_ProduccionPlaneacion.Size = New System.Drawing.Size(183, 22)
+        Me.MP_ProduccionPlaneacion.Text = "Avance Producción"
+        '
+        'MP_SUP
+        '
+        Me.MP_SUP.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_RHE, Me.MP_RHI})
+        Me.MP_SUP.Image = CType(resources.GetObject("MP_SUP.Image"), System.Drawing.Image)
+        Me.MP_SUP.Name = "MP_SUP"
+        Me.MP_SUP.Size = New System.Drawing.Size(116, 34)
+        Me.MP_SUP.Text = "Supervisión"
+        '
+        'MP_RHE
+        '
+        Me.MP_RHE.Name = "MP_RHE"
+        Me.MP_RHE.Size = New System.Drawing.Size(215, 22)
+        Me.MP_RHE.Text = "Reporte Horas Extrusión"
+        '
+        'MP_RHI
+        '
+        Me.MP_RHI.Name = "MP_RHI"
+        Me.MP_RHI.Size = New System.Drawing.Size(215, 22)
+        Me.MP_RHI.Text = "Reporte Horas Inyección"
+        '
+        'MP_ORDENES
+        '
+        Me.MP_ORDENES.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_ORDEXT, Me.MP_ORDINY})
+        Me.MP_ORDENES.Image = Global.Atlas.My.Resources.Resources.Ordenes_Produccion_02
+        Me.MP_ORDENES.Name = "MP_ORDENES"
+        Me.MP_ORDENES.Size = New System.Drawing.Size(165, 34)
+        Me.MP_ORDENES.Text = "Ordenes en Proceso"
+        '
+        'MP_ORDEXT
+        '
+        Me.MP_ORDEXT.Name = "MP_ORDEXT"
+        Me.MP_ORDEXT.Size = New System.Drawing.Size(199, 22)
+        Me.MP_ORDEXT.Text = "Ordenes de Extrusión"
+        '
+        'MP_ORDINY
+        '
+        Me.MP_ORDINY.Name = "MP_ORDINY"
+        Me.MP_ORDINY.Size = New System.Drawing.Size(199, 22)
+        Me.MP_ORDINY.Text = "Ordenes de Inyección"
+        '
+        'MP_ALM
+        '
+        Me.MP_ALM.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_ALE, Me.MP_ALI})
+        Me.MP_ALM.Image = CType(resources.GetObject("MP_ALM.Image"), System.Drawing.Image)
+        Me.MP_ALM.Name = "MP_ALM"
+        Me.MP_ALM.Size = New System.Drawing.Size(99, 34)
+        Me.MP_ALM.Text = "Almacen"
+        '
+        'MP_ALE
+        '
+        Me.MP_ALE.Name = "MP_ALE"
+        Me.MP_ALE.Size = New System.Drawing.Size(129, 22)
+        Me.MP_ALE.Text = "Extrusión"
+        '
+        'MP_ALI
+        '
+        Me.MP_ALI.Name = "MP_ALI"
+        Me.MP_ALI.Size = New System.Drawing.Size(129, 22)
+        Me.MP_ALI.Text = "Inyección"
+        '
         'CNFG
         '
         Me.CNFG.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MP_ACTUALIZA})
         Me.CNFG.Image = Global.Atlas.My.Resources.Resources.Configuration
         Me.CNFG.Name = "CNFG"
-        Me.CNFG.Size = New System.Drawing.Size(128, 40)
+        Me.CNFG.Size = New System.Drawing.Size(128, 34)
         Me.CNFG.Text = "Configuración"
         '
         'MP_ACTUALIZA
@@ -348,14 +553,15 @@ Partial Class FrmMain
         '
         'Acerca_de
         '
-        Me.Acerca_de.Image = Global.Atlas.My.Resources.Resources.M
+        Me.Acerca_de.Image = Global.Atlas.My.Resources.Resources.msgInformation
         Me.Acerca_de.Name = "Acerca_de"
-        Me.Acerca_de.Size = New System.Drawing.Size(107, 40)
+        Me.Acerca_de.Size = New System.Drawing.Size(107, 34)
         Me.Acerca_de.Text = "Acerca de"
         '
         'Login
         '
         Me.Login.Location = New System.Drawing.Point(12, 64)
+        Me.Login.Margin = New System.Windows.Forms.Padding(4)
         Me.Login.Name = "Login"
         Me.Login.Size = New System.Drawing.Size(326, 116)
         Me.Login.TabIndex = 318
@@ -366,11 +572,10 @@ Partial Class FrmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.White
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1368, 705)
+        Me.BackgroundImage = Global.Atlas.My.Resources.Resources.LogoFluent
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.ClientSize = New System.Drawing.Size(1735, 705)
         Me.Controls.Add(Me.Login)
-        Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.DoubleBuffered = True
@@ -422,8 +627,6 @@ Partial Class FrmMain
     Friend WithEvents MP_SCE_OLD As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MP_ROT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MP_PTR As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents MP_Control_Tiempos_Ext As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ControlProgramaDeProducciónToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MP_MPExtrusion As System.Windows.Forms.ToolStripMenuItem
@@ -434,5 +637,35 @@ Partial Class FrmMain
     Friend WithEvents Login As Atlas.UC_Login
     Friend WithEvents MP_PTEC As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MP_GEO As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_MPE As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MPE_A As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MPE_D As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CEXT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsultasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CEXTR As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MR_CESC As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CEHP As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_REXT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RESC As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_REHP As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CINY As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsultasToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CINYEC As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CISC As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CIHP As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportesToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RPINY As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RISC As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RIHP As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_CALIDAD As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_AvanceProduccion As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_PLANEACION As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_ProduccionPlaneacion As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RHE As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_RHI As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_ORDENES As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_ORDEXT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MP_ORDINY As System.Windows.Forms.ToolStripMenuItem
 
 End Class

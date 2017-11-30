@@ -60,7 +60,7 @@ Public Class FrmAdmCatEquipos_AMEX
         End If
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGV_EQP.DataSource = objDs.Tables(0)
@@ -275,7 +275,7 @@ Public Class FrmAdmCatEquipos_AMEX
     End Sub
 
     Private Sub TSeccion_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSeccion.Leave
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         objCmd.Connection = objCnnAmanco
         Q = " SELECT desseccion FROM catsecciones"
         Q = Q & " WHERE centro = '" & SessionUser._sCentro.Trim & "' "
@@ -306,7 +306,7 @@ Public Class FrmAdmCatEquipos_AMEX
     End Sub
 
     Private Sub TArea_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TArea.Leave
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         objCmd.Connection = objCnnAmanco
         Q = " SELECT desgrupo FROM catgrupos"
         Q = Q & " WHERE centro = '" & SessionUser._sCentro.Trim & "' "
@@ -386,7 +386,7 @@ Public Class FrmAdmCatEquipos_AMEX
         Else
             xTIPO = "2"
         End If
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         objCmd.Connection = objCnnAmanco
         Q = " SELECT Desgrupmaterial FROM CatGrupMaterial "
         Q = Q & " WHERE centro = '" & SessionUser._sCentro.Trim & "' "

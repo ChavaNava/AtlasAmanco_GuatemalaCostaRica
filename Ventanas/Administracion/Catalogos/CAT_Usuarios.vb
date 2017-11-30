@@ -28,7 +28,7 @@ Public Class Cat_Usuarios
 
 #Region "Eventos"
     Private Sub Btn_Consulta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Consulta.Click
-        Catalogo_Usuarios.Catalogo_Usuarios(DGV, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", Seccion.Trim)
+        Catalogo_Usuarios.Consulta(DGV, SessionUser._sAlias.Trim, "", Seccion.Trim)
     End Sub
 
     Private Sub Btn_Nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Nuevo.Click
@@ -129,7 +129,7 @@ Public Class Cat_Usuarios
 
     Private Sub Btn_Elimina_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Elimina.Click
         abcSQL_ADM("PA_Baja_Usuarios '" & TAlias.Text.Trim & "','" & SessionUser._sCentro.Trim & "', '" & TPassword.Text.Trim & "', '" & SessionUser._sAlias & "'")
-        Catalogo_Usuarios.Catalogo_Usuarios(DGV, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", Seccion.Trim)
+        Catalogo_Usuarios.Consulta(DGV, SessionUser._sAlias.Trim, "", Seccion.Trim)
         MessageBox.Show("Información Actualizada")
     End Sub
 
@@ -160,7 +160,7 @@ Public Class Cat_Usuarios
         BloqueaButton(Me)
         LimpiarText(Me)
         BloqueaCombo(Me)
-        Catalogo_Usuarios.Catalogo_Usuarios(DGV, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", Seccion.Trim)
+        Catalogo_Usuarios.Consulta(DGV, SessionUser._sAlias.Trim, "", Seccion.Trim)
     End Sub
 
     Private Sub DGV_CurrentCellChanged(sender As System.Object, e As System.EventArgs) Handles DGV.CurrentCellChanged
@@ -246,7 +246,7 @@ Public Class Cat_Usuarios
     End Sub
 
     Private Sub BGW1_RunWorkerCompleted(sender As System.Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BGW1.RunWorkerCompleted
-        Catalogo_Usuarios.Catalogo_Usuarios(DGV, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, "", Seccion.Trim)
+        Catalogo_Usuarios.Consulta(DGV, SessionUser._sAlias.Trim, "", Seccion.Trim)
         MessageBox.Show("Información Actualizada")
         PBActualiza.Visible = False
         BGW1.WorkerReportsProgress = False

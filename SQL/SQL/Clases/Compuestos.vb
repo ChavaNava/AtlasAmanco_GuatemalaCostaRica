@@ -4,7 +4,7 @@
     Public Shared Function ValidaConfigCompuesto(ByVal IdCodigo As String, IdOrden As String) As Boolean
         Dim Contador As Integer = 0
         Dim listaCompuestos As New List(Of CompuestoSet)
-        LecturaQry("PA_CompuestosConsumo '" & IdCodigo.Trim & "','','','','','','','" & IdOrden.Trim & "','1'", SessionUser._sAmbiente)
+        LecturaQry("PA_CompuestosConsumo '" & IdCodigo.Trim & "','','','','','','','" & IdOrden.Trim & "','1'")
 
         listaCompuestos.Clear()
         Do While (LecturaBD.Read())
@@ -83,7 +83,7 @@
         Dim Info As New ListaCompuestos
         listaComp.Clear()
 
-        LecturaQry("PA_CompuestosConsumo '33583','','','','','','','13278178','1'", SessionUser._sAmbiente)
+        LecturaQry("PA_CompuestosConsumo '33583','','','','','','','13278178','1'")
         If (LecturaBD.Read) Then
             Info.Orden = LecturaBD(0)
             Info.Codigo = LecturaBD(1)
@@ -103,7 +103,7 @@
 
         Q = ""
         Q = "PA_CompuestosConsumo '" & IdProducto.Trim & "','','" & IdLista.Trim & "','','','','',''," & Operacion & ""
-        Combo(Q, SessionUser._sAmbiente)
+        Combo(Q)
         NDataSet1 = DataSetCombo.Copy
         CB.DataSource = NDataSet1.Tables(0)
         If NDataSet1.Tables(0).Rows.Count > 0 Then
@@ -119,7 +119,7 @@
 
         Q = ""
         Q = "PA_CompuestosConsumo '" & IdProducto.Trim & "','','" & IdLista.Trim & "','','','','',''," & Operacion & ""
-        Combo(Q, SessionUser._sAmbiente)
+        Combo(Q)
         NDataSet2 = DataSetCombo.Copy
         CB.DataSource = NDataSet2.Tables(0)
         If NDataSet2.Tables(0).Rows.Count > 0 Then
@@ -135,7 +135,7 @@
 
         Q = ""
         Q = "PA_CompuestosConsumo '" & IdProducto.Trim & "','','" & IdLista.Trim & "','','','','',''," & Operacion & ""
-        Combo(Q, SessionUser._sAmbiente)
+        Combo(Q)
         NDataSet3 = DataSetCombo.Copy
         CB.DataSource = NDataSet3.Tables(0)
         If NDataSet3.Tables(0).Rows.Count > 0 Then

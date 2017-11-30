@@ -60,7 +60,7 @@ Public Class FrmSupervision_Rol_AMEX
         End If
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGV_Rol.DataSource = objDs.Tables(0)

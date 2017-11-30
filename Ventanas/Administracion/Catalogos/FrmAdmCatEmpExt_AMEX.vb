@@ -50,7 +50,7 @@ Public Class FrmAdmCatEmpExt_AMEX
         QRY_Grid = QRY_Grid & "Where Centro = '" & SessionUser._sCentro.Trim & "' "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGVProd.DataSource = objDs.Tables(0)

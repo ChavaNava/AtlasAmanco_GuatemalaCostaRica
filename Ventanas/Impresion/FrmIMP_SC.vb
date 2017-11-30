@@ -43,7 +43,7 @@ Public Class FrmIMP_SC
         LecturaQry(QRY)
 
         Try
-            objDa = New SqlDataAdapter(QRY, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
 

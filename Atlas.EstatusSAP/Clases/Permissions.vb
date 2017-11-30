@@ -32,19 +32,19 @@ Public Class Permissions
 
         'Verifica permisos del usuario
 
-        DB.LecturaQry_ADM("PA_Permisos_Usuario '" & SessionUser._sCentro.Trim & "', '" & Modulo.Trim & "', '" & SessionUser._sIdPerfil.Trim & "' ")
-        If (DB.LecturaBD_ADM.Read) Then
-            strNameForm = DB.LecturaBD_ADM(1)
-            gAlta = DB.LecturaBD_ADM(5)
-            gBaja = DB.LecturaBD_ADM(6)
-            gCambio = DB.LecturaBD_ADM(7)
-            gVisualiza = DB.LecturaBD_ADM(8)
-            gImprimir = DB.LecturaBD_ADM(9)
-            gNotificar = DB.LecturaBD_ADM(10)
-            Name_Raiz = DB.LecturaBD_ADM(11)
-            Form_Atlas = DB.LecturaBD_ADM(12)
-            stForm = DB.LecturaBD_ADM(13)
-            DB.LecturaBD_ADM.Close()
+        Cnn.LecturaQry_ADM("PA_Permisos_Usuario '" & SessionUser._sCentro.Trim & "', '" & Modulo.Trim & "', '" & SessionUser._sIdPerfil.Trim & "' ")
+        If (Cnn.LecturaBD_ADM.Read) Then
+            strNameForm = Cnn.LecturaBD_ADM(1)
+            gAlta = Cnn.LecturaBD_ADM(5)
+            gBaja = Cnn.LecturaBD_ADM(6)
+            gCambio = Cnn.LecturaBD_ADM(7)
+            gVisualiza = Cnn.LecturaBD_ADM(8)
+            gImprimir = Cnn.LecturaBD_ADM(9)
+            gNotificar = Cnn.LecturaBD_ADM(10)
+            Name_Raiz = Cnn.LecturaBD_ADM(11)
+            Form_Atlas = Cnn.LecturaBD_ADM(12)
+            stForm = Cnn.LecturaBD_ADM(13)
+            Cnn.LecturaBD_ADM.Close()
 
             If Form_Atlas <> "NA" Then
                 Atlas.Accesos.CLVarGlobales.gPermisos = gAlta & "," & gBaja & "," & gCambio & "," & gVisualiza & "," & gImprimir & "," & gNotificar
@@ -65,7 +65,7 @@ Public Class Permissions
             End If
         Else
             MensajeBox.Mostrar("El usuario no tiene permisos de ejecución del Modulo: ", strNameForm.Trim, MensajeBox.TipoMensaje.Critical)
-            DB.LecturaBD_ADM.Close()
+            Cnn.LecturaBD_ADM.Close()
         End If
     End Sub
 End Class

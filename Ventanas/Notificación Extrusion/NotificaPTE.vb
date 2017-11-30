@@ -536,7 +536,7 @@ Public Class NotificaPTE
         FolioSiguiente = Proceso_Extrusion.Alta_PT(SessionUser._sAlias.Trim, N_Orden, SessionUser._sCentro, N_FechaPesaje, N_HoraPesaje, strNumeroBascula, CB_Rack.Text.Trim,
                                         N_PB, N_PT, N_PN, N_Empaques, N_Tramos, N_CodUser, N_FechaTurno, N_Turno, NP.r_Supervisor, N_Sobrepeso,
                                         N_Causa_SP.Trim, TPtoTrabajo.Text.Trim, N_PesoTeorico, N_StSobrePeso, N_Comp_1.Trim, N_Porc_1, N_Cant_1,
-                                        N_Comp_2.Trim, N_Porc_2, N_Cant_2, Ver_Atlas, N_Folio_Vale)
+                                        N_Comp_2.Trim, N_Porc_2, N_Cant_2, Atlas_Version._Version.Trim, N_Folio_Vale)
         TFolioAtlas.Text = FolioSiguiente
         'Se registra el Sobre / Bajo Peso
         If P_SP = True And N_StSobrePeso = "1" Then
@@ -566,7 +566,7 @@ Public Class NotificaPTE
                         Dim Mns_dup As String = ""
                         Dim Return_dup As Object
                         Dim Tbl_dup As String()
-                        WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Duplicado, Lista, SessionUser._sAmbiente)
+                        WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
                         Tbl_dup = WS_P.Tbl_resultado
                         Return_dup = WS_P.Return_SAP
                         Err_dup = Return_dup.ZTYPE
@@ -607,7 +607,7 @@ Public Class NotificaPTE
                 End Select
         End Select
         'Consulta cantidades
-        ProductionOrder.CalCantExt(SessionUser._sAlias.Trim, TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, SessionUser._sCentro.Trim)
+        ProductionOrder.CalCantExt(TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
         'Porcentaje de avance de la orden
         ProductionOrder_2.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8)
         BSiguiente.Enabled = True
@@ -927,7 +927,7 @@ Public Class NotificaPTE
 
     Private Sub Compuestos()
         'Activa Combo Box de compuestos 1
-        Catalogo_Compuestos.CB_Compuesto1(CBCom1, SessionUser._sAlias, SessionUser._sCentro, ValidaODF._rIdProducto, EXTINY, TipoProd, P_CC1)
+        Catalogo_Compuestos.CB_Compuesto1(CBCom1, EXTINY, TipoProd, P_CC1)
     End Sub
 
 #End Region
@@ -1455,7 +1455,7 @@ Public Class NotificaPTE
             Exit Sub
         Else
             'PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
-            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TipoProd.Trim, SessionUser._sAmbiente)
+            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, TipoProd.Trim)
             LimpiaObjetos()
             MensajeBox.Mostrar("La orden de producción a sido actualizada ingrese nuevamente el numero de orden", "Actualizado", MensajeBox.TipoMensaje.Good)
             TOrden.Focus()

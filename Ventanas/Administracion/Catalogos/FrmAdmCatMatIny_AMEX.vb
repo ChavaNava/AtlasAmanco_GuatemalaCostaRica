@@ -61,7 +61,7 @@ Public Class FrmAdmCatMatIny_AMEX
         QRY_Grid = QRY_Grid & "Order by a.Codigo "
 
         Try
-            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+            objDa = New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DGVProd.DataSource = objDs.Tables(0)

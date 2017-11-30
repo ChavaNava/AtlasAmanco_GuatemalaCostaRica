@@ -51,6 +51,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atlas.Consultations">
+      <HintPath>..\Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -77,116 +80,124 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extrusion\Boleta_PTE.vb">
+    <Compile Include="ExtrusionStructures\InfoBoletaPesajeExtrusion.vb" />
+    <Compile Include="Extrusion\Entidades\BoletaInfo.vb" />
+    <Compile Include="Extrusion\Reportes\Boleta_PTE.vb">
       <DependentUpon>Boleta_PTE.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Boleta_PTE_D.vb">
+    <Compile Include="Extrusion\Reportes\Boleta_PTE_D.vb">
       <DependentUpon>Boleta_PTE_D.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Boleta_SCE.vb">
+    <Compile Include="Extrusion\Reportes\Boleta_PTE_doble.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Boleta_PTE_doble.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extrusion\Reportes\Boleta_SCE.vb">
       <DependentUpon>Boleta_SCE.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Boleta_SCE_D.vb">
+    <Compile Include="Extrusion\Reportes\Boleta_SCE_D.vb">
       <DependentUpon>Boleta_SCE_D.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Boleta_PTE_CR01.vb">
+    <Compile Include="Extrusion\Reportes\Boleta_PTE_CR01.vb">
       <DependentUpon>Boleta_PTE_CR01.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Etiqueta_CR01_SCE.vb">
+    <Compile Include="Extrusion\Reportes\Etiqueta_CR01_SCE.vb">
       <DependentUpon>Etiqueta_CR01_SCE.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Etiqueta_CR01.vb">
+    <Compile Include="Extrusion\Reportes\Etiqueta_CR01.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Etiqueta_CR01.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extrusion\rptConsumoCompuestoXProd.vb">
+    <Compile Include="Extrusion\Reportes\rptConsumoCompuestoXProd.vb">
       <DependentUpon>rptConsumoCompuestoXProd.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptPTEntrega.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEntrega.vb">
       <DependentUpon>rptPTEntrega.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptPTEOrdEntXEqp_AMEX.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEOrdEntXEqp_AMEX.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPTEOrdEntXEqp_AMEX.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extrusion\rptPTEOrdEntXODF.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEOrdEntXODF.vb">
       <DependentUpon>rptPTEOrdEntXODF.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptPTEOrdEntXODFResumen_AMEX.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEOrdEntXODFResumen_AMEX.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPTEOrdEntXODFResumen_AMEX.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extrusion\rptResumenProdxodf.vb">
+    <Compile Include="Extrusion\Reportes\rptResumenProdxodf.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptResumenProdxodf.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extrusion\rptPTEOrdEntXProd.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEOrdEntXProd.vb">
       <DependentUpon>rptPTEOrdEntXProd.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptTicketExt_AMEX.vb">
+    <Compile Include="Extrusion\Reportes\rptTicketExt_AMEX.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTicketExt_AMEX.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Imp_Reporte.vb" />
-    <Compile Include="Extrusion\rptConsumoCompuestoXOrden.vb">
+    <Compile Include="Extrusion\Reportes\rptConsumoCompuestoXOrden.vb">
       <DependentUpon>rptConsumoCompuestoXOrden.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptPTEOrdEntXMaquina.vb">
+    <Compile Include="Extrusion\Reportes\rptPTEOrdEntXMaquina.vb">
       <DependentUpon>rptPTEOrdEntXMaquina.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\rptResumenProdxeqp.vb">
+    <Compile Include="Extrusion\Reportes\rptResumenProdxeqp.vb">
       <DependentUpon>rptResumenProdxeqp.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extrusion\Boleta_PTE_GT.vb">
+    <Compile Include="Extrusion\Reportes\Boleta_PTE_GT.vb">
       <DependentUpon>Boleta_PTE_GT.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
@@ -213,87 +224,98 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Produccion\rptProduccionConsolidado.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProduccionConsolidado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reporte\FREP.Designer.vb">
       <DependentUpon>FREP.vb</DependentUpon>
     </Compile>
     <Compile Include="Reporte\FREP.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Schemes\ConsolidatedPeriod.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Extrusion\Boleta_PTE.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_PTE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Boleta_PTE.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Boleta_PTE_D.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_PTE_D.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Boleta_PTE_D.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Boleta_SCE.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_PTE_doble.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Boleta_PTE_doble.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_SCE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Boleta_SCE.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Boleta_SCE_D.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_SCE_D.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Boleta_SCE_D.vb</LastGenOutput>
+      <LastGenOutput>Boleta_SCE_D1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Boleta_PTE_CR01.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_PTE_CR01.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Boleta_PTE_CR01.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Etiqueta_CR01_SCE.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Etiqueta_CR01_SCE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta_CR01_SCE.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Etiqueta_CR01.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Etiqueta_CR01.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta_CR01.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptConsumoCompuestoXProd.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptConsumoCompuestoXProd.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConsumoCompuestoXProd.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEntrega.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEntrega.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEntrega.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEOrdEntXEqp_AMEX.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEOrdEntXEqp_AMEX.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEOrdEntXEqp_AMEX.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEOrdEntXODF.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEOrdEntXODF.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEOrdEntXODF.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEOrdEntXODFResumen_AMEX.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEOrdEntXODFResumen_AMEX.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEOrdEntXODFResumen_AMEX.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptResumenProdxodf.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptResumenProdxodf.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptResumenProdxodf.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEOrdEntXProd.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEOrdEntXProd.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEOrdEntXProd.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptConsumoCompuestoXOrden.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptConsumoCompuestoXOrden.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConsumoCompuestoXOrden.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptPTEOrdEntXMaquina.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptPTEOrdEntXMaquina.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPTEOrdEntXMaquina.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptResumenProdxeqp.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptResumenProdxeqp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptResumenProdxeqp.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\rptTicketExt_AMEX.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\rptTicketExt_AMEX.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTicketExt_AMEX.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Extrusion\Boleta_PTE_GT.rpt">
+    <EmbeddedResource Include="Extrusion\Reportes\Boleta_PTE_GT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Boleta_PTE_GT.vb</LastGenOutput>
     </EmbeddedResource>
@@ -306,6 +328,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\rptProduccionConsolidado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProduccionConsolidado.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\FREP.resx">
       <DependentUpon>FREP.vb</DependentUpon>
@@ -337,6 +363,7 @@
   <ItemGroup>
     <None Include="Resources\logo_solucionesintegrales.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

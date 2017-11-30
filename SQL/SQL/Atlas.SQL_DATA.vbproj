@@ -59,7 +59,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
-    <Reference Include="WS_Generic, Version=1.0.5711.16658, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WS_Generic, Version=1.0.6486.25546, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\WS_Generic.dll</HintPath>
     </Reference>
@@ -76,45 +76,62 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\AtlasUpdate.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Areas.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Causas.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Compuestos.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Defectos.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Empaques.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Familia_Producto.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Grupos.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Grupo_Materiales.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Marcas.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Materiales.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Material_Compuesto.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Operador_Puesto_Trabajo.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Ordenes_Produccion.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Perfiles.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Procesos.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Puestos_Trabajo.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Racks.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Scrap.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Secciones.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Tipo_Causas.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_UM.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Uso_Maquina.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Usuarios.vb" />
+    <Compile Include="Clases\Acciones\Acciones.vb" />
+    <Compile Include="Clases\Areas\Areas.vb" />
+    <Compile Include="Clases\Atlas Update\AtlasUpdate.vb" />
+    <Compile Include="Clases\Boletas Pesaje\BoletaPesaje.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Areas.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Causas.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Compuestos.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Defectos.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Empaques.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Familia_Producto.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Grupos.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Grupo_Materiales.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Marcas.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Materiales.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Material_Compuesto.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Operador_Puesto_Trabajo.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Ordenes_Produccion.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Perfiles.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Procesos.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Productos.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Puestos_Trabajo.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Racks.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Scrap.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Secciones.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_TipoScrap.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Tipo_Causas.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_UM.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Uso_Maquina.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Usuarios.vb" />
     <Compile Include="Administración Pesajes\Consulta Pesajes.vb" />
-    <Compile Include="Clases\Centros.vb" />
-    <Compile Include="Clases\Conexion.vb" />
-    <Compile Include="Clases\Consulta_Produccion_Extrusion.vb" />
-    <Compile Include="Clases\Consulta_Scrap_Extrusion.vb" />
-    <Compile Include="Clases\Con_Sobrepesos.vb" />
+    <Compile Include="Clases\Centros\Centros.vb" />
+    <Compile Include="Clases\Conexion\Conexion.vb" />
+    <Compile Include="Clases\Extrusion\Consulta_Produccion_Extrusion.vb" />
+    <Compile Include="Clases\Extrusion\Consulta_Scrap_Extrusion.vb" />
+    <Compile Include="Clases\Notificacion Sobrepeso\Sobrepesos.vb" />
     <Compile Include="Clases\Compuestos.vb" />
     <Compile Include="Clases\Extrusion\NotificaExtrusionSAP.vb" />
+    <Compile Include="Clases\Notificacion Sobrepeso\ReportOverweight.vb" />
     <Compile Include="Clases\Parametros\Parametros.vb" />
+    <Compile Include="Clases\ReportesProduccion\ConsultasProduccion.vb" />
+    <Compile Include="Clases\ReportesProduccion\ReportesProduccion.vb" />
+    <Compile Include="DataBase\CnnFluent.vb" />
     <Compile Include="DataBase\DataBase.vb" />
-    <Compile Include="DataBase\DB.vb" />
-    <Compile Include="Clases\Elimina_Pesajes_Extrusion.vb" />
+    <Compile Include="DataBase\Cnn.vb" />
+    <Compile Include="Clases\Extrusion\Elimina_Pesajes_Extrusion.vb" />
+    <Compile Include="Entidades\Acciones\AccionCatalog.vb" />
+    <Compile Include="Entidades\Acciones\Accionesabc.vb" />
+    <Compile Include="Entidades\Acciones\AccionQuery.vb" />
+    <Compile Include="Entidades\BoletasPesaje\WeighingInquiry.vb" />
+    <Compile Include="Entidades\Compuestos\Compuestos_ABC.vb" />
     <Compile Include="Entidades\Conexion\Atlas_Version.vb" />
     <Compile Include="Entidades\Estatus SAP\UserLogin.vb" />
     <Compile Include="Entidades\Estatus SAP\ValidUserLogin.vb" />
+    <Compile Include="Entidades\Inyeccion\NotificacionPtIny.vb" />
+    <Compile Include="Entidades\Inyeccion\NotificaScrapIny.vb" />
+    <Compile Include="Entidades\Ordene Producción de SAP\OrdenProductionSap.vb" />
     <Compile Include="Entidades\Login\LoginNotifier.vb" />
     <Compile Include="Entidades\Notificación Extrusión\CompuestoSet.vb" />
     <Compile Include="Entidades\Notificación Extrusión\Compuestos_1.vb" />
@@ -133,20 +150,24 @@
     <Compile Include="Entidades\Notificación Extrusión\ValidaExistaODF.vb" />
     <Compile Include="Entidades\Notificación Extrusión\ValidaODF.vb" />
     <Compile Include="Entidades\Notificación Extrusión\Read_ODF.vb" />
-    <Compile Include="Entidades\Notificación Extrusión\SessionUser.vb" />
+    <Compile Include="Entidades\Login\SessionUser.vb" />
     <Compile Include="Entidades\Login\LoginExtrusion.vb" />
     <Compile Include="Entidades\Login\LoginUser.vb" />
     <Compile Include="Entidades\Notificación Extrusión\Modifica_Pesajes.vb" />
     <Compile Include="Entidades\Notificación Extrusión\ObjetosSeleccionados.vb" />
-    <Compile Include="Entidades\Notificación Extrusión\Tiempos_ODF.vb" />
     <Compile Include="Entidades\Notificación Extrusión\Tiempo_Totales.vb" />
     <Compile Include="Clases\Extrusion\OrdenProduccion.vb" />
     <Compile Include="Clases\Parametrizar_Form.vb" />
-    <Compile Include="Clases\Proceso_Extrusion.vb" />
-    <Compile Include="Clases\Inyeccion.vb" />
-    <Compile Include="Clases\Log.vb" />
-    <Compile Include="Clases\LoggingService.vb" />
+    <Compile Include="Clases\Extrusion\Proceso_Extrusion.vb" />
+    <Compile Include="Clases\Inyeccion\Inyeccion.vb" />
+    <Compile Include="Clases\Conexion\Log.vb" />
+    <Compile Include="Clases\Conexion\LoggingService.vb" />
     <Compile Include="Clases\MDVarPublic.vb" />
+    <Compile Include="Entidades\Notificación Sobrpeso\EmailSBP.vb" />
+    <Compile Include="Entidades\Notificación Sobrpeso\RegistrarSBP.vb" />
+    <Compile Include="Entidades\Ordenes de Producción\OrdenProduccionExiste.vb" />
+    <Compile Include="Entidades\Pesos_Rack.vb" />
+    <Compile Include="Entidades\Tiempos\TiemposConsulta.vb" />
     <Compile Include="Funciones\Funciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -163,16 +184,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Clases\Produccion_Piso.vb" />
-    <Compile Include="Clases\Produccion_Scrap_Extrusion.vb" />
-    <Compile Include="Clases\Produccion_Scrap_Inyeccion.vb" />
+    <Compile Include="Clases\Produccion Piso\Produccion_Piso.vb" />
+    <Compile Include="Clases\Extrusion\Produccion_Scrap_Extrusion.vb" />
+    <Compile Include="Clases\Inyeccion\Produccion_Scrap_Inyeccion.vb" />
     <Compile Include="Clases\ProductionOrder.vb" />
-    <Compile Include="Clases\Prod_Piso.vb" />
+    <Compile Include="Clases\Produccion Piso\Prod_Piso.vb" />
     <Compile Include="Clases\Reportes.vb" />
     <Compile Include="Clases\Rotomoldeo.vb" />
-    <Compile Include="Clases\Conexion\SAP_Conexion.vb" />
-    <Compile Include="Clases\Catalogos\Catalogo_Turnos.vb" />
-    <Compile Include="Clases\Users.vb" />
+    <Compile Include="Entidades\Conexion\SAP_Conexion.vb" />
+    <Compile Include="Clases\Centros\Catalogos\Catalogo_Turnos.vb" />
+    <Compile Include="Clases\Usuarios\Users.vb" />
     <Compile Include="Clases\ValidacionesBascula.vb" />
     <Compile Include="Clases\ValidacionesCompuestos.vb" />
     <Compile Include="Clases\ValidationError.vb" />
@@ -225,7 +246,10 @@
   <ItemGroup>
     <None Include="Resources\mexichem.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Clases\Tiempos\" />
+    <Folder Include="Entidades\Calidad\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

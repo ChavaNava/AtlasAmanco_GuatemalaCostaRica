@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document?sap-client=300" filename="document.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document?sap-client=300" filename="document.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

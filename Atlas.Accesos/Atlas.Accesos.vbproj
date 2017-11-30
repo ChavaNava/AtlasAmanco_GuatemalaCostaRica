@@ -59,7 +59,8 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="WS_Generic">
+    <Reference Include="WS_Generic, Version=1.0.6486.25546, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\WS_Generic.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -69,10 +70,10 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
-    <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Puertos.vb" />
     <Compile Include="CLVarGlobales.vb" />
     <Compile Include="Conexion.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

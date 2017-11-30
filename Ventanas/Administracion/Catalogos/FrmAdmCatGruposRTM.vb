@@ -33,7 +33,7 @@ Public Class FrmAdmCatGruposRTM
     Private Sub CargaGrid()
         Dim xSQL As String
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         Try
             If objCnnAmanco.State <> ConnectionState.Open Then

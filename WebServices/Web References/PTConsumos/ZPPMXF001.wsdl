@@ -179,7 +179,7 @@
   </wsdl:binding>
   <wsdl:service name="ZPPMXF001Service">
     <wsdl:port name="ZPPMXF001SoapBinding" binding="tns:ZPPMXF001SoapBinding">
-      <soap:address location="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300" />
+      <soap:address location="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

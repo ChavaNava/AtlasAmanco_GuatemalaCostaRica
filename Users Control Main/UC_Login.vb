@@ -98,13 +98,8 @@ Public Class UC_Login
     End Sub
 
     Public Sub Logo(ByVal Cadena As Integer)
-        Select Case Cadena
-            Case Is = 1
-                FrmMain.Panel3.BackgroundImage = Global.Atlas.My.Resources.Logo_Fluent
-                FrmMain.Panel3.BackgroundImageLayout = ImageLayout.Zoom
-                Me.Text = "MEXICHEM SOLUCIONES INTEGRALES"
-                FrmMain.MenuStrip1.Visible = True
-        End Select
+        Me.Text = "MEXICHEM SOLUCIONES INTEGRALES"
+        FrmMain.MenuStrip1.Visible = True
     End Sub
 
 #End Region

@@ -41,7 +41,7 @@ Public Class FrmCtrlODF_AMEX
                     Try
                         Catalogo_Ordenes_Produccion.Inser_Orden_Produccion(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, Tord.Text.Trim,
                                                                            CB_Lineas.SelectedValue.Trim, CB_Producto.SelectedValue.Trim,
-                                                                           TProg.Text, GpMat.Trim, Ver_Atlas)
+                                                                           TProg.Text, GpMat.Trim, Atlas_Version._Version.Trim)
                         MensajeBox.Mostrar("Se dio de alta la orden '" & Tord.Text.Trim & "'", "Aviso", MensajeBox.TipoMensaje.Information)
                         _Termina = 1
                         Close()
@@ -78,7 +78,7 @@ Public Class FrmCtrlODF_AMEX
                 GpMat = Catalogo_Ordenes_Produccion.Grupo_Material(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, I_Producto, EXTINY)
 
                 Try
-                    Catalogo_Ordenes_Produccion.Actualiza_Orden_Fabricacion(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, OrdOld.Trim, Tord.Text.Trim, I_Linea, I_Producto, Cantidad, Ver_Atlas)
+                    Catalogo_Ordenes_Produccion.Actualiza_Orden_Fabricacion(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, OrdOld.Trim, Tord.Text.Trim, I_Linea, I_Producto, Cantidad, Atlas_Version._Version.Trim)
                     MensajeBox.Mostrar("Se actualizo la orden '" & Tord.Text.Trim & "'", "Aviso", MensajeBox.TipoMensaje.Information)
                     _Termina = 1
                     Close()

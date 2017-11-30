@@ -24,8 +24,8 @@ Partial Class CAT_Compuestos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CAT_Compuestos))
         Me.DGV = New System.Windows.Forms.DataGridView()
-        Me.TDesProd = New System.Windows.Forms.TextBox()
-        Me.TCodProd = New System.Windows.Forms.TextBox()
+        Me.TxDescripcion = New System.Windows.Forms.TextBox()
+        Me.TxIdCompuesto = New System.Windows.Forms.TextBox()
         Me.LblCompuesto = New System.Windows.Forms.Label()
         Me.CB_Clase = New System.Windows.Forms.ComboBox()
         Me.CB_Area = New System.Windows.Forms.ComboBox()
@@ -49,19 +49,19 @@ Partial Class CAT_Compuestos
         Me.DGV.Size = New System.Drawing.Size(984, 283)
         Me.DGV.TabIndex = 339
         '
-        'TDesProd
+        'TxDescripcion
         '
-        Me.TDesProd.Location = New System.Drawing.Point(396, 56)
-        Me.TDesProd.Name = "TDesProd"
-        Me.TDesProd.Size = New System.Drawing.Size(331, 22)
-        Me.TDesProd.TabIndex = 374
+        Me.TxDescripcion.Location = New System.Drawing.Point(396, 56)
+        Me.TxDescripcion.Name = "TxDescripcion"
+        Me.TxDescripcion.Size = New System.Drawing.Size(331, 22)
+        Me.TxDescripcion.TabIndex = 374
         '
-        'TCodProd
+        'TxIdCompuesto
         '
-        Me.TCodProd.Location = New System.Drawing.Point(290, 56)
-        Me.TCodProd.Name = "TCodProd"
-        Me.TCodProd.Size = New System.Drawing.Size(100, 22)
-        Me.TCodProd.TabIndex = 373
+        Me.TxIdCompuesto.Location = New System.Drawing.Point(290, 56)
+        Me.TxIdCompuesto.Name = "TxIdCompuesto"
+        Me.TxIdCompuesto.Size = New System.Drawing.Size(100, 22)
+        Me.TxIdCompuesto.TabIndex = 373
         '
         'LblCompuesto
         '
@@ -124,8 +124,8 @@ Partial Class CAT_Compuestos
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CB_Area)
         Me.Controls.Add(Me.CB_Clase)
-        Me.Controls.Add(Me.TDesProd)
-        Me.Controls.Add(Me.TCodProd)
+        Me.Controls.Add(Me.TxDescripcion)
+        Me.Controls.Add(Me.TxIdCompuesto)
         Me.Controls.Add(Me.LblCompuesto)
         Me.Controls.Add(Me.DGV)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -133,8 +133,8 @@ Partial Class CAT_Compuestos
         Me.Text = "Catalogo de Compuestos"
         Me.Controls.SetChildIndex(Me.DGV, 0)
         Me.Controls.SetChildIndex(Me.LblCompuesto, 0)
-        Me.Controls.SetChildIndex(Me.TCodProd, 0)
-        Me.Controls.SetChildIndex(Me.TDesProd, 0)
+        Me.Controls.SetChildIndex(Me.TxIdCompuesto, 0)
+        Me.Controls.SetChildIndex(Me.TxDescripcion, 0)
         Me.Controls.SetChildIndex(Me.CB_Clase, 0)
         Me.Controls.SetChildIndex(Me.CB_Area, 0)
         Me.Controls.SetChildIndex(Me.Label1, 0)
@@ -145,8 +145,8 @@ Partial Class CAT_Compuestos
 
     End Sub
     Friend WithEvents DGV As System.Windows.Forms.DataGridView
-    Friend WithEvents TDesProd As System.Windows.Forms.TextBox
-    Friend WithEvents TCodProd As System.Windows.Forms.TextBox
+    Friend WithEvents TxDescripcion As System.Windows.Forms.TextBox
+    Friend WithEvents TxIdCompuesto As System.Windows.Forms.TextBox
     Friend WithEvents LblCompuesto As System.Windows.Forms.Label
     Friend WithEvents CB_Clase As System.Windows.Forms.ComboBox
     Friend WithEvents CB_Area As System.Windows.Forms.ComboBox

@@ -39,7 +39,7 @@ Module MdVarPublic
     Public Permiso As New Permisos
     '---- Variables para WS's
     Public Header_Notifica As String
-    Public Header_Duplicado As String
+    'Public Header_Duplicado As String
 
     Public Btn_Notificar As String
     ' ---------------------------------------------------------------------------------
@@ -267,7 +267,7 @@ Module MdVarPublic
     'Variables Parametrizacion
     Public Idp_4 As Boolean
     'Variable de version del sistema
-    Public Ver_Atlas As String = "Versión 1.4.11.134"
+    'Public Ver_Atlas As String = "Versión 1.4.11.134"
     'Variables Baja de Pesajes
     Public Baja_Folio As String
     Public Baja_Orden As String

@@ -394,4 +394,85 @@
   <data name="Supervisor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Supervisor 04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LogoFluent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoFluent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consulta 01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consulta 03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calidad_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calidad_03.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calidad_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calidad_04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calidad_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calidad_05.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calidad_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calidad_06.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rotomoldeo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rotomoldeo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rotomoldeo_021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rotomoldeo_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consulta 02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Planeacion_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Planeacion_01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Planeacion_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Planeacion_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Planeacion_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Planeacion_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Planeacion_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Planeacion_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AjustaTiempo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjustaTiempo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BorraTiempo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BorraTiempo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BorraTiempo_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BorraTiempo_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditarTiempos_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditarTiempos 01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RegistraTiempo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RegistraTiempo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TiempoProduccion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TiempoProduccion.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ordenes_Produccion_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ordenes Produccion 01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ordenes_Produccion_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ordenes Produccion 02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Orden_Produccion_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Orden Produccion 01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Orden_Produccion_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Orden Produccion 02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Monitor_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Monitor 01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Monitor_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Monitor 02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Monitor_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Monitor 03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

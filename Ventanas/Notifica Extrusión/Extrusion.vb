@@ -582,7 +582,7 @@ Public Class Extrusion
                         Dim Mns_dup As String = ""
                         Dim Return_dup As Object
                         Dim Tbl_dup As String()
-                        WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Duplicado, Lista, SessionUser._sAmbiente)
+                        WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
                         Tbl_dup = WS_P.Tbl_resultado
                         Return_dup = WS_P.Return_SAP
                         Err_dup = Return_dup.ZTYPE

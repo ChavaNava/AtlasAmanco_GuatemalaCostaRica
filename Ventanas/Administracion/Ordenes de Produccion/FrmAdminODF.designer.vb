@@ -63,7 +63,7 @@ Partial Class FrmAdminODF
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Btn_Cerrar, Me.Btn_Consulta, Me.NuevaODPToolStripMenuItem, Me.ModificaODP, Me.IniciaODP, Me.FinalizaODP, Me.ReactivarODF, Me.ImportarODPDeSAPToolStripMenuItem, Me.ActualizaODPToolStripMenuItem, Me.Btn_Export})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1217, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1372, 31)
         Me.MenuStrip1.TabIndex = 68
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -71,70 +71,70 @@ Partial Class FrmAdminODF
         '
         Me.Btn_Cerrar.Image = CType(resources.GetObject("Btn_Cerrar.Image"), System.Drawing.Image)
         Me.Btn_Cerrar.Name = "Btn_Cerrar"
-        Me.Btn_Cerrar.Size = New System.Drawing.Size(77, 24)
+        Me.Btn_Cerrar.Size = New System.Drawing.Size(89, 27)
         Me.Btn_Cerrar.Text = "Cerrar"
         '
         'Btn_Consulta
         '
         Me.Btn_Consulta.Image = CType(resources.GetObject("Btn_Consulta.Image"), System.Drawing.Image)
         Me.Btn_Consulta.Name = "Btn_Consulta"
-        Me.Btn_Consulta.Size = New System.Drawing.Size(93, 24)
+        Me.Btn_Consulta.Size = New System.Drawing.Size(109, 27)
         Me.Btn_Consulta.Text = "Consulta"
         '
         'NuevaODPToolStripMenuItem
         '
         Me.NuevaODPToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Btn_Nuevo
         Me.NuevaODPToolStripMenuItem.Name = "NuevaODPToolStripMenuItem"
-        Me.NuevaODPToolStripMenuItem.Size = New System.Drawing.Size(110, 24)
+        Me.NuevaODPToolStripMenuItem.Size = New System.Drawing.Size(132, 27)
         Me.NuevaODPToolStripMenuItem.Text = "Nueva ODP"
         '
         'ModificaODP
         '
         Me.ModificaODP.Image = Global.Atlas.My.Resources.Resources.Btn_Modifica
         Me.ModificaODP.Name = "ModificaODP"
-        Me.ModificaODP.Size = New System.Drawing.Size(121, 24)
+        Me.ModificaODP.Size = New System.Drawing.Size(148, 27)
         Me.ModificaODP.Text = "Modifica ODF"
         '
         'IniciaODP
         '
         Me.IniciaODP.Image = Global.Atlas.My.Resources.Resources.Fabricacion_01
         Me.IniciaODP.Name = "IniciaODP"
-        Me.IniciaODP.Size = New System.Drawing.Size(101, 24)
+        Me.IniciaODP.Size = New System.Drawing.Size(121, 27)
         Me.IniciaODP.Text = "Inicia ODF"
         '
         'FinalizaODP
         '
         Me.FinalizaODP.Image = Global.Atlas.My.Resources.Resources.Btn_Elimina
         Me.FinalizaODP.Name = "FinalizaODP"
-        Me.FinalizaODP.Size = New System.Drawing.Size(114, 24)
+        Me.FinalizaODP.Size = New System.Drawing.Size(138, 27)
         Me.FinalizaODP.Text = "Finaliza ODF"
         '
         'ReactivarODF
         '
         Me.ReactivarODF.Image = Global.Atlas.My.Resources.Resources.Reactivar
         Me.ReactivarODF.Name = "ReactivarODF"
-        Me.ReactivarODF.Size = New System.Drawing.Size(125, 24)
+        Me.ReactivarODF.Size = New System.Drawing.Size(152, 27)
         Me.ReactivarODF.Text = "Reactivar ODF"
         '
         'ImportarODPDeSAPToolStripMenuItem
         '
         Me.ImportarODPDeSAPToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Import_01
         Me.ImportarODPDeSAPToolStripMenuItem.Name = "ImportarODPDeSAPToolStripMenuItem"
-        Me.ImportarODPDeSAPToolStripMenuItem.Size = New System.Drawing.Size(172, 24)
+        Me.ImportarODPDeSAPToolStripMenuItem.Size = New System.Drawing.Size(208, 27)
         Me.ImportarODPDeSAPToolStripMenuItem.Text = "Importar ODP de SAP"
         '
         'ActualizaODPToolStripMenuItem
         '
         Me.ActualizaODPToolStripMenuItem.Image = Global.Atlas.My.Resources.Resources.Actualiza_02
         Me.ActualizaODPToolStripMenuItem.Name = "ActualizaODPToolStripMenuItem"
-        Me.ActualizaODPToolStripMenuItem.Size = New System.Drawing.Size(125, 24)
+        Me.ActualizaODPToolStripMenuItem.Size = New System.Drawing.Size(151, 27)
         Me.ActualizaODPToolStripMenuItem.Text = "Actualiza ODP"
         '
         'Btn_Export
         '
         Me.Btn_Export.Image = CType(resources.GetObject("Btn_Export.Image"), System.Drawing.Image)
         Me.Btn_Export.Name = "Btn_Export"
-        Me.Btn_Export.Size = New System.Drawing.Size(132, 24)
+        Me.Btn_Export.Size = New System.Drawing.Size(159, 27)
         Me.Btn_Export.Text = "Exporta a Excel"
         '
         'Panel1
@@ -143,7 +143,7 @@ Partial Class FrmAdminODF
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 146)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1217, 359)
+        Me.Panel1.Size = New System.Drawing.Size(1372, 359)
         Me.Panel1.TabIndex = 69
         '
         'GroupBox1
@@ -152,7 +152,7 @@ Partial Class FrmAdminODF
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1217, 359)
+        Me.GroupBox1.Size = New System.Drawing.Size(1372, 359)
         Me.GroupBox1.TabIndex = 42
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ordenes de Producción"
@@ -166,28 +166,28 @@ Partial Class FrmAdminODF
         Me.DGV_ODF.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGV_ODF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV_ODF.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGV_ODF.Location = New System.Drawing.Point(3, 18)
+        Me.DGV_ODF.Location = New System.Drawing.Point(3, 22)
         Me.DGV_ODF.Name = "DGV_ODF"
         Me.DGV_ODF.ReadOnly = True
-        Me.DGV_ODF.Size = New System.Drawing.Size(1211, 338)
+        Me.DGV_ODF.Size = New System.Drawing.Size(1366, 334)
         Me.DGV_ODF.TabIndex = 0
         '
         'TOrden
         '
         Me.TOrden.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TOrden.Location = New System.Drawing.Point(229, 44)
+        Me.TOrden.Location = New System.Drawing.Point(307, 44)
         Me.TOrden.Name = "TOrden"
-        Me.TOrden.Size = New System.Drawing.Size(110, 22)
+        Me.TOrden.Size = New System.Drawing.Size(110, 26)
         Me.TOrden.TabIndex = 75
         '
         'Label1
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(81, 47)
+        Me.Label1.Location = New System.Drawing.Point(159, 47)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(140, 16)
+        Me.Label1.Size = New System.Drawing.Size(170, 20)
         Me.Label1.TabIndex = 74
         Me.Label1.Text = "Orden Fabricación:"
         '
@@ -195,10 +195,10 @@ Partial Class FrmAdminODF
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(95, 106)
+        Me.Label3.Location = New System.Drawing.Point(173, 106)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(126, 16)
+        Me.Label3.Size = New System.Drawing.Size(155, 20)
         Me.Label3.TabIndex = 73
         Me.Label3.Text = "Fecha Fin Orden:"
         '
@@ -206,10 +206,10 @@ Partial Class FrmAdminODF
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(79, 76)
+        Me.Label2.Location = New System.Drawing.Point(157, 76)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(142, 16)
+        Me.Label2.Size = New System.Drawing.Size(174, 20)
         Me.Label2.TabIndex = 72
         Me.Label2.Text = "Fecha Inicio Orden:"
         '
@@ -218,10 +218,10 @@ Partial Class FrmAdminODF
         Me.DTP2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.DTP2.CustomFormat = "yyyy-MM-dd"
         Me.DTP2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP2.Location = New System.Drawing.Point(229, 103)
+        Me.DTP2.Location = New System.Drawing.Point(307, 103)
         Me.DTP2.Margin = New System.Windows.Forms.Padding(4)
         Me.DTP2.Name = "DTP2"
-        Me.DTP2.Size = New System.Drawing.Size(110, 22)
+        Me.DTP2.Size = New System.Drawing.Size(110, 26)
         Me.DTP2.TabIndex = 71
         '
         'DTP1
@@ -229,10 +229,10 @@ Partial Class FrmAdminODF
         Me.DTP1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.DTP1.CustomFormat = "yyyy-MM-dd"
         Me.DTP1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP1.Location = New System.Drawing.Point(229, 73)
+        Me.DTP1.Location = New System.Drawing.Point(307, 73)
         Me.DTP1.Margin = New System.Windows.Forms.Padding(4)
         Me.DTP1.Name = "DTP1"
-        Me.DTP1.Size = New System.Drawing.Size(110, 22)
+        Me.DTP1.Size = New System.Drawing.Size(110, 26)
         Me.DTP1.TabIndex = 70
         '
         'pgbAvance
@@ -241,7 +241,7 @@ Partial Class FrmAdminODF
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pgbAvance.Location = New System.Drawing.Point(381, 109)
         Me.pgbAvance.Name = "pgbAvance"
-        Me.pgbAvance.Size = New System.Drawing.Size(552, 24)
+        Me.pgbAvance.Size = New System.Drawing.Size(707, 24)
         Me.pgbAvance.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.pgbAvance.TabIndex = 91
         '
@@ -253,7 +253,7 @@ Partial Class FrmAdminODF
         Me.Label4.ForeColor = System.Drawing.Color.Red
         Me.Label4.Location = New System.Drawing.Point(381, 76)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(552, 28)
+        Me.Label4.Size = New System.Drawing.Size(707, 28)
         Me.Label4.TabIndex = 90
         Me.Label4.Text = "Label4"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -267,7 +267,7 @@ Partial Class FrmAdminODF
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(939, 117)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(122, 16)
+        Me.Label5.Size = New System.Drawing.Size(148, 20)
         Me.Label5.TabIndex = 92
         Me.Label5.Text = "Ordenes Leidas:"
         '
@@ -276,7 +276,7 @@ Partial Class FrmAdminODF
         Me.LBContador.AutoSize = True
         Me.LBContador.Location = New System.Drawing.Point(1119, 117)
         Me.LBContador.Name = "LBContador"
-        Me.LBContador.Size = New System.Drawing.Size(0, 16)
+        Me.LBContador.Size = New System.Drawing.Size(0, 20)
         Me.LBContador.TabIndex = 93
         '
         'Label6
@@ -284,7 +284,7 @@ Partial Class FrmAdminODF
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(939, 83)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(55, 16)
+        Me.Label6.Size = New System.Drawing.Size(65, 20)
         Me.Label6.TabIndex = 94
         Me.Label6.Text = "Label6"
         Me.Label6.Visible = False
@@ -294,15 +294,15 @@ Partial Class FrmAdminODF
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(1119, 83)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(0, 16)
+        Me.Label7.Size = New System.Drawing.Size(0, 20)
         Me.Label7.TabIndex = 95
         '
         'FrmAdminODF
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.ClientSize = New System.Drawing.Size(1217, 505)
+        Me.ClientSize = New System.Drawing.Size(1372, 505)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.LBContador)

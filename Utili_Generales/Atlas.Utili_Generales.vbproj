@@ -13,7 +13,7 @@
     <AssemblyName>Utili_Generales</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,7 +50,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Client.Education, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
@@ -76,10 +77,18 @@
     <Compile Include="Bascula.vb" />
     <Compile Include="ConfigScales.vb" />
     <Compile Include="ControlDataGridView.vb" />
+    <Compile Include="ControlDgv.vb" />
     <Compile Include="Crypto.vb" />
     <Compile Include="Boot_Files.vb" />
+    <Compile Include="CtrlVariablesGlobal.vb" />
     <Compile Include="FrontUtils.vb" />
     <Compile Include="ImageService.vb" />
+    <Compile Include="LoadingForm.Designer.vb">
+      <DependentUpon>LoadingForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MensajeBox.Designer.vb">
       <DependentUpon>MensajeBox.vb</DependentUpon>
     </Compile>
@@ -105,6 +114,9 @@
     <Compile Include="ValueText.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="LoadingForm.resx">
+      <DependentUpon>LoadingForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MensajeBox.resx">
       <DependentUpon>MensajeBox.vb</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +330,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AjustaTiempo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BorraTiempo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BorraTiempo_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RegistraTiempo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TiempoProduccion.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

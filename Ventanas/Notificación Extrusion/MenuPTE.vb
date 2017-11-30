@@ -13,6 +13,7 @@ Imports System.Threading
 Imports Atlas.Accesos.CLVarGlobales
 Imports Atlas.Accesos
 Imports Utili_Generales.ValueText
+Imports Atlas.AutorizaSobrePesos
 Public Class MenuPTE
 
     Private EmailThread As Thread = Nothing
@@ -24,42 +25,8 @@ Public Class MenuPTE
     Dim NP As New NotificationProcess
     Dim TipoProd As String  'T = Producto Terminado S = Scrap
     'Variables Notificación
-    Dim N_Orden As String
-    Dim N_FechaPesaje As String
-    Dim N_HoraPesaje As String
-    Dim N_PB As Decimal
-    Dim N_PT As Decimal
-    Dim N_PN As Decimal
-    Dim N_Empaques As Integer
-    Dim N_Tramos As Integer
-    Dim N_FechaTurno As String
-    Dim N_Turno As Integer
-    Dim N_Supervisor As String
-    Dim N_Sobrepeso As Decimal
-    Dim N_PesoTeorico As Decimal
-    Dim N_Area As String
-    Dim N_TipoScrap As String
-    Dim N_StSobrePeso As String
-    Dim N_Comp_1 As String
-    Dim N_Porc_1 As String
-    Dim N_Cant_1 As String
-    Dim N_Comp_2 As String
-    Dim N_Porc_2 As String
-    Dim N_Cant_2 As String
-    Dim N_OperadorLinea As String
-    Dim N_CodUser As String
-    Dim N_Rack As String
-    Dim N_Version As String
-    Dim N_Causa_SP As String
-    Dim N_Folio_Vale As String
-    'Variables Notificacion Scrap
     Dim Reprocesado_Gen As String
     Dim Conexion_SAP As String
-
-    'Variables para compuestos
-    Dim Comp_1 As String = "0"
-    Dim Comp_2 As String = "0"
-
     'Variables Identifica Scrap de Purga
     Dim arryComp() As String
     Dim R_Compuesto As String
@@ -114,13 +81,11 @@ Public Class MenuPTE
     Dim TurnoNombre As String
     Dim HIni As String
     Dim HFin As String
-    Dim FolioSiguiente As String
+    'Dim FolioSiguiente As String
 
 
     '----- Variables para Turnos  -----
     Dim FechaTurno As String
-    Dim FechaPesajeSAP As String
-    Dim FechaPesajeSAP_CR As String
 
     '---- Información Bascula  -----
     Dim Cadena As String = ""
@@ -140,7 +105,7 @@ Public Class MenuPTE
     Dim Lt_Tintas As String = ""
     Dim Lt_Aditivos As String = ""
     Dim Lt_Anillos As String = ""
-    Dim CompOriginal As String = ""
+    'Dim CompOriginal As String = ""
     Dim Reprocesado_Orig As String = ""
     Dim TintaOriginal As String = ""
     Dim AditivoOriginal As String = ""
@@ -161,68 +126,31 @@ Public Class MenuPTE
     End Sub
 #End Region
 
-#Region "Clases anidadas"
-#End Region
-
-#Region "Propiedades"
-#End Region
-
 #Region "Metodos"
 
     Private Sub Limpia_Variables()
-        N_Orden = ""
-        N_FechaPesaje = ""
-        N_HoraPesaje = ""
-        N_PB = 0.0
-        N_PT = 0.0
-        N_PN = 0.0
-        N_Empaques = 0
-        N_Tramos = 0
-        N_FechaTurno = ""
-        N_Turno = 0
-        N_Supervisor = ""
-        N_Sobrepeso = 0.0
-        N_PesoTeorico = 0.0
-        N_Area = ""
-        N_TipoScrap = ""
-        N_StSobrePeso = "0"
-        N_Comp_1 = ""
-        N_Porc_1 = ""
-        N_Cant_1 = ""
-        N_Comp_2 = ""
-        N_Porc_2 = ""
-        N_Cant_2 = ""
-        N_OperadorLinea = ""
-        N_CodUser = ""
-        N_Rack = ""
         Btn_Notificar = "1"
     End Sub
-
     Private Sub LimpiaObjetos()
         Lista.Clear()
         Clean = "1"
-        'FrontUtils.LimpiarText(Me)
+        cmbProceso.Checked = False
+        FrontUtils.LimpiarText(Me)
         CB_Com2.Enabled = False
         CB_Rack.DataSource = Nothing
         CB_Com1.DataSource = Nothing
         TPComp2.Enabled = False
         TPComp1.Text = "100"
-        Comp_1 = "0"
+        NPTExtrusion.iCompuesto1 = "0"
         TPComp2.Text = "0"
         CB_Com2.Text = ""
-        CB_SP_Causa.DataSource = Nothing
+
         TCausas.Text = "0"
-        CB_Causas.DataSource = Nothing
         TCCausas.Text = "0"
-        CB_Defecto.DataSource = Nothing
         TCDefecto.Text = "0"
-        CB_TipoSc.DataSource = Nothing
         TCScrap.Text = "0"
         CB_Ope.DataSource = Nothing
-        CB_SP_Causa.Enabled = False
-        TCausas.Text = "0"
         TOrden.Text = ""                'Orden Producción
-        TOrden.Enabled = False
         TtramosNoti.Text = "0"          'Tramos por Notificar
         CB_Rack.Text = "M"              'Rack
         TPesoRack.Text = "0"            'Peso Rack
@@ -233,7 +161,6 @@ Public Class MenuPTE
         TConSAP.Text = "0"
         TFolioVale.Text = "00000"
         ' ---------------------------------------------------------------------------------
-        RB_PT.Checked = True
         RB_SC.Checked = False
         ' ---------------------------------------------------------------------------------
         TPesoCaptura.Text = "0.00" 'Peso Bruto Manual
@@ -257,11 +184,10 @@ Public Class MenuPTE
         ' ---------------------------------------------------------------------------------
         BPesar.Enabled = False
         BImprimir.Enabled = False
-        TOrden.Enabled = True
         Clean = "0"
         Btn_Notificar = "0"
+        PassNotifier.Focus()
     End Sub
-
     Private Sub Asigna_Turno()
         ' ---------------------------------------------------------------------------------
         'Se asigna turno que corresponde acorde al horario
@@ -269,8 +195,6 @@ Public Class MenuPTE
         Catalogo_Turnos.Combo_Turnos(cmbTurnos)
         Catalogo_Turnos.Asigna_turno(cmbTurnos, HReal)
     End Sub
-
-
     Private Sub ProcesoSobrepeso()
         Dim xPSP As Double
         Dim xTramosNoti As Double
@@ -326,9 +250,9 @@ Public Class MenuPTE
             InQry = InQry & "Empaques,Peso_Bruto,Tara,Peso_Neto,Usuario,Turno,Supervisor,Planta,Folio,Autoriza_Calidad,"
             InQry = InQry & "Recibe_Almacen,Autoriza_Sobrepeso,Estatus_Autorizacion,Observaciones,PorSobrePeso,CausasSobrepeso,"
             InQry = InQry & "Compuesto1,Porcentaje1,Compuesto2,Porcentaje2,LTCompuestos, Fecha_turno, Puestotrabajo) Values "
-            InQry = InQry & "('" & TOrden.Text.Trim & "','" & N_FechaPesaje.Trim & "','" & N_HoraPesaje.Trim & "',"
+            InQry = InQry & "('" & TOrden.Text.Trim & "','" & NPTExtrusion._iFechaPesaje.Trim & "','" & NPTExtrusion._iHoraPesaje.Trim & "',"
             InQry = InQry & "'" & ValCodigoBascula.Trim & "','" & TPesoRack.Text.Trim & "','" & nvoTramosNoti & "',"
-            InQry = InQry & "" & nvoEmpaques & ",'" & N_PB & "','" & N_PT & "','" & N_PN & "',"
+            InQry = InQry & "" & nvoEmpaques & ",'" & NPTExtrusion._iPB & "','" & NPTExtrusion._iPT & "','" & NPTExtrusion._iPN & "',"
             InQry = InQry & "'" & CodOperador.Text.Trim & "','" & Turno.Trim & "','" & SuperAutoSobrepeso.Trim & "',"
             InQry = InQry & "'" & SessionUser._sCentro.Trim & "','" & Folio_SP & "','" & "S/N" & " ',' " & "S/N" & "',"
             InQry = InQry & "'" & SuperAutoSobrepeso.Trim & "','0','" & ObserSobrepeso.Trim & "',"
@@ -355,7 +279,7 @@ Public Class MenuPTE
                     Email = Email & "Reporte de Sobre Peso " & vbCr & ""
                     Email = Email & "" & vbCr & ""
                     Email = Email & "Numero ODF:            " & TOrden.Text.Trim & " " & vbCr & ""
-                    Email = Email & "Folio Atlas:           " & FolioSiguiente.Trim & " " & vbCr & ""
+                    Email = Email & "Folio Atlas:           " & FolioNotifica._rIdFolio.Trim & " " & vbCr & ""
                     Email = Email & "Status Autorización:   " & StatusSobrepeso.Trim & " " & vbCr & ""
                     Email = Email & "Producto:              " & TCodPT.Text.Trim & " " & vbCr & ""
                     Email = Email & "Descripción:           " & TCodPtDecr.Text.Trim & " " & vbCr & ""
@@ -439,6 +363,39 @@ Public Class MenuPTE
         End If
     End Sub
 
+    Private Function DeterminaTipoPT() As Boolean
+        Select Case SessionUser._sCentro.Trim
+            Case Is = "PE01", "PE12"
+                If cmbProceso.Checked = True Then
+                    NPTExtrusion.iTipoPT = "P"
+                    NPTExtrusion.iNotifica = "3"
+                    DeterminaTipoPT = True
+                ElseIf cmbProceso.Checked = False Then
+                    NPTExtrusion.iTipoPT = "T"
+                    NPTExtrusion.iNotifica = "0"
+                    DeterminaTipoPT = True
+                Else
+                    NPTExtrusion.iTipoPT = ""
+                    NPTExtrusion.iNotifica = "0"
+                    DeterminaTipoPT = False
+                End If
+            Case Else
+                If cmbProceso.Checked = True Then
+                    NPTExtrusion.iTipoPT = "T"
+                    NPTExtrusion.iNotifica = "0"
+                    DeterminaTipoPT = True
+                ElseIf cmbProceso.Checked = False Then
+                    NPTExtrusion.iTipoPT = "T"
+                    NPTExtrusion.iNotifica = "0"
+                    DeterminaTipoPT = True
+                Else
+                    NPTExtrusion.iTipoPT = ""
+                    NPTExtrusion.iNotifica = "0"
+                    DeterminaTipoPT = False
+                End If
+        End Select
+
+    End Function
     Private Sub Notifica_PT()
         Limpia_Variables()
         Asigna_Turno()
@@ -455,101 +412,112 @@ Public Class MenuPTE
         End If
 
         'Se asigna valor a variables -------------------------------------------------------------
-        N_Orden = TOrden.Text.Trim
-        N_CodUser = CodOperador.Text.Trim
-        N_Tramos = TtramosNoti.Text.Trim
-        N_PB = TPesoBruto.Text.Trim
-        N_PT = TPesoTara.Text.Trim
-        N_PN = TPesoNeto.Text.Trim
-        N_Empaques = "0"
-        N_FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
-        N_HoraPesaje = Date.Now.TimeOfDay.ToString()
-        N_Turno = cmbTurnos.Text.Trim
-        N_PesoTeorico = TPesoTeorico.Text.Trim
-        N_OperadorLinea = CB_Ope.SelectedValue
-        N_FechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
-        N_Sobrepeso = Format(Val(TSobrePeso.Text), xFormato)
-        FechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
-        N_Causa_SP = CB_SP_Causa.SelectedValue
 
-        N_Folio_Vale = TFolioVale.Text
+        NPTExtrusion.iOrdenProduccion = TOrden.Text.Trim
+        NPTExtrusion.iUsuario = CodOperador.Text.Trim
+        NPTExtrusion.iTramos = TtramosNoti.Text.Trim
+        NPTExtrusion.iIdRack = CB_Rack.Text.Trim
+        NPTExtrusion.iPB = TPesoBruto.Text.Trim
+        NPTExtrusion.iPT = TPesoTara.Text.Trim
+        NPTExtrusion.iPN = TPesoNeto.Text.Trim
+        NPTExtrusion.iIdBascula = ValCodigoBascula
+        NPTExtrusion.iPuestoTrabajo = TPtoTrabajo.Text.Trim
+        NPTExtrusion.iEstatusSobrePeso = "0"
+        NPTExtrusion.iEmpaques = "0"
+        NPTExtrusion.iFechaPesaje = Date.Today.ToString("yyyy-MM-dd")
+        NPTExtrusion.iHoraPesaje = Date.Now.TimeOfDay.ToString()
+        NPTExtrusion.iTurno = cmbTurnos.Text.Trim
+        NPTExtrusion.iPesoTeorico = TPesoTeorico.Text.Trim
+        NPTExtrusion.iIdOperadorPtoTra = CB_Ope.SelectedValue
+        NPTExtrusion.iFechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
+        NPTExtrusion.iSobrePeso = Format(Val(TSobrePeso.Text), xFormato)
+        NPTExtrusion.iFechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
+        NPTExtrusion.iTipoCausa = CB_SP_Causa.SelectedValue
+        NPTExtrusion.iArea = "E"
+        NPTExtrusion.iFolioVale = TFolioVale.Text
+        NPTExtrusion.iVersion = Atlas_Version.Version
+        NPTExtrusion.iSupervisor = "Supervisor"
 
-        If N_Causa_SP = Nothing Then
-            N_Causa_SP = "0"
+        If DeterminaTipoPT() = False Then
+            MensajeBox.Mostrar("No puede determinar el tipo de producción informe a su supervisor", "Aviso", MensajeBox.TipoMensaje.Information)
+            Return
+        End If
+
+        If P_OP = True Then
+            NPTExtrusion.iIdOperadorPtoTra = CB_Ope.SelectedValue
+        Else
+            NPTExtrusion.iIdOperadorPtoTra = "N/A"
+        End If
+
+        If NPTExtrusion._iTipoCausa = Nothing Then
+            NPTExtrusion.iTipoCausa = "0"
         End If
         'Se valida peso bascula -------------------------------------------------------------------
-        If ValidacionesBascula.ValidaPeso(N_PB, N_PT, N_PN) = False Then
+        If ValidacionesBascula.ValidaPeso(NPTExtrusion._iPB, NPTExtrusion._iPT, NPTExtrusion._iPN) = False Then
             Exit Sub
         End If
-        'Se verifica sobrepeso permitido ---------------------------------------------------------
-        'If RB_PT.Checked Then
-        '    If (PorcentajeSobrePeso < (SobrepesoPermitido * -1) Or PorcentajeSobrePeso > SobrepesoPermitido) And P_SP = True Then
-        '        N_StSobrePeso = "1"
-        '        SP = TSobrePeso.Text
-        '        If TCausas.Text.Trim.Length = 0 Then
-        '            MensajeBox.Mostrar("Seleccione una CAUSA de SOBREPESO ", "Aviso", MensajeBox.TipoMensaje.Information)
-        '            CB_SP_Causa.Enabled = True
-        '            TCausas.Enabled = True
-        '            Catalogo_Causas.Combo_Causas(CB_SP_Causa, "", Seccion.Trim, "SP", False)
-        '            TCausas.Focus()
-        '            Exit Sub
-        '        End If
-        '        FrmSobreBajoPeso.ShowDialog()
-        '        If AutorizaSobrepeso = "2" Or AutorizaSobrepeso = "0" Then
-        '            MensajeBox.Mostrar("El Sobre/Bajo Peso no ha sido Autorizado ", "No Autorizado", MensajeBox.TipoMensaje.Information)
-        '            'LimpiaObjetos()
-        '            Exit Sub
-        '        End If
-        '    End If
-        'End If
-        'Select Case P_SP
-        '    Case Is = False
-        '        If (PorcentajeSobrePeso < (SobrepesoPermitido * -1) Or PorcentajeSobrePeso > SobrepesoPermitido) Then
-        '            Dim FrmSP As New AutorizarSobrepeso.AutorizaSobrepeso
-        '            N_StSobrePeso = "1"
-        '            If TCausas.Text.Trim = 0 Then
-        '                MensajeBox.Mostrar("Seleccione una CAUSA de SOBREPESO ", "Aviso", MensajeBox.TipoMensaje.Information)
-        '                CB_SP_Causa.Enabled = True
-        '                TCausas.Enabled = True
-        '                Catalogo_Causas.Combo_Causas(CB_SP_Causa, "", Seccion.Trim, "SP", False)
-        '                TCausas.Focus()
-        '                Return
-        '            Else
-        '                Dim FrmSobreBajoPeso As New AutorizarSobrepeso.AutorizaSobrepeso
-        '                FrmSobreBajoPeso.ShowDialog()
 
-        '            End If
-        '        End If
-        'End Select
+        LSP = SobrepesoPermitido
+        LBP = SobrepesoPermitido * -1
+        EstatusAutoriza = 0
+
+        Select Case P_SP
+            Case Is = True
+                If (PorcentajeSobrePeso < LBP Or PorcentajeSobrePeso > LSP) Then
+                    If TCausas.Text.Trim = 0 Then
+                        MensajeBox.Mostrar("Seleccione una CAUSA de SOBREPESO ", "Aviso", MensajeBox.TipoMensaje.Information)
+                        CB_SP_Causa.Enabled = True
+                        TCausas.Enabled = True
+                        Catalogo_Causas.Combo_Causas(CB_SP_Causa, "", Seccion.Trim, "SP", False)
+                        TCausas.Focus()
+                        Return
+                    Else
+                        EstatusAutoriza = 2
+                        Dim FrmSobreBajoPeso As New Atlas.AutorizaSobrePesos.AutorizaSobrepeso
+                        FrmSobreBajoPeso.ShowDialog()
+                        Select Case EstatusAutoriza
+                            Case Is = 1
+                                RegistrarSBP.Orden = TOrden.Text.Trim
+                                RegistrarSBP.Sobrepeso = TSobrePeso.Text.Trim
+                                RegistrarSBP.Causa = CB_SP_Causa.SelectedValue
+                                RegistrarSBP.Aviso = 0
+                            Case Is = 2
+                                MensajeBox.Mostrar("El Sobre/Bajopeso no ha sido autorizado", "Sobre/Bajopeso", MensajeBox.TipoMensaje.Information)
+                                LimpiaObjetos()
+                                Exit Sub
+                        End Select
+                    End If
+                End If
+        End Select
 
 
         'Se asigna valor a variables de consumo compuestos 1, 2 -----------------------------------
         Dim aryTextFile() As String
         Dim Stat_Comp As Boolean
 
-        Comp_1 = CB_Com1.SelectedValue
-        Comp_2 = CB_Com2.SelectedValue
+        NPTExtrusion.iCompuesto1 = CB_Com1.SelectedValue
+        NPTExtrusion.iCompuesto2 = CB_Com2.SelectedValue
 
-        aryTextFile = ValidacionesCompuestos.ValidaCompuestos_Extrusion(N_PN, Comp_1, TPComp1.Text, Comp_2, TPComp2.Text).Split("|")
+        aryTextFile = ValidacionesCompuestos.ValidaCompuestos_Extrusion(NPTExtrusion._iPN, NPTExtrusion._iCompuesto1, TPComp1.Text, NPTExtrusion._iCompuesto2, TPComp2.Text).Split("|")
         Stat_Comp = aryTextFile(0)
         If Stat_Comp = False Then
             Exit Sub
         Else
-            N_Comp_1 = aryTextFile(1)
-            N_Porc_1 = aryTextFile(2)
-            N_Cant_1 = aryTextFile(3)
-            N_Comp_2 = aryTextFile(4)
-            N_Porc_2 = aryTextFile(5)
-            N_Cant_2 = aryTextFile(6)
+            NPTExtrusion.iComp1 = aryTextFile(1)
+            NPTExtrusion.iPorc1 = aryTextFile(2)
+            NPTExtrusion.iCant1 = aryTextFile(3)
+            NPTExtrusion.iComp2 = aryTextFile(4)
+            NPTExtrusion.iPorc2 = aryTextFile(5)
+            NPTExtrusion.iCant2 = aryTextFile(6)
 
             Lista.Clear()
 
-            If N_Comp_1 <> 0 Then
-                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_1.Trim) + "|" + N_Cant_1)
+            If NPTExtrusion.iComp1.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(NPTExtrusion._iComp1.Trim) + "|" + NPTExtrusion._iCant1.Trim)
             End If
 
-            If N_Comp_2 <> 0 Then
-                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_2.Trim) + "|" + N_Cant_2)
+            If NPTExtrusion.iComp2.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(NPTExtrusion._iComp2.Trim) + "|" + NPTExtrusion._iCant2.Trim)
             End If
 
         End If
@@ -558,15 +526,12 @@ Public Class MenuPTE
         'Identificar Supervisor en Turno ---------------------------------------------------------
         NP.Identifies_shift_supervisor(Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
         'Identificar Compuesto original de la bom ------------------------------------------------
+        Dim IdComEstatus As Boolean
         If P_CC1 = False Then
-            CompOriginal = "0"
+            CompuestoVirgen.IdCompOriginal = "0"
         Else
-            Dim Count As Integer = 0
-            LecturaQry("PA_Identifica_Compuesto_BOM '" & SessionUser._sCentro & "', '" & TCodPT.Text.Trim & "' ")
-            If (LecturaBD.Read) Then
-                Count = Count + 1
-                CompOriginal = LecturaBD(0)
-            Else
+            IdComEstatus = CatalogosOperacion.Compuesto_Bom(TCodPT.Text.Trim)
+            If IdComEstatus = False Then
                 MsgBox("Este producto no tiene asignado compuesto virgen para su consumo", MsgBoxStyle.Critical)
                 Return
             End If
@@ -576,145 +541,187 @@ Public Class MenuPTE
         BPesar.Enabled = False
         BSiguiente.Enabled = False
         '----------------------------------------- Inicio : Identificar si el producto usa empaques
-        N_Empaques = Produccion_Scrap_Extrusion.Empaques(TCodAnillo.Text.Trim, N_Tramos)
+        NPTExtrusion.iEmpaques = Produccion_Scrap_Extrusion.Empaques(TCodAnillo.Text.Trim, NPTExtrusion.iTramos)
         '------------------------------------------- Fin : Identificar si el producto usa empaques
         'Se ingresa información de notificacion en la base de datos ------------------------------
-        FolioSiguiente = ""
-        FolioSiguiente = Proceso_Extrusion.Alta_PT(SessionUser._sAlias.Trim, N_Orden, SessionUser._sCentro, N_FechaPesaje, N_HoraPesaje, strNumeroBascula, CB_Rack.Text.Trim,
-                                        N_PB, N_PT, N_PN, N_Empaques, N_Tramos, N_CodUser, N_FechaTurno, N_Turno, NP.r_Supervisor, N_Sobrepeso,
-                                        N_Causa_SP.Trim, TPtoTrabajo.Text.Trim, N_PesoTeorico, N_StSobrePeso, N_Comp_1.Trim, N_Porc_1, N_Cant_1,
-                                        N_Comp_2.Trim, N_Porc_2, N_Cant_2, Ver_Atlas, N_Folio_Vale)
-        TFolioAtlas.Text = FolioSiguiente
+
+        Try
+            FolioNotifica.rIdFolio = OperacionExtrusion.Notifica_PT
+            TFolioAtlas.Text = FolioNotifica._rIdFolio
+        Catch ex As Exception
+            LoadingForm.CloseForm()
+            MensajeBox.Mostrar(ex.Message, "Error Intente Nuevamente", MensajeBox.TipoMensaje.Critical)
+            BtnActualiza.Enabled = True
+            BtnActualiza.Focus()
+            Return
+        End Try
+
         'Se registra el Sobre / Bajo Peso
-        If P_SP = True And N_StSobrePeso = "1" Then
-            LecturaQry("PA_Insert_Sobrepesos " & SessionUser._sCentro & "_Sobrepesos, '" & TOrden.Text.Trim & "', '" & FolioSiguiente & "', '" & SP & "', '" & N_Causa_SP.Trim & "', '" & Autoriza_SP & "', '" & Obs_Peso & "' ")
-            'Proceso en fondo para el envio de E-mail
-            EmailThread = New Thread(New ThreadStart(AddressOf Me.ThreadProcSafe))
-            EmailThread.IsBackground = True
-            EmailThread.Start()
+        If P_SP = True And EstatusAutoriza = 1 Then
+            RegistrarSBP.FolioAtlas = FolioNotifica._rIdFolio.Trim
+            ReportOverweight.Notification(1)
+            ''Envio de correo notificando de sobrepeso
+            EmailSBP.Orden = TOrden.Text.Trim
+            EmailSBP.Producto = TCodPT.Text.Trim & " " & TCodPtDecr.Text.Trim
+            EmailSBP.FolioAtlas = FolioNotifica._rIdFolio.Trim
+            EmailSBP.Justifica = RegistrarSBP._Observacion
+            EmailSBP.FH = Date.Today.ToString("yyyy-MM-dd")
+            EmailSBP.PB = NPTExtrusion._iPB
+            EmailSBP.PT = NPTExtrusion._iPT
+            EmailSBP.PN = NPTExtrusion._iPN
+            EmailSBP.SBPKilos = KilosSobrepeso
+            EmailSBP.SBPPorcentaje = Format(Val(TSobrePeso.Text), xFormato)
+            EmailSBP.Centro = SessionUser._sCentro.Trim
+            EmailSBP.IdAccion = 1
+            Sobrepesos.Email()
         End If
-        'Se verifica status de conexión y se determina si se envia a SAP o no --------------------
-        Select Case Conexion_SAP
-            Case "False"
-                MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
-                TDocSAP.Text = "0000000000"
-                TConSAP.Text = "00000000"
-            Case "True"
-                Select Case chkSAP.Checked
-                    Case True
-                        'Se arma la cadena del Header de verificacion de duplicados
-                        Header_Duplicado = "74" + _
-                                        "|" + "CO15" + _
-                                        "|" + TOrden.Text.Trim + _
-                                        "|" + SessionUser._sAlias.Trim + _
-                                        "|" + FolioSiguiente.Trim
-                        'Variables WS Duplicados
-                        Dim Err_dup As String = ""
-                        Dim Mns_dup As String = ""
-                        Dim Return_dup As Object
-                        Dim Tbl_dup As String()
-                        WS_P.Consume_WS(SessionUser._sAlias.Trim, Header_Duplicado, Lista, SessionUser._sAmbiente)
-                        Tbl_dup = WS_P.Tbl_resultado
-                        Return_dup = WS_P.Return_SAP
-                        Err_dup = Return_dup.ZTYPE
-                        Mns_dup = Return_dup.ZMESSAGE
+        'Se valida que no este activo el check box de en proceso
+        If cmbProceso.Checked = True Then
+            LoadingForm.CloseForm()
+            MensajeBox.Mostrar("Producción se registra en proceso", "Producción en Proceso", MensajeBox.TipoMensaje.Information)
+            ProduccionSeparada()
+        Else
+            'Se verifica status de conexión y se determina si se envia a SAP o no --------------------
+            Select Case Conexion_SAP
+                Case "False"
+                    LoadingForm.CloseForm()
+                    MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
+                    TDocSAP.Text = "0000000000"
+                    TConSAP.Text = "00000000"
+                Case "True"
+                    Select Case chkSAP.Checked
+                        Case True
+                            'Se arma la cadena del Header de verificacion de duplicados
+                            Header_Duplicado = "74" + _
+                                            "|" + "CO15" + _
+                                            "|" + TOrden.Text.Trim + _
+                                            "|" + SessionUser._sAlias.Trim + _
+                                            "|" + FolioNotifica._rIdFolio.Trim
+                            'Variables WS Duplicados
+                            Dim Err_dup As String = ""
+                            Dim Mns_dup As String = ""
+                            Dim Return_dup As Object
+                            Dim Tbl_dup As String()
+                            WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
+                            Tbl_dup = WS_P.Tbl_resultado
+                            Return_dup = WS_P.Return_SAP
+                            Err_dup = Return_dup.ZTYPE
+                            Mns_dup = Return_dup.ZMESSAGE
 
-                        Select Case Err_dup
-                            '------Si no existe la notificacion regresa Error y se realiza la notificación normal
-                            Case Is = "E"
-                                'Lectura de WS Generico para realizar la notificación ------------------------------------
-                                Label12.Visible = True
-                                Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                Dim Head As String
-                                Head = "28|" + TOrden.Text.Trim + "|" + N_Tramos.ToString + "|" + FechaPesajeSAP + "|" + CompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioSiguiente
-                                NotificationProcess.Notifica_PTE(Head, Lista, FolioSiguiente.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, TPassNotifier.Text.Trim)
-                                Label12.Visible = False
-                                Label12.Text = ""
-                            Case Else
-                                '------Si fue notificado se actualiza el registro
-                                Dim Doc_Con_dup As String = ""
-                                Dim reg As String = ""
+                            Select Case Err_dup
+                                '------Si no existe la notificacion regresa Error y se realiza la notificación normal
+                                Case Is = "E"
+                                    'Lectura de WS Generico para realizar la notificación ------------------------------------
+                                    Label12.Visible = True
+                                    Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                                    Dim Head As String
+                                    Head = "28|" + TOrden.Text.Trim + "|" + NPTExtrusion._iTramos.ToString + "|" + NPTExtrusion._iFechaPesajeSAP.Trim + "|" + CompuestoVirgen._IdCompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioNotifica._rIdFolio.Trim
+                                    NotificationProcess.Notifica_PTE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, PassNotifier.Text.Trim)
+                                    Label12.Visible = False
+                                    Label12.Text = ""
+                                Case Else
+                                    '------Si fue notificado se actualiza el registro
+                                    Dim Doc_Con_dup As String = ""
+                                    Dim reg As String = ""
 
-                                Doc_Con_dup = Tbl_dup(0)
-                                SAP_dup.agregarConsecutivosSAP(Doc_Con_dup)
-                                reg = "1"
-                                InQry = ""
-                                InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set Notifica = '" & reg.Trim & "', "
-                                InQry = InQry & "notificacionmasiva = '" & reg.Trim & "', "
-                                InQry = InQry & "Documento_SAP = '" & SAP_dup.DocumentoSAP & "', "
-                                InQry = InQry & "Consecutivo_SAP = '" & SAP_dup.ConsecutivoSAP & "' "
-                                InQry = InQry & " Where Folio = '" & FolioSiguiente.Trim & "'"
-                                InsertQry(InQry)
-                                '------Fin Se ejecuta el WS verificacion duplicados
-                        End Select
-                    Case False
-                        MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
-                        TDocSAP.Text = "0000000000"
-                        TConSAP.Text = "00000000"
-                End Select
-        End Select
+                                    Doc_Con_dup = Tbl_dup(0)
+                                    SAP_dup.agregarConsecutivosSAP(Doc_Con_dup)
+                                    reg = "1"
+                                    InQry = ""
+                                    InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set Notifica = '" & reg.Trim & "', "
+                                    InQry = InQry & "notificacionmasiva = '" & reg.Trim & "', "
+                                    InQry = InQry & "Documento_SAP = '" & SAP_dup.DocumentoSAP & "', "
+                                    InQry = InQry & "Consecutivo_SAP = '" & SAP_dup.ConsecutivoSAP & "' "
+                                    InQry = InQry & " Where Folio = '" & FolioNotifica._rIdFolio.Trim & "'"
+                                    InsertQry(InQry)
+                                    '------Fin Se ejecuta el WS verificacion duplicados
+                            End Select
+                        Case False
+                            LoadingForm.CloseForm()
+                            MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
+                            TDocSAP.Text = "0000000000"
+                            TConSAP.Text = "00000000"
+                    End Select
+            End Select
+        End If
+      
         'Consulta cantidades
-        ProductionOrder.CalCantExt(SessionUser._sAlias.Trim, TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, SessionUser._sCentro.Trim)
+        ProductionOrder.CalCantExt(TOrden.Text.Trim, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
         'Porcentaje de avance de la orden
         ProductionOrder_2.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8)
         BSiguiente.Enabled = True
         BImprimir.Enabled = True
 
     End Sub
-
     Private Sub Notifica_SC()
         Conexion_SAP = SAP_Conexion.Estatus(Seccion)
         Dim Lt_Compuestos As String = ""
         If CB_Causas.Text = "" Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("Seleccione una Causa de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
             CB_Causas.Focus()
             Return
         End If
 
         If CB_Defecto.Text = "" Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("Seleccione un Defecto de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
             CB_Defecto.Focus()
             Return
         End If
 
         If CB_TipoSc.Text = "" Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("Seleccione el tipo de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
             CB_Defecto.Focus()
             Return
         End If
 
         'Se asigna valor a variables -------------------------------------------------------------
-        N_CodUser = CodOperador.Text.Trim
-        N_PB = TPesoBruto.Text.Trim
-        N_PT = TPesoTara.Text.Trim
-        N_PN = TPesoNeto.Text.Trim
-        N_PesoTeorico = TPesoTeorico.Text.Trim
-        FechaPesajeSAP_CR = dtpFECHASAP.Value.ToString("yyyy-MM-dd")
-        N_FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
-        N_HoraPesaje = Date.Now.TimeOfDay.ToString()
-        N_FechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
-        N_Turno = cmbTurnos.Text.Trim
-        FechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
-        N_TipoScrap = CB_TipoSc.SelectedValue.Trim
-        N_Rack = CB_Rack.Text.Trim
-        Ver_Atlas = "Versión 1.4.11.134"
+        NPTExtrusion.iOrdenProduccion = TOrden.Text.Trim
+        NPTExtrusion.iUsuario = CodOperador.Text.Trim
+        NPTExtrusion.iTramos = TtramosNoti.Text.Trim
+        NPTExtrusion.iIdRack = CB_Rack.Text.Trim
+        NPTExtrusion.iPB = TPesoBruto.Text.Trim
+        NPTExtrusion.iPT = TPesoTara.Text.Trim
+        NPTExtrusion.iPN = TPesoNeto.Text.Trim
+        NPTExtrusion.iIdBascula = ValCodigoBascula
+        NPTExtrusion.iPuestoTrabajo = TPtoTrabajo.Text.Trim
+        NPTExtrusion.iPesoTeorico = TPesoTeorico.Text.Trim
+        NPTExtrusion.iFechaPesajeSAP_CR = dtpFECHASAP.Value.ToString("yyyy-MM-dd")
+        NPTExtrusion.iFechaPesaje = Date.Today.ToString("yyyy-MM-dd")
+        NPTExtrusion.iHoraPesaje = Date.Now.TimeOfDay.ToString()
+        NPTExtrusion.iFechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
+        NPTExtrusion.iTurno = cmbTurnos.Text.Trim
+        NPTExtrusion.iFechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
+        NPTExtrusion.iTipoScrap = CB_TipoSc.SelectedValue.Trim
+        NPTExtrusion.iArea = "E"
+        NPTExtrusion.iRepGenerado = "0"
+        NPTExtrusion.iVersion = Atlas_Version.Version
+        NPTExtrusion.iSupervisor = "Supervisor"
+        NPTExtrusion.iIdCausa = TCCausas.Text.Trim
+        NPTExtrusion.iIdDefecto = TCDefecto.Text.Trim
+
         If CB_Ope.SelectedValue = Nothing Then
-            N_OperadorLinea = "Operador"
+            NPTExtrusion.iIdOperadorPtoTra = "Operador"
         Else
-            N_OperadorLinea = CB_Ope.SelectedValue
+            NPTExtrusion.iIdOperadorPtoTra = CB_Ope.SelectedValue
         End If
         'Se valida valores de pesos --------------------------------------------------------------
-        If (N_PN <= 0) Then
+        If (NPTExtrusion._iPN <= 0) Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("***  Peso NETO es menor o igual a cero  ***", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
         End If
 
-        If (N_PB <= 0) Then
+        If (NPTExtrusion._iPB <= 0) Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("***  Peso BRUTO es menor o igual a cero  ***", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
         End If
 
-        If (N_PB < N_PT) Or (N_PB < N_PN) Then
+        If (NPTExtrusion._iPB < NPTExtrusion._iPT) Or (NPTExtrusion._iPB < NPTExtrusion._iPN) Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("***  El Peso Bruto debe ser mayor que La Tara y/o Peso Neto ***", "Aviso", MensajeBox.TipoMensaje.Information)
             Exit Sub
         End If
@@ -722,29 +729,29 @@ Public Class MenuPTE
         Dim aryTextFile() As String
         Dim Stat_Comp As Boolean
 
-        Comp_1 = CB_Com1.SelectedValue
-        Comp_2 = CB_Com2.SelectedValue
+        NPTExtrusion.iCompuesto1 = CB_Com1.SelectedValue
+        NPTExtrusion.iCompuesto2 = CB_Com2.SelectedValue
 
-        aryTextFile = ValidacionesCompuestos.ValidaCompuestos_Extrusion(N_PN, Comp_1, TPComp1.Text, Comp_2, TPComp2.Text).Split("|")
+        aryTextFile = ValidacionesCompuestos.ValidaCompuestos_Extrusion(NPTExtrusion._iPN, NPTExtrusion._iCompuesto1, TPComp1.Text, NPTExtrusion._iCompuesto2, TPComp2.Text).Split("|")
         Stat_Comp = aryTextFile(0)
         If Stat_Comp = False Then
             Exit Sub
         Else
-            N_Comp_1 = aryTextFile(1)
-            N_Porc_1 = aryTextFile(2)
-            N_Cant_1 = aryTextFile(3)
-            N_Comp_2 = aryTextFile(4)
-            N_Porc_2 = aryTextFile(5)
-            N_Cant_2 = aryTextFile(6)
+            NPTExtrusion.iComp1 = aryTextFile(1)
+            NPTExtrusion.iPorc1 = aryTextFile(2)
+            NPTExtrusion.iCant1 = aryTextFile(3)
+            NPTExtrusion.iComp2 = aryTextFile(4)
+            NPTExtrusion.iPorc2 = aryTextFile(5)
+            NPTExtrusion.iCant2 = aryTextFile(6)
 
             Lista.Clear()
 
-            If N_Comp_1.Trim <> 0 Then
-                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_1.Trim) + "|" + N_Cant_1)
+            If NPTExtrusion.iComp1.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(NPTExtrusion._iComp1.Trim) + "|" + NPTExtrusion._iCant1.Trim)
             End If
 
-            If N_Comp_2.Trim <> 0 Then
-                Lista.Add(Util.QuitarCerosIzquierda(N_Comp_2.Trim) + "|" + N_Cant_2)
+            If NPTExtrusion.iComp2.Trim <> 0 Then
+                Lista.Add(Util.QuitarCerosIzquierda(NPTExtrusion._iComp2.Trim) + "|" + NPTExtrusion._iCant2.Trim)
             End If
 
         End If
@@ -752,93 +759,101 @@ Public Class MenuPTE
         Permiso.SAP_Status("E", tsImagen)
         'Identificar Supervisor en Turno -----------------------------------------------------------------------
         NP.Identifies_shift_supervisor(Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
-        'Identificar Compuesto original de la bom --------------------------------------------------------------
+        'Identificar Compuesto original de la bom ------------------------------------------------
+        Dim IdComEstatus As Boolean
         If P_CC1 = False Then
-            CompOriginal = "0"
+            CompuestoVirgen.IdCompOriginal = "0"
         Else
-            Dim Compuesto As String = ""
-            Dim arryText() As String
-            arryText = NotificationProcess.Identifica_Compuesto_Original(TCodPT.Text.Trim).Split("|")
-            CompOriginal = arryText(0)
-            Reprocesado_Orig = arryText(1)
-            If CompOriginal = "" Then
+            IdComEstatus = CatalogosOperacion.Compuesto_Bom(TCodPT.Text.Trim)
+            If IdComEstatus = False Then
+                LoadingForm.CloseForm()
+                MsgBox("Este producto no tiene asignado compuesto virgen para su consumo", MsgBoxStyle.Critical)
                 Return
             End If
         End If
 
-        If CompOriginal.Trim = Comp_1.Trim And TPComp1.Text = 100 Then
+        If CompuestoVirgen._IdCompOriginal.Trim = NPTExtrusion._iCompuesto1.Trim And TPComp1.Text = 100 Then
             Lt_Compuestos = ""
-        ElseIf CompOriginal.Trim <> Comp_1.Trim And TPComp1.Text = 100 Then
-            Lt_Compuestos = CompOriginal.Trim & "|" & TPComp1.Text & "|" & Comp_1.Trim
+        ElseIf CompuestoVirgen._IdCompOriginal.Trim <> NPTExtrusion._iCompuesto1.Trim And TPComp1.Text = 100 Then
+            Lt_Compuestos = CompuestoVirgen._IdCompOriginal.Trim & "|" & TPComp1.Text & "|" & NPTExtrusion._iCompuesto1.Trim
         ElseIf TPComp1.Text < 100 Then
-            Lt_Compuestos = CompOriginal.Trim & "|" & TPComp1.Text & "|" & Comp_1.Trim & "||" & CompOriginal.Trim & "|" & TPComp2.Text & "|" & Comp_2.Trim
-            If Comp_2.Trim = "" Then
+            Lt_Compuestos = CompuestoVirgen._IdCompOriginal.Trim & "|" & TPComp1.Text & "|" & NPTExtrusion._iCompuesto1.Trim & "||" & CompuestoVirgen._IdCompOriginal.Trim & "|" & TPComp2.Text & "|" & NPTExtrusion._iCompuesto2.Trim
+            If NPTExtrusion._iCompuesto2.Trim = "" Then
+                LoadingForm.CloseForm()
                 MensajeBox.Mostrar("Selecciones un segundo compuesto", "Aviso", MensajeBox.TipoMensaje.Information)
                 Return
             End If
         End If
+        NPTExtrusion.iLtCompuestos = Lt_Compuestos
         'Identifica si el compuesto es de paros y arranques o normal
-        Reprocesado_Gen = NotificationProcess.Identifica_Reprocesado(Comp_1.Trim)
+        Reprocesado_Gen = NotificationProcess.Identifica_Reprocesado(NPTExtrusion._iCompuesto1.Trim)
         'Se deshabilta boton de Notificación para evitar duplicidad
         BPesar.Enabled = False
         'Se ingresa información de notificacion en la base de datos --------------------------------------------
         'Se crea el folio correspondiente al pesaje
-        FolioSiguiente = ""
 
         Try
-            FolioSiguiente = Proceso_Extrusion.Alta_SC(SessionUser._sAlias.Trim, TOrden.Text.Trim, SessionUser._sCentro.Trim, N_FechaPesaje, N_HoraPesaje, strNumeroBascula,
-                                               N_TipoScrap, N_PB, N_PT, N_PN, N_CodUser, N_Turno, CB_Causas.SelectedValue.Trim,
-                                               CB_Defecto.SelectedValue.Trim, N_FechaTurno, TPtoTrabajo.Text.Trim, Reprocesado_Gen,
-                                               N_OperadorLinea.Trim, N_Rack, N_Comp_1, N_Porc_1, N_Cant_1, N_Comp_2, N_Porc_2, N_Cant_2,
-                                               Lt_Compuestos.Trim, "Versión 1.4.11.134")
+            FolioNotifica.rIdFolio = OperacionExtrusion.Notifica_SC
+            TFolioAtlas.Text = FolioNotifica._rIdFolio
         Catch ex As Exception
-            MensajeBox.Mostrar(ex.Message, "Critico", MensajeBox.TipoMensaje.Critical)
+            LoadingForm.CloseForm()
+            MensajeBox.Mostrar(ex.Message, "Error Intente Nuevamente", MensajeBox.TipoMensaje.Critical)
+            BtnActualiza.Enabled = True
+            BtnActualiza.Focus()
+            Return
         End Try
-        TFolioAtlas.Text = FolioSiguiente
+        TFolioAtlas.Text = FolioNotifica._rIdFolio.Trim
         Select Case Conexion_SAP
             Case "False"
-                MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
+                LoadingForm.CloseForm()
+                MsgBox(" No se realizara notificación a SAP se encuentra deshabilitada la conexión ")
                 TDocSAP.Text = "0000000000"
                 TConSAP.Text = "00000000"
             Case "True"
                 Select Case chkSAP.Checked
                     Case True
                         Select Case SessionUser._sCentro.Trim
-                            Case Is <> "CR01"
+                            Case Is <> "CR01", "A001"
+
                                 Label12.Visible = True
                                 Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
                                 Dim Head As String
                                 Head = "28|" + TOrden.Text.Trim + _
                                          "|" + TPesoNeto.Text.Trim + _
-                                         "|" + FechaPesajeSAP + _
-                                         "|" + CompOriginal.Trim + _
+                                         "|" + NPTExtrusion._iFechaPesajeSAP.Trim + _
+                                         "|" + CompuestoVirgen._IdCompOriginal.Trim + _
                                          "|" + "S" + _
                                          "|" + SessionUser._sAlias.Trim + _
-                                         "|" + FolioSiguiente + _
+                                         "|" + FolioNotifica._rIdFolio.Trim + _
                                          "|" + Reprocesado_Gen
-                                NotificationProcess.Notifica_SCE(Head, Lista, FolioSiguiente.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, _
+                                NotificationProcess.Notifica_SCE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, _
                                                                  CodOperador.Text.Trim)
                                 Label12.Visible = False
                                 Label12.Text = ""
                             Case Is = "CR01"
+                                LoadingForm.CloseForm()
                                 Label12.Visible = True
                                 Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                CadenaTexto = SessionUser._sAlias.Trim & "|" & FolioSiguiente.Trim
-                                Consume_WS_CR01(SessionUser._sAlias, SessionUser._sAmbiente, CadenaTexto.Trim, Lt_Compuestos.Trim, FechaPesajeSAP_CR, TOrden.Text.Trim, TPesoNeto.Text, FolioSiguiente.Trim)
+                                CadenaTexto = SessionUser._sAlias.Trim & "|" & FolioNotifica._rIdFolio.Trim
+                                Consume_WS_CR01(SessionUser._sAlias, SessionUser._sAmbiente, CadenaTexto.Trim, Lt_Compuestos.Trim, NPTExtrusion._iFechaPesajeSAP_CR.Trim, TOrden.Text.Trim, TPesoNeto.Text, FolioNotifica._rIdFolio.Trim)
                                 Label12.Visible = False
                                 Label12.Text = ""
                         End Select
                         'Lectura de WS Generico para realizar la notificación ------------------------------------
                     Case False
+                        LoadingForm.CloseForm()
                         MsgBox(" No se realizara notificación a SAP se encuntra deshabilitada la conexión ")
                         TDocSAP.Text = "0000000000"
                         TConSAP.Text = "00000000"
                 End Select
         End Select
     End Sub
-
     Private Sub Parametrizacion_Forma()
-
+        tsbMonitor.Enabled = P_MP
+        dtpFECHASAP.Visible = P_CS
+        dtpFECHASAP.Enabled = P_CS
+        chkSAP.Visible = P_CS
+        chkSAP.Enabled = P_CS
         Label16.Visible = P_OP
         CB_Ope.Visible = P_OP
         CB_Com1.Enabled = P_CC1
@@ -846,54 +861,52 @@ Public Class MenuPTE
         TPComp1.Text = "100"
         CB_Manual.Visible = P_NM
         GB_Basculas.Enabled = P_MB
+        cmbProceso.Enabled = P_PR
+        cmbProceso.Visible = P_PR
         If P_CD = True Then
-            TCausas.ReadOnly = False
-            CB_SP_Causa.Enabled = False
-            Label5.Location = New Point(681, 265)
-            TCausas.Location = New Point(681, 284)
-            CB_SP_Causa.Location = New Point(759, 284)
-            CB_Causas.Enabled = False
-            TCCausas.Location = New Point(681, 309)
-            CB_Causas.Location = New Point(759, 309)
-            CB_Defecto.Enabled = False
-            TCDefecto.Location = New Point(681, 335)
-            CB_Defecto.Location = New Point(759, 335)
+            Label5.Location = New Point(731, 275)
+            TCausas.Location = New Point(722, 294)
+            CB_SP_Causa.Location = New Point(800, 294)
+            TCCausas.Location = New Point(722, 320)
+            CB_Causas.Location = New Point(800, 320)
+            TCDefecto.Location = New Point(722, 346)
+            CB_Defecto.Location = New Point(800, 346)
+            If SessionUser._sCentro.Trim = "PE01" Or SessionUser._sCentro.Trim = "PE12" Then
+                TCScrap.Location = New Point(722, 372)
+                CB_TipoSc.Location = New Point(800, 372)
+            End If
         Else
-            TCausas.ReadOnly = True
-            CB_SP_Causa.Enabled = True
-            Label5.Location = New Point(1078, 265)
-            TCausas.Location = New Point(1072, 284)
-            CB_SP_Causa.Location = New Point(681, 284)
-            TCCausas.ReadOnly = True
-            CB_Causas.Enabled = True
-            TCCausas.Location = New Point(1072, 309)
-            CB_Causas.Location = New Point(681, 309)
-            TCDefecto.ReadOnly = True
-            CB_Defecto.Enabled = True
-            TCDefecto.Location = New Point(1072, 335)
-            CB_Defecto.Location = New Point(681, 335)
+            Label5.Location = New Point(1123, 275)
+            TCausas.Location = New Point(1117, 294)
+            CB_SP_Causa.Location = New Point(726, 294)
+            TCCausas.Location = New Point(1117, 320)
+            CB_Causas.Location = New Point(726, 320)
+            TCDefecto.Location = New Point(1117, 346)
+            CB_Defecto.Location = New Point(726, 346)
+            TCScrap.Location = New Point(1117, 372)
+            CB_TipoSc.Location = New Point(726, 372)
         End If
 
         If P_VU = True Then
-            TPassNotifier.Text = SessionUser._sAlias.Trim
+            PassNotifier.Text = SessionUser._sAlias.Trim
             Gen_Valida.Valida_Usuario(SessionUser._sAlias.Trim, SessionUser._sPassword)
             CodOperador.Text = ""
             NomOperador.Text = ""
-            TPassNotifier.Enabled = False
+            PassNotifier.Enabled = False
 
             If Gen_Valida.valContador = 0 Then
                 MessageBox.Show("*** USUARIO INEXISTENTE *** ")
-                TPassNotifier.Text = ""
-                TPassNotifier.Focus()
+                PassNotifier.Text = ""
+                PassNotifier.Focus()
             Else
                 CodOperador.Text = SessionUser._sAlias
                 NomOperador.Text = SessionUser._sNombre
-                TPassNotifier.Text = SessionUser._sPassword
+                PassNotifier.Text = SessionUser._sPassword
                 RB_PT.Focus()
             End If
             RB_PT.Focus()
         Else
-            TPassNotifier.Focus()
+            PassNotifier.Focus()
         End If
 
         TFolioVale.Enabled = P_FV
@@ -901,12 +914,22 @@ Public Class MenuPTE
         Label17.Visible = P_FV
 
     End Sub
-#End Region
+    Private Sub ProduccionSeparada()
+        ProduccionSeparadaABC.IdFolioPeso = FolioNotifica.rIdFolio
+        ProduccionSeparadaABC.OrdenProduccion = TOrden.Text.Trim
+        ProduccionSeparadaABC.FH_Registro = DateTime.Now.ToString("yyyyMMdd HH:mm:ss")
+        Try
+            OperacionExtrusion.ABC(1)
+        Catch ex As Exception
 
-#Region "Colección"
-#End Region
+        End Try
 
-#Region "Campos"
+
+    End Sub
+
+    Private Function NotificaExtPT() As Boolean
+
+    End Function
 #End Region
 
 #Region "Eventos"
@@ -914,6 +937,16 @@ Public Class MenuPTE
         Me.Icon = Util.ApplicationIcon()
         StrProducto = ""
         Centro.Text = SessionUser._sCentro.Trim       'Clave Centro 
+        TCausas.Enabled = False
+
+        CB_SP_Causa.Enabled = False
+        TCCausas.Enabled = False
+        CB_Causas.Enabled = False
+        TCDefecto.Enabled = False
+        CB_Defecto.Enabled = False
+        TCScrap.Enabled = False
+        CB_TipoSc.Enabled = False
+
         LimpiaObjetos()
         ' ---------------------------------------------------------------------------------
         'Se verifica conexión con SAP
@@ -937,65 +970,100 @@ Public Class MenuPTE
     End Sub
 
     Private Sub TOrden_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TOrden.Leave
-        Dim Exist_Ord As Integer = 0
-        Dim Exist_Prd As Integer = 0
-        Dim strOrden As String = ""
-        Dim Producto As String = ""
-        Dim aryTextFile() As String
+
+        Dim Estatus_Orden As String
         If TOrden.Text <> "" Then
+            LoadingForm.ShowLoading()
             'Verficia Orden Producción
             Dim Orden_Prod As String = ""
             Orden_Prod = TOrden.Text.Trim
             '--------------------------------------------------------------------------------------
-            strOrden = ProductionOrder.Valida_Exis_ODF_Atlas(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Orden_Prod, EXTINY)
-            aryTextFile = strOrden.Split("|")
-            Exist_Ord = aryTextFile(0)
-            Producto = aryTextFile(1)
-            Select Case Exist_Ord
-                Case Is = 1
-                    'Verficia la existencia del producto
-                    Exist_Prd = ProductionOrder.Valida_Existencia_Producto(SessionUser._sAlias.Trim, Producto.Trim, SessionUser._sCentro.Trim, EXTINY)
-                    Select Case Exist_Prd
-                        Case Is = 1
-                            'Lee la orden y presenta la información
-                            ProductionOrder.Read_Production_Order_Ext(SessionUser._sAlias.Trim, Orden_Prod.Trim, SessionUser._sCentro.Trim, Me, TCodPT, TCodPtDecr, _
-                                                                  TPtoTrabajo, TPesoTeorico, Tempaque, TCodAnillo, TDAnillo, TGrpprod, TGrupo, _
-                                                                  TSP_Permitido, TGrpproddesc, TNomPtoTrabajo)
-                            'Activa Combo Box de compuestos 1
-                            Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Producto, EXTINY, TipoProd, P_CC1)
-                            If TipoProd = "S" Then
-                                'Inicio ***************************************************************************************************
-                                'Se desactiva la opcion de tipo scrap, se determina se haga cuando selecciona el compuesto a consumir
-                                '02/Spet/2014 JJSM
-                                ''Activa Combo Box de Tipo Scrap                                   
-                                'Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, strPlanta.Trim, Seccion, TipoProd)
-                                'Fin ******************************************************************************************************
-                                'Activa Combo Box Causa de Scrap
-                                Catalogo_Causas.Combo_Causas(CB_Causas, "", Seccion.Trim, "SC", P_CD)
+            Select Case ProductionOrder.Existe(Orden_Prod, EXTINY)
+                Case Is = True
+                    'Verifica si no esta inactiva
+                    Select Case OrdenProduccionExiste._Estatus
+                        Case Is = True
+                            If OrdenProduccionExiste._OrigenInformacion.Trim <> "A-tlas" Then
+                                'Verificar que la orden no este cerrada
+                                ProductionOrder.ValidaEstatus(Orden_Prod, "T")
+                                Estatus_Orden = OrdenProductionSap._IdStatus
+                            Else
+                                Estatus_Orden = "LIB."
                             End If
-                            TOrden.BackColor = Color.White
-                            'Activa Combo Box Operdores de Linea
-                            Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
-                            'Consulta cantidades
-                            ProductionOrder.CalCantExt(SessionUser._sAlias.Trim, Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, SessionUser._sCentro.Trim)
-                            'Porcentaje de avance de la orden
-                            ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
-                            'Asigan Peso Teorico
-                            PesoTeorico = "0" & TPesoTeorico.Text
-                        Case Is = 0
-                            MensajeBox.Mostrar("El producto no esta dado de alta en A-tlas ", "Error", MensajeBox.TipoMensaje.Critical)
+
+                            If Estatus_Orden = "LIB." Or Estatus_Orden = "ABIE" Then
+                                'Verficia la existencia del producto
+                                Select Case ProductionOrder.Existencia_Producto(EXTINY)
+                                    Case Is = True
+                                        'Lee la orden y presenta la información
+                                        ProductionOrder.Read_Production_Order_Ext(Orden_Prod.Trim, Me, TCodPT, TCodPtDecr, TPtoTrabajo, _
+                                                                                  TPesoTeorico, Tempaque, TCodAnillo, TDAnillo, TGrpprod, TGrupo, _
+                                                                                  TSP_Permitido, TGrpproddesc, TNomPtoTrabajo)
+                                        'Activa Combo Box de compuestos 1
+                                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
+                                        If TipoProd = "S" Then
+                                            'Inicio ***************************************************************************************************
+                                            'Se desactiva la opcion de tipo scrap, se determina se haga cuando selecciona el compuesto a consumir
+                                            '02/Spet/2014 JJSM
+                                            ''Activa Combo Box de Tipo Scrap                                   
+                                            'Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, strPlanta.Trim, Seccion, TipoProd)
+                                            'Fin ******************************************************************************************************
+                                            'Activa Combo Box Causa de Scrap
+                                            Catalogo_Causas.Combo_Causas(CB_Causas, "", Seccion.Trim, "SC", P_CD)
+                                        End If
+                                        TOrden.BackColor = Color.White
+                                        'Activa Combo Box Operdores de Linea
+                                        Select Case SessionUser._sCentro
+                                            Case Is = "A013"
+                                                Catalogo_Operador_Puesto_Trabajo.CBOperadorLinea_PTSC(CB_Ope)
+                                            Case Else
+                                                Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
+                                        End Select
+                                        'Consulta cantidades
+                                        ProductionOrder.CalCantExt(Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
+                                        'Porcentaje de avance de la orden
+                                        ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
+                                        'Asigan Peso Teorico
+                                        PesoTeorico = "0" & TPesoTeorico.Text
+                                        If RB_PT.Checked = True Then
+                                            TtramosNoti.Focus()
+                                        End If
+
+                                        If RB_SC.Checked = True Then
+                                            CB_Rack.Focus()
+                                        End If
+                                        LoadingForm.CloseForm()
+                                    Case Is = False
+                                        LoadingForm.CloseForm()
+                                        MensajeBox.Mostrar("El producto no esta dado de alta en A-tlas ", "Error", MensajeBox.TipoMensaje.Critical)
+                                        TOrden.Focus()
+                                        Exit Sub
+                                End Select
+                            Else
+                                LoadingForm.CloseForm()
+                                MensajeBox.Mostrar("La orden no puede ser notificada esta en estatus: " & OrdenProductionSap._Status & " ", " " & OrdenProductionSap._IdStatus & " ", MensajeBox.TipoMensaje.Critical)
+                                TOrden.Text = ""
+                                TOrden.Focus()
+                                Exit Sub
+                            End If
+                        Case Is = False
+                            LoadingForm.CloseForm()
+                            MensajeBox.Mostrar("La orden esta inactiva", "Estatus", MensajeBox.TipoMensaje.Information)
+                            TOrden.Text = ""
                             TOrden.Focus()
                             Exit Sub
                     End Select
-                Case Is = 0
+                Case Is = False
                     'Dar de alta la orden
+                    LoadingForm.CloseForm()
                     MensajeBox.Mostrar("Orden de Producción no existe en A-tlas se procede a darla de alta ", "Aviso", MensajeBox.TipoMensaje.Information)
                     ProductionOrder.Inserta_ODF_EXT(Orden_Prod.Trim, "T", Me, CodOperador.Text.Trim, EXTINY, SessionUser._sAlias.Trim, _
                                                                    SessionUser._sCentro.Trim, SessionUser._sAmbiente, EXTINY, TCodPT, TCodPtDecr, TPtoTrabajo, _
                                                                    TPesoTeorico, Tempaque, TCodAnillo, TDAnillo, TGrpprod, TGrupo, TSP_Permitido, _
-                                                                   TGrpproddesc, TNomPtoTrabajo, Ver_Atlas)
+                                                                   TGrpproddesc, TNomPtoTrabajo, Atlas_Version._Version.Trim)
             End Select
         End If
+        LoadingForm.CloseForm()
     End Sub
 
     Private Sub TtramosNoti_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TtramosNoti.Leave
@@ -1057,7 +1125,14 @@ Public Class MenuPTE
             If TtramosNoti.Text.Trim.Length > 0 Then
                 BPesar.Enabled = True
             End If
-            TtramosNoti.BackColor = Color.White
+            If RB_PT.Checked = True Then
+                TtramosNoti.BackColor = Color.White
+            End If
+
+            If RB_SC.Checked = True Then
+                TtramosNoti.BackColor = Color.LightGray
+            End If
+
 
             If TPesoBruto.Text <> "0.00" Or TPesoTara.Text <> "0.00" Or TempaquePesoTot.Text <> "" Then
                 TPesoNeto.Text = Format((TPesoBruto.Text - TPesoTara.Text - TempaquePesoTot.Text), xFormato)
@@ -1068,10 +1143,21 @@ Public Class MenuPTE
 #End Region
 
     Private Sub BPesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BPesar.Click
+
+        'Valida tara en ceros ----------------------------------------------------------------------------------
+        If P_AT = True Then
+            If TPesoRack.Text <= 0 Then
+                MensajeBox.Mostrar("El peso de la tara esta en O es correcto", "Tara en 0", MensajeBox.TipoMensaje.Exclamation, MensajeBox.TipoBoton.OkCancel)
+                If MensajeBox.Respuesta = False Then
+                    CB_Rack.Focus()
+                    Return
+                End If
+            End If
+        End If
         'Valida campos obligatorios ----------------------------------------------------------------------------
-        If TPassNotifier.Text.Trim = "" Then
+        If PassNotifier.Text.Trim = "" Then
             MensajeBox.Mostrar("Ingrese clave de operador", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-            TPassNotifier.Focus()
+            PassNotifier.Focus()
             Return
         End If
 
@@ -1106,6 +1192,7 @@ Public Class MenuPTE
             End If
         End If
 
+        LoadingForm.ShowLoading()
         'Selecciona proceso de Notificacion Producto Terminado o Scrap -----------------------------------------
         If RB_PT.Checked Then
             Notifica_PT()
@@ -1115,6 +1202,7 @@ Public Class MenuPTE
             Notifica_SC()
         End If
         '-------------------------------------------------------------------------------------------------------
+        LoadingForm.CloseForm()
     End Sub
 
     Private Sub TPesoBruto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TPesoBruto.TextChanged
@@ -1167,16 +1255,22 @@ Public Class MenuPTE
     End Sub
 
     Private Sub BSiguiente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BSiguiente.Click
+        LoadingForm.CloseForm()
         LimpiaObjetos()
         Asigna_Turno()
         TSobrePeso.BackColor = Color.White
-        TPassNotifier.Focus()
+        PassNotifier.Focus()
     End Sub
 
     Private Sub BImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BImprimir.Click
 
         If RB_PT.Checked Then
-            Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TFolioAtlas.Text.Trim, "0")
+            If SessionUser._sCentro.Trim = "A001" Then
+                WeighingInquiry.IdOrden = TOrden.Text.Trim
+                Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TFolioAtlas.Text.Trim, "0")
+            Else
+                Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, TFolioAtlas.Text.Trim, "0")
+            End If
         End If
 
         If RB_SC.Checked Then
@@ -1219,6 +1313,7 @@ Public Class MenuPTE
             If PesoTeorico > 0 And xTramosNoti > 0 Then
                 xPSP = (((xPeso_Neto / (PesoTeorico * xTramosNoti)) - 1) * 100)
                 PorcentajeSobrePeso = Format(xPSP, xFormato)
+                KilosSobrepeso = (xPeso_Neto - (PesoTeorico * xTramosNoti))
             Else
                 PorcentajeSobrePeso = Format(100, xFormato)
             End If
@@ -1239,14 +1334,14 @@ Public Class MenuPTE
             TSobrePeso.BackColor = Color.Red
             CB_SP_Causa.Enabled = True
             TCausas.Enabled = True
-            If P_CD = True Then
-                CB_SP_Causa.DataSource = Nothing
-                CB_SP_Causa.Enabled = False
-            Else
-                CB_SP_Causa.DataSource = Nothing
-                CB_SP_Causa.Enabled = True
-                Catalogo_Causas.Combo_Causas(CB_SP_Causa, "", Seccion.Trim, "SP", P_CD)
-            End If
+            'If P_CD = True Then
+            '    CB_SP_Causa.DataSource = Nothing
+            '    CB_SP_Causa.Enabled = False
+            'Else
+            CB_SP_Causa.DataSource = Nothing
+            CB_SP_Causa.Enabled = True
+            Catalogo_Causas.Combo_Causas(CB_SP_Causa, "", Seccion.Trim, "SP", P_CD)
+            'End If
         Else
             TSobrePeso.BackColor = Color.Yellow
             TCausas.Enabled = False
@@ -1257,12 +1352,18 @@ Public Class MenuPTE
     End Sub
 
     Private Sub TOrden_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TOrden.Enter
-        TOrden.BackColor = Color.LightSkyBlue
+        If RB_SC.Checked = False Then
+            TtramosNoti.BackColor = Color.LightSkyBlue
+        Else
+            TtramosNoti.BackColor = Color.LightGray
+        End If
     End Sub
 
     Private Sub TtramosNoti_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TtramosNoti.Enter
         If RB_SC.Checked = False Then
             TtramosNoti.BackColor = Color.LightSkyBlue
+        Else
+            TtramosNoti.BackColor = Color.LightGray
         End If
     End Sub
 
@@ -1296,20 +1397,20 @@ Public Class MenuPTE
         End If
     End Sub
 
-    Private Sub TClaveOperador_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TPassNotifier.Enter
-        TPassNotifier.BackColor = Color.LightSkyBlue
+    Private Sub TClaveOperador_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PassNotifier.Enter
+        PassNotifier.BackColor = Color.LightSkyBlue
     End Sub
 
-    Private Sub TClaveOperador_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TPassNotifier.KeyPress
+    Private Sub TClaveOperador_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles PassNotifier.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub TClaveOperador_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TPassNotifier.Leave
+    Private Sub TClaveOperador_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PassNotifier.Leave
         Dim IdLogin As Boolean
-        Pass_md5 = Crypto.MD5Calculate(TPassNotifier.Text.Trim)
+        Pass_md5 = Crypto.MD5Calculate(PassNotifier.Text.Trim)
         IdLogin = Users.Login_Notifier(SessionUser._sAlias, Pass_md5.Trim)
         CodOperador.Text = ""
         NomOperador.Text = ""
@@ -1320,13 +1421,14 @@ Public Class MenuPTE
             RB_PT.Focus()
         Else
             MensajeBox.Mostrar("Nombre de usuario o contraseña incorrecta", "Verificar", MensajeBox.TipoMensaje.Exclamation)
-            TPassNotifier.Text = ""
-            TPassNotifier.Focus()
+            PassNotifier.Text = ""
+            PassNotifier.Focus()
         End If
     End Sub
 
     Private Sub MenuPTE_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
-        TPassNotifier.Text = ""
+        LoadingForm.CloseForm()
+        PassNotifier.Text = ""
         EXTINY = ""
         Seccion = ""
         Timer1.Enabled = False
@@ -1362,7 +1464,7 @@ Public Class MenuPTE
             If TPComp1.Text.Trim = 100 Then
                 CB_Com2.DataSource = Nothing
                 CB_Com2.Text = ""
-                Comp_2 = "0"
+                NPTExtrusion.iCompuesto2 = "0"
                 TPComp2.Text = 0
                 CB_Com2.Enabled = False
                 TPComp2.Enabled = False
@@ -1377,7 +1479,7 @@ Public Class MenuPTE
                 Catalogo_Compuestos.CB_Compuesto2(CB_Com2, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TCodPT.Text.Trim.Trim, EXTINY)
                 'CBG.Con_Comp_rep(CB_Com2, TCodPT.Text.Trim.Trim, EXTINY)
                 TPComp2.Text = 100 - Val(TPComp1.Text)
-                Comp_2 = CB_Com2.SelectedValue
+                NPTExtrusion.iCompuesto2 = CB_Com2.SelectedValue
             End If
             If TPComp1.Text.Trim = 0 Then
                 MessageBox.Show("No se permite valor de 0% o negativos ")
@@ -1398,14 +1500,14 @@ Public Class MenuPTE
     End Sub
 
     Private Sub CB_Com2_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CB_Com2.Leave
-        Comp_2 = CB_Com2.SelectedValue
-        If Comp_2.Trim = Comp_1.Trim Then
+        NPTExtrusion.iCompuesto2 = CB_Com2.SelectedValue
+        If NPTExtrusion.iCompuesto2.Trim = NPTExtrusion._iCompuesto1.Trim Then
             MsgBox("El compuesto seleccionado no puede ser el mismo que el primero", MsgBoxStyle.Information)
             CB_Com2.DataSource = Nothing
             'CBG.Con_Comp_rep(CB_Com2, StrProducto.Trim, EXTINY)
             Catalogo_Compuestos.CB_Compuesto2(CB_Com2, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, StrProducto.Trim, EXTINY)
             CB_Com2.Text = ""
-            Comp_2 = "0"
+            NPTExtrusion.iCompuesto2 = "0"
             CB_Com2.Focus()
         End If
     End Sub
@@ -1415,7 +1517,7 @@ Public Class MenuPTE
             If CB_Com1.Text.Trim = "" Then
                 MsgBox("Debe de seleccionar un compuesto a consumir", MsgBoxStyle.Information)
                 CB_Com1.DataSource = Nothing
-                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias, SessionUser._sCentro.Trim, StrProducto.Trim, TipoProd, EXTINY, P_CC1)
+                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
             End If
         End If
     End Sub
@@ -1426,7 +1528,7 @@ Public Class MenuPTE
     End Sub
 
     Private Sub CB_Com1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CB_Com1.Leave
-        Comp_1 = CB_Com1.SelectedValue
+        NPTExtrusion.iCompuesto1 = CB_Com1.SelectedValue
     End Sub
 
     Private Sub CB_Rack_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CB_Rack.KeyPress
@@ -1476,70 +1578,58 @@ Public Class MenuPTE
     End Sub
 
     Private Sub RB_PT_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_PT.CheckedChanged
-        TipoProd = ""
-        TipoProd = "T"
-        TCCausas.ReadOnly = True
-        CB_Causas.Enabled = False
-        TCDefecto.ReadOnly = True
-        CB_Defecto.Enabled = False
-        CB_TipoSc.Enabled = False
-        If P_CD = True Then
-            CB_SP_Causa.Enabled = False
-        Else
-            CB_SP_Causa.Enabled = True
+        If RB_PT.Checked = True Then
+            TipoProd = ""
+            TipoProd = "T"
+            If P_CD = True Then
+                TCCausas.Enabled = False
+                CB_Causas.Enabled = False
+                TCDefecto.Enabled = False
+                CB_Defecto.Enabled = False
+                TCScrap.Enabled = False
+                CB_TipoSc.Enabled = False
+            End If
+            TtramosNoti.ReadOnly = False
+            TtramosNoti.BackColor = Color.White
+            TOrden.Enabled = True
+            cmbProceso.Enabled = True
+            TOrden.Focus()
         End If
-        TCausas.Enabled = True
-        TtramosNoti.ReadOnly = False
-        TtramosNoti.BackColor = Color.White
-        TOrden.Enabled = True
     End Sub
 
     Private Sub RB_SC_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_SC.CheckedChanged
-        TipoProd = ""
-        TipoProd = "S"
-        If P_CD = True Then
+        If RB_SC.Checked = True Then
+            TipoProd = ""
+            TipoProd = "S"
+            TCCausas.Enabled = True
             TCCausas.ReadOnly = False
-            TCDefecto.ReadOnly = False
-            CB_Causas.Enabled = False
-            CB_Defecto.Enabled = False
-        Else
-            TCCausas.ReadOnly = True
-            TCDefecto.ReadOnly = True
             CB_Causas.Enabled = True
+            TCDefecto.Enabled = True
+            TCDefecto.ReadOnly = False
             CB_Defecto.Enabled = True
-        End If
-        CB_TipoSc.Enabled = True
-        CB_SP_Causa.DataSource = Nothing
-        CB_SP_Causa.Enabled = False
-        TCausas.Text = "0"
-        TCausas.Enabled = False
-        TtramosNoti.Text = "0"
-        TtramosNoti.ReadOnly = True
-        TtramosNoti.BackColor = Color.White
-        TOrden.Text = ""
-        TOrden.Enabled = True
-        BPesar.Enabled = True
-        TOrden.Focus()
-    End Sub
-
-    Private Sub CB_Causas_Leave(sender As System.Object, e As System.EventArgs) Handles CB_Causas.Leave
-        If P_CD = False Then
-            If CB_Causas.SelectedValue = Nothing Then
-                MsgBox("Selecciones una causa", MsgBoxStyle.Information)
-                CB_Causas.Focus()
-                Return
-            Else
-                Select Case SessionUser._sCentro.Trim
-                    Case Is = "CR01", "VE02"
-                        TCCausas.Text = CB_Causas.SelectedValue
-                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, "E000")
-                    Case Else
-                        TCCausas.Text = CB_Causas.SelectedValue
-                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCCausas.Text.Trim)
-                        CB_Defecto.Text = ""
-                        CB_Defecto.Focus()
-                End Select
-            End If
+            TCScrap.Enabled = True
+            TCScrap.ReadOnly = False
+            CB_TipoSc.Enabled = True
+            'If P_CD = True Then
+            '    TCCausas.Enabled = True
+            '    TCCausas.ReadOnly = False
+            '    CB_Causas.Enabled = True
+            '    TCDefecto.Enabled = True
+            '    TCDefecto.ReadOnly = False
+            '    CB_Defecto.Enabled = True
+            '    TCScrap.Enabled = True
+            '    TCScrap.ReadOnly = False
+            '    CB_TipoSc.Enabled = True
+            'End If
+            TCausas.Text = "0"
+            TtramosNoti.Text = "0"
+            TtramosNoti.ReadOnly = True
+            TtramosNoti.BackColor = Color.LightGray
+            TOrden.Text = ""
+            TOrden.Enabled = True
+            BPesar.Enabled = True
+            cmbProceso.Enabled = False
+            TOrden.Focus()
         End If
     End Sub
 
@@ -1555,6 +1645,10 @@ Public Class MenuPTE
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
+    End Sub
+
+    Private Sub CB_Causas_Leave(sender As System.Object, e As System.EventArgs) Handles CB_Causas.Leave
+        CausaScrap()
     End Sub
 
     Private Sub CB_Defecto_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CB_Defecto.KeyPress
@@ -1577,6 +1671,7 @@ Public Class MenuPTE
     End Sub
 
     Private Sub CB_TipoSc_Leave(sender As System.Object, e As System.EventArgs) Handles CB_TipoSc.Leave
+        TCScrap.Text = CB_TipoSc.SelectedValue
         BPesar.Focus()
     End Sub
 
@@ -1616,7 +1711,7 @@ Public Class MenuPTE
             Exit Sub
         Else
             'PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
-            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TipoProd.Trim, SessionUser._sAmbiente)
+            SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, TipoProd.Trim)
             LimpiaObjetos()
             MensajeBox.Mostrar("La orden de producción a sido actualizada ingrese nuevamente el numero de orden", "Actualizado", MensajeBox.TipoMensaje.Good)
             TOrden.Focus()
@@ -1702,36 +1797,19 @@ Public Class MenuPTE
     End Sub
 
     Private Sub TCausas_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TCausas.KeyPress
-        If SessionUser._sCentro.Trim = "CR01" Then
             If e.KeyChar = ChrW(Keys.Enter) Then
                 e.Handled = True
-                SendKeys.Send("{TAB}")
+            SendKeys.Send("{TAB}")
+            CausaSobrePeso()
             End If
-        End If
+
     End Sub
 
     Private Sub TCCausas_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TCCausas.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
-        End If
-    End Sub
-
-    Private Sub TCCausas_Leave(sender As System.Object, e As System.EventArgs) Handles TCCausas.Leave
-        If P_CD = True Then
-            If TCCausas.Text.Trim = "" Then
-                MensajeBox.Mostrar("Ingrese Codigo de Causa Scrap", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                TCCausas.Focus()
-                Return
-            Else
-                Catalogo_Causas.Combo_Causas(CB_Causas, TCCausas.Text.Trim, Seccion.Trim, "SC", False)
-                If CB_Causas.SelectedValue = Nothing Then
-                    MensajeBox.Mostrar("No Existe Codigo de Causa", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                    TCCausas.Text = ""
-                    TCCausas.Focus()
-                    Return
-                End If
-            End If
+            cmbCausasScrap()
         End If
     End Sub
 
@@ -1739,50 +1817,17 @@ Public Class MenuPTE
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
+            cmbDefectoScrap()
         End If
     End Sub
 
-    Private Sub TCDefecto_Leave(sender As System.Object, e As System.EventArgs) Handles TCDefecto.Leave
-        If P_CD = True Then
-            If TCDefecto.Text.Trim = "" Then
-                MensajeBox.Mostrar("Ingrese Codigo de Defecto Scrap", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                TCCausas.Focus()
-                Return
-            Else
-                Select Case SessionUser._sCentro
-                    Case Is = "CR01", "VE02"
-                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, "E000")
-                    Case Else
-                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCDefecto.Text.Trim)
-                        If CB_Defecto.SelectedValue = Nothing Then
-                            MensajeBox.Mostrar("No Existe Codigo de Defecto", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                            TCDefecto.Text = ""
-                            TCDefecto.Focus()
-                            Return
-                        End If
-                End Select
-            End If
+    Private Sub TCScrap_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TCScrap.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            SendKeys.Send("{TAB}")
+            cmbTipoScrap()
         End If
     End Sub
-
-    Private Sub TCausas_Leave(sender As System.Object, e As System.EventArgs) Handles TCausas.Leave
-        If P_CD = True Then
-            If TCausas.Text.Trim = "" Then
-                MensajeBox.Mostrar("Ingrese Codigo de Causa Sobrepeso", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                TCausas.Focus()
-                Return
-            Else
-                Catalogo_Causas.Combo_Causas(CB_SP_Causa, TCausas.Text.Trim, Seccion.Trim, "SP", P_CD)
-                If CB_SP_Causa.SelectedValue = Nothing Then
-                    MensajeBox.Mostrar("No Existe Codigo de Causa Sobrepeso", "Aviso", MensajeBox.TipoMensaje.Exclamation)
-                    TCausas.Text = ""
-                    TCausas.Focus()
-                    Return
-                End If
-            End If
-        End If
-    End Sub
-
 
     Private Sub Consume_WS_CR01(ByVal Usr_Atlas As String, ID As String, CadenaTexto As String, Lt_Compuestos As String, _
                                       FechaPesajeSAP As String, Orden As String, PesoNeto As String, folio As String)
@@ -1933,16 +1978,16 @@ Public Class MenuPTE
         Email = Email & "Reporte de Sobre Peso " & vbCr & ""
         Email = Email & "" & vbCr & ""
         Email = Email & "Numero ODF:            " & TOrden.Text.Trim & " " & vbCr & ""
-        Email = Email & "Folio Atlas:           " & FolioSiguiente.Trim & " " & vbCr & ""
+        Email = Email & "Folio Atlas:           " & FolioNotifica._rIdFolio.Trim & " " & vbCr & ""
         Email = Email & "Producto:              " & TCodPT.Text.Trim & " " & vbCr & ""
         Email = Email & "Descripción:           " & TCodPtDecr.Text.Trim & " " & vbCr & ""
         Email = Email & "Fecha:                 " & Date.Today.ToString("yyyy-MM-dd") & " " & vbCr & ""
         Email = Email & "Hora:                  " & Date.Now.TimeOfDay.ToString.Substring(0, 8) & " " & vbCr & ""
         Email = Email & "Rack:                  " & TDescrack.Text.Trim & " " & vbCr & ""
         Email = Email & "Tramos:                " & nvoTramosNoti & " " & vbCr & ""
-        Email = Email & "Peso Bruto:            " & N_PB & " " & vbCr & ""
-        Email = Email & "Peso Tara:             " & N_PT & " " & vbCr & ""
-        Email = Email & "Peso Neto:             " & N_PN & " " & vbCr & ""
+        Email = Email & "Peso Bruto:            " & NPTExtrusion._iPB & " " & vbCr & ""
+        Email = Email & "Peso Tara:             " & NPTExtrusion._iPT & " " & vbCr & ""
+        Email = Email & "Peso Neto:             " & NPTExtrusion._iPN & " " & vbCr & ""
         Email = Email & "Sobre Peso:            " & TSobrePeso.Text.Trim & " '%' " & vbCr & ""
         Email = Email & "" & vbCr & ""
         Email = Email & "Usuario Notifica:      " & SessionUser._sAlias.Trim & " " & vbCr & ""
@@ -1951,10 +1996,6 @@ Public Class MenuPTE
         Email = Email & "Turno:                 " & Turno.Trim & " " & vbCr & ""
         Email = Email & "Observación:           " & ObserSobrepeso.Trim & " " & vbCr & ""
         Email = Email & "Causa Sobre Peso:      " & TCausas.Text.Trim & " " & CB_SP_Causa.Text.Trim & ""
-    End Sub
-
-    Private Sub ThreadProcSafe()
-
     End Sub
 
     Private Sub CB_TipoSc_Click(sender As System.Object, e As System.EventArgs) Handles CB_TipoSc.Click
@@ -1967,4 +2008,120 @@ Public Class MenuPTE
         TCScrap.Text = CB_TipoSc.SelectedValue
     End Sub
 
+    Private Sub CausaScrap()
+        ''If P_CD = False Then
+        If CB_Causas.SelectedValue = Nothing Then
+            MsgBox("Selecciones una causa", MsgBoxStyle.Information)
+            CB_Causas.Focus()
+            Return
+        Else
+            Select Case SessionUser._sCentro.Trim
+                Case Is = "CR01", "VE02"
+                    TCCausas.Text = CB_Causas.SelectedValue
+                    Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, "E000")
+                Case Else
+                    TCCausas.Text = CB_Causas.SelectedValue
+                    Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCCausas.Text.Trim)
+                    CB_Defecto.Text = ""
+                    CB_Defecto.Focus()
+            End Select
+        End If
+        '' End If
+    End Sub
+
+    Private Sub CausaSobrePeso()
+        If P_CD = True Then
+            If TCausas.Text.Trim = "" Then
+                MensajeBox.Mostrar("Ingrese Codigo de Causa Sobrepeso", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                TCausas.Focus()
+                Return
+            Else
+                Catalogo_Causas.Combo_Causas(CB_SP_Causa, TCausas.Text.Trim, Seccion.Trim, "SP", P_CD)
+                If CB_SP_Causa.SelectedValue = Nothing Then
+                    MensajeBox.Mostrar("No Existe Codigo de Causa Sobrepeso", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                    TCausas.Text = ""
+                    TCausas.Focus()
+                    Return
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub cmbCausasScrap()
+        If P_CD = True Then
+            If TCCausas.Text.Trim = "" Then
+                MensajeBox.Mostrar("Ingrese Codigo de Causa Scrap", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                TCCausas.Focus()
+                Return
+            Else
+                If TCCausas.Text.Trim = "" Then
+                    Catalogo_Causas.Combo_Causas(CB_Causas, "", Seccion.Trim, "SC", False)
+                Else
+                    Catalogo_Causas.Combo_Causas(CB_Causas, TCCausas.Text.Trim, Seccion.Trim, "SC", False)
+                End If
+                If CB_Causas.SelectedValue = Nothing Then
+                    MensajeBox.Mostrar("No Existe Codigo de Causa", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                    TCCausas.Text = ""
+                    TCCausas.Focus()
+                    Return
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub cmbDefectoScrap()
+        If P_CD = True Then
+            If TCDefecto.Text.Trim = "" Then
+                MensajeBox.Mostrar("Ingrese Codigo de Defecto Scrap", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                TCCausas.Focus()
+                Return
+            Else
+                Select Case SessionUser._sCentro.Trim
+                    Case Is = "CR01", "VE02"
+                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, "E000")
+                    Case Is = "PE01", "PE12"
+                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCCausas.Text.Trim)
+                        If CB_Defecto.SelectedValue = Nothing Then
+                            MensajeBox.Mostrar("No Existe Codigo de Defecto", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                            TCDefecto.Text = ""
+                            TCDefecto.Focus()
+                            Return
+                        End If
+                    Case Else
+                        Catalogo_Defectos.Combo_Defectos(CB_Defecto, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCDefecto.Text.Trim)
+                        If CB_Defecto.SelectedValue = Nothing Then
+                            MensajeBox.Mostrar("No Existe Codigo de Defecto", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                            TCDefecto.Text = ""
+                            TCDefecto.Focus()
+                            Return
+                        End If
+                End Select
+            End If
+        End If
+    End Sub
+
+    Private Sub cmbTipoScrap()
+        If P_CD = True Then
+            If TCDefecto.Text.Trim = "" Then
+                MensajeBox.Mostrar("Ingrese Codigo de Tipo Scrap", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                TCCausas.Focus()
+                Return
+            Else
+                Select Case SessionUser._sCentro.Trim
+                    Case Is = "PE01", "PE12"
+                        Catalogo_TipoScrap.CBTipoScrap(CB_TipoSc, "E", "S", TCScrap.Text.Trim)
+                        If CB_TipoSc.SelectedValue = Nothing Then
+                            MensajeBox.Mostrar("No Existe Tipo Scrap seleccionado", "Aviso", MensajeBox.TipoMensaje.Exclamation)
+                            TCScrap.Text = ""
+                            TCScrap.Focus()
+                            Return
+                        End If
+                End Select
+            End If
+        End If
+    End Sub
+
+    Private Sub MPE_A_Click(sender As Object, e As EventArgs) Handles MPE_A.Click
+        'Consultations.Permissions.Access("MP_MPEA", "1", SessionUser._sIdPerfil, "E", "Monitor Producción ", 1)
+    End Sub
 End Class

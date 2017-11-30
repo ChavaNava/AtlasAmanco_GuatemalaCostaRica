@@ -9,14 +9,12 @@ Module MdOperaBD
     Dim StrCadena As String
     Dim myDataReader As SqlClient.SqlDataReader
 #Region "Funciones genericas para agregar, eliminar y actualiar ..."
-    Public Function AbrirAmanco() As SqlConnection
+    Public Function AbrirAmanco(ByVal IdAmbiente As String) As SqlConnection
         Dim varString As String
-        usuario = SessionUser._sAlias
-        If usuario.Trim = "ATLAS" Or usuario.Trim = "CALIDAD" Then
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
-            'varString = "Data Source=10.1.2.30;Initial Catalog=MSI_A013_DEV;Persist Security Info=True;User ID=msi_atlas;Password=msi;Trusted_Connection=False"
+        If IdAmbiente.Trim = "D" Then
+            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         Else
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         End If
         objCnnAmanco = New SqlConnection
         objCnnAmanco.ConnectionString = varString
@@ -27,12 +25,12 @@ Module MdOperaBD
         Dim strCnn_MSI, strCnnUsuarios As String
 
         If SessionUser._sAlias.Trim = "ATLAS" Or SessionUser._sAlias.Trim = "CALIDAD" Then
-            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
             'strCnn_MSI = "Data Source=10.1.2.30;Initial Catalog=MSI_A013_DEV;Persist Security Info=True;User ID=msi_atlas;Password=MSI;Trusted_Connection=False"
-            strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=DevUsuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
+            'strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=DevUsuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
         Else
-            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
-            strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=Usuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
+            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            'strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=Usuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
         End If
 
         cnnMsi = New Conexion(strCnn_MSI)
@@ -41,9 +39,9 @@ Module MdOperaBD
     Public Function AbrirConfiguracion() As SqlConnection
         Dim Conexion As String
         If SessionUser._sAlias = "ATLAS" Or SessionUser._sAlias = "CALIDAD" Then
-            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios_dev;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios_dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         Else
-            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         End If
         objCnn = New SqlConnection
         objCnn.ConnectionString = Conexion
@@ -52,7 +50,7 @@ Module MdOperaBD
     End Function
     Public Sub abcSQL(ByVal sql As String)
         Try
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente.Trim)
             objCmd = New SqlCommand
             objCmd.CommandText = sql
             objCmd.CommandType = CommandType.Text
@@ -64,7 +62,7 @@ Module MdOperaBD
     End Sub
     Public Sub abcSQL_ADM(ByVal sql As String)
         Try
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente.Trim)
             objCmd = New SqlCommand
             objCmd.CommandText = sql
             objCmd.CommandType = CommandType.Text
@@ -77,7 +75,7 @@ Module MdOperaBD
     Public Sub llenarCombo(ByVal sql As String, ByVal comboName As ComboBox)
         Dim dsCombo As DataSet
         Try
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente.Trim)
             objDa = New SqlDataAdapter(sql, objCnn)
             dsCombo = New DataSet
             objDa.Fill(dsCombo)
@@ -92,7 +90,7 @@ Module MdOperaBD
         Dim dsCombo As DataSet
         Dim mfor As Integer
         Try
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente.Trim)
             objDa = New SqlDataAdapter(sql, objCnn)
             dsCombo = New DataSet
             objDa.Fill(dsCombo)
@@ -135,12 +133,12 @@ Module MdOperaBD
     End Function
     Public Function LecturaQry(ByVal Qry As String) As SqlDataReader
         Try
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente.Trim)
             objCmd = New SqlCommand
             objCmd.CommandType = CommandType.Text
             objCmd.Connection = objCnnAmanco
             objCmd.CommandText = Qry
-            LecturaBD = objCmd.ExecuteReader()            
+            LecturaBD = objCmd.ExecuteReader()
         Catch ex As Exception
             MsgBox("Error Lectura: ", ex.Message)
             Return LecturaBD
@@ -149,7 +147,7 @@ Module MdOperaBD
         Return LecturaBD
     End Function
     Public Function LecturaSP(ByVal Qry_SP As String, ByVal Param As String, ByVal Param2 As String, ByVal Param3 As String) As SqlDataReader
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente.Trim)
         objCmd = New SqlCommand
         Param_1 = New SqlParameter
         Param_2 = New SqlParameter
@@ -194,7 +192,7 @@ Module MdOperaBD
         Return LecturaBD_AMD
     End Function
     Public Function InsertQry(ByVal InQry As String) As Integer
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente.Trim)
         If objCnnAmanco.State <> ConnectionState.Open Then
             objCnnAmanco.Open()
         End If
@@ -274,7 +272,7 @@ Module MdOperaBD
     Public Function Combo(ByVal QryCombo As String) As DataSet
         DataSetCombo.Reset()
         Try
-            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo, AbrirAmanco)
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo, AbrirAmanco(SessionUser._sAmbiente))
             SQLCombo.Fill(DataSetCombo)
         Catch ex As Exception
             MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")
@@ -292,7 +290,7 @@ Module MdOperaBD
         Return DataSetCombo
     End Function
     Public Function GridInsert(ByVal QRY_Grid As String, ByVal NameTable As String) As BindingSource
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         Dim DataSetGrid As New DataSet
         Try
             Dim SQLDataAdapterGrid As New SqlDataAdapter(QRY_Grid, objCnnAmanco.ConnectionString)
@@ -316,7 +314,7 @@ Module MdOperaBD
 
     Public Function TraeDescripcion(ByVal elQRY As String) As String
         Dim Result As String
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente.Trim)
         objCmd.Connection = objCnnAmanco
         objCmd.CommandText = elQRY
         Try
@@ -398,7 +396,7 @@ Module MdOperaBD
     End Function
 
     Public Function GridInsert1(ByVal QRY_Grid As String, ByVal NameTable As String) As BindingSource
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente.Trim)
         Dim DataSetGrid As New DataSet     'DataSet Combo
         Dim SQLDataAdapterGrid As New SqlDataAdapter(QRY_Grid1, objCnnAmanco.ConnectionString)
         SQLDataAdapterGrid.Fill(DataSetGrid, NameTable1)
@@ -410,7 +408,7 @@ Module MdOperaBD
     Public Function GridInsert(ByVal QRY_Grid As String, ByVal NameTable As String, ByVal nombregrid As DataGridView) As BindingSource
 
         Dim DataSetGrid_New As New DataSet
-        Dim SQLDataAdapterGrid_666 As New SqlDataAdapter(QRY_Grid, AbrirAmanco)
+        Dim SQLDataAdapterGrid_666 As New SqlDataAdapter(QRY_Grid, AbrirAmanco(SessionUser._sAmbiente.Trim))
 
         SQLDataAdapterGrid_666.Fill(DataSetGrid_New)
         nombregrid.DataSource = DataSetGrid_New.Tables(0)

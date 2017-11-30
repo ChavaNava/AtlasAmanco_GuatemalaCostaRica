@@ -29,13 +29,16 @@ Public Class FrmBaja_PTSC
                 Try
                     Produccion_Scrap_Extrusion.Baja_Pesaje(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TFolio.Text.Trim, TOrden.Text.Trim, TProceso.Text.Trim)
                     MensajeBox.Mostrar("Se realizo la baja del pesaje con numero de folio '" & TFolio.Text.Trim & "' ", "Baja Exitosa", MensajeBox.TipoMensaje.Good)
+                    Accion = "1"
                     Close()
                 Catch ex As Exception
                     MensajeBox.Mostrar("Error '" & ex.ToString & "' ", "Error", MensajeBox.TipoMensaje.Critical)
+                    Accion = "0"
                     Exit Sub
                 End Try
             Catch ex As Exception
                 MensajeBox.Mostrar("Error '" & ex.ToString & "' ", "Error", MensajeBox.TipoMensaje.Critical)
+                Accion = "0"
                 Exit Sub
             End Try
 

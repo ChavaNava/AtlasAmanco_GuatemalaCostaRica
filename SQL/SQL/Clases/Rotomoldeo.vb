@@ -14,7 +14,7 @@ Public Class Rotomoldeo
         Q = Q & "'" & FH_Pesaje.Trim & "', '" & Bascula.Trim & "', '" & Rack.Trim & "', '" & Peso_Bruto & "', '" & Peso_Tara & "', "
         Q = Q & "'" & Peso_Embalaje & "','" & Peso_Neto & "','" & UsrReg & "','" & Turno & "','Msg_SAP','','','','" & Compuesto1 & "','" & Porcentaje1 & "',"
         Q = Q & "'" & Cantidad1 & "','" & Compuesto2 & "','" & Porcentaje2 & "','" & Cantidad2 & "','" & Peso_teorico & "','" & Opcion & "'"
-        LecturaQry(Q, Usuario)
+        LecturaQry(Q)
 
         If (LecturaBD.Read) Then
             rFolio = "" & LecturaBD(0)
@@ -32,7 +32,7 @@ Public Class Rotomoldeo
         Q = ""
         Q = "PA_Registros_Rotomoldeo '','" & Centro & "'," & Folio & ",'','','', '', '', '', '','','','','','" & Msg_SAP & "','" & Doc_SAP & "', "
         Q = Q & "'" & Con_SAP & "','" & Notifica & "','','','','','','','','" & Opcion & "'"
-        LecturaQry(Q, Usuario)
+        LecturaQry(Q)
 
     End Sub
 End Class

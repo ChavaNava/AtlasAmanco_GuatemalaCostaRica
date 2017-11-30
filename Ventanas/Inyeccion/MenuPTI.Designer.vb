@@ -88,6 +88,7 @@ Partial Class MenuPTI
         Me.chkSAP = New System.Windows.Forms.CheckBox()
         Me.dtpFECHASAP = New System.Windows.Forms.DateTimePicker()
         Me.dtpFECHA = New System.Windows.Forms.DateTimePicker()
+        Me.cmbTurnos = New System.Windows.Forms.ComboBox()
         Me.lblTurno = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -99,14 +100,14 @@ Partial Class MenuPTI
         Me.NomCentro = New System.Windows.Forms.TextBox()
         Me.CB_Rack = New System.Windows.Forms.ComboBox()
         Me.TC_Descrack = New System.Windows.Forms.TextBox()
-        Me.CveOperador = New System.Windows.Forms.TextBox()
+        Me.PassNotifier = New System.Windows.Forms.TextBox()
         Me.NomOperador = New System.Windows.Forms.TextBox()
         Me.CodOperador = New System.Windows.Forms.TextBox()
         Me.lblCentro = New System.Windows.Forms.Label()
         Me.lblClave = New System.Windows.Forms.Label()
         Me.Centro = New System.Windows.Forms.TextBox()
         Me.lblOrden = New System.Windows.Forms.Label()
-        Me.TC_Orden = New System.Windows.Forms.TextBox()
+        Me.TOrden = New System.Windows.Forms.TextBox()
         Me.lblcantidad = New System.Windows.Forms.Label()
         Me.TtramosNoti = New System.Windows.Forms.TextBox()
         Me.lblRack = New System.Windows.Forms.Label()
@@ -127,7 +128,6 @@ Partial Class MenuPTI
         Me.CB_Ope = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.cmbTurnos = New System.Windows.Forms.ComboBox()
         Me.StatusStrip1.SuspendLayout()
         Me.lblCntorden.SuspendLayout()
         Me.lblDocu.SuspendLayout()
@@ -386,10 +386,11 @@ Partial Class MenuPTI
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsImagen})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 674)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1302, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1294, 22)
         Me.StatusStrip1.TabIndex = 515
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -772,7 +773,7 @@ Partial Class MenuPTI
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.MP_PTE_Consulta, Me.ReportesToolStripMenuItem, Me.CalculadoraToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1302, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1294, 29)
         Me.MenuStrip1.TabIndex = 514
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -825,6 +826,16 @@ Partial Class MenuPTI
         Me.dtpFECHA.Name = "dtpFECHA"
         Me.dtpFECHA.Size = New System.Drawing.Size(116, 22)
         Me.dtpFECHA.TabIndex = 399
+        '
+        'cmbTurnos
+        '
+        Me.cmbTurnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTurnos.FormattingEnabled = True
+        Me.cmbTurnos.Location = New System.Drawing.Point(144, 10)
+        Me.cmbTurnos.MaxLength = 15
+        Me.cmbTurnos.Name = "cmbTurnos"
+        Me.cmbTurnos.Size = New System.Drawing.Size(105, 24)
+        Me.cmbTurnos.TabIndex = 398
         '
         'lblTurno
         '
@@ -937,15 +948,15 @@ Partial Class MenuPTI
         Me.TC_Descrack.Size = New System.Drawing.Size(252, 22)
         Me.TC_Descrack.TabIndex = 611
         '
-        'CveOperador
+        'PassNotifier
         '
-        Me.CveOperador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CveOperador.Location = New System.Drawing.Point(148, 96)
-        Me.CveOperador.MaxLength = 100
-        Me.CveOperador.Name = "CveOperador"
-        Me.CveOperador.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.CveOperador.Size = New System.Drawing.Size(105, 22)
-        Me.CveOperador.TabIndex = 0
+        Me.PassNotifier.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PassNotifier.Location = New System.Drawing.Point(148, 96)
+        Me.PassNotifier.MaxLength = 100
+        Me.PassNotifier.Name = "PassNotifier"
+        Me.PassNotifier.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.PassNotifier.Size = New System.Drawing.Size(105, 22)
+        Me.PassNotifier.TabIndex = 0
         '
         'NomOperador
         '
@@ -1008,17 +1019,17 @@ Partial Class MenuPTI
         Me.lblOrden.Text = "Orden Producción"
         Me.lblOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TC_Orden
+        'TOrden
         '
-        Me.TC_Orden.BackColor = System.Drawing.SystemColors.Window
-        Me.TC_Orden.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TC_Orden.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TC_Orden.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.TC_Orden.Location = New System.Drawing.Point(148, 150)
-        Me.TC_Orden.MaxLength = 12
-        Me.TC_Orden.Name = "TC_Orden"
-        Me.TC_Orden.Size = New System.Drawing.Size(190, 22)
-        Me.TC_Orden.TabIndex = 2
+        Me.TOrden.BackColor = System.Drawing.SystemColors.Window
+        Me.TOrden.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TOrden.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TOrden.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.TOrden.Location = New System.Drawing.Point(148, 150)
+        Me.TOrden.MaxLength = 12
+        Me.TOrden.Name = "TOrden"
+        Me.TOrden.Size = New System.Drawing.Size(190, 22)
+        Me.TOrden.TabIndex = 2
         '
         'lblcantidad
         '
@@ -1253,22 +1264,12 @@ Partial Class MenuPTI
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Label12.Visible = False
         '
-        'cmbTurnos
-        '
-        Me.cmbTurnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTurnos.FormattingEnabled = True
-        Me.cmbTurnos.Location = New System.Drawing.Point(144, 10)
-        Me.cmbTurnos.MaxLength = 15
-        Me.cmbTurnos.Name = "cmbTurnos"
-        Me.cmbTurnos.Size = New System.Drawing.Size(105, 24)
-        Me.cmbTurnos.TabIndex = 398
-        '
         'MenuPTI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Beige
-        Me.ClientSize = New System.Drawing.Size(1302, 696)
+        Me.BackColor = System.Drawing.Color.AliceBlue
+        Me.ClientSize = New System.Drawing.Size(1294, 696)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.CB_Ope)
         Me.Controls.Add(Me.Label16)
@@ -1292,12 +1293,12 @@ Partial Class MenuPTI
         Me.Controls.Add(Me.TtramosNoti)
         Me.Controls.Add(Me.lblOrden)
         Me.Controls.Add(Me.RB_PT)
-        Me.Controls.Add(Me.TC_Orden)
+        Me.Controls.Add(Me.TOrden)
         Me.Controls.Add(Me.CB_TipoSc)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.NomCentro)
         Me.Controls.Add(Me.TGrpproddesc)
-        Me.Controls.Add(Me.CveOperador)
+        Me.Controls.Add(Me.PassNotifier)
         Me.Controls.Add(Me.NomOperador)
         Me.Controls.Add(Me.TPesoCaptura)
         Me.Controls.Add(Me.CodOperador)
@@ -1421,14 +1422,14 @@ Partial Class MenuPTI
     Friend WithEvents NomCentro As System.Windows.Forms.TextBox
     Friend WithEvents CB_Rack As System.Windows.Forms.ComboBox
     Friend WithEvents TC_Descrack As System.Windows.Forms.TextBox
-    Friend WithEvents CveOperador As System.Windows.Forms.TextBox
+    Friend WithEvents PassNotifier As System.Windows.Forms.TextBox
     Friend WithEvents NomOperador As System.Windows.Forms.TextBox
     Friend WithEvents CodOperador As System.Windows.Forms.TextBox
     Friend WithEvents lblCentro As System.Windows.Forms.Label
     Friend WithEvents lblClave As System.Windows.Forms.Label
     Friend WithEvents Centro As System.Windows.Forms.TextBox
     Friend WithEvents lblOrden As System.Windows.Forms.Label
-    Friend WithEvents TC_Orden As System.Windows.Forms.TextBox
+    Friend WithEvents TOrden As System.Windows.Forms.TextBox
     Friend WithEvents lblcantidad As System.Windows.Forms.Label
     Friend WithEvents TtramosNoti As System.Windows.Forms.TextBox
     Friend WithEvents lblRack As System.Windows.Forms.Label

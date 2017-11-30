@@ -51,8 +51,8 @@ Public Class NotificaExtrusion
 
     Private Sub NotificaExtrusion_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Centro.Text = SessionUser._sCentro
-        'Se verifica conexión con SAP
-        SAP_Conexion.EstatusBarr("E", tsImagen)
+        ''Se verifica conexión con SAP
+        'SAP_Conexion.EstatusBarr("E", tsImagen)
         'Inicializan fecha Turno y SAP
         InitializesFormExtrusion.Dates(dtpFECHA, dtpFECHASAP, chkSAP)
         InitializeForm()

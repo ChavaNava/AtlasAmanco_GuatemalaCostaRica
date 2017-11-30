@@ -54,7 +54,7 @@ Public Class FrmStatusSAPI
             objCmd.Connection = objCnn
             'Una vez abierta la base se ejecuta el query necesario para poder trabajar
             Q = "SELECT ADM_Usuario.Deshabilitado,ADM_Usuario.Usuario, ADM_Usuario.Planta, ADM_Usuario.Turno, ADM_Usuario.Puesto, ADM_Usuario.Clave_Acceso, ADM_Usuario.Nombre, ADM_Planta.Descripcion, ADM_StatusSAP.Planta, ADM_StatusSAP.Status FROM ADM_Usuario, ADM_Planta, ADM_StatusSAP Where ADM_Usuario.Planta = ADM_Planta.Planta and ADM_Usuario.Planta = ADM_StatusSAP.Planta"
-            Q = Q & " AND ADM_Usuario.Clave_Acceso = '" & Me.TxtClaveI.Text.Trim() & "'"
+            Q = Q & " AND ADM_Usuario.Clave_Acceso = '" & Me.TxtClaveI.Text.Trim() & "' And ADM_StatusSAP.mODULO = 'I' "
             objCmd.CommandText = Q
             Try
                 myDataReader = objCmd.ExecuteReader()

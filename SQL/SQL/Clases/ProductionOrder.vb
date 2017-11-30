@@ -2,8 +2,6 @@
 Imports Utili_Generales
 Imports SQL_DATA
 Imports System.Drawing
-
-
 Public Class ProductionOrder
     Public Shared Function Alta_ODF(ByVal ODF As String, Tipo As String, Ambiente As String)
         Dim Alta_Ok As Boolean = 0
@@ -19,7 +17,7 @@ Public Class ProductionOrder
         Dim Mns As String
 
         Head = "31" & "|" & ODF.Trim & "|" & "10" & "|" & Tipo
-        WSG.Consume_WS(SessionUser._sAlias, Head, Lista, Ambiente.Trim)
+        WSG.Consume_WS(Head, Lista, Ambiente.Trim)
         Tbl = WSG.Tbl_resultado
         SAP_Return = WSG.Return_SAP
 
@@ -94,12 +92,13 @@ Public Class ProductionOrder
         Dim WSG As New WS_Generic.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WSG.Consume_WS(Usuario.Trim, Head, Lista, Ambiente.Trim)
+        WSG.Consume_WS(Head, Lista, Ambiente.Trim)
         'WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, strAmbiente.Trim)
         Tbl = WSG.Tbl_resultado
         SAP_Return = WSG.Return_SAP
         ' ---------------------------------------------------------------------------------
         If SAP_Return.ZTYPE = "E" Then
+            LoadingForm.CloseForm()
             MessageBox.Show(SAP_Return.ZMESSAGE, "Error SAP Notifique al Supervisor")
             On Error Resume Next
             For Each ctlText In frmForm.Controls
@@ -142,6 +141,7 @@ Public Class ProductionOrder
 
         ' ---------------------------------------------------------------------------------
         If Err = "E" Then
+            LoadingForm.CloseForm()
             MessageBox.Show(Mns, "Error SAP Notifique al Supervisor")
             On Error Resume Next
             For Each ctlText In frmForm.Controls
@@ -156,7 +156,9 @@ Public Class ProductionOrder
         End If
         ' ---------------------------------------------------------------------------------
         Select Case Status1
+
             Case Is <> "LIB."
+                LoadingForm.CloseForm()
                 Message = "Orden de Producción no esta liberada"
                 Caption = "Orden no liberada"
                 Result = MessageBox.Show(Message, Caption, Botones)
@@ -175,6 +177,7 @@ Public Class ProductionOrder
                 End If
             Case Is = "LIB."
                 If Not NumeroPlanta.Trim = Centro.Trim Then
+                    LoadingForm.CloseForm()
                     Message = "Orden de Producción no pertenece al centro " & Centro.Trim
                     Caption = "Orden de otro centro"
                     Result = MessageBox.Show(Message, Caption, Botones)
@@ -198,19 +201,22 @@ Public Class ProductionOrder
                     Q = "SELECT GrupMaterial, Sobrepeso FROM CAT_ProductoTerminado "
                     Q = Q & "WHERE Centro = " & "'" & Centro.Trim & "' "
                     Q = Q & "AND Codigo = '" & Producto.Trim & "'"
-                    LecturaQry(Q, Usuario)
+                    LecturaQry(Q)
                     If LecturaBD.Read() Then
                         Grupo = LecturaBD(0)
                         'Verifica si el producto es de inyección o extrusión
                         Dim Tipo_Prod As String = Verifica_Producto(Producto.Trim, Centro, Usuario)
                         If Seccion = "1" And Tipo_Prod = "2" Then
+                            LoadingForm.CloseForm()
                             MensajeBox.Mostrar("El producto no es de Extrusión, no se dara de Alta la Orden ", "Error", MensajeBox.TipoMensaje.Information)
                             Exit Sub
                         ElseIf Seccion = "2" And Tipo_Prod = "1" Then
+                            LoadingForm.CloseForm()
                             MensajeBox.Mostrar("El producto no es de Inyección, no se dara de Alta la Orden", "Error", MensajeBox.TipoMensaje.Information)
                             Exit Sub
                         End If
                     Else
+                        LoadingForm.CloseForm()
                         MensajeBox.Mostrar("El producton '" & Producto.Trim & "' no esta dado de Alta en A-tlas informe al Administrador ", "Campo Vacio", MensajeBox.TipoMensaje.Information)
                         Exit Sub
                     End If
@@ -223,10 +229,10 @@ Public Class ProductionOrder
                                & Producto & "','" & CantProgPzs & "','" & Inicio & "','" & Fin & "','" & Origen & "','" _
                                & CodOperador.Trim & "','" & Fec_Act & "','Ingreso Por SAP','" & Fec_Act & "','" & Hra_Act & "','" _
                                & Usuario.Trim & "','" & Fec_Act & "','" & Hra_Act & "','Usuario Fin','Usuario Reg','" & Fec_reg & "','" _
-                               & Hra_Act & "','" & Grupo.Trim & "', '" & Usuario.Trim & "','" & Version.Trim & "'", Usuario)
+                               & Hra_Act & "','" & Grupo.Trim & "', '" & Usuario.Trim & "','" & Version.Trim & "'")
                     On Error Resume Next
+                    LoadingForm.CloseForm()
                     MensajeBox.Mostrar("La orden a sido dada de alta intente nuevamente ", "Orden de Producción", MensajeBox.TipoMensaje.Information)
-
                 End If
         End Select
     End Sub
@@ -267,7 +273,7 @@ Public Class ProductionOrder
         Dim WSG As New WS_Generic.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WSG.Consume_WS(Usuario.Trim, Head, Lista, Ambiente.Trim)
+        WSG.Consume_WS(Head, Lista, Ambiente.Trim)
         'WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, strAmbiente.Trim)
         Tbl = WSG.Tbl_resultado
         SAP_Return = WSG.Return_SAP
@@ -361,7 +367,7 @@ Public Class ProductionOrder
                     Q = "SELECT GrupMaterial, Sobrepeso FROM CAT_ProductoTerminado "
                     Q = Q & "WHERE Centro = " & "'" & Centro.Trim & "' "
                     Q = Q & "AND Codigo = '" & Producto.Trim & "'"
-                    LecturaQry(Q, Usuario)
+                    LecturaQry(Q)
                     If LecturaBD.Read() Then
                         Grupo = LecturaBD(0)
                         'Verifica si el producto es de inyección o extrusión
@@ -386,7 +392,7 @@ Public Class ProductionOrder
                                & Producto & "','" & CantProgPzs & "','" & Inicio & "','" & Fin & "','" & Origen & "','" _
                                & CodOperador.Trim & "','" & Fec_Act & "','Ingreso Por SAP','" & Fec_Act & "','" & Hra_Act & "','" _
                                & Usuario.Trim & "','" & Fec_Act & "','" & Hra_Act & "','Usuario Fin','Usuario Reg','" & Fec_reg & "','" _
-                               & Hra_Act & "','" & Grupo.Trim & "'", Usuario)
+                               & Hra_Act & "','" & Grupo.Trim & "'")
                     On Error Resume Next
                     MensajeBox.Mostrar("La orden a sido dada de alta ", "Orden de Producción", MensajeBox.TipoMensaje.Information)
                     'ProductionOrder.Valida_Existencia_Producto(Usuario.Trim, Producto.Trim, NumeroPlanta.Trim, Area)
@@ -421,7 +427,7 @@ Public Class ProductionOrder
         Dim WSG As New WS_Generic.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WSG.Consume_WS(Usuario.Trim, Head, Lista, Ambiente)
+        WSG.Consume_WS(Head, Lista, Ambiente)
         Tbl = WSG.Tbl_resultado
         SAP_Return = WSG.Return_SAP
         FH_Update = DateTime.Now.ToString("yyyyMMdd hh:mm:ss")
@@ -444,14 +450,81 @@ Public Class ProductionOrder
             Err = SAP_Return.ZTYPE
             Mns = SAP_Return.ZMESSAGE
             ' ---------------------------------------------------------------------------------
-            LecturaQry("PA_Actualiza_Orden_Produccion  " & Centro & "_OrdenProduccion, '" & OrdenProd.Trim & "' , '" & Equipo.Trim & "', '" & Producto.Trim & "', " & CantProgPzs & ", '" & Usuario.Trim & "', '" & FH_Update & "'", Usuario)
+            LecturaQry("PA_Actualiza_Orden_Produccion  " & Centro & "_OrdenProduccion, '" & OrdenProd.Trim & "' , '" & Equipo.Trim & "', '" & Producto.Trim & "', " & CantProgPzs & ", '" & Usuario.Trim & "', '" & FH_Update & "'")
         End If
     End Sub
+
+    Public Shared Sub ValidaEstatus(ByVal ODF As String, Tipo As String)
+        Dim Lista As New Generic.List(Of String)
+        Dim Tbl As String()
+        Dim SAP_Return As Object
+        Dim aryTextFile() As String
+        Dim Estatus_Activo As Integer
+        Dim WSG As New WS_Generic.WSG
+
+        OrdenProductionSap.Head = "31" & "|" & ODF.Trim & "|" & "10" & "|" & Tipo
+        WSG.Consume_WS(OrdenProductionSap.Head, Lista, SessionUser._sAmbiente)
+        Tbl = WSG.Tbl_resultado
+        SAP_Return = WSG.Return_SAP
+        ' ---------------------------------------------------------------------------------
+        If SAP_Return.ztype <> "E" Then
+            aryTextFile = Tbl(0).Split("|")
+            OrdenProductionSap.Order = aryTextFile(1)
+            OrdenProductionSap.Centro = aryTextFile(2)
+            OrdenProductionSap.PuestoTrabajo = aryTextFile(3)
+            OrdenProductionSap.IdProducto = aryTextFile(4)
+            OrdenProductionSap.CantProduccion = aryTextFile(5)
+            OrdenProductionSap.Unidad = aryTextFile(6)
+            OrdenProductionSap.FI_Produccion = aryTextFile(7)
+            OrdenProductionSap.FF_Produccion = aryTextFile(8)
+            OrdenProductionSap.Origen = aryTextFile(9)
+            OrdenProductionSap.IdStatus = aryTextFile(10)
+            OrdenProductionSap.Status = aryTextFile(11)
+            OrdenProductionSap.F_Inicio = aryTextFile(12)
+            OrdenProductionSap.Type_Order = aryTextFile(13)
+            OrdenProductionSap.IdMessage = SAP_Return.ZTYPE
+            OrdenProductionSap.Message = SAP_Return.ZMESSAGE
+
+            If OrdenProductionSap._IdStatus = "LIB." Then
+                Estatus_Activo = 1
+            Else
+                Estatus_Activo = 0
+            End If
+
+            LecturaQry("PA_Orden_Fabricacion '" & OrdenProductionSap._Order & "', '" & SessionUser._sCentro.Trim & "','','','','','','','','" & Estatus_Activo & "','','','','','','','','','','','','','','','','','','','" & OrdenProductionSap._IdStatus & "','','','','','',7")
+        Else
+            aryTextFile = Tbl(0).Split("|")
+            OrdenProductionSap.Order = aryTextFile(1)
+            OrdenProductionSap.Centro = aryTextFile(2)
+            OrdenProductionSap.PuestoTrabajo = aryTextFile(3)
+            OrdenProductionSap.IdProducto = aryTextFile(4)
+            OrdenProductionSap.CantProduccion = aryTextFile(5)
+            OrdenProductionSap.Unidad = aryTextFile(6)
+            OrdenProductionSap.FI_Produccion = aryTextFile(7)
+            OrdenProductionSap.FF_Produccion = aryTextFile(8)
+            OrdenProductionSap.Origen = aryTextFile(9)
+            OrdenProductionSap.IdStatus = aryTextFile(10)
+            OrdenProductionSap.Status = aryTextFile(11)
+            OrdenProductionSap.F_Inicio = aryTextFile(12)
+            OrdenProductionSap.Type_Order = aryTextFile(13)
+            OrdenProductionSap.IdMessage = SAP_Return.ZTYPE
+            OrdenProductionSap.Message = SAP_Return.ZMESSAGE
+
+            If OrdenProductionSap._IdStatus = "ABIE" Then
+                Estatus_Activo = 1
+            Else
+                Estatus_Activo = 0
+            End If
+
+            LecturaQry("PA_Orden_Fabricacion '" & OrdenProductionSap._Order & "', '" & SessionUser._sCentro.Trim & "','','','','','','','','" & Estatus_Activo & "','','','','','','','','','','','','','','','','','','','" & OrdenProductionSap._IdStatus & "','','','','','',7")
+        End If
+    End Sub
+
 
     Public Shared Function Verifica_Producto(ByVal Codigo_PT As String, Centro As String, Usuario As String) As String
         Dim Count As Integer = 0
         Dim Tipo As String = ""
-        LecturaQry("PA_Valida_Producto_Ext_Iny '" & Codigo_PT & "', '" & Centro.Trim & "' ", Usuario)
+        LecturaQry("PA_Valida_Producto_Ext_Iny '" & Codigo_PT & "', '" & Centro.Trim & "' ")
         If (LecturaBD.Read) Then
             Count = Count + 1
             Tipo = LecturaBD(0)
@@ -460,13 +533,13 @@ Public Class ProductionOrder
         Return Tipo
     End Function
 
-    Public Shared Sub Act_Ins_ProductionOrder(ByVal odf As String, Centro As String, Usuario As String, Tipo As String, Ambiente As String)
+    Public Shared Sub Act_Ins_ProductionOrder(ByVal odf As String, Tipo As String)
         'Verifica que exista la orden en la DB de A-tlas
-        LecturaQry("PA_Check_Existence_Production_Order '" & odf.Trim & "', '" & Centro.Trim & "' ", Usuario)
+        LecturaQry("PA_Check_Existence_Production_Order '" & odf.Trim & "', '" & SessionUser._sCentro.Trim & "' ")
         If (LecturaBD.Read) Then
-            Actualiza_Orden_Produccion(odf, Tipo, Usuario, Centro, Ambiente)
+            Actualiza_Orden_Produccion(odf, Tipo, SessionUser._sAlias, SessionUser._sCentro.Trim, SessionUser._sAmbiente)
         Else
-            Actualiza_Orden_Produccion(odf, Tipo, Usuario, Centro, Ambiente)
+            Actualiza_Orden_Produccion(odf, Tipo, SessionUser._sAlias, SessionUser._sCentro.Trim, SessionUser._sAmbiente)
         End If
         LecturaBD.Close()
     End Sub
@@ -475,7 +548,7 @@ Public Class ProductionOrder
         Dim Existe As Boolean = 0
         Dim Contador As Integer = 0
 
-        LecturaQry("PA_Orden_Fabricacion '" & Orden.Trim & "', '" & SessionUser._sCentro & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','" & Opcion.Trim & "'", Usuario)
+        LecturaQry("PA_Orden_Fabricacion '" & Orden.Trim & "', '" & SessionUser._sCentro & "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','" & Opcion.Trim & "'")
 
         If Opcion = "1" Then
             If (LecturaBD.Read) Then
@@ -513,7 +586,7 @@ Public Class ProductionOrder
 
     Public Shared Function Valida_PT(ByVal Usuario As String, Codigo As String, Area As String, Opcion As String)
         Dim PT_OK As Boolean = 0
-        LecturaQry("PA_PT '" & SessionUser._sCentro & "', '" & Codigo.Trim & "','','','','','','','','','','','','','','','','','','','" & Area.Trim & "','','','','','','','','','','','','','','','','" & Opcion.Trim & "'", Usuario)
+        LecturaQry("PA_PT '" & SessionUser._sCentro & "', '" & Codigo.Trim & "','','','','','','','','','','','','','','','','','','','" & Area.Trim & "','','','','','','','','','','','','','','','','" & Opcion.Trim & "'")
         If Opcion = "1" Then
             If (LecturaBD.Read) Then
                 PT_OK = LecturaBD(0)
@@ -525,7 +598,7 @@ Public Class ProductionOrder
 
     Public Shared Function Valida_Work_Center(ByVal Usuario As String, Equipo As String, Opcion As String)
         Dim WC_OK As Boolean = 0
-        LecturaQry("PA_PuestoTrabajo '" & SessionUser._sCentro & "','" & Equipo.Trim & "','','','','','','','','','','','','','','" & Opcion.Trim & "'", Usuario)
+        LecturaQry("PA_PuestoTrabajo '" & SessionUser._sCentro & "','" & Equipo.Trim & "','','','','','','','','','','','','','','" & Opcion.Trim & "'")
         If Opcion = "1" Then
             If (LecturaBD.Read) Then
                 WC_OK = LecturaBD(0)
@@ -537,7 +610,7 @@ Public Class ProductionOrder
 
     Public Shared Function Compuesto_Bom(ByVal Usuario As String, Producto As String, Opcion As String)
         Dim Bom_Ok As Boolean = 0
-        LecturaQry("PA_Compuesto_BOM '" & SessionUser._sCentro & "','" & Producto.Trim & "','','','','','','','','','','','','','','','','" & Opcion.Trim & "'", Usuario)
+        LecturaQry("PA_Compuesto_BOM '" & SessionUser._sCentro & "','" & Producto.Trim & "','','','','','','','','','','','','','','','','" & Opcion.Trim & "'")
         If Opcion = "1" Then
             If (LecturaBD.Read) Then
                 Bom_Ok = LecturaBD(0)
@@ -547,35 +620,33 @@ Public Class ProductionOrder
         Return Bom_Ok
     End Function
 
-    Public Shared Function Valida_Exis_ODF_Atlas(ByVal Usuario As String, Centro As String, Orden As String, Seccion As String)
+    Public Shared Function Existe(ByVal Orden As String, Seccion As String) As Boolean
         'Verfica que la orden este registrada en la DB de Atlas
-        Dim Count As Integer = 0
-        Dim C_Orden As String = ""
-        Dim C_Prod As String = ""
-        Dim C_Status As String = ""
-        Dim C_Eqp As String = ""
-        Dim C_DesProd As String = ""
-        Dim C_Area As String = ""
-
-        LecturaQry("PA_Check_Existence_Production_Order '" & Orden.Trim & "', '" & Centro.Trim & "' ", Usuario)
+        Try
+            LecturaQry("PA_Check_Existence_Production_Order '" & Orden.Trim & "', '" & SessionUser._sCentro.Trim & "' ")
             If (LecturaBD.Read) Then
-                Count = Count + 1
-                C_Orden = "" & LecturaBD(0)
-                C_Prod = "" & LecturaBD(1)
-                C_Status = "" & LecturaBD(2)
-                C_Eqp = "" & LecturaBD(3)
-                C_DesProd = "" & LecturaBD(4)
-                C_Area = "" & LecturaBD(5)
+                OrdenProduccionExiste.Orden = LecturaBD(0)
+                OrdenProduccionExiste.IdProducto = LecturaBD(1)
+                OrdenProduccionExiste.Estatus = LecturaBD(2)
+                OrdenProduccionExiste.PuestoTrabajo = LecturaBD(3)
+                OrdenProduccionExiste.Producto = LecturaBD(4)
+                OrdenProduccionExiste.IdTipo = LecturaBD(5)
+                OrdenProduccionExiste.OrigenInformacion = LecturaBD(6)
+                Return True
+            Else
+                Return False
             End If
-        LecturaBD.Close()
-
-        Return Count & "|" & C_Prod
+            LecturaBD.Close()
+        Catch ex As Exception
+            LoadingForm.CloseForm()
+            MensajeBox.Mostrar(ex.ToString, "Error", MensajeBox.TipoMensaje.Critical)
+        End Try
     End Function
 
     Public Shared Function ValExistencia()
         Dim Count As Integer = 0
 
-        LecturaQry("PA_Verifica_ODF '" & ValidaODF._rODF & "', '" & SessionUser._sCentro & "' ", SessionUser._sAlias)
+        LecturaQry("PA_Verifica_ODF '" & ValidaODF._rODF & "', '" & SessionUser._sCentro & "' ")
         If (LecturaBD.Read) Then
             Count = Count + 1
             ValidaODF.rODF = "" & LecturaBD(0)
@@ -597,7 +668,7 @@ Public Class ProductionOrder
     Public Shared Function ValProducto(ByVal Area As String)
         Dim Count As Integer = 0
         Try
-            LecturaQry("PA_Check_Existence_Product '" & ValidaODF._rIdProducto & "', '" & SessionUser._sCentro & "', '" & Area & "' ", SessionUser._sAlias)
+            LecturaQry("PA_Check_Existence_Product '" & ValidaODF._rIdProducto & "', '" & SessionUser._sCentro & "', '" & Area & "' ")
             If (LecturaBD.Read) Then
                 Count = Count + 1
             End If
@@ -611,7 +682,7 @@ Public Class ProductionOrder
     Public Shared Function ValEquipo()
         Dim Count As Integer = 0
         Try
-            LecturaQry("PA_PuestoTrabajo '" & SessionUser._sCentro & "','" & ValidaODF._rIdEquipo & "','','','','','','','','','','','','','',1", SessionUser._sAlias)
+            LecturaQry("PA_PuestoTrabajo '" & SessionUser._sCentro & "','" & ValidaODF._rIdEquipo & "','','','','','','','','','','','','','',1")
             If (LecturaBD.Read) Then
                 Count = Count + 1
             End If
@@ -622,25 +693,24 @@ Public Class ProductionOrder
         Return Count
     End Function
 
-    Public Shared Function Valida_Existencia_Producto(ByVal Usuario As String, Producto As String, Centro As String, Area As String)
-        Dim Count As Integer = 0
+    Public Shared Function Existencia_Producto(ByVal Area As String) As Boolean
         Try
-            LecturaQry("PA_Check_Existence_Product '" & Producto.Trim & "', '" & Centro.Trim & "', '" & Area & "' ", Usuario)
+            LecturaQry("PA_Check_Existence_Product '" & OrdenProduccionExiste._IdProducto.Trim & "', '" & SessionUser._sCentro.Trim & "', '" & Area & "' ")
             If (LecturaBD.Read) Then
-                Count = Count + 1
+                Existencia_Producto = True
+            Else
+                Existencia_Producto = False
             End If
             LecturaBD.Close()
         Catch ex As Exception
             MensajeBox.Mostrar(ex.ToString, "Campo Vacio", MensajeBox.TipoMensaje.Critical)
         End Try
-        Return Count
     End Function
 
-    Public Shared Sub Read_Production_Order_Ext(ByVal Usuario As String, Orden As String, Centro As String, Frm As Form, _
-                                            TB_CodPT As TextBox, TB_CodPtDecr As TextBox, TB_PtoTrabajo As TextBox, TB_PesoTeorico As TextBox, _
-                                            TB_empaque As TextBox, TB_CodAnillo As TextBox, TB_DAnillo As TextBox, TB_Grpprod As TextBox, _
-                                            TB_Grupo As TextBox, TB_SP_Permitido As TextBox, TB_Grpproddesc As TextBox, _
-                                            TB_NomPtoTrabajo As TextBox)
+    Public Shared Sub Read_Production_Order_Ext(ByVal Orden As String, Frm As Form, TB_CodPT As TextBox, TB_CodPtDecr As TextBox, _
+                                                TB_PtoTrabajo As TextBox, TB_PesoTeorico As TextBox, TB_empaque As TextBox, _
+                                                TB_CodAnillo As TextBox, TB_DAnillo As TextBox, TB_Grpprod As TextBox, TB_Grupo As TextBox, _
+                                                TB_SP_Permitido As TextBox, TB_Grpproddesc As TextBox, TB_NomPtoTrabajo As TextBox)
 
         Dim GrpProd As String = ""
         Dim Descripcion As String = ""
@@ -660,7 +730,7 @@ Public Class ProductionOrder
         Dim PesoEmb As Decimal = 0
         Dim PesoEmp As Decimal = 0
 
-        LecturaQry("PA_Read_Production_Order '" & Orden.Trim & "', '" & Centro.Trim & "' ", Usuario)
+        LecturaQry("PA_Read_Production_Order '" & Orden.Trim & "', '" & SessionUser._sCentro.Trim & "' ")
         Dim Count As Integer = 0
         If (LecturaBD.Read) Then
             Count = Count + 1
@@ -697,7 +767,7 @@ Public Class ProductionOrder
         TB_Grpproddesc.Text = DescGrupo              'Descricpion Grupo
         TB_NomPtoTrabajo.Text = DesEqpBasico         'Descripcion Puesto de Trabajo
         'Valida si existe compuesto asignado a este producto
-        Valida_Existencia_Compuesto_BOM(Usuario, Centro, CodigoProducto.Trim, Frm)
+        Valida_Existencia_Compuesto_BOM(SessionUser._sAlias, SessionUser._sCentro, CodigoProducto.Trim, Frm)
     End Sub
 
     Public Shared Sub Read_Production_Order_Iny(ByVal Usuario As String, Orden As String, Centro As String, Frm As Form, _
@@ -722,7 +792,7 @@ Public Class ProductionOrder
         Dim PesoEmb As Decimal = 0
         Dim PesoEmp As Decimal = 0
 
-        LecturaQry("PA_Read_Production_Order '" & Orden.Trim & "', '" & Centro.Trim & "' ", Usuario)
+        LecturaQry("PA_Read_Production_Order '" & Orden.Trim & "', '" & Centro.Trim & "' ")
         Dim Count As Integer = 0
         If (LecturaBD.Read) Then
             Count = Count + 1
@@ -765,7 +835,7 @@ Public Class ProductionOrder
         Dim xTCantpendi As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
-            LecturaQry("PA_Calcula_Cantidades '" & Centro & "',  '" & Orden.Trim & "', '3' ", Usuario)
+            LecturaQry("PA_Calcula_Cantidades '" & Centro & "',  '" & Orden.Trim & "', '3' ")
             If (LecturaBD.Read) Then
                 xTCantProgra = LecturaBD(1)
                 xTCantEntre = LecturaBD(2)
@@ -788,15 +858,15 @@ Public Class ProductionOrder
         End Try
     End Sub
 
-    Public Shared Sub CalCantExt(ByVal Usuario As String, Orden As String, TB_CantProgra As TextBox, TB_CantEntre As TextBox, TB_CantEnproce As TextBox, _
-                                TBC_CantPendiente As TextBox, Centro As String)
+    Public Shared Sub CalCantExt(ByVal Orden As String, TB_CantProgra As TextBox, TB_CantEntre As TextBox, TB_CantEnproce As TextBox, _
+                                TBC_CantPendiente As TextBox, Area As String)
         Dim xTCantProgra As Decimal = 0
         Dim xTCantEntre As Decimal = 0
         Dim xTCantEnproce As Decimal = 0
         Dim xTCantpendi As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
-            LecturaQry("PA_Calcula_Cantidades '" & Centro & "',  '" & Orden.Trim & "', '1' ", Usuario)
+            LecturaQry("PA_Calcula_Cantidades_3 '" & SessionUser._sCentro.Trim & "',  '" & Orden.Trim & "',  '" & Area.Trim & "' ")
             If (LecturaBD.Read) Then
                 xTCantProgra = LecturaBD(1)
                 xTCantEntre = LecturaBD(2)
@@ -828,7 +898,7 @@ Public Class ProductionOrder
         Dim xTCantPiso As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
-            LecturaQry("PA_Calcula_Cantidades_Iny '" & Centro & "',  '" & Orden.Trim & "'", Usuario)
+            LecturaQry("PA_Calcula_Cantidades_Iny '" & Centro & "',  '" & Orden.Trim & "'")
             If (LecturaBD.Read) Then
                 xTCantProgra = LecturaBD(1)
                 xTCantEntre = LecturaBD(2)
@@ -863,7 +933,7 @@ Public Class ProductionOrder
         Dim xTCantPiso As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
-            LecturaQry("PA_Calcula_Cantidades_Rot '" & Centro & "',  '" & Orden.Trim & "'", Usuario)
+            LecturaQry("PA_Calcula_Cantidades_Rot '" & Centro & "',  '" & Orden.Trim & "'")
             If (LecturaBD.Read) Then
                 xTCantProgra = LecturaBD(1)
                 xTCantEntre = LecturaBD(2)
@@ -889,7 +959,7 @@ Public Class ProductionOrder
     Public Shared Sub Valida_Existencia_Compuesto_BOM(ByVal Usuario As String, Centro As String, Producto As String, ByVal frmForm As Form)
         Dim CodCompuesto As Integer = 0
         'Valida si existe compuesto asignado a este producto
-        LecturaQry("SP_Valida_Compuesto_BOM  '" & Producto.Trim & "' , '" & Centro & "'", Usuario)
+        LecturaQry("SP_Valida_Compuesto_BOM  '" & Producto.Trim & "' , '" & Centro & "'")
         If (LecturaBD.Read) Then
             CodCompuesto = LecturaBD(0)
             LecturaBD.Close()

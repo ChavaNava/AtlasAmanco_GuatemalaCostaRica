@@ -12,10 +12,9 @@ Module DataBase
     Public Function MSI(ByVal Ambiente As String) As SqlConnection
         Dim varString As String
         If Ambiente.Trim = "D" Then
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
-            'varString = "Data Source=10.1.2.30;Initial Catalog=MSI_A013_DEV;Persist Security Info=True;User ID=msi_atlas;Password=msi;Trusted_Connection=False"
+            varString = "Data Source=10.1.2.30;Initial Catalog=AMANCO_DEV;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         Else
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+            varString = "Data Source=10.1.2.30;Initial Catalog=AMANCO;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         End If
         objCnnMsi = New SqlConnection
         objCnnMsi.ConnectionString = varString
@@ -23,18 +22,18 @@ Module DataBase
         Return objCnnMsi
     End Function
 
-    Public Function Usuarios() As SqlConnection
+    Public Function Usuarios(ByVal User As String) As SqlConnection
         Dim varString As String
-        varString = "Data Source=10.1.2.30;Initial Catalog=Usuarios;Persist Security Info=True;User ID=sa;Password=sqlm3x1ch3m;Trusted_Connection=False"
+        varString = "Data Source=10.1.2.30;Initial Catalog=USUARIOS;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         objCnn = New SqlConnection
         objCnn.ConnectionString = varString
         objCnn.Open()
         Return objCnn
     End Function
 
-    Public Function LecturaQry(ByVal Qry As String, Ambiente As String) As SqlDataReader
+    Public Function LecturaQry(ByVal Qry As String) As SqlDataReader
         Try
-            MSI(Ambiente)
+            MSI(SessionUser._sAmbiente)
             objCmd = New SqlCommand
             objCmd.CommandType = CommandType.Text
             objCmd.Connection = objCnnMsi
@@ -48,8 +47,8 @@ Module DataBase
         Return LecturaBD
     End Function
 
-    Public Function LecturaQry_ADM(ByVal QRY_ADM As String) As SqlDataReader
-        Usuarios()
+    Public Function LecturaQry_ADM(ByVal QRY_ADM As String, LoginUser As String) As SqlDataReader
+        Usuarios(LoginUser)
         If objCnn.State <> ConnectionState.Open Then
             objCnn.Open()
         End If
@@ -65,10 +64,11 @@ Module DataBase
         Return LecturaBD_ADM
     End Function
 
-    Public Function Combo(ByVal QryCombo As String, Ambiente As String) As DataSet
+    Public Function Combo(ByVal QryCombo As String) As DataSet
         DataSetCombo.Reset()
         Try
-            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo, MSI(Ambiente))
+            Dim sqlCmd As New SqlCommand(QryCombo, MSI(SessionUser._sAmbiente))
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(sqlCmd)
             SQLCombo.Fill(DataSetCombo)
         Catch ex As Exception
             MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")
@@ -79,7 +79,8 @@ Module DataBase
     Public Function Combo2(ByVal QryCombo As String, Ambiente As String) As DataSet
         DataSetCombo2.Reset()
         Try
-            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo, MSI(Ambiente))
+            Dim sqlCmd As New SqlCommand(QryCombo, MSI(SessionUser._sAmbiente))
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(sqlCmd)
             SQLCombo.Fill(DataSetCombo2)
         Catch ex As Exception
             MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")
@@ -90,7 +91,8 @@ Module DataBase
     Public Function Combo3(ByVal QryCombo As String, Ambiente As String) As DataSet
         DataSetCombo3.Reset()
         Try
-            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo, MSI(Ambiente))
+            Dim sqlCmd As New SqlCommand(QryCombo, MSI(SessionUser._sAmbiente))
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(sqlCmd)
             SQLCombo.Fill(DataSetCombo3)
         Catch ex As Exception
             MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")
@@ -101,7 +103,8 @@ Module DataBase
     Public Function Combo_ADM(ByVal QryCombo_ADM As String) As DataSet
         DataSetCombo.Reset()
         Try
-            Dim SQLCombo As New SqlClient.SqlDataAdapter(QryCombo_ADM, Usuarios())
+            Dim sqlCmd As New SqlCommand(QryCombo_ADM, Usuarios(SessionUser._sAlias))
+            Dim SQLCombo As New SqlClient.SqlDataAdapter(sqlCmd)
             SQLCombo.Fill(DataSetCombo)
         Catch ex As Exception
             MessageBox.Show(ex.Message, " VENTANA DE ERROR * * * ")

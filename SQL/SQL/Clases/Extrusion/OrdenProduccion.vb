@@ -7,7 +7,7 @@ Public Class OrdenProduccion
     Public Shared T_Orden As New OrdenSAP
     Public Shared T_OrdenDetalle As New OrdenDetalleSAP
     Public Shared Function ValExistencia(ByVal IdOrden As String) As Boolean
-        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',7", SessionUser._sAmbiente)
+        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',7")
         If (LecturaBD.Read) Then
             T_ValidaOrden.Orden = LecturaBD(0)
             T_ValidaOrden.Centro = LecturaBD(1)
@@ -91,14 +91,14 @@ Public Class OrdenProduccion
         Dim Q As String
         Q = ""
         Q = "PA_OrdenesProduccion '" & T_Orden._Orden & "','" & T_Orden._Centro & "','" & T_Orden._Equipo & "','" & T_Orden._Codigo & "','" & T_Orden._Cantidad & "','" & T_Orden._Fecha_Inicio & "','" & T_Orden._Fecha_Termino & "','" & T_Orden._Origen & "','" & T_Orden._GrupoMaterial.Trim & "','" & T_Orden._Fecha & "','" & T_Orden._Usuario.Trim & "'," & Operacion & ""
-        LecturaQry(Q, SessionUser._sAmbiente)
+        LecturaQry(Q)
     End Sub
 
     Public Shared Sub ABCDetalle(ByVal Operacion As Integer)
         Dim Q As String
         Q = ""
         Q = "PA_OrdenesProduccionMaterial '" & T_OrdenDetalle._Orden & "','" & T_OrdenDetalle._Movimiento & "','" & T_OrdenDetalle._Codigo & "','" & T_OrdenDetalle._Descripcion & "','" & T_OrdenDetalle._Almacen & "','" & T_OrdenDetalle._Cantidad & "','" & T_OrdenDetalle._UM & "','" & T_OrdenDetalle._Lote & "'," & Operacion & ""
-        LecturaQry(Q, SessionUser._sAmbiente)
+        LecturaQry(Q)
     End Sub
 
     Public Shared Function ValidaOrden(ByVal IdOrden As String) As Boolean
@@ -124,7 +124,7 @@ Public Class OrdenProduccion
     End Function
 
     Public Shared Function ValidaEquipo(ByVal IdOrden As String) As Boolean
-        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',3", SessionUser._sAmbiente)
+        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',3")
         If (LecturaBD.Read) Then
             Return True
         Else
@@ -134,7 +134,7 @@ Public Class OrdenProduccion
     End Function
 
     Public Shared Function ValidaProducto(ByVal IdOrden As String) As Boolean
-        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',4", SessionUser._sAmbiente)
+        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',4")
         If (LecturaBD.Read) Then
             Return True
         Else
@@ -148,7 +148,7 @@ Public Class OrdenProduccion
         Dim IdGrupo As String = ""
         Q = ""
         Q = "PA_OrdenesProduccion '','" & T_Orden._Centro & "','','" & T_Orden._Codigo & "','','','','','','',''," & Operacion & ""
-        LecturaQry(Q, SessionUser._sAmbiente)
+        LecturaQry(Q)
         If (LecturaBD.Read) Then
             IdGrupo = LecturaBD(0)
         End If
@@ -156,7 +156,7 @@ Public Class OrdenProduccion
     End Function
 
     Public Shared Sub FillOrder(ByVal IdOrden As String)
-        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',6", SessionUser._sAmbiente)
+        LecturaQry("PA_OrdenesProduccion '" & IdOrden.Trim & "','" & SessionUser._sCentro.Trim & "','','','','','','','','','',6")
         If (LecturaBD.Read) Then
             OrderFill.Orden = LecturaBD(0)
             OrderFill.GrupoProductivo = LecturaBD(1)
@@ -177,7 +177,7 @@ Public Class OrdenProduccion
 
     Public Shared Sub Cantidades(ByVal IdOrden As String)
         Try
-            LecturaQry("PA_CANTIDADES_PERU '" & SessionUser._sCentro.Trim & "',  '" & IdOrden.Trim & "'", SessionUser._sAlias.Trim)
+            LecturaQry("PA_CANTIDADES_PERU '" & SessionUser._sCentro.Trim & "',  '" & IdOrden.Trim & "'")
             If (LecturaBD.Read) Then
                 OrdenCantidades.Cantidad = LecturaBD(1)
                 OrdenCantidades.CantEntregada = LecturaBD(2)
@@ -216,7 +216,7 @@ Public Class OrdenProduccion
     End Sub
 
     Public Shared Sub TotalPiezasPesos(IdOrden As String, Cant As Integer)
-        LecturaQry("PA_PesosEmbalajes '" & SessionUser._sCentro.Trim & "','" & IdOrden.Trim & "', " & Cant & ",2", SessionUser._sAmbiente)
+        LecturaQry("PA_PesosEmbalajes '" & SessionUser._sCentro.Trim & "','" & IdOrden.Trim & "', " & Cant & ",2")
         If (LecturaBD.Read) Then
             PesosPiezas.Piezas = LecturaBD(0)
             PesosPiezas.Pesos = LecturaBD(1)

@@ -65,7 +65,11 @@ Public Class FrmConsulta_PTSC_EI
         Baja_Masiva = Status_Not_Mas
         Baja_St_Pesaje = Status_Pesaje
         DGV = DGV1
-        Permiso.Accesos("MA_BAJA_PESAJE", "1", SessionUser._sIdPerfil, "E", "Eliminar registros pesajes de ")
+        Accion = 0
+        Permiso.Accesos("MA_BAJA_PESAJE", "1", SessionUser._sIdPerfil, Seccion.Trim, "Eliminar registros pesajes de ")
+        If Accion = 1 Then
+            Grid()
+        End If
     End Sub
 
     Private Sub DGV1_CurrentCellChanged(sender As System.Object, e As System.EventArgs) Handles DGV1.CurrentCellChanged
@@ -116,7 +120,7 @@ Public Class FrmConsulta_PTSC_EI
         Str_FI = DTP_FI.Value.ToString("yyyy-MM-dd")
         Str_FF = DTP_FF.Value.ToString("yyyy-MM-dd")
 
-        Elimina_Pesajes_Extrusion.Consulta_PT_SC_Extrusion(SessionUser._sCentro.Trim, Seccion.Trim, SessionUser._sAlias.Trim, DGV1, Str_FI, Str_FF, TOrden.Text.Trim)
+        Elimina_Pesajes_Extrusion.Consulta_PT_SC_Extrusion(Seccion.Trim, DGV1, Str_FI, Str_FF, TOrden.Text.Trim)
 
     End Sub
 

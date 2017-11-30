@@ -182,16 +182,16 @@ Public Class MenuRTO
     Private Sub TtramosNoti_Leave(sender As System.Object, e As System.EventArgs) Handles TtramosNoti.Leave
         Dim arryEmbalajes() As String
         If RB_PT.Checked Then
-            If TtramosNoti.Text.Trim <> 0 Then
-                TPesoEmpaque.Text = "0.00"
-                Utili_Generales.ControlDataGridView.Colums_CalculaEmbalajes(DGV_Emb)
-                arryEmbalajes = Inyeccion.Embalajes(DGV_Emb, SessionUser._sCentro.Trim, SessionUser._sCentro.Trim + "_OrdenProduccion", TC_Orden.Text.Trim, TtramosNoti.Text, SessionUser._sAlias, TPesoEmpaque).Split("|")
-                Pzas_Cajas = "0" & arryEmbalajes(0)
-                Peso_Cajas = "0" & arryEmbalajes(1)
-                Pzas_Bolsas = "0" & arryEmbalajes(2)
-                Peso_Bolsas = "0" & arryEmbalajes(3)
-                BNotificar.Enabled = True
-            End If
+            'If TtramosNoti.Text.Trim <> 0 Then
+            '    TPesoEmpaque.Text = "0.00"
+            '    Utili_Generales.ControlDataGridView.Colums_CalculaEmbalajes(DGV_Emb)
+            '    arryEmbalajes = Inyeccion.Embalajes(DGV_Emb, SessionUser._sCentro.Trim, SessionUser._sCentro.Trim + "_OrdenProduccion", TC_Orden.Text.Trim, TtramosNoti.Text, SessionUser._sAlias, TPesoEmpaque).Split("|")
+            '    Pzas_Cajas = "0" & arryEmbalajes(0)
+            '    Peso_Cajas = "0" & arryEmbalajes(1)
+            '    Pzas_Bolsas = "0" & arryEmbalajes(2)
+            '    Peso_Bolsas = "0" & arryEmbalajes(3)
+            '    BNotificar.Enabled = True
+            'End If
         End If
         CB_Rack.Focus()
     End Sub
@@ -301,7 +301,7 @@ Public Class MenuRTO
             If CB_Com1.Text.Trim = "" Then
                 MsgBox("Debe de seleccionar un compuesto a consumir", MsgBoxStyle.Information)
                 CB_Com1.DataSource = Nothing
-                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, PO.r_CodigoProducto.Trim, "S", "1", True)
+                Catalogo_Compuestos.CB_Compuesto1(CB_Com1, "S", "1", True)
             End If
         End If
     End Sub
@@ -683,7 +683,7 @@ Public Class MenuRTO
             Dim Orden_Prod As String = ""
             Orden_Prod = TC_Orden.Text.Trim
             '--------------------------------------------------------------------------------------
-            strOrden = ProductionOrder.Valida_Exis_ODF_Atlas(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Orden_Prod, EXTINY)
+            strOrden = ProductionOrder.Existe(Orden_Prod, EXTINY)
             aryTextFile = strOrden.Split("|")
             Exist_Ord = aryTextFile(0)
             Producto = aryTextFile(1)
@@ -691,14 +691,14 @@ Public Class MenuRTO
                 Case Is = 1
                     Me.Cursor = Cursors.WaitCursor
                     'Verficia la existencia del producto
-                    Exist_Prd = ProductionOrder.Valida_Existencia_Producto(SessionUser._sAlias.Trim, Producto.Trim, SessionUser._sCentro.Trim, EXTINY)
+                    Exist_Prd = ProductionOrder.Existencia_Producto(EXTINY)
 
                     'Lee la orden y presenta la información
                     ProductionOrder.Read_Production_Order_Iny(SessionUser._sAlias.Trim, Orden_Prod.Trim, SessionUser._sCentro.Trim, Me, TCodPT, TCodPtDecr, _
                                                           TPtoTrabajo, TGrpprod, TGrupo, TGrpproddesc, TNomPtoTrabajo)
                     If P_CC = True Then
                         'Activa Combo Box de compuestos 1
-                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Producto, EXTINY, TipoProd, 1)
+                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
                         CB_Com1.Enabled = True
                     Else
                         GB_Comp.Enabled = False

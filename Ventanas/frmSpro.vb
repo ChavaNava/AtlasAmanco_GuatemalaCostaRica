@@ -1,4 +1,6 @@
 Imports System.Data.SqlClient
+Imports SQL_DATA
+Imports Atlas.Accesos.CLVarGlobales
 Public Class frmSpro
     Dim myDataReader As SqlClient.SqlDataReader
     Dim xTabla As String
@@ -12,7 +14,7 @@ Public Class frmSpro
     Private Sub frmSpro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Text = SPRO_TITULO
         TSpro.Text = ""
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         Try
             If objCnnAmanco.State <> ConnectionState.Open Then
                 objCnnAmanco.Open()
@@ -45,7 +47,7 @@ Public Class frmSpro
     Private Sub tsbConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbConsultar.Click
         Dim SPRO_SQL_LIKE As String = ""
         Me.Text = SPRO_TITULO
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
         Try
             If objCnnAmanco.State <> ConnectionState.Open Then
                 objCnnAmanco.Open()

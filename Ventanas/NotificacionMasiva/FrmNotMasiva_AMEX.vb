@@ -87,7 +87,7 @@ Public Class FrmNotMasiva_AMEX
             BtnConsulta1.Enabled = False
         ElseIf TxtOrdProd.Text <> "" Then
 
-            AbrirAmanco()
+            AbrirAmanco(SessionUser._sAmbiente)
 
             objCmd.Connection = objCnnAmanco
             Q = "select a.orden_produccion, a.planta, a.equipo_basico, a.producto, a.fecha_inicio "
@@ -224,7 +224,7 @@ Public Class FrmNotMasiva_AMEX
         Dim X As Integer
         X = 1000
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         Do Until X = 0
 
@@ -562,7 +562,7 @@ Public Class FrmNotMasiva_AMEX
         Dim X As Integer
         X = 1000
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         Do Until X = 0
 

@@ -29,6 +29,26 @@ Public Class CAT_Compuestos
         Catalogo_Compuestos.CB_Clase(CB_Clase, SessionUser._sAlias)
     End Sub
 
+    Private Sub Btn_Guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Guardar.Click
+        Compuestos_ABC.IdCompuesto = TxIdCompuesto.Text
+        Compuestos_ABC.Descripcion = TxDescripcion.Text
+        Compuestos_ABC.UM = "Kg"
+        Compuestos_ABC.Clase = CB_Clase.SelectedValue
+        Compuestos_ABC.Tipo = CB_Area.SelectedValue
+        Compuestos_ABC.Activo = "1"
+        Compuestos_ABC.Reprocesado = ""
+        Compuestos_ABC.FechaHora = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        Compuestos_ABC.Usuario = SessionUser._sAlias
+        Try
+            Catalogo_Compuestos.ABC_Compuestos()
+            MensajeBox.Mostrar("Se dio de alta exitosamente el compuesto", "Alta", MensajeBox.TipoMensaje.Good)
+            CargaGrid()
+        Catch ex As Exception
+            MensajeBox.Mostrar(ex.ToString, "Error", MensajeBox.TipoMensaje.Critical)
+            CargaGrid()
+        End Try
+
+    End Sub
     Private Sub Btn_Consulta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Consulta.Click
         CargaGrid()
     End Sub
@@ -41,8 +61,8 @@ Public Class CAT_Compuestos
         If oldRowIndex <> -1 Then
             Try
                 Dim Fila_Seleccionada As Integer = DGV.CurrentCell.RowIndex
-                TCodProd.Text = DGV.Rows(Fila_Seleccionada).Cells(0).Value.ToString
-                TDesProd.Text = DGV.Rows(Fila_Seleccionada).Cells(1).Value.ToString
+                TxIdCompuesto.Text = DGV.Rows(Fila_Seleccionada).Cells(0).Value.ToString
+                TxDescripcion.Text = DGV.Rows(Fila_Seleccionada).Cells(1).Value.ToString
                 CB_Clase.Text = DGV.Rows(Fila_Seleccionada).Cells(2).Value.ToString
                 CB_Area.Text = DGV.Rows(Fila_Seleccionada).Cells(3).Value.ToString
                 C_Status = DGV.Rows(Fila_Seleccionada).Cells(4).Value.ToString
@@ -65,7 +85,7 @@ Public Class CAT_Compuestos
 #Region "Metodos"
 
     Private Sub CargaGrid()
-        Catalogo_Compuestos.Catalogo_Compuestos(DGV, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, EXTINY)
+        Catalogo_Compuestos.Catalogo_Compuestos(DGV, EXTINY)
     End Sub
 #End Region
 

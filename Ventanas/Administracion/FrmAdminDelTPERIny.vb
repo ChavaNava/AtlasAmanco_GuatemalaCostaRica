@@ -189,7 +189,7 @@ Public Class FrmAdminDelTPERIny
         Qde = Qde & " WHERE THP.Centro = '" & SessionUser._sCentro.Trim & "'"
         Qde = Qde & " AND CCC.Tipocausa='HP' "
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         If CB2.Checked = True Then
             If TxtOrdProd.Text = "" Then

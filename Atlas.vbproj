@@ -40,7 +40,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones A-tlas MSI 2016\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\Atlas_Fluent\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -49,26 +49,26 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
-    <MapFileExtensions>false</MapFileExtensions>
+    <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://10.1.2.31/MSI/</UpdateUrl>
     <ProductName>Fluent</ProductName>
     <PublisherName>Mexichem</PublisherName>
     <SuiteName>Atlas Fluent</SuiteName>
-    <MinimumRequiredVersion>2.0.0.2</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.40</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>55</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>Atlas.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
@@ -82,16 +82,16 @@
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>1</WarningLevel>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>x86</PlatformTarget>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>Atlas.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
@@ -105,11 +105,17 @@
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>1</WarningLevel>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atlas.Consultations">
+      <HintPath>Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
+    </Reference>
+    <Reference Include="Atlas.Inyeccion">
+      <HintPath>Atlas.Inyeccion\bin\Debug\Atlas.Inyeccion.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -121,6 +127,9 @@
     <Reference Include="Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="SQL_DATA">
+      <HintPath>SQL\SQL\bin\Debug\SQL_DATA.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -150,8 +159,7 @@
       <Name>System.XML</Name>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="WS, Version=1.0.4370.20542, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="WS_Generic, Version=1.0.5711.16658, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WS_Generic, Version=1.0.6487.31132, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\WS_Generic.dll</HintPath>
     </Reference>
@@ -173,6 +181,24 @@
     <Compile Include="Acceso_Datos\Sesion.vb" />
     <Compile Include="Acceso_Datos\Usuario.vb" />
     <Compile Include="Consultas\Entidad\ResultadoResumen.vb" />
+    <Compile Include="Consultas\FrmAdminPPT.designer.vb">
+      <DependentUpon>FrmAdminPPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmAdminPPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmAdminPPTIny.designer.vb">
+      <DependentUpon>FrmAdminPPTIny.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmAdminPPTIny.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaProduccion.Designer.vb">
+      <DependentUpon>FrmConsultaProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Consultas\FrmConsultaScrapInyeccion.Designer.vb">
       <DependentUpon>FrmConsultaScrapInyeccion.vb</DependentUpon>
     </Compile>
@@ -186,6 +212,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consultas\Entidad\ProduccionResumen.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Produccion Piso\FrmPisoPT.Designer.vb">
       <DependentUpon>FrmPisoPT.vb</DependentUpon>
     </Compile>
@@ -299,6 +330,8 @@
     <Compile Include="Ventanas\Administracion\Catalogos\CAT_ProductosInyeccion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ventanas\Administracion\Catalogos\Clases\CatalogosOperacion.vb" />
+    <Compile Include="Ventanas\Administracion\Catalogos\Entidades\CompuestoVirgen.vb" />
     <Compile Include="Ventanas\Administracion\CNF_Parametrizacion.Designer.vb">
       <DependentUpon>CNF_Parametrizacion.vb</DependentUpon>
     </Compile>
@@ -330,6 +363,27 @@
     <Compile Include="Ventanas\Administracion\Ordenes de Produccion\FrmCtrlODF_AMEX.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ventanas\FormSobrePesoTf.designer.vb">
+      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FormSobrePesoTf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\Clases\ReadProductionOrder.vb" />
+    <Compile Include="Ventanas\Notificación Extrusion\Entidades\InfoProductionOrder.vb" />
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPET_EC01.designer.vb">
+      <DependentUpon>MenuPET_EC01.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuPET_EC01.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuSC_EC01.designer.vb">
+      <DependentUpon>MenuSC_EC01.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\MenuSC_EC01.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\Clases\OperacionExtrusion.vb" />
     <Compile Include="Ventanas\Notifica Extrusión\Entidades\ListaCompuestos.vb" />
     <Compile Include="Ventanas\Notifica Extrusión\FrmAlta_Comp.Designer.vb">
       <DependentUpon>FrmAlta_Comp.vb</DependentUpon>
@@ -355,6 +409,9 @@
     <Compile Include="Ventanas\Notifica Extrusión\Extrusion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ventanas\Notificación Extrusion\Entidades\FolioNotifica.vb" />
+    <Compile Include="Ventanas\Notificación Extrusion\Entidades\NPTExtrusion.vb" />
+    <Compile Include="Ventanas\Notificación Extrusion\Entidades\ProduccionSeparadaABC.vb" />
     <Compile Include="Ventanas\Notificación Extrusion\NotificaExtrusion.Designer.vb">
       <DependentUpon>NotificaExtrusion.vb</DependentUpon>
     </Compile>
@@ -839,11 +896,6 @@
     </Compile>
     <Compile Include="Acceso_Datos\MdOperaBD.vb" />
     <Compile Include="Negocio\MdVarPublic.vb" />
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -909,7 +961,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web Services\ReadOrder.vb" />
     <Content Include="Fonts\IDAUHC39.TTF" />
+    <None Include="Resources\Monitor 03.png" />
+    <None Include="Resources\Monitor 02.png" />
+    <None Include="Resources\Monitor 01.png" />
+    <None Include="Resources\Ordenes Produccion 02.png" />
+    <None Include="Resources\Ordenes Produccion 01.jpg" />
+    <None Include="Resources\Orden Produccion 02.jpg" />
+    <None Include="Resources\Orden Produccion 01.png" />
+    <None Include="Resources\TiempoProduccion.jpg" />
+    <None Include="Resources\RegistraTiempo.jpg" />
+    <None Include="Resources\EditarTiempos 01.png" />
+    <None Include="Resources\BorraTiempo_02.png" />
+    <None Include="Resources\BorraTiempo.png" />
+    <None Include="Resources\AjustaTiempo.png" />
+    <None Include="Resources\Planeacion_03.png" />
+    <None Include="Resources\Planeacion_02.png" />
+    <None Include="Resources\Planeacion_01.png" />
+    <None Include="Resources\Planeacion_01.jpg" />
+    <None Include="Resources\Consulta 02.png" />
+    <None Include="Resources\Rotomoldeo_02.png" />
+    <None Include="Resources\Rotomoldeo_01.jpg" />
+    <None Include="Resources\Rotomoldeo.jpg" />
+    <None Include="Resources\Calidad_06.jpg" />
+    <None Include="Resources\Calidad_05.jpg" />
+    <None Include="Resources\Calidad_04.jpg" />
+    <None Include="Resources\Calidad_03.jpg" />
+    <None Include="Resources\Calidad_02.jpg" />
+    <None Include="Resources\Calidad_01.jpg" />
+    <None Include="Resources\Calidad.jpg" />
+    <None Include="Resources\Calidad.png" />
+    <None Include="Resources\Consulta 03.png" />
+    <None Include="Resources\Consulta 01.png" />
+    <None Include="Resources\LogoFluent.png" />
     <None Include="Resources\Supervisor 04.jpg" />
     <None Include="Resources\GeoTextiles 03.jpg" />
     <None Include="Resources\GeoTextiles 02.jpg" />
@@ -935,7 +1020,6 @@
     <None Include="Resources\Rotomoldeo_04.jpg" />
     <None Include="Resources\Rotomoldeo_03.jpg" />
     <None Include="Resources\Rotomoldeo_02.jpg" />
-    <None Include="Resources\Rotomoldeo_01.jpg" />
     <None Include="Resources\SAP Notificacion.jpg" />
     <None Include="Resources\Importar.jpg" />
     <None Include="Resources\Previsualizar_Documento_02.jpg" />
@@ -948,6 +1032,15 @@
     <None Include="Resources\reiniciarsesion.ico" />
     <None Include="Resources\Supervisor_02.jpg" />
     <None Include="Resources\report.png" />
+    <EmbeddedResource Include="Consultas\FrmAdminPPT.resx">
+      <DependentUpon>FrmAdminPPT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmAdminPPTIny.resx">
+      <DependentUpon>FrmAdminPPTIny.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultaProduccion.resx">
+      <DependentUpon>FrmConsultaProduccion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\FrmConsultaScrapInyeccion.resx">
       <DependentUpon>FrmConsultaScrapInyeccion.vb</DependentUpon>
     </EmbeddedResource>
@@ -1003,6 +1096,15 @@
     <EmbeddedResource Include="Ventanas\Administracion\Ordenes de Produccion\FrmCtrlODF_AMEX.resx">
       <DependentUpon>FrmCtrlODF_AMEX.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FormSobrePesoTf.resx">
+      <DependentUpon>FormSobrePesoTf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\MenuPET_EC01.resx">
+      <DependentUpon>MenuPET_EC01.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Notificación Extrusion\MenuSC_EC01.resx">
+      <DependentUpon>MenuSC_EC01.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Notifica Extrusión\FrmAlta_Comp.resx">
       <DependentUpon>FrmAlta_Comp.vb</DependentUpon>
@@ -1631,10 +1733,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_PT_ConMat_Prod_ZPPMXF002Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+    <WebReferenceUrl Include="http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Prd_Gen\</RelPath>
-      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <UpdateFromURL>http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1642,10 +1744,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Prd_Gen_ZGLMX_ATLAS_GR</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Read\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPP001_91%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1653,10 +1755,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Read_ZPP001_91Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PTConsumos\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1664,10 +1766,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_PTConsumos_ZPPMXF001Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Graba_Pedido\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_POST_SCALE_DATA%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1675,10 +1777,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Graba_Pedido_ZSDMX_POST_SCALE_DATAService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Dev_Read_ODF\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5591843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1686,10 +1788,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Dev_Read_ODF_ZPPGL_READ_ORDER_300</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Dev_Gen\</RelPath>
-      <UpdateFromURL>http://mxtlx020.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/wsdl/bndg_4EC5626843646B2EE10000000A020314/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1697,10 +1799,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Dev_Materials_ZGLMX_ATLAS_GRService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PT_ConMat_Dev\</RelPath>
-      <UpdateFromURL>http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1708,10 +1810,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_PT_ConMat_Dev_ZPPMXF002Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Leer_Pedido\</RelPath>
-      <UpdateFromURL>http://smxslr3q.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZSDMX_READ_SCALE_DOCUMENTS%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1723,6 +1825,7 @@
   <ItemGroup>
     <Folder Include="Acceso_Datos\DAO\" />
     <Folder Include="Utili_Generales\" />
+    <Folder Include="Ventanas\Notifica Extrusión\Clases\" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="CRVsPackageLib">
@@ -2457,33 +2560,53 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutorizarSobrepeso\AutorizarSobrepeso.vbproj">
-      <Project>{34ACCB8D-C09B-4142-A6B9-3DC07941C0B6}</Project>
-      <Name>AutorizarSobrepeso</Name>
-    </ProjectReference>
     <ProjectReference Include="Atlas.Accesos\Atlas.Accesos.vbproj">
       <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
       <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.Administracion\Atlas.Administracion.vbproj">
+      <Project>{178F8433-8A97-46D0-AE6F-18DE7035F4ED}</Project>
+      <Name>Atlas.Administracion</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.AutorizaSobrePesos\Atlas.AutorizaSobrePesos.vbproj">
+      <Project>{83D8CC5D-7CDC-4470-AD56-FEE98637ED4F}</Project>
+      <Name>Atlas.AutorizaSobrePesos</Name>
     </ProjectReference>
     <ProjectReference Include="Atlas.EstatusSAP\Atlas.EstatusSAP.vbproj">
       <Project>{42F0ED88-5CAE-4D50-9C55-72F3472B822C}</Project>
       <Name>Atlas.EstatusSAP</Name>
     </ProjectReference>
+    <ProjectReference Include="Atlas.Extrusion.Peru\Atlas.ExtrusionPeru.vbproj">
+      <Project>{46d38faa-2349-4f44-a61e-059679261df6}</Project>
+      <Name>Atlas.ExtrusionPeru</Name>
+    </ProjectReference>
     <ProjectReference Include="Atlas.ExtrusionProcess\Atlas.ExtrusionProcess.vbproj">
       <Project>{5151BC31-4476-470C-8EA9-E5E1F3991AF8}</Project>
       <Name>Atlas.ExtrusionProcess</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.Planeacion\Atlas.Planeacion.vbproj">
+      <Project>{6670ab73-6a1f-4db7-abef-aa7dcab9ea07}</Project>
+      <Name>Atlas.Planeacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.ProduccionProceso\Atlas.ProduccionProceso.vbproj">
+      <Project>{f378b713-09c1-4f55-b1fe-be11caba4b04}</Project>
+      <Name>Atlas.ProduccionProceso</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.Tiempos\Atlas.Tiempos.vbproj">
+      <Project>{3b30bbc2-6fb0-43cf-8ecd-772c516b53ad}</Project>
+      <Name>Atlas.Tiempos</Name>
     </ProjectReference>
     <ProjectReference Include="Reporting\Atlas.Reporting.vbproj">
       <Project>{780B0EFB-251F-4774-9497-6FB6336D6552}</Project>
       <Name>Atlas.Reporting</Name>
     </ProjectReference>
-    <ProjectReference Include="SQL\SQL\Atlas.SQL_DATA.vbproj">
-      <Project>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</Project>
-      <Name>Atlas.SQL_DATA</Name>
-    </ProjectReference>
     <ProjectReference Include="Utili_Generales\Atlas.Utili_Generales.vbproj">
       <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
       <Name>Atlas.Utili_Generales</Name>
+    </ProjectReference>
+    <ProjectReference Include="Ventanas\Atlas.Calidad\Atlas.Calidad.vbproj">
+      <Project>{366c6031-ee71-4fb6-b4dc-8fbd6614f110}</Project>
+      <Name>Atlas.Calidad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />

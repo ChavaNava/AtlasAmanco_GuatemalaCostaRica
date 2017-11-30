@@ -30,6 +30,9 @@ Partial Class FrmConsultasExt
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.Btn_Imprimir = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GB_Msges = New System.Windows.Forms.GroupBox()
+        Me.TObservaciones = New System.Windows.Forms.TextBox()
+        Me.TMensajes = New System.Windows.Forms.TextBox()
         Me.GB_Consulta = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TOrdProd = New System.Windows.Forms.TextBox()
@@ -77,12 +80,9 @@ Partial Class FrmConsultasExt
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GB_Pesajes = New System.Windows.Forms.GroupBox()
         Me.DGV = New System.Windows.Forms.DataGridView()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.GB_Msges = New System.Windows.Forms.GroupBox()
-        Me.TObservaciones = New System.Windows.Forms.TextBox()
-        Me.TMensajes = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.GB_Msges.SuspendLayout()
         Me.GB_Consulta.SuspendLayout()
         Me.GB_Not.SuspendLayout()
         Me.GB_Totales.SuspendLayout()
@@ -90,8 +90,6 @@ Partial Class FrmConsultasExt
         Me.Panel2.SuspendLayout()
         Me.GB_Pesajes.SuspendLayout()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel3.SuspendLayout()
-        Me.GB_Msges.SuspendLayout()
         Me.SuspendLayout()
         '
         'Btn_Cerrar
@@ -129,7 +127,7 @@ Partial Class FrmConsultasExt
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Btn_Cerrar, Me.Btn_Consulta, Me.Btn_Elimina, Me.Btn_Imprimir, Me.Btn_Export})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1290, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1684, 28)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -142,6 +140,7 @@ Partial Class FrmConsultasExt
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.GB_Msges)
         Me.Panel1.Controls.Add(Me.GB_Consulta)
         Me.Panel1.Controls.Add(Me.GB_Not)
         Me.Panel1.Controls.Add(Me.GB_Totales)
@@ -149,8 +148,37 @@ Partial Class FrmConsultasExt
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1290, 224)
+        Me.Panel1.Size = New System.Drawing.Size(1684, 301)
         Me.Panel1.TabIndex = 6
+        '
+        'GB_Msges
+        '
+        Me.GB_Msges.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GB_Msges.Controls.Add(Me.TObservaciones)
+        Me.GB_Msges.Controls.Add(Me.TMensajes)
+        Me.GB_Msges.Location = New System.Drawing.Point(3, 230)
+        Me.GB_Msges.Name = "GB_Msges"
+        Me.GB_Msges.Size = New System.Drawing.Size(1684, 58)
+        Me.GB_Msges.TabIndex = 12
+        Me.GB_Msges.TabStop = False
+        Me.GB_Msges.Text = "Mensajes y Observaciones"
+        '
+        'TObservaciones
+        '
+        Me.TObservaciones.Location = New System.Drawing.Point(658, 21)
+        Me.TObservaciones.Name = "TObservaciones"
+        Me.TObservaciones.ReadOnly = True
+        Me.TObservaciones.Size = New System.Drawing.Size(620, 22)
+        Me.TObservaciones.TabIndex = 2
+        '
+        'TMensajes
+        '
+        Me.TMensajes.Location = New System.Drawing.Point(18, 21)
+        Me.TMensajes.Name = "TMensajes"
+        Me.TMensajes.ReadOnly = True
+        Me.TMensajes.Size = New System.Drawing.Size(620, 22)
+        Me.TMensajes.TabIndex = 0
         '
         'GB_Consulta
         '
@@ -160,7 +188,6 @@ Partial Class FrmConsultasExt
         Me.GB_Consulta.Controls.Add(Me.DTP_FF)
         Me.GB_Consulta.Controls.Add(Me.Label1)
         Me.GB_Consulta.Controls.Add(Me.DTP_FI)
-        Me.GB_Consulta.Dock = System.Windows.Forms.DockStyle.Left
         Me.GB_Consulta.Location = New System.Drawing.Point(0, 0)
         Me.GB_Consulta.Name = "GB_Consulta"
         Me.GB_Consulta.Size = New System.Drawing.Size(303, 224)
@@ -231,8 +258,7 @@ Partial Class FrmConsultasExt
         Me.GB_Not.Controls.Add(Me.Label17)
         Me.GB_Not.Controls.Add(Me.TOrden)
         Me.GB_Not.Controls.Add(Me.Label16)
-        Me.GB_Not.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GB_Not.Location = New System.Drawing.Point(1029, 0)
+        Me.GB_Not.Location = New System.Drawing.Point(1423, 0)
         Me.GB_Not.Name = "GB_Not"
         Me.GB_Not.Size = New System.Drawing.Size(261, 224)
         Me.GB_Not.TabIndex = 8
@@ -342,7 +368,7 @@ Partial Class FrmConsultasExt
         Me.GB_Totales.Controls.Add(Me.Label8)
         Me.GB_Totales.Location = New System.Drawing.Point(571, 0)
         Me.GB_Totales.Name = "GB_Totales"
-        Me.GB_Totales.Size = New System.Drawing.Size(452, 224)
+        Me.GB_Totales.Size = New System.Drawing.Size(846, 224)
         Me.GB_Totales.TabIndex = 9
         Me.GB_Totales.TabStop = False
         Me.GB_Totales.Text = "Totales"
@@ -611,10 +637,10 @@ Partial Class FrmConsultasExt
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.GB_Pesajes)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 316)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(0, 329)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1290, 382)
+        Me.Panel2.Size = New System.Drawing.Size(1684, 532)
         Me.Panel2.TabIndex = 7
         '
         'GB_Pesajes
@@ -625,7 +651,7 @@ Partial Class FrmConsultasExt
         Me.GB_Pesajes.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.GB_Pesajes.Name = "GB_Pesajes"
         Me.GB_Pesajes.Padding = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.GB_Pesajes.Size = New System.Drawing.Size(1290, 382)
+        Me.GB_Pesajes.Size = New System.Drawing.Size(1684, 532)
         Me.GB_Pesajes.TabIndex = 2
         Me.GB_Pesajes.TabStop = False
         Me.GB_Pesajes.Text = "Pesajes"
@@ -643,66 +669,28 @@ Partial Class FrmConsultasExt
         Me.DGV.Margin = New System.Windows.Forms.Padding(4)
         Me.DGV.Name = "DGV"
         Me.DGV.ReadOnly = True
-        Me.DGV.Size = New System.Drawing.Size(1278, 357)
+        Me.DGV.Size = New System.Drawing.Size(1672, 507)
         Me.DGV.TabIndex = 0
         '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.GB_Msges)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 252)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1290, 58)
-        Me.Panel3.TabIndex = 8
-        '
-        'GB_Msges
-        '
-        Me.GB_Msges.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.GB_Msges.Controls.Add(Me.TObservaciones)
-        Me.GB_Msges.Controls.Add(Me.TMensajes)
-        Me.GB_Msges.Location = New System.Drawing.Point(0, 0)
-        Me.GB_Msges.Name = "GB_Msges"
-        Me.GB_Msges.Size = New System.Drawing.Size(1290, 52)
-        Me.GB_Msges.TabIndex = 0
-        Me.GB_Msges.TabStop = False
-        Me.GB_Msges.Text = "Mensajes y Observaciones"
-        '
-        'TObservaciones
-        '
-        Me.TObservaciones.Location = New System.Drawing.Point(658, 21)
-        Me.TObservaciones.Name = "TObservaciones"
-        Me.TObservaciones.ReadOnly = True
-        Me.TObservaciones.Size = New System.Drawing.Size(620, 22)
-        Me.TObservaciones.TabIndex = 2
-        '
-        'TMensajes
-        '
-        Me.TMensajes.Location = New System.Drawing.Point(18, 21)
-        Me.TMensajes.Name = "TMensajes"
-        Me.TMensajes.ReadOnly = True
-        Me.TMensajes.Size = New System.Drawing.Size(620, 22)
-        Me.TMensajes.TabIndex = 0
-        '
-        'FrmConsultas
+        'FrmConsultasExt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1290, 698)
-        Me.Controls.Add(Me.Panel3)
+        Me.ClientSize = New System.Drawing.Size(1684, 861)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "FrmConsultas"
+        Me.Name = "FrmConsultasExt"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Consulta Pesajes"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.GB_Msges.ResumeLayout(False)
+        Me.GB_Msges.PerformLayout()
         Me.GB_Consulta.ResumeLayout(False)
         Me.GB_Consulta.PerformLayout()
         Me.GB_Not.ResumeLayout(False)
@@ -714,9 +702,6 @@ Partial Class FrmConsultasExt
         Me.Panel2.ResumeLayout(False)
         Me.GB_Pesajes.ResumeLayout(False)
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel3.ResumeLayout(False)
-        Me.GB_Msges.ResumeLayout(False)
-        Me.GB_Msges.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -775,8 +760,7 @@ Partial Class FrmConsultasExt
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents lblGraba As System.Windows.Forms.Label
     Friend WithEvents Btn_Notif As System.Windows.Forms.Button
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents GB_Msges As System.Windows.Forms.GroupBox
-    Friend WithEvents TMensajes As System.Windows.Forms.TextBox
     Friend WithEvents TObservaciones As System.Windows.Forms.TextBox
+    Friend WithEvents TMensajes As System.Windows.Forms.TextBox
 End Class

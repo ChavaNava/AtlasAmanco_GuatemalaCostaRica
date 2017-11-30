@@ -50,18 +50,18 @@ Public Class FrmConsultaScrapInyeccion
 
 #Region "Metodos"
     Public Sub Grid_Load()
-        Str_FI = DTP_FI.Text.Trim
-        Str_FF = DTP_FF.Text.Trim
+        'Str_FI = DTP_FI.Text.Trim
+        'Str_FF = DTP_FF.Text.Trim
 
-        If RB1.Checked Then
-            Inyeccion.Scrap_Detalle(DGV1, Str_FI, Str_FF, SessionUser._sAlias.Trim)
-        End If
+        'If RB1.Checked Then
+        '    Inyeccion.Scrap_Detalle(DGV1, Str_FI, Str_FF, SessionUser._sAlias.Trim)
+        'End If
 
-        If RB2.Checked Then
-            Inyeccion.Scrap_Detalle(DGV1, Str_FI, Str_FF, SessionUser._sAlias.Trim)
-        End If
+        'If RB2.Checked Then
+        '    Inyeccion.Scrap_Detalle(DGV1, Str_FI, Str_FF, SessionUser._sAlias.Trim)
+        'End If
 
-        Inyeccion.Scrap_Resumen_X_Tipo(DGV_Resumen, Str_FI, Str_FF, SessionUser._sAlias.Trim)
+        'Inyeccion.Scrap_Resumen_X_Tipo(DGV_Resumen, Str_FI, Str_FF, SessionUser._sAlias.Trim)
 
     End Sub
 #End Region

@@ -38,6 +38,30 @@ Public Class FrontUtils
             End If
         Next fcontrol
     End Sub
+
+    'Bloquea Cajas de Texto
+    Public Shared Sub BloqueaText(ByVal frmForm As Form)
+        On Error Resume Next
+        For Each fcontrol As Control In frmForm.Controls
+            If TypeOf fcontrol Is TextBox Then
+                fcontrol.Enabled = False
+            ElseIf TypeOf fcontrol Is TabControl Then
+                'Recorremos las pestañas del TAB
+                For Each tcontrol As Control In fcontrol.Controls
+                    If TypeOf tcontrol Is TabPage Then
+                        'Recorremos los controles de cada pestaña del TAB
+                        For Each pcontrol As Control In tcontrol.Controls
+                            If TypeOf pcontrol Is TextBox Then
+                                If pcontrol.Name <> "TCentro" Then
+                                    pcontrol.Enabled = False
+                                End If
+                            End If
+                        Next pcontrol
+                    End If
+                Next tcontrol
+            End If
+        Next fcontrol
+    End Sub
     'Activa Cajas de Texto
     Public Shared Sub ActivaText(ByVal frmForm As Form)
         On Error Resume Next
@@ -120,6 +144,53 @@ Public Class FrontUtils
                     If TypeOf tcontrol Is TextBox Then
                         If tcontrol.Name Like "T*" Then
                             tcontrol.Text = ""
+                        End If
+                    End If
+                Next tcontrol
+            End If
+        Next fcontrol
+    End Sub
+
+
+    'Bloquear Cajas de Texto dentro de un GroupBox
+    Public Shared Sub BloquearText_GroupBox(ByVal frmForm As Form)
+        On Error Resume Next
+        For Each fcontrol As Control In frmForm.Controls
+            If TypeOf fcontrol Is TextBox Then
+                If fcontrol.Name Like "T*" Then
+                    fcontrol.Text = ""
+                End If
+            ElseIf TypeOf fcontrol Is GroupBox Then
+                'Recorremos las pestañas del TAB
+                For Each tcontrol As Control In fcontrol.Controls
+                    Dim Nomcontrol As String
+                    Nomcontrol = tcontrol.Name
+                    If TypeOf tcontrol Is TextBox Then
+                        If tcontrol.Name Like "T*" Then
+                            tcontrol.Enabled = False
+                        End If
+                    End If
+                Next tcontrol
+            End If
+        Next fcontrol
+    End Sub
+
+    'Bloquear Cajas de Texto dentro de un GroupBox
+    Public Shared Sub ActivarText_GroupBox(ByVal frmForm As Form)
+        On Error Resume Next
+        For Each fcontrol As Control In frmForm.Controls
+            If TypeOf fcontrol Is TextBox Then
+                If fcontrol.Name Like "T*" Then
+                    fcontrol.Text = ""
+                End If
+            ElseIf TypeOf fcontrol Is GroupBox Then
+                'Recorremos las pestañas del TAB
+                For Each tcontrol As Control In fcontrol.Controls
+                    Dim Nomcontrol As String
+                    Nomcontrol = tcontrol.Name
+                    If TypeOf tcontrol Is TextBox Then
+                        If tcontrol.Name Like "T*" Then
+                            tcontrol.Enabled = True
                         End If
                     End If
                 Next tcontrol
@@ -237,6 +308,50 @@ Public Class FrontUtils
                         For Each pcontrol As Object In tcontrol.Controls
                             If TypeOf pcontrol Is CheckBox Then
                                 pcontrol.Enabled = True
+                            End If
+                        Next pcontrol
+                    End If
+                Next tcontrol
+            End If
+        Next fcontrol
+    End Sub
+
+    'Bloquear CheckBox
+    Public Shared Sub BloqueaCheckBox(ByVal frmForm As Form)
+        On Error Resume Next
+        For Each fcontrol As Object In frmForm.Controls
+            If TypeOf fcontrol Is CheckBox Then
+                fcontrol.Enabled = False
+            ElseIf TypeOf fcontrol Is TabControl Then
+                'Recorremos las pestañas del TAB
+                For Each tcontrol As Control In fcontrol.Controls
+                    If TypeOf tcontrol Is TabPage Then
+                        'Recorremos los controles de cada pestaña del TAB
+                        For Each pcontrol As Object In tcontrol.Controls
+                            If TypeOf pcontrol Is CheckBox Then
+                                pcontrol.Enabled = False
+                            End If
+                        Next pcontrol
+                    End If
+                Next tcontrol
+            End If
+        Next fcontrol
+    End Sub
+
+    'Bloquear Button
+    Public Shared Sub BloqueaButton(ByVal frmForm As Form)
+        On Error Resume Next
+        For Each fcontrol As Object In frmForm.Controls
+            If TypeOf fcontrol Is Button Then
+                fcontrol.Enabled = False
+            ElseIf TypeOf fcontrol Is TabControl Then
+                'Recorremos las pestañas del TAB
+                For Each tcontrol As Control In fcontrol.Controls
+                    If TypeOf tcontrol Is TabPage Then
+                        'Recorremos los controles de cada pestaña del TAB
+                        For Each pcontrol As Object In tcontrol.Controls
+                            If TypeOf pcontrol Is Button Then
+                                pcontrol.Enabled = False
                             End If
                         Next pcontrol
                     End If

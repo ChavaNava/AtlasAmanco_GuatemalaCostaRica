@@ -28,7 +28,7 @@ Public Class FrmConsultaSobrePesos
         Str_FI = DTP_FI.Text.Trim
         Str_FF = DTP_FF.Text.Trim
 
-        SQL_DATA.Con_Sobrepesos.Consulta_SobrePesos(DGV, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, Str_FI, Str_FF, TOrdProd.Text.Trim, Seccion)
+        SQL_DATA.Sobrepesos.Query(DGV, SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, Str_FI, Str_FF, TOrdProd.Text.Trim, Seccion)
 
     End Sub
 #End Region

@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="_ISDFPS_TCUPS_KEY" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>Atlas.PT_ConMat_Dev._ISDFPS_TCUPS_KEY, Fluent, Version=1.0.0.3, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>Atlas.PT_ConMat_Dev._ISDFPS_TCUPS_KEY, Web References.PT_ConMat_Dev.Reference.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

@@ -175,7 +175,7 @@ Public Class ProductionOrder_2
 
     Public Sub Inserta_Nueva_Orden_Produccion(odf As String, Tipo As String, frmForm As Form, CodOperador As String, Seccion As String)
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, SessionUser._sAmbiente)
+        WS_P.Consume_WS(Head, Lista, SessionUser._sAmbiente)
         Tbl = WS_P.Tbl_resultado
         SAP_Return = WS_P.Return_SAP
         ' ---------------------------------------------------------------------------------
@@ -316,7 +316,7 @@ Public Class ProductionOrder_2
 
     Public Sub Inserta_ODF(odf As String, Tipo As String, frmForm As Form, CodOperador As String, Seccion As String)
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, SessionUser._sAmbiente)
+        WS_P.Consume_WS(Head, Lista, SessionUser._sAmbiente)
         Tbl = WS_P.Tbl_resultado
         SAP_Return = WS_P.Return_SAP
         ' ---------------------------------------------------------------------------------
@@ -387,7 +387,7 @@ Public Class ProductionOrder_2
             Dim Fec_Act As String = DateTime.Now.ToString("yyyy/MM/dd")
             Dim Fec_reg As String = DateTime.Now.ToString("yyyy-MM-dd")
             Dim Hra_Act As String = DateTime.Now.ToString("HH:MM:ss")
-            LecturaQry("PA_Inserta_Orden_Produccion '" & OrdenProd.Trim & "','" & SessionUser._sCentro & "','" & Equipo & "','" _
+            LecturaQry("PA_Inserta_Orden_Produccion '" & OrdenProd.Trim & "','" & SessionUser._sCentro.Trim & "','" & Equipo & "','" _
                        & StrProducto & "','" & CantProgPzs & "','" & Inicio & "','" & Fin & "','" & Origen & "','" _
                        & CodOperador.Trim & "','" & Fec_Act & "','Ingreso Por SAP','" & Fec_Act & "','" & Hra_Act & "','" _
                        & SessionUser._sAlias.Trim & "','" & Fec_Act & "','" & Hra_Act & "','Usuario Fin','Usuario Reg','" & Fec_reg & "','" _
@@ -408,7 +408,7 @@ Public Class ProductionOrder_2
 
     Public Sub Actualiza_Orden_Produccion(ByVal odf As String, Tipo As String)
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
-        WS_P.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, SessionUser._sAmbiente)
+        WS_P.Consume_WS(Head, Lista, SessionUser._sAmbiente)
         Tbl = WS_P.Tbl_resultado
         SAP_Return = WS_P.Return_SAP
         FH_Update = DateTime.Now.ToString("yyyyMMdd hh:mm:ss")
@@ -522,7 +522,7 @@ Public Class ProductionOrder_2
                     Valida_Existencia_Compuesto_BOM(r_CodigoProducto.Trim, frmForm)
                     'Activa Combo Box de compuestos 1
                     If CC = True Then 'Si esta activa el parametro de seleccionar compuestos
-                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, Usuario.Trim, Centro.Trim, CodigoProducto, EXTINY, TipoProd, CC)
+                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
                     End If
                     If PAR_CD = True Then 'Elije la opcion de presentar la causa y defecto
                         If TipoProd.Trim = "S" Then
@@ -585,7 +585,7 @@ Public Class ProductionOrder_2
                     'Valida si existe compuesto asignado a este producto
                     Valida_Existencia_Compuesto_BOM(r_CodigoProducto.Trim, frmForm)
                     'Activa Combo Box de compuestos 1
-                    Catalogo_Compuestos.CB_Compuesto1(CB_Com1, Usuario.Trim, Centro.Trim, CodigoProducto, EXTINY, TipoProd, CC)
+                    Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
                     CBG.Tipo_SC(CB_TipoSc, Seccion)
                     CB_TipoSc.Text = CB_TipoSc.SelectedValue
                     TBOrden.BackColor = Color.White

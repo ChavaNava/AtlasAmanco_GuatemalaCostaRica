@@ -3,6 +3,8 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Imports Utili_Generales
 Imports Utili_Generales.ValueText
+Imports Atlas.Accesos.CLVarGlobales
+Imports SQL_DATA
 Public Class FrmAdminconfig
     'Variables de uso general
     Dim StrPlanta As String     'Planta
@@ -283,7 +285,7 @@ Public Class FrmAdminconfig
             MessageBox.Show("Error Conexion :" & ex.Message)
         End Try
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
         objCmd = New SqlCommand
         objCmd.CommandType = CommandType.Text
@@ -1340,7 +1342,7 @@ Public Class FrmAdminconfig
         StrFSG = TxtFSG.Text.Trim()
         StrFCR = TxtFCR.Text.Trim()
 
-        AbrirAmanco()
+        AbrirAmanco(SessionUser._sAmbiente)
 
 
         'Actualiza configuración folios

@@ -299,21 +299,6 @@ Public Class Permisos
         End If
     End Sub
 
-    'Public Sub Reset_Sesion()
-    '    AbrirAmanco.Close()
-    '    Atlas_Main.Text = ""
-    '    SessionUser._sIdPerfil = ""
-    '    Atlas_Main.TClave.Text = ""
-    '    Atlas_Main.TClave.Enabled = True
-    '    DesButtons_Main(Atlas_Main)
-    '    Atlas_Main.TUsr.Enabled = True
-    '    Atlas_Main.TUsr.Text = ""
-    '    Atlas_Main.TClave.Enabled = True
-    '    Atlas_Main.TClave.Text = ""
-    '    Atlas_Main.GB_Login.Visible = True
-    '    Atlas_Main.TUsr.Focus()
-    '    Log.Alta(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, SessionUser._sCadena, SessionUser._sPassword, "Main", "Reiniciar Sesión")
-    'End Sub
 
     Public Sub Consulta_Parametrizacion(ByVal NomForma As String)
 
