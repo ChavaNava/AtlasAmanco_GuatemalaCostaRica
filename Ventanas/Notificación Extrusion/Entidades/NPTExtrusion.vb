@@ -402,4 +402,14 @@
             _iLtCompuestos = value
         End Set
     End Property
+
+    Public Shared _iCentro As String
+    Public Shared Property iCentro() As String
+        Get
+            Return _iCentro
+        End Get
+        Set(ByVal value As String)
+            _iCentro = value
+        End Set
+    End Property
 End Class

@@ -90,7 +90,7 @@ Module MdVarPublic
     Public DBG As New Generica_DB
     Public IA_ODF As New IAC_ODF
     ' ---------------------------------------------------------------------------------
-    Public strNumeroBascula As String
+
     Public AutorizaPesaje As Boolean = False
     ' ---------------------------------------------------------------------------------
     Public Modulo As String

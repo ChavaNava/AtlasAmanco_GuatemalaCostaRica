@@ -2106,7 +2106,7 @@ Public Class MenuPTE
             Else
                 Select Case SessionUser._sCentro.Trim
                     Case Is = "PE01", "PE12"
-                        Catalogo_TipoScrap.CBTipoScrap(CB_TipoSc, "E", "S", TCScrap.Text.Trim)
+                        Catalogo_TipoScrap.TipoScrap(CB_TipoSc, "E", "S", TCScrap.Text.Trim, 1)
                         If CB_TipoSc.SelectedValue = Nothing Then
                             MensajeBox.Mostrar("No Existe Tipo Scrap seleccionado", "Aviso", MensajeBox.TipoMensaje.Exclamation)
                             TCScrap.Text = ""

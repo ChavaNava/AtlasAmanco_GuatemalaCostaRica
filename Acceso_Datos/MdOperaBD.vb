@@ -11,7 +11,7 @@ Module MdOperaBD
 #Region "Funciones genericas para agregar, eliminar y actualiar ..."
     Public Function AbrirAmanco(ByVal IdAmbiente As String) As SqlConnection
         Dim varString As String
-        If IdAmbiente.Trim = "D" Then
+        If IdAmbiente.Trim = "D" Or IdAmbiente.Trim = "Q" Then
             varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         Else
             varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"

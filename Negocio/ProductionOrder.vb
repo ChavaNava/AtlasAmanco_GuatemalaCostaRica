@@ -2,6 +2,7 @@
 Imports Atlas.Accesos.CLVarGlobales
 Imports SQL_DATA
 Public Class ProductionOrder_2
+
 #Region "Variables miembro"
     'Valid_Existence
     Dim C_Orden As String

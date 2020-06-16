@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_at"& _ 
-            "las_gr/zglmx_atlas_gr")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglm"& _ 
+            "x_atlas_gr/zglmx_atlas_gr")>  _
         Public ReadOnly Property WebServices_Prd_Gen_ZGLMX_ATLAS_GR() As String
             Get
                 Return CType(Me("WebServices_Prd_Gen_ZGLMX_ATLAS_GR"),String)
@@ -94,6 +94,27 @@ Namespace My
         Public ReadOnly Property WebServices_PTConsumos_ZPPMXF001Service() As String
             Get
                 Return CType(Me("WebServices_PTConsumos_ZPPMXF001Service"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://mexcit010100.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglm"& _ 
+            "x_atlas_gr/zglmx_atlas_gr")>  _
+        Public ReadOnly Property WebServices_Qas_Gen_ZGLMX_ATLAS_GR() As String
+            Get
+                Return CType(Me("WebServices_Qas_Gen_ZGLMX_ATLAS_GR"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300")>  _
+        Public ReadOnly Property WebServices_Qas_PTConsumos_ZPPMXF001Service() As String
+            Get
+                Return CType(Me("WebServices_Qas_PTConsumos_ZPPMXF001Service"),String)
             End Get
         End Property
     End Class

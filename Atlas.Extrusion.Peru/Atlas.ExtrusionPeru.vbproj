@@ -44,6 +44,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atlas.Consultations">
+      <HintPath>..\Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -52,6 +55,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WebServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebServices\bin\Debug\WebServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -66,6 +73,8 @@
   <ItemGroup>
     <Compile Include="Clases\CatalogosOperacion.vb" />
     <Compile Include="Clases\FileLog.vb" />
+    <Compile Include="Clases\Generic_SAP.vb" />
+    <Compile Include="Clases\Notificacion.vb" />
     <Compile Include="Clases\OperacionExtrusionPeru.vb" />
     <Compile Include="Clases\PermisosExtrusionPeru.vb" />
     <Compile Include="Entidades\CompuestoVirgen.vb" />
@@ -140,10 +149,6 @@
     <ProjectReference Include="..\Utili_Generales\Atlas.Utili_Generales.vbproj">
       <Project>{ea29c01c-682b-436a-85bd-39a820994405}</Project>
       <Name>Atlas.Utili_Generales</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebServices\WebServices.vbproj">
-      <Project>{c6a6cdb6-f99d-4dca-9d0b-b3155ac20ec2}</Project>
-      <Name>WebServices</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

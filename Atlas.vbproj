@@ -40,7 +40,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\Atlas_Fluent\</PublishUrl>
+    <PublishUrl>C:\Users\jsalinasm\OneDrive - Mexichem\Publicaciones\Atlas_Fluent\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -58,10 +58,9 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>55</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
@@ -87,7 +86,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>x86</PlatformTarget>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -110,6 +109,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atlas.Accesos">
+      <HintPath>Atlas.Accesos\bin\Debug\Atlas.Accesos.dll</HintPath>
+    </Reference>
     <Reference Include="Atlas.Consultations">
       <HintPath>Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
     </Reference>
@@ -120,9 +122,6 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="Fluent, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <ExecutableExtension>.exe</ExecutableExtension>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="PresentationCore" />
@@ -158,11 +157,10 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="WS_Generic, Version=1.0.6487.31132, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\WS_Generic.dll</HintPath>
+    <Reference Include="WebServices">
+      <HintPath>WebServices\bin\Debug\WebServices.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="CrystalDecisions.CrystalReports" />
@@ -1711,10 +1709,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_Graba_OF_ZPP003_91Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PTConProd\</RelPath>
-      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1722,10 +1720,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_PTConProd_ZPPMXF001Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PT_ConMat_Prod\</RelPath>
-      <UpdateFromURL>http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF002%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1733,10 +1731,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>A_tlas_PT_ConMat_Prod_ZPPMXF002Service</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+    <WebReferenceUrl Include="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Prd_Gen\</RelPath>
-      <UpdateFromURL>http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <UpdateFromURL>http://mexcip010000.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1825,6 +1823,7 @@
   <ItemGroup>
     <Folder Include="Acceso_Datos\DAO\" />
     <Folder Include="Utili_Generales\" />
+    <Folder Include="Ventanas\Inyeccion\Entidades\" />
     <Folder Include="Ventanas\Notifica Extrusión\Clases\" />
   </ItemGroup>
   <ItemGroup>
@@ -2560,10 +2559,6 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Atlas.Accesos\Atlas.Accesos.vbproj">
-      <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
-      <Name>Atlas.Accesos</Name>
-    </ProjectReference>
     <ProjectReference Include="Atlas.Administracion\Atlas.Administracion.vbproj">
       <Project>{178F8433-8A97-46D0-AE6F-18DE7035F4ED}</Project>
       <Name>Atlas.Administracion</Name>

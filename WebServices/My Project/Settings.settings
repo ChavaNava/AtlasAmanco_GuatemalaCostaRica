@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="WebServices_Prd_Gen_ZGLMX_ATLAS_GR" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://mxslx171.mexichem.corp:8006/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr</Value>
+      <Value Profile="(Default)">http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr</Value>
     </Setting>
     <Setting Name="WebServices_PTConProd_ZPPMXF001Service" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300</Value>
@@ -13,6 +13,12 @@
     </Setting>
     <Setting Name="WebServices_PTConsumos_ZPPMXF001Service" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://mexcid010000.mexichem.corp:8000/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300</Value>
+    </Setting>
+    <Setting Name="WebServices_Qas_Gen_ZGLMX_ATLAS_GR" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://mexcit010100.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr</Value>
+    </Setting>
+    <Setting Name="WebServices_Qas_PTConsumos_ZPPMXF001Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -75,7 +75,6 @@
     <Compile Include="Catalogo Usuarios\CatalogUsers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class1.vb" />
     <Compile Include="Masters\FrmMaster.Designer.vb">
       <DependentUpon>FrmMaster.vb</DependentUpon>
     </Compile>

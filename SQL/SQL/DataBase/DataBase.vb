@@ -11,7 +11,7 @@ Module DataBase
 
     Public Function MSI(ByVal Ambiente As String) As SqlConnection
         Dim varString As String
-        If Ambiente.Trim = "D" Then
+        If Ambiente.Trim = "D" Or Ambiente.Trim = "Q" Then
             varString = "Data Source=10.1.2.30;Initial Catalog=AMANCO_DEV;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         Else
             varString = "Data Source=10.1.2.30;Initial Catalog=AMANCO;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"

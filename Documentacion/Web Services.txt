@@ -1,0 +1,3 @@
+PRD_GEN:	http://mexcip010000.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document?sap-client=300
+PTCONPROD:	http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300&wsdl=1.1
+

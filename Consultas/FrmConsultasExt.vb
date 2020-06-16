@@ -28,7 +28,6 @@ Public Class FrmConsultasExt
 #Region "Eventos"
     Private Sub FrmConsultas_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Btn_Imprimir.Enabled = False
-        Btn_Notif.Enabled = False
         Me.Icon = Util.ApplicationIcon()
         Grid_Load()
     End Sub
@@ -89,19 +88,7 @@ Public Class FrmConsultasExt
                 MessageBox.Show(ex.Message, "VENTANA DE ERROR * * * ")
                 Exit Sub
             End Try
-
-            TOrden.Text = N_Ord
-            TTramos.Text = N_Tramos
-            TPN.Text = N_PN
-
             Btn_Imprimir.Enabled = True
-
-            If N_Status = "0" Then
-                Btn_Notif.Enabled = True
-            Else
-                Btn_Notif.Enabled = False
-            End If
-
         End If
     End Sub
 
@@ -121,24 +108,24 @@ Public Class FrmConsultasExt
         If Seccion = "E" Then
             If SessionUser._sCentro.Trim = "A022" Then
                 If N_TipoProd.Trim = "1" Then
-                    Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                    Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
                 ElseIf N_TipoProd.Trim = "2" Then
-                    Reportes.Boleta_Pesaje_SCE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                    Reportes.Boleta_Pesaje_SCE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
                 End If
             Else
                 If N_TipoProd.Trim = "1" Then
-                    Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                    Reportes.Boleta_Pesaje_PTE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
                 ElseIf N_TipoProd.Trim = "2" Then
-                    Reportes.Boleta_Pesaje_SCE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                    Reportes.Boleta_Pesaje_SCE_Ext(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
                 End If
             End If
         End If
 
         If Seccion = "I" Then
             If N_TipoProd.Trim = "1" Then
-                Reportes.Boleta_Pesaje_PTE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                Reportes.Boleta_Pesaje_PTE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
             ElseIf N_TipoProd.Trim = "2" Then
-                Reportes.Boleta_Pesaje_SCE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, TOrden.Text.Trim, N_Folio.Trim, N_Status.Trim)
+                Reportes.Boleta_Pesaje_SCE_Iny(SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, N_Ord, N_Folio.Trim, N_Status.Trim)
             End If
         End If
     

@@ -52,9 +52,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="WS_Generic, Version=1.0.6233.18055, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WebServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\WS_Generic.dll</HintPath>
+      <HintPath>..\WebServices\bin\Debug\WebServices.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

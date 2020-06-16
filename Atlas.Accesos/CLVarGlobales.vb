@@ -1,4 +1,5 @@
-﻿Public Class CLVarGlobales
+﻿Imports WebServices
+Public Class CLVarGlobales
     Public Shared strNumeroBascula As String
     Public Shared Val_Bascula As String
     Public Shared Val_Bascula_2 As String
@@ -45,12 +46,13 @@
     Public Shared P_AT As Boolean = False       'Alertar Tara en Cero
     Public Shared P_CS As Boolean = False       'Visualizar Calendario SAP
     Public Shared P_MP As Boolean = False       'Visualizar Monitor Producción
+    Public Shared P_EP As Boolean = False       'Excedente de producción Bloquear o permitir
     'Variables de Parametrizacion Tiempos
     Public Shared P_CT As Boolean = False       'Calcula Tiempos Automaticamente
     'Formatos para variables deciamles
     Public Shared xFD2 As String = "#####0.00"
 
-    Public Shared WS_P As New WS_Generic.WSG
+    Public Shared WS_P As New WebServices.WSG
 
     Public Shared PorcentajeSobrePeso As Decimal
     Public Shared KilosSobrepeso As Decimal
@@ -82,5 +84,6 @@
 
     'Administración sobre peso
     Public Shared AutorizaSobrepeso As Integer  'Nota : a. 1 --> Sí autoriza ;  b. 2 --> No autoriza 
+    Public Shared SuperAutoSobrepeso As String
 
 End Class

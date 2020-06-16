@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports SQL_DATA
+Imports Atlas.Accesos
 Imports Atlas.Accesos.CLVarGlobales
 Public Class FrmAlmacen
     Dim Str_FI As String    'Fecha inicio consulta

@@ -167,12 +167,11 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_PTE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_PTE.Click
-        Select Case SessionUser._sCentro.Trim
-            Case Is = "PE01"
-                PermisosExtrusionPeru.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
-            Case Else
-                Permiso.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
-        End Select
+        If SessionUser._sCentro.Trim = "PE01" Then
+            PermisosExtrusionPeru.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
+        Else
+            Permiso.Accesos("MP_PTE", "1", SessionUser._sIdPerfil, "E", "Captura de Pesaje")
+        End If
     End Sub
 
     'Private Sub MP_SUP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MP_SUP.Click
@@ -364,7 +363,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_Control_Tiempos_Ext_Click(sender As Object, e As EventArgs) Handles MP_Control_Tiempos_Ext.Click
-        'PermisoTiempos.Accesos("MP_Control_Tiempos_Ext", "1", SessionUser._sIdPerfil, "E", "Captura Tiempos Productivos / Paro")
+        PermisoTiempos.Accesos("MP_RHE", "1", SessionUser._sIdPerfil, "E", "Captura Tiempos Productivos / Paro")
     End Sub
 
     Private Sub MP_Control_Tiempos_Iny_Click(sender As Object, e As EventArgs) Handles MP_Control_Tiempos_Iny.Click
@@ -399,7 +398,10 @@ Public Class FrmMain
     End Sub
 
     Private Sub MP_ORDINY_Click(sender As Object, e As EventArgs) Handles MP_ORDINY.Click
-        PermisoProduccionProceso.Accesos("MP_PPI", 2, SessionUser._sIdPerfil, "I", "Producción en Proceso Inyección")
+        PermisoProduccionProceso.Accesos("MP_ORDINY", 2, SessionUser._sIdPerfil, "I", "Producción en Proceso Inyección")
     End Sub
 
+    Private Sub MP_CEXTR_Click(sender As Object, e As EventArgs) Handles MP_CEXTR.Click
+        Consultations.Permissions.Access("MP_CEXTR", "1", SessionUser._sIdPerfil, "E", "Consulta Producción Extrusión ", 1)
+    End Sub
 End Class

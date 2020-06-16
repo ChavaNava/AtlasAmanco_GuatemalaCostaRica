@@ -154,8 +154,8 @@ Public Class FrmConsultasExt
         Str_FI = DTP_FI.Text.Trim
         Str_FF = DTP_FF.Text.Trim
         Try
-            'DBG.Pesajes_PT_SC(Str_FI, Str_FF, DGV, Seccion, TProdKilos, TProdUnidades, TProcKilos, TProcUnidades, TSobPesoKilos, TSobPesoPorc, TScrapKilos, _
-            '              TScrapPorc, TScrapPurKilos, TScrapPurPorc, TProg, TEnt, TProc, TPend, TOrdProd.Text.Trim)
+            Indicadores.Pesajes_PT_SC(Str_FI, Str_FF, DGV, Seccion, TProdKilos, TProdUnidades, TProcKilos, TProcUnidades, TSobPesoKilos, TSobPesoPorc, TScrapKilos, _
+                          TScrapPorc, TScrapPurKilos, TScrapPurPorc, TProg, TEnt, TProc, TPend, TOrdProd.Text.Trim)
             LoadingForm.CloseForm()
         Catch ex As Exception
             LoadingForm.CloseForm()

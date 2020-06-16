@@ -683,6 +683,13 @@ Module MdFormControl
                             item.Enabled = True
                         End If
                     Next
+                    For Each item In FrmMain.MP_ORDENES.DropDownItems
+                        Item_Name = item.Name
+                        If Item_Name = Modulo.Trim Then
+                            item.Visible = True
+                            item.Enabled = True
+                        End If
+                    Next
                     For Each item In FrmMain.MP_CALIDAD.DropDownItems
                         Item_Name = item.Name
                         If Item_Name = Modulo.Trim Then

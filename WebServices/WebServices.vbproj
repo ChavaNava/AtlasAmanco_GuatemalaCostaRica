@@ -89,6 +89,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Qas_Gen\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Qas_PTConsumos\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="WSG.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -163,6 +173,25 @@
     <None Include="Web References\PTConsumos\_ISDFPS_TCUPS_KEY.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\Qas_Gen\document.wsdl" />
+    <None Include="Web References\Qas_Gen\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Qas_Gen\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Qas_PTConsumos\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\Qas_PTConsumos\ZBAPIRET2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Qas_PTConsumos\ZPPMXF001.wsdl" />
+    <None Include="Web References\Qas_PTConsumos\_ISDFPS_TCUPS_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -171,10 +200,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+    <WebReferenceUrl Include="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Prd_Gen\</RelPath>
-      <UpdateFromURL>http://10.1.3.171:8006/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <UpdateFromURL>http://mexcip010000.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -182,10 +211,10 @@
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServices_Prd_Gen_ZGLMX_ATLAS_GR</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.1.3.171:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+    <WebReferenceUrl Include="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\PTConProd\</RelPath>
-      <UpdateFromURL>http://10.1.3.171:8006/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <UpdateFromURL>http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -214,6 +243,28 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServices_PTConsumos_ZPPMXF001Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mexcit010100.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Qas_PTConsumos\</RelPath>
+      <UpdateFromURL>http://mexcit010100.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001%3fsap-client=300&amp;wsdl=1.1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebServices_Qas_PTConsumos_ZPPMXF001Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mexcit010100.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Qas_Gen\</RelPath>
+      <UpdateFromURL>http://mexcit010100.mexichem.corp:8001/sap/bc/srt/wsdl/bndg_4ED6D7F5A1901AA4E10000000A010364/wsdl11/allinone/ws_policy/document%3fsap-client=300</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebServices_Qas_Gen_ZGLMX_ATLAS_GR</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

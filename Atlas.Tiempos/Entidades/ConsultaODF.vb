@@ -13,6 +13,16 @@
         End Set
     End Property
 
+    Public Shared _rTurno As String
+    Public Shared Property rTurno() As String
+        Get
+            Return _rTurno
+        End Get
+        Set(ByVal value As String)
+            _rTurno = value
+        End Set
+    End Property
+
     Public Shared _rFIP As String
     Public Shared Property rFIP() As String
         Get

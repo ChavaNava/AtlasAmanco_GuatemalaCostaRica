@@ -27,7 +27,7 @@ Public Class OrdenProduccion
     Public Shared Function Alta(ByVal Tipo As String, IdOrden As String) As Boolean
         Dim Head As String
         Dim Lista As New Generic.List(Of String)
-
+        Dim WSG As New WebServices.WSG
         Dim File As String
         Dim Tbl() As String
         Dim SAP_Return As Object
@@ -35,7 +35,9 @@ Public Class OrdenProduccion
 
         Head = "31" & "|" & IdOrden.Trim & "|" & "10" & "|" & Tipo
 
-        WSG.Consume_WS(SessionUser._sAlias.Trim, Head, Lista, SessionUser._sAmbiente.Trim)
+
+
+        WSG.Consume_WS(Head, Lista, SessionUser._sAmbiente.Trim)
         Tbl = WSG.Tbl_resultado
         SAP_Return = WSG.Return_SAP
 

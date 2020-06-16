@@ -350,7 +350,7 @@ Public Class Generica_DB
     Public Sub Consulta_Produccion_Detalle(ByVal Area As String, ByRef DG As DataGridView)
 
         Q = ""
-        Q = "PA_ProduccionDetalle '" & SessionUser._sCentro.Trim & "', '" & ProduccionResumen._Status_Notif & "', '" & Area & "',  '" & ProduccionResumen.Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1"
+        Q = "PA_ProduccionDetalle '" & SessionUser._sCentro.Trim & "', '" & ProduccionResumen._Status_Notif & "', '" & Area & "',  '" & ProduccionResumen.Seccion & "', '" & ProduccionResumen._Turno.Trim & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 1"
 
         objDa = New SqlDataAdapter(Q, AbrirAmanco(SessionUser._sAmbiente))
         objDs = New DataSet
@@ -407,7 +407,7 @@ Public Class Generica_DB
 
         'Se obtiene el total de la cantidad entregada de acuerdo al filtro de la consulta
         'LecturaQry("PA_Consulta_Ordenes_Proceso " & Centro & "_Consulta_Produccion, '(1)', '" & Area & "',  '" & Seccion1 & "', 36, '" & Turno & "', '" & FI & "', '" & FF & "', '" & HI & "', '" & HF & "' ")
-        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(1)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
+        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(1)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno.Trim & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
         Do While (LecturaBD.Read)
             Pzas_Entregado = "" & LecturaBD(0)
             Kilos_Entregado = "" & LecturaBD(1)
@@ -418,7 +418,7 @@ Public Class Generica_DB
         Tk_Entregado.Text = Format(Kilos_Entregado, "#0.00")
         'Se obtiene el total de la cantidad en proceso de acuerdo al filtro de la consulta
         'LecturaQry("PA_Consulta_Ordenes_Proceso " & Centro & "_Consulta_Produccion, '(0)', '" & Area & "',  '" & Seccion1 & "', 36, '" & Turno & "', '" & FI & "', '" & FF & "', '" & HI & "', '" & HF & "' ")
-        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(0)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
+        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(0)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno.Trim & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
         Do While (LecturaBD.Read)
             Pzas_Proceso = "" & LecturaBD(0)
             Kilos_Proceso = "" & LecturaBD(1)
@@ -430,7 +430,7 @@ Public Class Generica_DB
         T_Saldo.Text = Format(Programado - (Pzas_Entregado + Pzas_Proceso), "#0.00")
 
         ''LecturaQry("PA_Consulta_Ordenes_Proceso " & Centro & "_Consulta_Produccion, '(0,1)', '" & Area & "',  '" & Seccion1 & "', 36, '" & Turno & "', '" & FI & "', '" & FF & "', '" & HI & "', '" & HF & "' ")
-        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(0,1)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
+        LecturaQry("PA_ProduccionDetalle " & SessionUser._sCentro.Trim & ", '(0,1)', '" & Area & "',  '" & ProduccionResumen._Seccion & "', '" & ProduccionResumen._Turno.Trim & "', '" & ProduccionResumen._FI & "', '" & ProduccionResumen._FF & "', '" & ProduccionResumen._HI & "', '" & ProduccionResumen._HF & "', 3")
         Do While (LecturaBD.Read)
             Kilos_Terminado = LecturaBD(1)
             Kilos_Teoricos = LecturaBD(2)

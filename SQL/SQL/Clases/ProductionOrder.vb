@@ -1,7 +1,8 @@
-﻿Imports WS_Generic
-Imports Utili_Generales
+﻿Imports Utili_Generales
 Imports SQL_DATA
+Imports SQL_DATA.PublicVariables
 Imports System.Drawing
+
 Public Class ProductionOrder
     Public Shared Function Alta_ODF(ByVal ODF As String, Tipo As String, Ambiente As String)
         Dim Alta_Ok As Boolean = 0
@@ -11,10 +12,11 @@ Public Class ProductionOrder
         Dim SAP_Return As Object
         Dim aryTextFile() As String
         Dim Linea As String
-        Dim WSG As New WS_Generic.WSG
+        Dim WSG As New WebServices.WSG
         'Error y mensaje de WS
         Dim Err As String
         Dim Mns As String
+
 
         Head = "31" & "|" & ODF.Trim & "|" & "10" & "|" & Tipo
         WSG.Consume_WS(Head, Lista, Ambiente.Trim)
@@ -89,7 +91,7 @@ Public Class ProductionOrder
         Dim Result As DialogResult
         Dim Buttons As MessageBoxButtons = MessageBoxButtons.YesNo
         Dim Botones As MessageBoxButtons = MessageBoxButtons.OK
-        Dim WSG As New WS_Generic.WSG
+        Dim WSG As New WebServices.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
         WSG.Consume_WS(Head, Lista, Ambiente.Trim)
@@ -247,30 +249,12 @@ Public Class ProductionOrder
         Dim Tbl As String()
         Dim SAP_Return As Object
         Dim aryTextFile() As String
-        Dim OrdenProd As String
-        Dim NumeroPlanta As String
-        Dim Equipo As String
-        Dim Producto As String
-        Dim CantProgPzs As String
-        Dim Unidad As String
-        Dim Inicio As String
-        Dim Fin As String
-        Dim Origen As String
-        Dim Status1 As String
-        Dim Desc_Status As String
-        Dim fecini As String
-        Dim Tipo_Ord As String
-        Dim Grupo As String
-        'Error y mensaje de WS
-        Dim Err As String
-        Dim Mns As String
-        'Variables publicas para mensajes
         Dim Message As String = ""
         Dim Caption As String = ""
         Dim Result As DialogResult
         Dim Buttons As MessageBoxButtons = MessageBoxButtons.YesNo
         Dim Botones As MessageBoxButtons = MessageBoxButtons.OK
-        Dim WSG As New WS_Generic.WSG
+        Dim WSG As New WebServices.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
         WSG.Consume_WS(Head, Lista, Ambiente.Trim)
@@ -294,24 +278,24 @@ Public Class ProductionOrder
         End If
         ' ---------------------------------------------------------------------------------
         aryTextFile = Tbl(0).Split("|")
-        OrdenProd = aryTextFile(1)
-        NumeroPlanta = aryTextFile(2)
-        Equipo = aryTextFile(3)
-        Producto = aryTextFile(4)
-        CantProgPzs = aryTextFile(5)
-        Unidad = aryTextFile(6)
-        Inicio = aryTextFile(7)
-        Fin = aryTextFile(8)
-        Origen = aryTextFile(9)
-        Status1 = aryTextFile(10)
-        Desc_Status = aryTextFile(11)
-        fecini = aryTextFile(12)
-        Tipo_Ord = aryTextFile(13)
-        Err = SAP_Return.ZTYPE
-        Mns = SAP_Return.ZMESSAGE
+        AltaProductionOrders.OrdenProd = aryTextFile(1)
+        AltaProductionOrders.Centro = aryTextFile(2)
+        AltaProductionOrders.PuestoTrabajo = aryTextFile(3)
+        AltaProductionOrders.IdProducto = aryTextFile(4)
+        AltaProductionOrders.PzasProgramadas = aryTextFile(5)
+        AltaProductionOrders.UM = aryTextFile(6)
+        AltaProductionOrders.FechaInicio = aryTextFile(7)
+        AltaProductionOrders.FechaFin = aryTextFile(8)
+        AltaProductionOrders.Origen = aryTextFile(9)
+        AltaProductionOrders.Status_Orden = aryTextFile(10)
+        AltaProductionOrders.Status_Desc = aryTextFile(11)
+        AltaProductionOrders.FechaInicioProduccion = aryTextFile(12)
+        AltaProductionOrders.Tipo_Orden = aryTextFile(13)
+        AltaProductionOrders.Suceso = SAP_Return.ZTYPE
+        AltaProductionOrders.Mensaje_Suceso = SAP_Return.ZMESSAGE
         ' ---------------------------------------------------------------------------------
-        If Err = "E" Then
-            MessageBox.Show(Mns, "Error SAP Notifique al Supervisor")
+        If AltaProductionOrders._Suceso = "E" Then
+            MessageBox.Show(AltaProductionOrders._Mensaje_Suceso, "Error SAP Notifique al Supervisor")
             On Error Resume Next
             For Each ctlText In frmForm.Controls
                 If TypeOf ctlText Is System.Windows.Forms.TextBox Then
@@ -324,7 +308,7 @@ Public Class ProductionOrder
             Return
         End If
         ' ---------------------------------------------------------------------------------
-        Select Case Status1
+        Select Case AltaProductionOrders._Status_Orden
             Case Is <> "LIB."
                 Message = "Orden de Producción no esta liberada"
                 Caption = "Orden no liberada"
@@ -343,7 +327,7 @@ Public Class ProductionOrder
                     Exit Sub
                 End If
             Case Is = "LIB."
-                If Not NumeroPlanta.Trim = Centro.Trim Then
+                If Not AltaProductionOrders._Centro.Trim = Centro.Trim Then
                     Message = "Orden de Producción no pertenece al centro " & Centro.Trim
                     Caption = "Orden de otro centro"
                     Result = MessageBox.Show(Message, Caption, Botones)
@@ -366,12 +350,12 @@ Public Class ProductionOrder
                     Q = ""
                     Q = "SELECT GrupMaterial, Sobrepeso FROM CAT_ProductoTerminado "
                     Q = Q & "WHERE Centro = " & "'" & Centro.Trim & "' "
-                    Q = Q & "AND Codigo = '" & Producto.Trim & "'"
+                    Q = Q & "AND Codigo = '" & AltaProductionOrders._IdProducto.Trim & "'"
                     LecturaQry(Q)
                     If LecturaBD.Read() Then
-                        Grupo = LecturaBD(0)
+                        AltaProductionOrders._GrupoProducto = LecturaBD(0)
                         'Verifica si el producto es de inyección o extrusión
-                        Dim Tipo_Prod As String = Verifica_Producto(Producto.Trim, Centro, Usuario)
+                        Dim Tipo_Prod As String = Verifica_Producto(AltaProductionOrders._IdProducto.Trim, Centro, Usuario)
                         If Seccion = "1" And Tipo_Prod = "2" Then
                             MensajeBox.Mostrar("El producto no es de Extrusión, no se dara de Alta la Orden ", "Error", MensajeBox.TipoMensaje.Information)
                             Exit Sub
@@ -380,7 +364,7 @@ Public Class ProductionOrder
                             Exit Sub
                         End If
                     Else
-                        MensajeBox.Mostrar("El producton '" & Producto.Trim & "' no esta dado de Alta en A-tlas informe al Administrador ", "Campo Vacio", MensajeBox.TipoMensaje.Information)
+                        MensajeBox.Mostrar("El producton '" & AltaProductionOrders._IdProducto.Trim & "' no esta dado de Alta en A-tlas informe al Administrador ", "Campo Vacio", MensajeBox.TipoMensaje.Information)
                         Exit Sub
                     End If
                     ' --------------------------------------------------------------------------------------------
@@ -388,11 +372,11 @@ Public Class ProductionOrder
                     Dim Fec_Act As String = DateTime.Now.ToString("yyyy/MM/dd")
                     Dim Fec_reg As String = DateTime.Now.ToString("yyyy-MM-dd")
                     Dim Hra_Act As String = DateTime.Now.ToString("HH:MM:ss")
-                    LecturaQry("PA_Inserta_Orden_Produccion '" & OrdenProd.Trim & "','" & Centro & "','" & Equipo & "','" _
-                               & Producto & "','" & CantProgPzs & "','" & Inicio & "','" & Fin & "','" & Origen & "','" _
+                    LecturaQry("PA_Inserta_Orden_Produccion '" & AltaProductionOrders._OrdenProd.Trim & "','" & AltaProductionOrders._Centro & "','" & AltaProductionOrders._PuestoTrabajo & "','" _
+                               & AltaProductionOrders._IdProducto & "','" & AltaProductionOrders._PzasProgramadas & "','" & AltaProductionOrders._FechaInicio & "','" & AltaProductionOrders._FechaFin & "','" & AltaProductionOrders._Origen & "','" _
                                & CodOperador.Trim & "','" & Fec_Act & "','Ingreso Por SAP','" & Fec_Act & "','" & Hra_Act & "','" _
                                & Usuario.Trim & "','" & Fec_Act & "','" & Hra_Act & "','Usuario Fin','Usuario Reg','" & Fec_reg & "','" _
-                               & Hra_Act & "','" & Grupo.Trim & "'")
+                               & Hra_Act & "','" & AltaProductionOrders._GrupoProducto.Trim & "'")
                     On Error Resume Next
                     MensajeBox.Mostrar("La orden a sido dada de alta ", "Orden de Producción", MensajeBox.TipoMensaje.Information)
                     'ProductionOrder.Valida_Existencia_Producto(Usuario.Trim, Producto.Trim, NumeroPlanta.Trim, Area)
@@ -424,7 +408,7 @@ Public Class ProductionOrder
         'Error y mensaje de WS
         Dim Err As String
         Dim Mns As String
-        Dim WSG As New WS_Generic.WSG
+        Dim WSG As New WebServices.WSG
 
         Head = "31" & "|" & odf.Trim & "|" & "10" & "|" & Tipo
         WSG.Consume_WS(Head, Lista, Ambiente)
@@ -460,7 +444,7 @@ Public Class ProductionOrder
         Dim SAP_Return As Object
         Dim aryTextFile() As String
         Dim Estatus_Activo As Integer
-        Dim WSG As New WS_Generic.WSG
+        Dim WSG As New WebServices.WSG
 
         OrdenProductionSap.Head = "31" & "|" & ODF.Trim & "|" & "10" & "|" & Tipo
         WSG.Consume_WS(OrdenProductionSap.Head, Lista, SessionUser._sAmbiente)
@@ -860,10 +844,6 @@ Public Class ProductionOrder
 
     Public Shared Sub CalCantExt(ByVal Orden As String, TB_CantProgra As TextBox, TB_CantEntre As TextBox, TB_CantEnproce As TextBox, _
                                 TBC_CantPendiente As TextBox, Area As String)
-        Dim xTCantProgra As Decimal = 0
-        Dim xTCantEntre As Decimal = 0
-        Dim xTCantEnproce As Decimal = 0
-        Dim xTCantpendi As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
             LecturaQry("PA_Calcula_Cantidades_3 '" & SessionUser._sCentro.Trim & "',  '" & Orden.Trim & "',  '" & Area.Trim & "' ")
@@ -926,11 +906,6 @@ Public Class ProductionOrder
 
     Public Shared Sub CalCantRot(ByVal Usuario As String, Centro As String, ByVal Orden As String, TB_CantProgra As TextBox, TB_CantEntre As TextBox, TB_CantEnproce As TextBox, _
                             TBC_CantPendiente As TextBox)
-        Dim xTCantProgra As Decimal = 0
-        Dim xTCantEntre As Decimal = 0
-        Dim xTCantEnproce As Decimal = 0
-        Dim xTCantpendi As Decimal = 0
-        Dim xTCantPiso As Decimal = 0
         ' ---------------------------------------------------------------------------------
         Try
             LecturaQry("PA_Calcula_Cantidades_Rot '" & Centro & "',  '" & Orden.Trim & "'")
@@ -980,13 +955,6 @@ Public Class ProductionOrder
     End Sub
 
     Public Shared Sub Porcentaje_Orden(ByVal Entregada As String, ByVal Proceso As String, ByVal Programada As String, Lbl As Label, Notifica As String)
-        Dim Res As Double
-        Dim Cant_Ent As Double
-        Dim Cant_Proc As Double
-        Dim Cant_Porg As Double
-        Dim Cant_Entregada As Double
-
-
         If (Entregada = "0" And Proceso = "0") Or Programada = "0" Or (Entregada = "" And Proceso = "") Or Programada = "" Then
             Lbl.Text = " "
         Else
@@ -1011,6 +979,39 @@ Public Class ProductionOrder
                     MensajeBox.Mostrar("Orden Excedida en : " & Res & " %  ", "Orden Excedida", MensajeBox.TipoMensaje.Critical)
                 End If
             End If
+            Porcentaje_Avance = Res
+        End If
+    End Sub
+
+    Public Shared Sub Porcentaje_Orden_Excedido(ByVal Entregada As String, PorNotificar As String, ByVal Proceso As String, ByVal Programada As String, Lbl As Label, Notifica As String)
+        If (Entregada = "0" And Proceso = "0") Or Programada = "0" Or (Entregada = "" And Proceso = "") Or Programada = "" Then
+            Lbl.Text = " "
+        Else
+            Cant_Ent = Entregada
+            Cant_Proc = Proceso
+            Cant_Porg = Programada
+            Cant_Entregada = Cant_Ent + Cant_Proc + PorNotificar
+
+            Porcentaje_Avance = 0
+
+            If Cant_Entregada < Programada Then
+                Lbl.ForeColor = Color.YellowGreen
+                Res = Format((Cant_Entregada / Programada) * 100, "##0.00")
+                Lbl.Text = "Orden al : " & Res & " % "
+            ElseIf Cant_Entregada = Programada Then
+                Lbl.ForeColor = Color.Green
+                Res = Format((Cant_Entregada / Programada) * 100, "##0.00")
+                Lbl.Text = "Orden Completada al : " & Res & " %  "
+            ElseIf Cant_Entregada > Programada Then
+                Lbl.ForeColor = Color.Red
+                Res = Format(((Cant_Entregada / Programada) * 100) - (Programada / Programada) * 100, "##0.00")
+                Lbl.Text = "Orden Excedida en : " & Res & " % "
+                Porcentaje_Avance = Res
+                If Notifica = "1" Then
+                    MensajeBox.Mostrar("Orden Excedida en : " & Res & " %  ", "Orden Excedida", MensajeBox.TipoMensaje.Critical)
+                End If
+            End If
+
         End If
     End Sub
 

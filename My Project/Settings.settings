@@ -70,7 +70,7 @@
       <Value Profile="(Default)">http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF001?sap-client=300</Value>
     </Setting>
     <Setting Name="A_tlas_Prd_Gen_ZGLMX_ATLAS_GR" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://mxslx140.mexichem.corp:8006/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr</Value>
+      <Value Profile="(Default)">http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr</Value>
     </Setting>
     <Setting Name="A_tlas_PT_ConMat_Prod_ZPPMXF002Service" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://mxslx140.mexichem.corp:8001/sap/bc/srt/rfc/sap/ZPPMXF002?sap-client=300</Value>

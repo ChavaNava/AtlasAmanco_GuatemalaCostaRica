@@ -97,14 +97,14 @@ Public Class FrmConsultasExtrusion
     End Sub
 
     Private Sub RB_ProdRes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_Resumen.CheckedChanged
-        CB_Turno.Text = "*"
+        'CB_Turno.Text = "*"
         CB_Turno.Enabled = False
         TOrden.Text = "*"
         TOrden.Enabled = False
     End Sub
 
     Private Sub RB_Prod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RB_Detalle.CheckedChanged
-        CB_Turno.Text = "*"
+        'CB_Turno.Text = "*"
         CB_Turno.Enabled = True
         TOrden.Text = "*"
         TOrden.Enabled = True

@@ -115,7 +115,7 @@ Public Class OperacionTiempos
         NDataSet1 = Cnn.DataSetCombo.Copy
         CB.DataSource = NDataSet1.Tables(0)
         CB.DisplayMember = "Concepto"
-        CB.ValueMember = "IdParoProduccion"
+        CB.ValueMember = "CodigoParo"
     End Sub
     Public Shared Function ValidaGrpProd(ByVal GropProd As Integer, Operacion As Integer) As Boolean
         Cnn.LecturaQry("PA_TiemposProductivoParo '','','','','" & GropProd & "', " & Operacion & " ")
@@ -193,8 +193,9 @@ Public Class OperacionTiempos
 
     Public Shared Function LeerEquipo(ByVal Equipo As String, Operacion As Integer) As Boolean
 
+        Dim IdCodigo As String = "000" & EXTINY.Trim & ""
 
-        Cnn.LecturaQry("PA_OrdenesProduccion '','" & SessionUser._sCentro.Trim & "','" & Equipo.Trim & "','0000','','','','','','',''," & Operacion & "")
+        Cnn.LecturaQry("PA_OrdenesProduccion '','" & SessionUser._sCentro.Trim & "','" & Equipo.Trim & "','" & IdCodigo.Trim & "','','','','','','',''," & Operacion & "")
 
         If (Cnn.LecturaBD.Read) Then
             ReadWorkCenter.rCentro = Cnn.LecturaBD(0)
@@ -219,7 +220,7 @@ Public Class OperacionTiempos
         Cnn.LecturaBD.Close()
     End Function
     Public Shared Sub abc(ByVal Operacion As Integer)
-        Cnn.LecturaQry("PA_HorasProdParo '" & Tiemposabc._iIdTiempo & "','" & SessionUser._sCentro.Trim & "','" & Tiemposabc._iPuestoTrabajo.Trim & "','" & Tiemposabc._iOrden_Produccion.Trim & "','','" & Tiemposabc._iTurno.Trim & "','" & Tiemposabc._iIdGrupoCausa & "','" & Tiemposabc._iIdCausa & "','" & Tiemposabc._iHorasProdParo.Trim & "','','" & Tiemposabc._iUserRegistra.Trim & "','" & Tiemposabc._iFechaRegistra.Trim & "','" & Tiemposabc._iIdGrupo & "','" & Tiemposabc._iIdSeccion & "','" & Tiemposabc._iIdGrupoMaterial & "','',''," & Operacion & "")
+        Cnn.LecturaQry("PA_HorasParo '" & SessionUser._sCentro.Trim & "','" & Tiemposabc._iOrden_Produccion.Trim & "','" & Tiemposabc._iPuestoTrabajo.Trim & "','" & Tiemposabc._iFechaAlta.Trim & "'," & Tiemposabc._iTurno & ",'" & Tiemposabc._iIdCausa.Trim & "','" & Tiemposabc._iHorasProdParo.Trim & "','','" & Tiemposabc._iUserRegistra.Trim & "','" & Tiemposabc._iFechaRegistra.Trim & "','" & Tiemposabc._iHoraRegistra.Trim & "','" & Tiemposabc._iFolio & "','" & Tiemposabc._iIdGrupo.Trim & "','" & Tiemposabc._iIdSeccion.Trim & "','" & Tiemposabc._iIdGrupoMaterial.Trim & "'," & Operacion & "")
     End Sub
 
     Public Shared Sub TotalHoras(ByVal DataGV As DataGridView, Operacion As Integer)
@@ -256,33 +257,39 @@ Public Class OperacionTiempos
         Dim objDs As DataSet
 
         Q = ""
-        Q = "PA_HorasProdParo '','','" & ConsultaHorasDetalle._PuestoTrabajo.Trim & "','','','" & ConsultaHorasDetalle._Turno.Trim & "','','','','','','','','','','" & ConsultaHorasDetalle._Fecha.Trim & "',''," & Operacion & ""
+        Q = "ResumenTiempos '" & ConsultaODF._rFIP.Trim & "','" & ConsultaODF._rTurno.Trim & "','" & ConsultaODF._rArea.Trim & "','" & SessionUser._sCentro.Trim & "'," & Operacion & ""
         Try
             objDa = New SqlDataAdapter(Q, Cnn.MSI(SessionUser._sAmbiente))
             objDs = New DataSet
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
             RegCount = DataGV.RowCount
+        Catch ex As Exception
+            MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
+        End Try
+    End Sub
+    Public Shared Sub ResumenHoras(ByVal DataGV As DataGridView, Operacion As Integer)
 
-            DataGV.Columns(0).HeaderText = "Folio"
-            DataGV.Columns(1).HeaderText = "Fecha"
-            DataGV.Columns(2).HeaderText = "Orden Producción"
-            DataGV.Columns(3).HeaderText = "Puesto Trabajo"
-            DataGV.Columns(4).HeaderText = "Turno"
-            DataGV.Columns(5).Visible = False   'Id Grupo Paros
-            DataGV.Columns(6).HeaderText = "Grupo Paro"
-            DataGV.Columns(7).Visible = False   'Id Paro Producción
-            DataGV.Columns(8).HeaderText = "Código Paro"
-            DataGV.Columns(9).HeaderText = "Concepto Paro"
-            DataGV.Columns(10).HeaderText = "Horas"
-            DataGV.Columns(11).Visible = False   'Estatus
+        Dim Q As String
+        Dim RegCount As Integer
+        Dim objDa As SqlDataAdapter
+        Dim objDs As DataSet
+
+        Q = ""
+        Q = "ResumenTiempos '" & ConsultaODF._rFIP.Trim & "','" & ConsultaODF._rTurno.Trim & "','" & ConsultaODF._rArea.Trim & "','" & SessionUser._sCentro.Trim & "'," & Operacion & ""
+        Try
+            objDa = New SqlDataAdapter(Q, Cnn.MSI(SessionUser._sAmbiente))
+            objDs = New DataSet
+            objDa.Fill(objDs)
+            DataGV.DataSource = objDs.Tables(0)
+            RegCount = DataGV.RowCount
         Catch ex As Exception
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
     End Sub
 
-    Public Shared Function ValidaHoras(ByVal Operacion As Integer, Turno As String, OrdenProduccion As String, Fecha As String) As Boolean
-        Cnn.LecturaQry("PA_HorasProdParo '','','','" & OrdenProduccion.Trim & "','','" & Turno.Trim & "','','','','','','" & Fecha.Trim & "','','','','',''," & Operacion & "")
+    Public Shared Function ValidaHoras(ByVal Operacion As Integer, Turno As String, OrdenProduccion As String, Equipo As String, Fecha As String) As Boolean
+        Cnn.LecturaQry("PA_HorasParo '" & SessionUser._sCentro.Trim & "','" & OrdenProduccion.Trim & "','" & Equipo.Trim & "','" & Fecha.Trim & "','" & Turno.Trim & "','','','','','','','','','',''," & Operacion & "")
 
         If (Cnn.LecturaBD.Read) Then
             TiemposReportados.Horas = Cnn.LecturaBD(0)
@@ -317,5 +324,11 @@ Public Class OperacionTiempos
             e.CellStyle.BackColor = Color.LightCoral
             e.CellStyle.ForeColor = Color.Black
         End If
+    End Sub
+    Public Shared Sub DGV_Formating_Estandar(DGV As DataGridView)
+        With DGV
+            .RowsDefaultCellStyle.BackColor = Color.White
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue
+        End With
     End Sub
 End Class

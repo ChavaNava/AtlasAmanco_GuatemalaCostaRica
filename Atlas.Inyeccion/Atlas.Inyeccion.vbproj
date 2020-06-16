@@ -44,11 +44,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atlas.Accesos">
+    <Reference Include="Atlas.Accesos, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Atlas.Accesos\bin\Debug\Atlas.Accesos.dll</HintPath>
     </Reference>
-    <Reference Include="SQL_DATA">
-      <HintPath>..\Atlas.Accesos\bin\Debug\SQL_DATA.dll</HintPath>
+    <Reference Include="SQL_DATA, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQL\SQL\bin\Debug\SQL_DATA.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

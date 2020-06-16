@@ -47,6 +47,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atlas.Consultations">
+      <HintPath>..\Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
+    </Reference>
     <Reference Include="Atlas.Tiempos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Atlas.Tiempos.exe</HintPath>
@@ -108,12 +111,6 @@
     <Compile Include="Formas\FrmTiemposBaja.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\FrmTiemposModifica.Designer.vb">
-      <DependentUpon>FrmTiemposModifica.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formas\FrmTiemposModifica.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -139,9 +136,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\FrmTiemposBaja.resx">
       <DependentUpon>FrmTiemposBaja.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formas\FrmTiemposModifica.resx">
-      <DependentUpon>FrmTiemposModifica.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>

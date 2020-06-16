@@ -155,7 +155,7 @@ Public Class FrmAvanceProduccion
         If cmbCentroProd.SelectedValue = Nothing Then
             ProduccionConsulta.cCentro = ""
         Else
-            ProduccionConsulta.cCentro = cmbCentroProd.SelectedValue
+            ProduccionConsulta.cCentro = cmbCentroProd.Text.Trim
         End If
 
         dgvProduccion.Columns.Clear()
@@ -169,6 +169,7 @@ Public Class FrmAvanceProduccion
         If RBPPuesto.Checked = True Then
             Adm_Calidad.Equipo_Produccion(dgvProduccion)
         End If
+        LoadingForm.CloseForm()
     End Sub
 
     Private Sub BtnScrap_Click(sender As Object, e As EventArgs) Handles BtnScrap.Click
@@ -185,9 +186,10 @@ Public Class FrmAvanceProduccion
             ProduccionConsulta.cTurno = cmbTurnoScrap.SelectedValue
         End If
 
-        If cmbCentroScrap.SelectedValue = Nothing Then
-            MensajeBox.Mostrar("Seleccione clave de centro a consultar", "Campo Vacio", MensajeBox.TipoMensaje.Information)
-            Return
+        If cmbCentroProd.SelectedValue = Nothing Then
+            ProduccionConsulta.cCentro = ""
+        Else
+            ProduccionConsulta.cCentro = cmbCentroProd.Text.Trim
         End If
 
         dgvScrap.Columns.Clear()
@@ -201,5 +203,6 @@ Public Class FrmAvanceProduccion
         If RBSPuesto.Checked = True Then
             Adm_Calidad.Equipo_Scrap(dgvScrap)
         End If
+        LoadingForm.CloseForm()
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Imports Atlas.Accesos
+﻿Imports Atlas.Accesos.CLVarGlobales
 Imports SQL_DATA
 Imports Utili_Generales
 Imports System.Windows.Forms
@@ -17,8 +17,8 @@ Public Class Permissions
         Dim Form_Atlas As String
         Dim Titulo As String = ""
         Dim Name_Raiz As String = ""
-        Atlas.Accesos.CLVarGlobales.EXTINY = Area
-        Atlas.Accesos.CLVarGlobales.Seccion = Secc
+        EXTINY = Area
+        Seccion = Secc
         strNameForm = ""
         If Area = "1" Then
             Titulo = "" & Texto_Cabeceras.Trim & " Extrusión"

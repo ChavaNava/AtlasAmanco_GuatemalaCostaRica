@@ -1,12 +1,14 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Windows.Forms
+Imports Atlas.Accesos
+Imports Utili_Generales
 Imports SQL_DATA
 Public Class Adm_Calidad
     Public Shared Sub Orden_Produccion(ByVal DataGV As DataGridView, Operacion As Integer)
         Dim Q As String
         Dim objDa As SqlDataAdapter
         Dim objDs As DataSet
-
+        LoadingForm.ShowLoading()
         Q = ""
         Q = "PA_DetalleProduccion '" & ProduccionConsulta._cFI.Trim & "','" & ProduccionConsulta._cFF.Trim & "','" & ProduccionConsulta._cCentro.Trim & "','" & ProduccionConsulta._cOrden.Trim & "', '" & ProduccionConsulta._cTurno.Trim & "', " & Operacion & ""
         Try
@@ -15,6 +17,7 @@ Public Class Adm_Calidad
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
         Catch ex As Exception
+            LoadingForm.CloseForm()
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
         DataGV.Columns(0).HeaderText = "Orden Producción"
@@ -49,7 +52,7 @@ Public Class Adm_Calidad
         Dim Q As String
         Dim objDa As SqlDataAdapter
         Dim objDs As DataSet
-
+        LoadingForm.ShowLoading()
         Q = ""
         Q = "PA_Calidad '" & ProduccionConsulta._cCentro.Trim & "','" & ProduccionConsulta._cFI.Trim & "','" & ProduccionConsulta._cFF.Trim & "','','','" & ProduccionConsulta._cTurno.Trim & "','',3"
         Try
@@ -58,6 +61,7 @@ Public Class Adm_Calidad
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
         Catch ex As Exception
+            LoadingForm.CloseForm()
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
         DataGV.Columns(0).HeaderText = "Orden Producción"
@@ -157,7 +161,7 @@ Public Class Adm_Calidad
         Dim Q As String
         Dim objDa As SqlDataAdapter
         Dim objDs As DataSet
-
+        LoadingForm.ShowLoading()
         Q = ""
         Q = "PA_Calidad '" & ProduccionConsulta._cCentro.Trim & "','" & ProduccionConsulta._cFI.Trim & "','" & ProduccionConsulta._cFF.Trim & "','','','" & ProduccionConsulta._cTurno.Trim & "','',5"
         Try
@@ -166,6 +170,7 @@ Public Class Adm_Calidad
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
         Catch ex As Exception
+            LoadingForm.CloseForm()
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
         DataGV.Columns(0).HeaderText = "Orden Producción"
@@ -200,7 +205,7 @@ Public Class Adm_Calidad
         Dim Q As String
         Dim objDa As SqlDataAdapter
         Dim objDs As DataSet
-
+        LoadingForm.ShowLoading()
         Q = ""
         Q = "PA_Calidad '" & ProduccionConsulta._cCentro.Trim & "','" & ProduccionConsulta._cFI.Trim & "','" & ProduccionConsulta._cFF.Trim & "','','','" & ProduccionConsulta._cTurno.Trim & "','',6"
         Try
@@ -209,6 +214,7 @@ Public Class Adm_Calidad
             objDa.Fill(objDs)
             DataGV.DataSource = objDs.Tables(0)
         Catch ex As Exception
+            LoadingForm.CloseForm()
             MessageBox.Show("Error Conexion :" & ex.Message, "ORDENES PROCESO")
         End Try
         DataGV.Columns(0).HeaderText = "Orden Producción"

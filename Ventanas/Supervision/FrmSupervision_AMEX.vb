@@ -6,7 +6,7 @@ Imports SQL_DATA
 Public Class FrmSupervision_AMEX
     Dim Str_FI As String    'Fecha inicio consulta
     Dim Str_FF As String    'Fecha fin consulta
-    Dim tipo As SeriesChartType
+    'Dim tipo As SeriesChartType
 
     Sub Fill_Tipo()
         Dim NDataSet1 As New DataSet
@@ -23,51 +23,51 @@ Public Class FrmSupervision_AMEX
 
     Sub Graficas()
 
-        tipo = CB_Tipo.SelectedValue
+        'tipo = CB_Tipo.SelectedValue
 
-        Chart1.DataSource = objDRes.Tables(0)
-        Chart1.Series(0).IsValueShownAsLabel = True
-        Chart1.Series(0).Name = "Producción"
-        Chart1.Series(0).ChartType = tipo
-        Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
-        If RB1.Checked = True Then
-            Chart1.Series(0).XValueMember = "Sup_Turno"
-            Chart1.Series(0).YValueMembers = "Tramos"
-        Else
-            Chart1.Series(0).XValueMember = "PuestoTrabajo"
-            Chart1.Series(0).YValueMembers = "Tramos"
-        End If
+        'Chart1.DataSource = objDRes.Tables(0)
+        'Chart1.Series(0).IsValueShownAsLabel = True
+        'Chart1.Series(0).Name = "Producción"
+        'Chart1.Series(0).ChartType = tipo
+        'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+        'If RB1.Checked = True Then
+        '    Chart1.Series(0).XValueMember = "Sup_Turno"
+        '    Chart1.Series(0).YValueMembers = "Tramos"
+        'Else
+        '    Chart1.Series(0).XValueMember = "PuestoTrabajo"
+        '    Chart1.Series(0).YValueMembers = "Tramos"
+        'End If
 
-        Chart1.DataBind()
+        'Chart1.DataBind()
 
-        Chart2.DataSource = objDRes.Tables(0)
-        Chart2.Series(0).IsValueShownAsLabel = True
-        Chart2.Series(0).Name = "Consumo Recuperado"
-        Chart2.Series(0).ChartType = tipo
-        Chart2.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
-        If RB1.Checked = True Then
-            Chart2.Series(0).XValueMember = "Sup_Turno"
-            Chart2.Series(0).YValueMembers = "Consumo Reprocesado"
-        Else
-            Chart2.Series(0).XValueMember = "PuestoTrabajo"
-            Chart2.Series(0).YValueMembers = "Consumo Reprocesado"
-        End If
+        'Chart2.DataSource = objDRes.Tables(0)
+        'Chart2.Series(0).IsValueShownAsLabel = True
+        'Chart2.Series(0).Name = "Consumo Recuperado"
+        'Chart2.Series(0).ChartType = tipo
+        'Chart2.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+        'If RB1.Checked = True Then
+        '    Chart2.Series(0).XValueMember = "Sup_Turno"
+        '    Chart2.Series(0).YValueMembers = "Consumo Reprocesado"
+        'Else
+        '    Chart2.Series(0).XValueMember = "PuestoTrabajo"
+        '    Chart2.Series(0).YValueMembers = "Consumo Reprocesado"
+        'End If
 
-        Chart2.DataBind()
+        'Chart2.DataBind()
 
-        Chart4.DataSource = objDRes.Tables(0)
-        Chart4.Series(0).IsValueShownAsLabel = True
-        Chart4.Series(0).Name = "Sobre Peso"
-        Chart4.Series(0).ChartType = tipo
-        Chart4.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
-        If RB1.Checked = True Then
-            Chart4.Series(0).XValueMember = "Sup_Turno"
-            Chart4.Series(0).YValueMembers = "%SP"
-        Else
-            Chart4.Series(0).XValueMember = "PuestoTrabajo"
-            Chart4.Series(0).YValueMembers = "%SP"
-        End If
-        Chart4.DataBind()
+        'Chart4.DataSource = objDRes.Tables(0)
+        'Chart4.Series(0).IsValueShownAsLabel = True
+        'Chart4.Series(0).Name = "Sobre Peso"
+        'Chart4.Series(0).ChartType = tipo
+        'Chart4.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+        'If RB1.Checked = True Then
+        '    Chart4.Series(0).XValueMember = "Sup_Turno"
+        '    Chart4.Series(0).YValueMembers = "%SP"
+        'Else
+        '    Chart4.Series(0).XValueMember = "PuestoTrabajo"
+        '    Chart4.Series(0).YValueMembers = "%SP"
+        'End If
+        'Chart4.DataBind()
 
     End Sub
 

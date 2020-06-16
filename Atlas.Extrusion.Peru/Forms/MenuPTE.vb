@@ -196,7 +196,6 @@ Public Class MenuPTE
                                             'Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, strPlanta.Trim, Seccion, TipoProd)
                                             'Fin ******************************************************************************************************
                                             'Activa Combo Box Causa de Scrap
-                                            'Catalogo_Causas.Combo_Causas(cmbCausaScrap, "", Seccion.Trim, "SC", P_CD)
                                             Catalogo_Causas.CB(cmbCausaScrap, Seccion.Trim, "SC")
                                         End If
                                         TOrden.BackColor = Color.White
@@ -757,10 +756,14 @@ Public Class MenuPTE
         If RB_PT.Checked = True Then
             TipoProd = ""
             TipoProd = "T"
+            cmbCausaScrap.DataSource = Nothing
+            cmbDefectoScrap.DataSource = Nothing
+            cmbSobrePesoCausa.DataSource = Nothing
+            cmbTipoScrap.DataSource = Nothing
             cmbCausaScrap.Enabled = False
             cmbDefectoScrap.Enabled = False
-            cmbTipoScrap.Enabled = False
             cmbSobrePesoCausa.Enabled = False
+            cmbTipoScrap.Enabled = False
             TtramosNoti.ReadOnly = False
             TtramosNoti.BackColor = Color.White
             TOrden.Enabled = True
@@ -773,9 +776,9 @@ Public Class MenuPTE
         If RB_SC.Checked = True Then
             TipoProd = ""
             TipoProd = "S"
+            cmbTipoScrap.Enabled = True
             cmbCausaScrap.Enabled = True
             cmbDefectoScrap.Enabled = True
-            cmbTipoScrap.Enabled = True
             cmbSobrePesoCausa.DataSource = Nothing
             cmbSobrePesoCausa.Enabled = False
             TtramosNoti.Text = "0"
@@ -803,30 +806,16 @@ Public Class MenuPTE
         End If
     End Sub
 
-    'Private Sub CB_Causas_Leave(sender As System.Object, e As System.EventArgs) Handles cmbCausaScrap.Leave
-    '    CausaScrap()
-    'End Sub
+    Private Sub cmbCausaScrap_Leave(sender As Object, e As EventArgs) Handles cmbCausaScrap.Leave
+        Catalogo_Defectos.Combo_Defectos(cmbDefectoScrap, SessionUser.sCentro, SessionUser.sAlias, cmbCausaScrap.SelectedValue)
+        cmbDefectoScrap.Focus()
+    End Sub
 
     Private Sub CB_Defecto_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles cmbDefectoScrap.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
-    End Sub
-
-    Private Sub CB_Defecto_Leave(sender As System.Object, e As System.EventArgs) Handles cmbDefectoScrap.Leave
-        cmbTipoScrap.Focus()
-    End Sub
-
-    Private Sub CB_TipoSc_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles cmbTipoScrap.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-            SendKeys.Send("{TAB}")
-        End If
-    End Sub
-
-    Private Sub CB_TipoSc_Leave(sender As System.Object, e As System.EventArgs) Handles cmbTipoScrap.Leave
-        BPesar.Focus()
     End Sub
 
     Private Sub TempaquePesoTot_TextChanged(sender As System.Object, e As System.EventArgs) Handles TempaquePesoTot.TextChanged
@@ -931,14 +920,6 @@ Public Class MenuPTE
             e.Handled = True
             SendKeys.Send("{TAB}")
             'cmbDefectoScrap()
-        End If
-    End Sub
-
-    Private Sub TCScrap_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-            SendKeys.Send("{TAB}")
-            'cmbTipoScrap()
         End If
     End Sub
 
@@ -1111,11 +1092,7 @@ Public Class MenuPTE
     '    Email = Email & "Causa Sobre Peso:      " & TCausas.Text.Trim & " " & CB_SP_Causa.Text.Trim & ""
     'End Sub
 
-    Private Sub CB_TipoSc_Click(sender As System.Object, e As System.EventArgs) Handles cmbTipoScrap.Click
-        'Activa Combo Box de Tipo Scrap
-        cmbTipoScrap.DataSource = Nothing
-        cmbTipoScrap.Enabled = True
-        Catalogo_Scrap.CB_Scrap(cmbTipoScrap, SessionUser._sAlias.Trim, SessionUser._sCentro.Trim, Seccion, TipoProd)
+    Private Sub CB_TipoSc_Click(sender As System.Object, e As System.EventArgs)
         TPComp1.Enabled = True
     End Sub
 
@@ -1231,9 +1208,11 @@ Public Class MenuPTE
     '        End If
     '    End If
     'End Sub
-
     Private Sub MPE_A_Click(sender As Object, e As EventArgs) Handles MPE_A.Click
         'Consultations.Permissions.Access("MP_MPEA", "1", SessionUser._sIdPerfil, "E", "Monitor Producción ", 1)
+    End Sub
+    Private Sub MP_CON_PROD_Click(sender As Object, e As EventArgs) Handles MP_CON_PROD.Click
+        Atlas.Consultations.Permissions.Access("MP_CON_PROD", "1", SessionUser._sIdPerfil, "E", "Consulta Produccion / Scrap ", 0)
     End Sub
 #End Region
 
@@ -1653,7 +1632,7 @@ Public Class MenuPTE
         'Se ingresa información de notificacion en la base de datos ------------------------------
 
         Try
-            'FolioNotifica.rIdFolio = OperacionExtrusion.Notifica_PT
+            FolioNotifica.rIdFolio = OperacionExtrusionPeru.Notifica_PT
             TFolioAtlas.Text = FolioNotifica._rIdFolio
         Catch ex As Exception
             LoadingForm.CloseForm()
@@ -1707,11 +1686,12 @@ Public Class MenuPTE
                             Dim Mns_dup As String = ""
                             Dim Return_dup As Object
                             Dim Tbl_dup As String()
-                            'WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
-                            'Tbl_dup = WS_P.Tbl_resultado
-                            'Return_dup = WS_P.Return_SAP
-                            'Err_dup = Return_dup.ZTYPE
-                            'Mns_dup = Return_dup.ZMESSAGE
+
+                            WS_P.Consume_WS(Header_Duplicado, Lista, SessionUser._sAmbiente)
+                            Tbl_dup = WS_P.Tbl_resultado
+                            Return_dup = WS_P.Return_SAP
+                            Err_dup = Return_dup.ZTYPE
+                            Mns_dup = Return_dup.ZMESSAGE
 
                             Select Case Err_dup
                                 '------Si no existe la notificacion regresa Error y se realiza la notificación normal
@@ -1720,8 +1700,8 @@ Public Class MenuPTE
                                     Label12.Visible = True
                                     Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
                                     Dim Head As String
-                                    Head = "28|" + TOrden.Text.Trim + "|" + NPTExtrusion._iTramos.ToString + "|" + NPTExtrusion._iFechaPesajeSAP.Trim + "|" + CompuestoVirgen._IdCompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioNotifica._rIdFolio.Trim
-                                    'NotificationProcess.Notifica_PTE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, PassNotifier.Text.Trim)
+                                    Head = "28|" + NPTExtrusion._iOrdenProduccion.Trim + "|" + NPTExtrusion._iTramos.ToString + "|" + NPTExtrusion._iFechaPesajeSAP.Trim + "|" + CompuestoVirgen._IdCompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioNotifica._rIdFolio.Trim
+                                    OperacionExtrusionPeru.Notifica_PTE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, PassNotifier.Text.Trim)
                                     Label12.Visible = False
                                     Label12.Text = ""
                                 Case Else
@@ -1777,8 +1757,8 @@ Public Class MenuPTE
 
         If cmbTipoScrap.Text = "" Then
             LoadingForm.CloseForm()
-            MensajeBox.Mostrar("Seleccione el tipo de Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
-            cmbDefectoScrap.Focus()
+            MensajeBox.Mostrar("Seleccione Tipo Scrap", "Aviso", MensajeBox.TipoMensaje.Information)
+            cmbTipoScrap.Focus()
             Return
         End If
 
@@ -1799,13 +1779,13 @@ Public Class MenuPTE
         NPTExtrusion.iFechaTurno = dtpFECHA.Value.ToString("yyyy-MM-dd")
         NPTExtrusion.iTurno = cmbTurnos.Text.Trim
         NPTExtrusion.iFechaPesajeSAP = dtpFECHASAP.Value.ToString("yyyyMMdd")
-        NPTExtrusion.iTipoScrap = cmbTipoScrap.SelectedValue.Trim
+        NPTExtrusion.iTipoScrap = cmbTipoScrap.SelectedValue
         NPTExtrusion.iArea = "E"
         NPTExtrusion.iRepGenerado = "0"
         NPTExtrusion.iVersion = Atlas_Version.Version
         NPTExtrusion.iSupervisor = "Supervisor"
-        'NPTExtrusion.iIdCausa = TCCausas.Text.Trim
-        'NPTExtrusion.iIdDefecto = TCDefecto.Text.Trim
+        NPTExtrusion.iIdCausa = cmbCausaScrap.SelectedValue
+        NPTExtrusion.iIdDefecto = cmbDefectoScrap.SelectedValue
 
         If CB_Ope.SelectedValue = Nothing Then
             NPTExtrusion.iIdOperadorPtoTra = "Operador"
@@ -1898,7 +1878,7 @@ Public Class MenuPTE
         'Se crea el folio correspondiente al pesaje
 
         Try
-            'FolioNotifica.rIdFolio = OperacionExtrusion.Notifica_SC
+            FolioNotifica.rIdFolio = OperacionExtrusionPeru.Notifica_SC
             TFolioAtlas.Text = FolioNotifica._rIdFolio
         Catch ex As Exception
             LoadingForm.CloseForm()
@@ -1915,33 +1895,22 @@ Public Class MenuPTE
             Case "True"
                 Select Case chkSAP.Checked
                     Case True
-                        Select Case SessionUser._sCentro.Trim
-                            Case Is <> "CR01", "A001"
-
-                                Label12.Visible = True
-                                Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                Dim Head As String
-                                Head = "28|" + TOrden.Text.Trim + _
-                                         "|" + TPesoNeto.Text.Trim + _
-                                         "|" + NPTExtrusion._iFechaPesajeSAP.Trim + _
-                                         "|" + CompuestoVirgen._IdCompOriginal.Trim + _
-                                         "|" + "S" + _
-                                         "|" + SessionUser._sAlias.Trim + _
-                                         "|" + FolioNotifica._rIdFolio.Trim + _
-                                         "|" + Reprocesado_Gen
-                                'NotificationProcess.Notifica_SCE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, _
-                                '                                CodOperador.Text.Trim)
-                                Label12.Visible = False
-                                Label12.Text = ""
-                            Case Is = "CR01"
-                                LoadingForm.CloseForm()
-                                Label12.Visible = True
-                                Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                CadenaTexto = SessionUser._sAlias.Trim & "|" & FolioNotifica._rIdFolio.Trim
-                                Consume_WS_CR01(SessionUser._sAlias, SessionUser._sAmbiente, CadenaTexto.Trim, Lt_Compuestos.Trim, NPTExtrusion._iFechaPesajeSAP_CR.Trim, TOrden.Text.Trim, TPesoNeto.Text, FolioNotifica._rIdFolio.Trim)
-                                Label12.Visible = False
-                                Label12.Text = ""
-                        End Select
+                        Label12.Visible = True
+                        Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                        Dim Head As String
+                        Head = "28|" + TOrden.Text.Trim + _
+                                        "|" + TPesoNeto.Text.Trim + _
+                                        "|" + NPTExtrusion._iFechaPesajeSAP.Trim + _
+                                        "|" + CompuestoVirgen._IdCompOriginal.Trim + _
+                                        "|" + "S" + _
+                                        "|" + SessionUser._sAlias.Trim + _
+                                        "|" + FolioNotifica._rIdFolio.Trim + _
+                                        "|" + Reprocesado_Gen
+                        Notificacion.PTExtrusion(Head, Lista, FolioNotifica._rIdFolio.Trim)
+                        TDocSAP.Text = NPTExtrusion._iNotifica
+                        TConSAP.Text = NPTExtrusion._iConsecutivo
+                        Label12.Visible = False
+                        Label12.Text = ""
                         'Lectura de WS Generico para realizar la notificación ------------------------------------
                     Case False
                         LoadingForm.CloseForm()
@@ -1949,7 +1918,7 @@ Public Class MenuPTE
                         TDocSAP.Text = "0000000000"
                         TConSAP.Text = "00000000"
                 End Select
-        End Select
+                End Select
     End Sub
     Private Sub Parametrizacion_Forma()
         tsbMonitor.Enabled = P_MP
@@ -1986,7 +1955,7 @@ Public Class MenuPTE
         ProduccionSeparadaABC.OrdenProduccion = TOrden.Text.Trim
         ProduccionSeparadaABC.FH_Registro = DateTime.Now.ToString("yyyyMMdd HH:mm:ss")
         Try
-            'OperacionExtrusion.ABC(1)
+            OperacionExtrusionPeru.ABC(1)
         Catch ex As Exception
 
         End Try
@@ -2010,10 +1979,17 @@ Public Class MenuPTE
             PassNotifier.Focus()
         End If
     End Sub
+
 #End Region
 
-    Private Sub MP_CON_PROD_Click(sender As Object, e As EventArgs) Handles MP_CON_PROD.Click
-        'Permiso.Accesos("MP_CON_PROD", "1", SessionUser._sIdPerfil, "E", "Consulta Produccion / Scrap ")
+    Private Sub cmbTipoScrap_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbTipoScrap.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
 
+    Private Sub cmbDefectoScrap_Leave(sender As Object, e As EventArgs) Handles cmbDefectoScrap.Leave
+        OperacionExtrusionPeru.TipoScrap(cmbTipoScrap, "E", "S", 2)
     End Sub
 End Class

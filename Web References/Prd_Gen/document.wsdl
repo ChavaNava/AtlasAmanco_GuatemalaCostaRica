@@ -146,7 +146,7 @@
   </wsdl:binding>
   <wsdl:service name="ZGLMX_ATLAS_GR">
     <wsdl:port name="ZGLMX_ATLAS_GR" binding="tns:ZGLMX_ATLAS_GR">
-      <soap:address location="http://mxslx140.mexichem.corp:8006/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr" />
+      <soap:address location="http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_atlas_gr/zglmx_atlas_gr" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

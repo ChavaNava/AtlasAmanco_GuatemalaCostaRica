@@ -2,6 +2,7 @@ Imports System.Configuration
 Imports System.Data.SqlClient
 Imports Utili_Generales
 Imports SQL_DATA
+Imports Atlas.Accesos
 Imports Atlas.Accesos.CLVarGlobales
 Public Class FrmAdminODF
 #Region "Variables de Miembro"

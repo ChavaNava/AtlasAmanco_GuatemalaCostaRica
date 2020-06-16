@@ -37,7 +37,12 @@ Public Class FrmTiemposAlta
     End Sub
     Private Sub cbSinOrden_CheckedChanged(sender As Object, e As EventArgs) Handles cbSinOrden.CheckedChanged
         If cbSinOrden.Checked Then
-            txtOrden.Text = "99999991"
+            If EXTINY = 1 Then
+                txtOrden.Text = "99999991"
+            Else
+                txtOrden.Text = "99999992"
+            End If
+
             txtOrden.Enabled = False
             BloqueCamposSinOrden()
 
@@ -77,30 +82,21 @@ Public Class FrmTiemposAlta
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         LoadingForm.ShowLoading()
 
-        Select Case cbSinOrden.Checked
-            Case Is = True
-                Tiemposabc.iPuestoTrabajo = ReadWorkCenter._rIdPuestoTrabajo.Trim
-                Tiemposabc.iOrden_Produccion = txtOrden.Text.Trim
-                Tiemposabc.iTurno = cmbTurno.SelectedValue
-                Tiemposabc.iHorasProdParo = txtHoras.Text.Trim
-                Tiemposabc.iFechaRegistra = DTP_FI.Value.ToString("yyyyMMdd HH:mm:ss")
-                Tiemposabc.iUserRegistra = LoginNotifier._nAlias
-                Tiemposabc.iIdGrupo = ReadWorkCenter._rIdGrupProd
-                Tiemposabc.iIdSeccion = ReadWorkCenter._rIdSeccion.Trim
-                Tiemposabc.iIdGrupoMaterial = ReadWorkCenter._rIdGrupMaterial
-            Case Is = False
-                Tiemposabc.iPuestoTrabajo = ReadOrderProducction._rIdPuestoTrabajo.Trim
-                Tiemposabc.iOrden_Produccion = txtOrden.Text.Trim
-                Tiemposabc.iTurno = cmbTurno.SelectedValue
-                Tiemposabc.iHorasProdParo = txtHoras.Text.Trim
-                Tiemposabc.iFechaRegistra = DTP_FI.Value.ToString("yyyyMMdd HH:mm:ss")
-                Tiemposabc.iUserRegistra = LoginNotifier._nAlias
-                Tiemposabc.iIdGrupo = ReadOrderProducction._rIdGrupProd
-                Tiemposabc.iIdSeccion = ReadOrderProducction._rIdSeccion.Trim
-                Tiemposabc.iIdGrupoMaterial = ReadOrderProducction._rIdGrupMaterial
-        End Select
+        Tiemposabc.iPuestoTrabajo = cmbPuestoTrabajo.Text.Trim
+        Tiemposabc.iOrden_Produccion = txtOrden.Text.Trim
+        Tiemposabc.iTurno = cmbTurno.SelectedValue
+        Tiemposabc.iHorasProdParo = txtHoras.Text.Trim
+        Tiemposabc.iFechaAlta = DTP_FI.Value.ToString("yyyy-MM-dd")
+        Tiemposabc.iFechaRegistra = Date.Today.ToString("yyyy-MM-dd")
+        Tiemposabc.iHoraRegistra = Date.Now.TimeOfDay.ToString()
+        Tiemposabc.iUserRegistra = LoginNotifier._nAlias
+        Tiemposabc.iIdGrupo = txtIdArea.Text.Trim
+        Tiemposabc.iIdSeccion = txtIdSeccion.Text.Trim
+        Tiemposabc.iIdGrupoMaterial = cmbGpoDiametro.Text.Trim
+
         'Valida que se halla seleccionado GrupoCausa y Causa
         If cmbGpoCausa.SelectedValue = Nothing Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("Debe Seleccionar un Grupo de Causas ", "Grupo Causas", MensajeBox.TipoMensaje.Information)
             Return
         Else
@@ -108,6 +104,7 @@ Public Class FrmTiemposAlta
         End If
 
         If cmbConceptoParo.SelectedValue = Nothing Then
+            LoadingForm.CloseForm()
             MensajeBox.Mostrar("Debe Seleccionar una causa ", "Causa", MensajeBox.TipoMensaje.Information)
             Return
         Else
@@ -153,14 +150,15 @@ Public Class FrmTiemposAlta
             Select Case OperacionTiempos.LeerOrdenProduccion(txtOrden.Text.Trim, 9)
                 Case Is = True
                     FechaAlta = DTP_FI.Value.ToString("yyyy-MM-dd")
-                    Select Case OperacionTiempos.ValidaHoras(3, cmbTurno.Text, txtOrden.Text, FechaAlta)
+                    Select Case OperacionTiempos.ValidaHoras(3, cmbTurno.Text, txtOrden.Text, ReadOrderProducction._rIdPuestoTrabajo, FechaAlta)
                         Case Is = True
                             Select Case TiemposReportados._Horas
                                 Case Is = "8.00"
                                     txtHorasRegistradas.Text = TiemposReportados._Horas.Trim
                                     MensajeBox.Mostrar("La orden, Fecha y Turno ya tiene registradas sus 8 horas ", "Aviso", MensajeBox.TipoMensaje.Information)
                                     txtHoras.Text = (8 - TiemposReportados._Horas.Trim)
-                                    Return
+                                    Accion = "0"
+                                    Close()
                                 Case Is < "8"
                                     txtHorasRegistradas.Text = TiemposReportados._Horas.Trim
                                     txtHoras.Text = (8 - TiemposReportados._Horas.Trim)
@@ -188,7 +186,7 @@ Public Class FrmTiemposAlta
             Select Case OperacionTiempos.LeerEquipo(cmbPuestoTrabajo.Text.Trim, 10)
                 Case Is = True
                     FechaAlta = DTP_FI.Value.ToString("yyyy-MM-dd")
-                    Select Case OperacionTiempos.ValidaHoras(3, cmbTurno.Text, txtOrden.Text, FechaAlta)
+                    Select Case OperacionTiempos.ValidaHoras(3, cmbTurno.Text, txtOrden.Text, cmbPuestoTrabajo.Text.Trim, FechaAlta)
                         Case Is = True
                             Select Case TiemposReportados._Horas
                                 Case Is = "8.00"
@@ -273,6 +271,7 @@ Public Class FrmTiemposAlta
         txtSeccion.Enabled = False
         txtIdProducto.Enabled = False
         txtProducto.Enabled = False
+        cmbGpoDiametro.Enabled = False
     End Sub
     Private Sub cmbDefault()
         OperacionTiempos.Turnos(cmbTurno)

@@ -204,8 +204,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("http://mxslx140.mexichem.corp:8006/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglmx_at"& _ 
-            "las_gr/zglmx_atlas_gr")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://mexcip010000.mexichem.corp:8001/sap/bc/srt/rfc/sap/zglmx_atlas_gr/300/zglm"& _ 
+            "x_atlas_gr/zglmx_atlas_gr")>  _
         Public ReadOnly Property A_tlas_Prd_Gen_ZGLMX_ATLAS_GR() As String
             Get
                 Return CType(Me("A_tlas_Prd_Gen_ZGLMX_ATLAS_GR"),String)

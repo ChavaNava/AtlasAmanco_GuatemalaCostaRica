@@ -38,7 +38,7 @@ Partial Class FrmTiemposBaja
         Me.txtConcepto = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtIdTiempo = New System.Windows.Forms.TextBox()
+        Me.txtIdFolio = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -48,7 +48,7 @@ Partial Class FrmTiemposBaja
         Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
-        Me.btnCancelar.Location = New System.Drawing.Point(342, 212)
+        Me.btnCancelar.Location = New System.Drawing.Point(380, 212)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(170, 49)
         Me.btnCancelar.TabIndex = 15
@@ -63,7 +63,7 @@ Partial Class FrmTiemposBaja
         Me.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.Image = CType(resources.GetObject("btnAceptar.Image"), System.Drawing.Image)
-        Me.btnAceptar.Location = New System.Drawing.Point(12, 212)
+        Me.btnAceptar.Location = New System.Drawing.Point(64, 212)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(170, 49)
         Me.btnAceptar.TabIndex = 14
@@ -84,130 +84,130 @@ Partial Class FrmTiemposBaja
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 88)
+        Me.Label2.Location = New System.Drawing.Point(28, 88)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 16)
+        Me.Label2.Size = New System.Drawing.Size(143, 20)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Fecha Registro:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(330, 116)
+        Me.Label3.Location = New System.Drawing.Point(395, 88)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 16)
+        Me.Label3.Size = New System.Drawing.Size(63, 20)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Turno:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 116)
+        Me.Label4.Location = New System.Drawing.Point(29, 116)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(119, 16)
+        Me.Label4.Size = New System.Drawing.Size(142, 20)
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Puesto Trabajo:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(246, 88)
+        Me.Label5.Location = New System.Drawing.Point(292, 60)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(136, 16)
+        Me.Label5.Size = New System.Drawing.Size(166, 20)
         Me.Label5.TabIndex = 19
         Me.Label5.Text = "Orden Producción:"
         '
         'txtFecha
         '
-        Me.txtFecha.Location = New System.Drawing.Point(132, 85)
+        Me.txtFecha.Location = New System.Drawing.Point(177, 85)
         Me.txtFecha.Name = "txtFecha"
         Me.txtFecha.ReadOnly = True
-        Me.txtFecha.Size = New System.Drawing.Size(107, 22)
+        Me.txtFecha.Size = New System.Drawing.Size(107, 26)
         Me.txtFecha.TabIndex = 21
         '
         'txtOrden
         '
-        Me.txtOrden.Location = New System.Drawing.Point(388, 85)
+        Me.txtOrden.Location = New System.Drawing.Point(464, 57)
         Me.txtOrden.Name = "txtOrden"
         Me.txtOrden.ReadOnly = True
-        Me.txtOrden.Size = New System.Drawing.Size(124, 22)
+        Me.txtOrden.Size = New System.Drawing.Size(124, 26)
         Me.txtOrden.TabIndex = 22
         '
         'txtEquipo
         '
-        Me.txtEquipo.Location = New System.Drawing.Point(132, 113)
+        Me.txtEquipo.Location = New System.Drawing.Point(177, 113)
         Me.txtEquipo.Name = "txtEquipo"
         Me.txtEquipo.ReadOnly = True
-        Me.txtEquipo.Size = New System.Drawing.Size(153, 22)
+        Me.txtEquipo.Size = New System.Drawing.Size(153, 26)
         Me.txtEquipo.TabIndex = 23
         '
         'txtTurno
         '
-        Me.txtTurno.Location = New System.Drawing.Point(388, 113)
+        Me.txtTurno.Location = New System.Drawing.Point(464, 85)
         Me.txtTurno.Name = "txtTurno"
         Me.txtTurno.ReadOnly = True
-        Me.txtTurno.Size = New System.Drawing.Size(45, 22)
+        Me.txtTurno.Size = New System.Drawing.Size(45, 26)
         Me.txtTurno.TabIndex = 24
         '
         'txtHoras
         '
-        Me.txtHoras.Location = New System.Drawing.Point(132, 141)
+        Me.txtHoras.Location = New System.Drawing.Point(177, 141)
         Me.txtHoras.Name = "txtHoras"
         Me.txtHoras.ReadOnly = True
-        Me.txtHoras.Size = New System.Drawing.Size(77, 22)
+        Me.txtHoras.Size = New System.Drawing.Size(77, 26)
         Me.txtHoras.TabIndex = 25
         '
         'txtConcepto
         '
-        Me.txtConcepto.Location = New System.Drawing.Point(132, 169)
+        Me.txtConcepto.Location = New System.Drawing.Point(177, 169)
         Me.txtConcepto.Name = "txtConcepto"
         Me.txtConcepto.ReadOnly = True
-        Me.txtConcepto.Size = New System.Drawing.Size(380, 22)
+        Me.txtConcepto.Size = New System.Drawing.Size(411, 26)
         Me.txtConcepto.TabIndex = 26
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(72, 144)
+        Me.Label6.Location = New System.Drawing.Point(105, 144)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(54, 16)
+        Me.Label6.Size = New System.Drawing.Size(66, 20)
         Me.Label6.TabIndex = 27
         Me.Label6.Text = "Horas:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(11, 172)
+        Me.Label7.Location = New System.Drawing.Point(32, 172)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(115, 16)
+        Me.Label7.Size = New System.Drawing.Size(139, 20)
         Me.Label7.TabIndex = 28
         Me.Label7.Text = "Concepto Paro:"
         '
-        'txtIdTiempo
+        'txtIdFolio
         '
-        Me.txtIdTiempo.Location = New System.Drawing.Point(132, 57)
-        Me.txtIdTiempo.Name = "txtIdTiempo"
-        Me.txtIdTiempo.ReadOnly = True
-        Me.txtIdTiempo.Size = New System.Drawing.Size(77, 22)
-        Me.txtIdTiempo.TabIndex = 29
+        Me.txtIdFolio.Location = New System.Drawing.Point(177, 57)
+        Me.txtIdFolio.Name = "txtIdFolio"
+        Me.txtIdFolio.ReadOnly = True
+        Me.txtIdFolio.Size = New System.Drawing.Size(77, 26)
+        Me.txtIdFolio.TabIndex = 29
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(79, 60)
+        Me.Label8.Location = New System.Drawing.Point(115, 60)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(47, 16)
+        Me.Label8.Size = New System.Drawing.Size(56, 20)
         Me.Label8.TabIndex = 30
         Me.Label8.Text = "Folio:"
         '
         'FrmTiemposBaja
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.AliceBlue
-        Me.ClientSize = New System.Drawing.Size(524, 273)
+        Me.ClientSize = New System.Drawing.Size(657, 273)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.txtIdTiempo)
+        Me.Controls.Add(Me.txtIdFolio)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtConcepto)
@@ -249,6 +249,6 @@ Partial Class FrmTiemposBaja
     Friend WithEvents txtConcepto As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents txtIdTiempo As System.Windows.Forms.TextBox
+    Friend WithEvents txtIdFolio As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

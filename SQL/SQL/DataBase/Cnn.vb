@@ -90,4 +90,5 @@ Public Class Cnn
         End Try
         Return LecturaBD
     End Function
+
 End Class

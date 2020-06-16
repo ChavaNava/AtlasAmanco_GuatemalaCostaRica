@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports Utili_Generales
-Public Class Inyeccion
+Imports Atlas.Accesos
+Imports Atlas.Accesos.CL_PermisosPesajeTerrestre
+Public Class ProcesInyeccion
 #Region "Variables de miembro"
 
 #End Region
@@ -79,7 +81,6 @@ Public Class Inyeccion
     Public Shared Sub LimpiarForm(Frm As Form)
         Utili_Generales.FrontUtils.LimpiarText_Inyeccion(Frm)
     End Sub
-
 
     Public Shared Sub Scrap_Detalle(ByVal DataGV As DataGridView, FI As String, FF As String, Usuario As String)
         Dim Q As String
@@ -191,6 +192,7 @@ Public Class Inyeccion
         DataGV.Columns(1).HeaderText = "Descripción"
         DataGV.Columns(2).HeaderText = "Total"
     End Sub
+
 #End Region
 
 

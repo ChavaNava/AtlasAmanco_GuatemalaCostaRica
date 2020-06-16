@@ -9,8 +9,10 @@ Imports System.Diagnostics
 Imports Utili_Generales
 Imports Reporting
 Imports SQL_DATA
+Imports SQL_DATA.PublicVariables
 Imports System.Threading
 Imports Atlas.Accesos.CLVarGlobales
+Imports Atlas.Accesos.Puertos
 Imports Atlas.Accesos
 Imports Utili_Generales.ValueText
 Imports Atlas.AutorizaSobrePesos
@@ -678,6 +680,7 @@ Public Class MenuPTE
         End If
 
         'Se asigna valor a variables -------------------------------------------------------------
+        NPTExtrusion.iCentro = SessionUser._sCentro.Trim
         NPTExtrusion.iOrdenProduccion = TOrden.Text.Trim
         NPTExtrusion.iUsuario = CodOperador.Text.Trim
         NPTExtrusion.iTramos = TtramosNoti.Text.Trim
@@ -812,33 +815,32 @@ Public Class MenuPTE
             Case "True"
                 Select Case chkSAP.Checked
                     Case True
-                        Select Case SessionUser._sCentro.Trim
-                            Case Is <> "CR01", "A001"
-
-                                Label12.Visible = True
-                                Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                Dim Head As String
-                                Head = "28|" + TOrden.Text.Trim + _
-                                         "|" + TPesoNeto.Text.Trim + _
-                                         "|" + NPTExtrusion._iFechaPesajeSAP.Trim + _
-                                         "|" + CompuestoVirgen._IdCompOriginal.Trim + _
-                                         "|" + "S" + _
-                                         "|" + SessionUser._sAlias.Trim + _
-                                         "|" + FolioNotifica._rIdFolio.Trim + _
-                                         "|" + Reprocesado_Gen
-                                NotificationProcess.Notifica_SCE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, _
-                                                                 CodOperador.Text.Trim)
-                                Label12.Visible = False
-                                Label12.Text = ""
-                            Case Is = "CR01"
-                                LoadingForm.CloseForm()
-                                Label12.Visible = True
-                                Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
-                                CadenaTexto = SessionUser._sAlias.Trim & "|" & FolioNotifica._rIdFolio.Trim
-                                Consume_WS_CR01(SessionUser._sAlias, SessionUser._sAmbiente, CadenaTexto.Trim, Lt_Compuestos.Trim, NPTExtrusion._iFechaPesajeSAP_CR.Trim, TOrden.Text.Trim, TPesoNeto.Text, FolioNotifica._rIdFolio.Trim)
-                                Label12.Visible = False
-                                Label12.Text = ""
-                        End Select
+                        If NPTExtrusion._iCentro = "A001" Or NPTExtrusion._iCentro = "CR01" Then
+                            LoadingForm.CloseForm()
+                            Label12.Visible = True
+                            Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                            CadenaTexto = SessionUser._sAlias.Trim & "|" & FolioNotifica._rIdFolio.Trim
+                            Consume_WS_CR01(SessionUser._sAlias, SessionUser._sAmbiente, CadenaTexto.Trim, Lt_Compuestos.Trim, NPTExtrusion._iFechaPesajeSAP_CR.Trim, TOrden.Text.Trim, TPesoNeto.Text, FolioNotifica._rIdFolio.Trim)
+                            Label12.Visible = False
+                            Label12.Text = ""
+                        Else
+                            LoadingForm.CloseForm()
+                            Label12.Visible = True
+                            Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
+                            Dim Head As String
+                            Head = "28|" + TOrden.Text.Trim + _
+                                     "|" + TPesoNeto.Text.Trim + _
+                                     "|" + NPTExtrusion._iFechaPesajeSAP.Trim + _
+                                     "|" + CompuestoVirgen._IdCompOriginal.Trim + _
+                                     "|" + "S" + _
+                                     "|" + SessionUser._sAlias.Trim + _
+                                     "|" + FolioNotifica._rIdFolio.Trim + _
+                                     "|" + Reprocesado_Gen
+                            NotificationProcess.Notifica_SCE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, _
+                                                             CodOperador.Text.Trim)
+                            Label12.Visible = False
+                            Label12.Text = ""
+                        End If
                         'Lectura de WS Generico para realizar la notificación ------------------------------------
                     Case False
                         LoadingForm.CloseForm()
@@ -981,78 +983,78 @@ Public Class MenuPTE
             Select Case ProductionOrder.Existe(Orden_Prod, EXTINY)
                 Case Is = True
                     'Verifica si no esta inactiva
-                    Select Case OrdenProduccionExiste._Estatus
+                    'Select Case OrdenProduccionExiste._Estatus
+                    '    Case Is = True
+                    'If OrdenProduccionExiste._OrigenInformacion.Trim <> "A-tlas" Then
+                    '    'Verificar que la orden no este cerrada
+                    '    ProductionOrder.ValidaEstatus(Orden_Prod, "T")
+                    '    Estatus_Orden = OrdenProductionSap._IdStatus
+                    'Else
+                    'Estatus_Orden = "LIB."
+                    'End If
+
+                    'If Estatus_Orden = "LIB." Or Estatus_Orden = "ABIE" Then
+                    'Verficia la existencia del producto
+                    Select Case ProductionOrder.Existencia_Producto(EXTINY)
                         Case Is = True
-                            If OrdenProduccionExiste._OrigenInformacion.Trim <> "A-tlas" Then
-                                'Verificar que la orden no este cerrada
-                                ProductionOrder.ValidaEstatus(Orden_Prod, "T")
-                                Estatus_Orden = OrdenProductionSap._IdStatus
-                            Else
-                                Estatus_Orden = "LIB."
+                            'Lee la orden y presenta la información
+                            ProductionOrder.Read_Production_Order_Ext(Orden_Prod.Trim, Me, TCodPT, TCodPtDecr, TPtoTrabajo, _
+                                                                      TPesoTeorico, Tempaque, TCodAnillo, TDAnillo, TGrpprod, TGrupo, _
+                                                                      TSP_Permitido, TGrpproddesc, TNomPtoTrabajo)
+                            'Activa Combo Box de compuestos 1
+                            Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
+                            If TipoProd = "S" Then
+                                'Inicio ***************************************************************************************************
+                                'Se desactiva la opcion de tipo scrap, se determina se haga cuando selecciona el compuesto a consumir
+                                '02/Spet/2014 JJSM
+                                ''Activa Combo Box de Tipo Scrap                                   
+                                'Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, strPlanta.Trim, Seccion, TipoProd)
+                                'Fin ******************************************************************************************************
+                                'Activa Combo Box Causa de Scrap
+                                Catalogo_Causas.Combo_Causas(CB_Causas, "", Seccion.Trim, "SC", P_CD)
+                            End If
+                            TOrden.BackColor = Color.White
+                            'Activa Combo Box Operdores de Linea
+                            Select Case SessionUser._sCentro
+                                Case Is = "A013"
+                                    Catalogo_Operador_Puesto_Trabajo.CBOperadorLinea_PTSC(CB_Ope)
+                                Case Else
+                                    Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
+                            End Select
+                            'Consulta cantidades
+                            ProductionOrder.CalCantExt(Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
+                            'Porcentaje de avance de la orden
+                            ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
+                            'Asigan Peso Teorico
+                            PesoTeorico = "0" & TPesoTeorico.Text
+                            If RB_PT.Checked = True Then
+                                TtramosNoti.Focus()
                             End If
 
-                            If Estatus_Orden = "LIB." Or Estatus_Orden = "ABIE" Then
-                                'Verficia la existencia del producto
-                                Select Case ProductionOrder.Existencia_Producto(EXTINY)
-                                    Case Is = True
-                                        'Lee la orden y presenta la información
-                                        ProductionOrder.Read_Production_Order_Ext(Orden_Prod.Trim, Me, TCodPT, TCodPtDecr, TPtoTrabajo, _
-                                                                                  TPesoTeorico, Tempaque, TCodAnillo, TDAnillo, TGrpprod, TGrupo, _
-                                                                                  TSP_Permitido, TGrpproddesc, TNomPtoTrabajo)
-                                        'Activa Combo Box de compuestos 1
-                                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
-                                        If TipoProd = "S" Then
-                                            'Inicio ***************************************************************************************************
-                                            'Se desactiva la opcion de tipo scrap, se determina se haga cuando selecciona el compuesto a consumir
-                                            '02/Spet/2014 JJSM
-                                            ''Activa Combo Box de Tipo Scrap                                   
-                                            'Catalogo_Scrap.CB_Scrap(CB_TipoSc, SessionUser._sAlias.Trim, strPlanta.Trim, Seccion, TipoProd)
-                                            'Fin ******************************************************************************************************
-                                            'Activa Combo Box Causa de Scrap
-                                            Catalogo_Causas.Combo_Causas(CB_Causas, "", Seccion.Trim, "SC", P_CD)
-                                        End If
-                                        TOrden.BackColor = Color.White
-                                        'Activa Combo Box Operdores de Linea
-                                        Select Case SessionUser._sCentro
-                                            Case Is = "A013"
-                                                Catalogo_Operador_Puesto_Trabajo.CBOperadorLinea_PTSC(CB_Ope)
-                                            Case Else
-                                                Catalogo_Operador_Puesto_Trabajo.CB_Operador_Linea(CB_Ope, TipoProd)
-                                        End Select
-                                        'Consulta cantidades
-                                        ProductionOrder.CalCantExt(Orden_Prod, TCantProgra, TCantEntre, TCantEnproce, TCantPendiente, EXTINY)
-                                        'Porcentaje de avance de la orden
-                                        ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
-                                        'Asigan Peso Teorico
-                                        PesoTeorico = "0" & TPesoTeorico.Text
-                                        If RB_PT.Checked = True Then
-                                            TtramosNoti.Focus()
-                                        End If
-
-                                        If RB_SC.Checked = True Then
-                                            CB_Rack.Focus()
-                                        End If
-                                        LoadingForm.CloseForm()
-                                    Case Is = False
-                                        LoadingForm.CloseForm()
-                                        MensajeBox.Mostrar("El producto no esta dado de alta en A-tlas ", "Error", MensajeBox.TipoMensaje.Critical)
-                                        TOrden.Focus()
-                                        Exit Sub
-                                End Select
-                            Else
-                                LoadingForm.CloseForm()
-                                MensajeBox.Mostrar("La orden no puede ser notificada esta en estatus: " & OrdenProductionSap._Status & " ", " " & OrdenProductionSap._IdStatus & " ", MensajeBox.TipoMensaje.Critical)
-                                TOrden.Text = ""
-                                TOrden.Focus()
-                                Exit Sub
+                            If RB_SC.Checked = True Then
+                                CB_Rack.Focus()
                             End If
+                            LoadingForm.CloseForm()
                         Case Is = False
                             LoadingForm.CloseForm()
-                            MensajeBox.Mostrar("La orden esta inactiva", "Estatus", MensajeBox.TipoMensaje.Information)
-                            TOrden.Text = ""
+                            MensajeBox.Mostrar("El producto no esta dado de alta en A-tlas ", "Error", MensajeBox.TipoMensaje.Critical)
                             TOrden.Focus()
                             Exit Sub
                     End Select
+                    'Else
+                    '    LoadingForm.CloseForm()
+                    '    MensajeBox.Mostrar("La orden no puede ser notificada esta en estatus: " & OrdenProductionSap._Status & " ", " " & OrdenProductionSap._IdStatus & " ", MensajeBox.TipoMensaje.Critical)
+                    '    TOrden.Text = ""
+                    '    TOrden.Focus()
+                    '    Exit Sub
+                    'End If
+                    '    Case Is = False
+                    '        LoadingForm.CloseForm()
+                    '        MensajeBox.Mostrar("La orden esta inactiva", "Estatus", MensajeBox.TipoMensaje.Information)
+                    '        TOrden.Text = ""
+                    '        TOrden.Focus()
+                    '        Exit Sub
+                    'End Select
                 Case Is = False
                     'Dar de alta la orden
                     LoadingForm.CloseForm()
@@ -1076,6 +1078,22 @@ Public Class MenuPTE
             Dim xPeso_Neto As Double
             Dim strOrden As String
             Dim aryTextFile() As String
+
+            'Porcentaje de avance de la orden
+            ProductionOrder.Porcentaje_Orden_Excedido(TCantEntre.Text, TtramosNoti.Text.Trim, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
+            'Se valida si requiere bloquear por excedente de producción
+            Select Case P_EP
+                Case Is = True
+                    If Porcentaje_Avance > 10 Then
+                        LoadingForm.CloseForm()
+                        MensajeBox.Mostrar("La orden con esta notificación se excede " & Porcentaje_Avance & " %, no se puede continuar con la notificación", "Aviso excedido" & Porcentaje_Avance & " % ", MensajeBox.TipoMensaje.Information)
+                        LimpiaObjetos()
+                        Asigna_Turno()
+                        TSobrePeso.BackColor = Color.White
+                        PassNotifier.Focus()
+                        Return
+                    End If
+            End Select
 
             xTramosNoti = "0" & TtramosNoti.Text.Trim
             xPeso_Neto = TPesoNeto.Text.Trim
@@ -1283,7 +1301,8 @@ Public Class MenuPTE
         Dim TPC As String = ""
         Dim TPC2 As String = ""
 
-        Cadena = FrmMain.SerialPort1.ReadExisting
+        'Cadena = FrmMain.SerialPort1.ReadExisting
+        Cadena = SerialPort_1.ReadExisting
 
         TPC = Chr(CH1)
         TPC2 = Chr(CH2)
@@ -1292,6 +1311,7 @@ Public Class MenuPTE
                 Lectura = Cadena.Substring((Cadena.IndexOf(TPC2) + AddChar), LenghtLec).Trim
             End If
         End If
+
         If SessionUser._sCentro.Trim = "GT01" Then
             TPesoBruto.Text = Format((Val(Lectura) / 10), xFormato)
         Else
@@ -1710,7 +1730,7 @@ Public Class MenuPTE
             MensajeBox.Mostrar("Ingrese un numero de Orden", "Aviso", MensajeBox.TipoMensaje.Exclamation)
             Exit Sub
         Else
-            'PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
+            PO.Actualiza_Orden_Produccion(TOrden.Text.Trim, "T")
             SQL_DATA.ProductionOrder.Act_Ins_ProductionOrder(TOrden.Text.Trim, TipoProd.Trim)
             LimpiaObjetos()
             MensajeBox.Mostrar("La orden de producción a sido actualizada ingrese nuevamente el numero de orden", "Actualizado", MensajeBox.TipoMensaje.Good)
@@ -1722,7 +1742,8 @@ Public Class MenuPTE
         Dim TPC As String = ""
         Dim TPC2 As String = ""
 
-        Cadena = FrmMain.SerialPort2.ReadExisting
+        'Cadena = FrmMain.SerialPort2.ReadExisting
+        Cadena = SerialPort_2.ReadExisting
 
         TPC = Chr(CH1)
         TPC2 = Chr(CH2)
@@ -1731,6 +1752,7 @@ Public Class MenuPTE
                 Lectura = Cadena.Substring((Cadena.IndexOf(TPC2) + AddChar), LenghtLec).Trim
             End If
         End If
+ 
         If SessionUser._sCentro.Trim = "GT01" Then
             TPesoBruto.Text = Format((Val(Lectura) / 10), xFormato)
         Else
@@ -1893,7 +1915,7 @@ Public Class MenuPTE
                 ls_Notificap.ZORDERID = Orden.Trim
                 ls_Notificap.ZRECOVERED = PesoNeto
                 ls_Notificap.ZVIRGIN = 0.0
-                lo_wsamancomxp.Credentials = New System.Net.NetworkCredential("ATLAS", "m3x1ch3m4tl4s")
+                lo_wsamancomxp.Credentials = New System.Net.NetworkCredential("libra", "mxlibra$")
                 ls_resultp = lo_wsamancomxp.ZPPMXF001(CadenaTexto, Lt_Compuestos, ls_Notificap, ls_returnp)
                 TNumNoti = ls_resultp.RUECK
                 TConsNoti = ls_resultp.RMZHL
@@ -1929,7 +1951,7 @@ Public Class MenuPTE
                     End If
                 End If
             Catch ex As Exception
-                MsgBox("No se realizar notificación a SAP ", MsgBoxStyle.Critical, ex.Message)
+                MensajeBox.Mostrar(ex.ToString, "No se realizar notificación a SAP", MensajeBox.TipoMensaje.Critical)
             End Try
         End If
     End Sub
@@ -2109,7 +2131,7 @@ Public Class MenuPTE
             Else
                 Select Case SessionUser._sCentro.Trim
                     Case Is = "PE01", "PE12"
-                        Catalogo_TipoScrap.CBTipoScrap(CB_TipoSc, "E", "S", TCScrap.Text.Trim)
+                        Catalogo_TipoScrap.TipoScrap(CB_TipoSc, "E", "S", TCScrap.Text.Trim, 1)
                         If CB_TipoSc.SelectedValue = Nothing Then
                             MensajeBox.Mostrar("No Existe Tipo Scrap seleccionado", "Aviso", MensajeBox.TipoMensaje.Exclamation)
                             TCScrap.Text = ""
@@ -2123,5 +2145,9 @@ Public Class MenuPTE
 
     Private Sub MPE_A_Click(sender As Object, e As EventArgs) Handles MPE_A.Click
         'Consultations.Permissions.Access("MP_MPEA", "1", SessionUser._sIdPerfil, "E", "Monitor Producción ", 1)
+    End Sub
+
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+
     End Sub
 End Class

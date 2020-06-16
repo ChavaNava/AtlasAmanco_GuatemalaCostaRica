@@ -333,12 +333,12 @@
         End Set
     End Property
 
-    Public Shared _iTipoScrap As String
-    Public Shared Property iTipoScrap() As String
+    Public Shared _iTipoScrap As Integer
+    Public Shared Property iTipoScrap() As Integer
         Get
             Return _iTipoScrap
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             _iTipoScrap = value
         End Set
     End Property
@@ -400,6 +400,26 @@
         End Get
         Set(ByVal value As String)
             _iLtCompuestos = value
+        End Set
+    End Property
+
+    Public Shared _iNotificacion As String
+    Public Shared Property iNotificacion() As String
+        Get
+            Return _iNotificacion
+        End Get
+        Set(ByVal value As String)
+            _iNotificacion = value
+        End Set
+    End Property
+
+    Public Shared _iConsecutivo As String
+    Public Shared Property iConsecutivo() As String
+        Get
+            Return _iConsecutivo
+        End Get
+        Set(ByVal value As String)
+            _iConsecutivo = value
         End Set
     End Property
 End Class

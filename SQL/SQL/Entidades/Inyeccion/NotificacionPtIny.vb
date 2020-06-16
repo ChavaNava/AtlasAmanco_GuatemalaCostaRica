@@ -3,13 +3,23 @@
 
     End Sub
 
-    Public Shared _Orden As String
-    Public Shared Property Orden() As String
+    Public Shared _OrdenProduccion As String
+    Public Shared Property OrdenProduccion() As String
         Get
-            Return _Orden
+            Return _OrdenProduccion
         End Get
         Set(ByVal value As String)
-            _Orden = value
+            _OrdenProduccion = value
+        End Set
+    End Property
+
+    Public Shared _Centro As String
+    Public Shared Property Centro() As String
+        Get
+            Return _Centro
+        End Get
+        Set(ByVal value As String)
+            _Centro = value
         End Set
     End Property
 
@@ -194,6 +204,16 @@
         End Set
     End Property
 
+    Public Shared _Tipo_PT As String
+    Public Shared Property Tipo_PT() As String
+        Get
+            Return _Tipo_PT
+        End Get
+        Set(ByVal value As String)
+            _Tipo_PT = value
+        End Set
+    End Property
+
     Public Shared _StatusSobrepeso As String
     Public Shared Property StatusSobrepeso() As String
         Get
@@ -241,16 +261,6 @@
         End Get
         Set(ByVal value As String)
             _Pzas_B = value
-        End Set
-    End Property
-
-    Public Shared _LTCompuestos As String
-    Public Shared Property LTCompuestos() As String
-        Get
-            Return _LTCompuestos
-        End Get
-        Set(ByVal value As String)
-            _LTCompuestos = value
         End Set
     End Property
 
@@ -341,6 +351,96 @@
         End Get
         Set(ByVal value As String)
             _Cant3 = value
+        End Set
+    End Property
+
+    Public Shared _LTCompuestos As String
+    Public Shared Property LTCompuestos() As String
+        Get
+            Return _LTCompuestos
+        End Get
+        Set(ByVal value As String)
+            _LTCompuestos = value
+        End Set
+    End Property
+
+    Public Shared _Version As String
+    Public Shared Property Version() As String
+        Get
+            Return _Version
+        End Get
+        Set(ByVal value As String)
+            _Version = value
+        End Set
+    End Property
+
+    Public Shared _FolioPesaje As String
+    Public Shared Property FolioPesaje() As String
+        Get
+            Return _FolioPesaje
+        End Get
+        Set(ByVal value As String)
+            _FolioPesaje = value
+        End Set
+    End Property
+
+    Public Shared _FolioVale As String
+    Public Shared Property FolioVale() As String
+        Get
+            Return _FolioVale
+        End Get
+        Set(ByVal value As String)
+            _FolioVale = value
+        End Set
+    End Property
+
+    Public Shared _OperadortPtoTrabajo As String
+    Public Shared Property OperadortPtoTrabajo() As String
+        Get
+            Return _OperadortPtoTrabajo
+        End Get
+        Set(ByVal value As String)
+            _OperadortPtoTrabajo = value
+        End Set
+    End Property
+
+    Public Shared _Notifica As String
+    Public Shared Property Notifica() As String
+        Get
+            Return _Notifica
+        End Get
+        Set(ByVal value As String)
+            _Notifica = value
+        End Set
+    End Property
+
+    Public Shared _MsgSAP As String
+    Public Shared Property MsgSAP() As String
+        Get
+            Return _MsgSAP
+        End Get
+        Set(ByVal value As String)
+            _MsgSAP = value
+        End Set
+    End Property
+
+    Public Shared _DocSAP As String
+    Public Shared Property DocSAP() As String
+        Get
+            Return _DocSAP
+        End Get
+        Set(ByVal value As String)
+            _DocSAP = value
+        End Set
+    End Property
+
+    Public Shared _NumSAP As String
+    Public Shared Property NumSAP() As String
+        Get
+            Return _NumSAP
+        End Get
+        Set(ByVal value As String)
+            _NumSAP = value
         End Set
     End Property
 

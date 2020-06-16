@@ -96,28 +96,28 @@ Partial Class FrmConsultasExt
         '
         Me.Btn_Cerrar.Image = CType(resources.GetObject("Btn_Cerrar.Image"), System.Drawing.Image)
         Me.Btn_Cerrar.Name = "Btn_Cerrar"
-        Me.Btn_Cerrar.Size = New System.Drawing.Size(82, 24)
+        Me.Btn_Cerrar.Size = New System.Drawing.Size(94, 25)
         Me.Btn_Cerrar.Text = "Cerrar"
         '
         'Btn_Consulta
         '
         Me.Btn_Consulta.Image = CType(resources.GetObject("Btn_Consulta.Image"), System.Drawing.Image)
         Me.Btn_Consulta.Name = "Btn_Consulta"
-        Me.Btn_Consulta.Size = New System.Drawing.Size(96, 24)
+        Me.Btn_Consulta.Size = New System.Drawing.Size(117, 25)
         Me.Btn_Consulta.Text = "Consulta"
         '
         'Btn_Elimina
         '
         Me.Btn_Elimina.Image = CType(resources.GetObject("Btn_Elimina.Image"), System.Drawing.Image)
         Me.Btn_Elimina.Name = "Btn_Elimina"
-        Me.Btn_Elimina.Size = New System.Drawing.Size(141, 24)
+        Me.Btn_Elimina.Size = New System.Drawing.Size(171, 25)
         Me.Btn_Elimina.Text = "Reversa Pesaje"
         '
         'Btn_Export
         '
         Me.Btn_Export.Image = CType(resources.GetObject("Btn_Export.Image"), System.Drawing.Image)
         Me.Btn_Export.Name = "Btn_Export"
-        Me.Btn_Export.Size = New System.Drawing.Size(138, 24)
+        Me.Btn_Export.Size = New System.Drawing.Size(172, 25)
         Me.Btn_Export.Text = "Exporta a Excel"
         '
         'MenuStrip1
@@ -127,14 +127,14 @@ Partial Class FrmConsultasExt
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Btn_Cerrar, Me.Btn_Consulta, Me.Btn_Elimina, Me.Btn_Imprimir, Me.Btn_Export})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1684, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1914, 29)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'Btn_Imprimir
         '
         Me.Btn_Imprimir.Name = "Btn_Imprimir"
-        Me.Btn_Imprimir.Size = New System.Drawing.Size(138, 24)
+        Me.Btn_Imprimir.Size = New System.Drawing.Size(157, 25)
         Me.Btn_Imprimir.Text = "Imprimir Boleta"
         '
         'Panel1
@@ -142,12 +142,12 @@ Partial Class FrmConsultasExt
         Me.Panel1.Controls.Add(Me.GB_Msges)
         Me.Panel1.Controls.Add(Me.GB_Consulta)
         Me.Panel1.Controls.Add(Me.GB_Not)
-        Me.Panel1.Controls.Add(Me.GB_Totales)
         Me.Panel1.Controls.Add(Me.GB_Cant)
+        Me.Panel1.Controls.Add(Me.GB_Totales)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 28)
+        Me.Panel1.Location = New System.Drawing.Point(0, 29)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1684, 301)
+        Me.Panel1.Size = New System.Drawing.Size(1914, 301)
         Me.Panel1.TabIndex = 6
         '
         'GB_Msges
@@ -158,7 +158,7 @@ Partial Class FrmConsultasExt
         Me.GB_Msges.Controls.Add(Me.TMensajes)
         Me.GB_Msges.Location = New System.Drawing.Point(3, 230)
         Me.GB_Msges.Name = "GB_Msges"
-        Me.GB_Msges.Size = New System.Drawing.Size(1684, 58)
+        Me.GB_Msges.Size = New System.Drawing.Size(1914, 58)
         Me.GB_Msges.TabIndex = 12
         Me.GB_Msges.TabStop = False
         Me.GB_Msges.Text = "Mensajes y Observaciones"
@@ -168,7 +168,7 @@ Partial Class FrmConsultasExt
         Me.TObservaciones.Location = New System.Drawing.Point(658, 21)
         Me.TObservaciones.Name = "TObservaciones"
         Me.TObservaciones.ReadOnly = True
-        Me.TObservaciones.Size = New System.Drawing.Size(620, 22)
+        Me.TObservaciones.Size = New System.Drawing.Size(620, 26)
         Me.TObservaciones.TabIndex = 2
         '
         'TMensajes
@@ -176,7 +176,7 @@ Partial Class FrmConsultasExt
         Me.TMensajes.Location = New System.Drawing.Point(18, 21)
         Me.TMensajes.Name = "TMensajes"
         Me.TMensajes.ReadOnly = True
-        Me.TMensajes.Size = New System.Drawing.Size(620, 22)
+        Me.TMensajes.Size = New System.Drawing.Size(620, 26)
         Me.TMensajes.TabIndex = 0
         '
         'GB_Consulta
@@ -189,7 +189,7 @@ Partial Class FrmConsultasExt
         Me.GB_Consulta.Controls.Add(Me.DTP_FI)
         Me.GB_Consulta.Location = New System.Drawing.Point(0, 0)
         Me.GB_Consulta.Name = "GB_Consulta"
-        Me.GB_Consulta.Size = New System.Drawing.Size(303, 224)
+        Me.GB_Consulta.Size = New System.Drawing.Size(359, 224)
         Me.GB_Consulta.TabIndex = 11
         Me.GB_Consulta.TabStop = False
         Me.GB_Consulta.Text = "Consulta"
@@ -197,26 +197,26 @@ Partial Class FrmConsultasExt
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(10, 40)
+        Me.Label3.Location = New System.Drawing.Point(12, 99)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(154, 16)
+        Me.Label3.Size = New System.Drawing.Size(186, 20)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Orden de Producción"
         '
         'TOrdProd
         '
-        Me.TOrdProd.Location = New System.Drawing.Point(176, 37)
+        Me.TOrdProd.Location = New System.Drawing.Point(204, 96)
         Me.TOrdProd.Name = "TOrdProd"
-        Me.TOrdProd.Size = New System.Drawing.Size(109, 22)
+        Me.TOrdProd.Size = New System.Drawing.Size(144, 26)
         Me.TOrdProd.TabIndex = 21
         Me.TOrdProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 96)
+        Me.Label2.Location = New System.Drawing.Point(43, 69)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(129, 16)
+        Me.Label2.Size = New System.Drawing.Size(155, 20)
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "Fecha Fin Pesaje"
         '
@@ -224,17 +224,17 @@ Partial Class FrmConsultasExt
         '
         Me.DTP_FF.CustomFormat = "yyyy-MM-dd"
         Me.DTP_FF.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP_FF.Location = New System.Drawing.Point(176, 93)
+        Me.DTP_FF.Location = New System.Drawing.Point(204, 64)
         Me.DTP_FF.Name = "DTP_FF"
-        Me.DTP_FF.Size = New System.Drawing.Size(109, 22)
+        Me.DTP_FF.Size = New System.Drawing.Size(144, 26)
         Me.DTP_FF.TabIndex = 19
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 68)
+        Me.Label1.Location = New System.Drawing.Point(24, 37)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(145, 16)
+        Me.Label1.Size = New System.Drawing.Size(174, 20)
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "Fecha Inicio Pesaje"
         '
@@ -242,9 +242,9 @@ Partial Class FrmConsultasExt
         '
         Me.DTP_FI.CustomFormat = "yyyy-MM-dd"
         Me.DTP_FI.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTP_FI.Location = New System.Drawing.Point(176, 65)
+        Me.DTP_FI.Location = New System.Drawing.Point(204, 32)
         Me.DTP_FI.Name = "DTP_FI"
-        Me.DTP_FI.Size = New System.Drawing.Size(109, 22)
+        Me.DTP_FI.Size = New System.Drawing.Size(144, 26)
         Me.DTP_FI.TabIndex = 17
         '
         'GB_Not
@@ -257,9 +257,9 @@ Partial Class FrmConsultasExt
         Me.GB_Not.Controls.Add(Me.Label17)
         Me.GB_Not.Controls.Add(Me.TOrden)
         Me.GB_Not.Controls.Add(Me.Label16)
-        Me.GB_Not.Location = New System.Drawing.Point(1423, 0)
+        Me.GB_Not.Location = New System.Drawing.Point(1164, 0)
         Me.GB_Not.Name = "GB_Not"
-        Me.GB_Not.Size = New System.Drawing.Size(261, 224)
+        Me.GB_Not.Size = New System.Drawing.Size(326, 224)
         Me.GB_Not.TabIndex = 8
         Me.GB_Not.TabStop = False
         Me.GB_Not.Text = "Notificación"
@@ -269,9 +269,9 @@ Partial Class FrmConsultasExt
         Me.lblGraba.AutoSize = True
         Me.lblGraba.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGraba.ForeColor = System.Drawing.Color.Black
-        Me.lblGraba.Location = New System.Drawing.Point(166, 191)
+        Me.lblGraba.Location = New System.Drawing.Point(186, 184)
         Me.lblGraba.Name = "lblGraba"
-        Me.lblGraba.Size = New System.Drawing.Size(69, 17)
+        Me.lblGraba.Size = New System.Drawing.Size(81, 20)
         Me.lblGraba.TabIndex = 170
         Me.lblGraba.Text = "Notificar"
         '
@@ -280,7 +280,7 @@ Partial Class FrmConsultasExt
         Me.Btn_Notif.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Btn_Notif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Btn_Notif.Enabled = False
-        Me.Btn_Notif.Location = New System.Drawing.Point(169, 132)
+        Me.Btn_Notif.Location = New System.Drawing.Point(195, 125)
         Me.Btn_Notif.Name = "Btn_Notif"
         Me.Btn_Notif.Size = New System.Drawing.Size(60, 56)
         Me.Btn_Notif.TabIndex = 168
@@ -289,10 +289,10 @@ Partial Class FrmConsultasExt
         'TPN
         '
         Me.TPN.BackColor = System.Drawing.Color.Yellow
-        Me.TPN.Location = New System.Drawing.Point(149, 93)
+        Me.TPN.Location = New System.Drawing.Point(172, 93)
         Me.TPN.Name = "TPN"
         Me.TPN.ReadOnly = True
-        Me.TPN.Size = New System.Drawing.Size(100, 22)
+        Me.TPN.Size = New System.Drawing.Size(100, 26)
         Me.TPN.TabIndex = 44
         Me.TPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -301,17 +301,17 @@ Partial Class FrmConsultasExt
         Me.Label18.AutoSize = True
         Me.Label18.Location = New System.Drawing.Point(6, 96)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(81, 16)
+        Me.Label18.Size = New System.Drawing.Size(96, 20)
         Me.Label18.TabIndex = 43
         Me.Label18.Text = "Peso Neto"
         '
         'TTramos
         '
         Me.TTramos.BackColor = System.Drawing.Color.Yellow
-        Me.TTramos.Location = New System.Drawing.Point(149, 65)
+        Me.TTramos.Location = New System.Drawing.Point(172, 65)
         Me.TTramos.Name = "TTramos"
         Me.TTramos.ReadOnly = True
-        Me.TTramos.Size = New System.Drawing.Size(100, 22)
+        Me.TTramos.Size = New System.Drawing.Size(100, 26)
         Me.TTramos.TabIndex = 42
         Me.TTramos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -320,17 +320,17 @@ Partial Class FrmConsultasExt
         Me.Label17.AutoSize = True
         Me.Label17.Location = New System.Drawing.Point(6, 68)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(61, 16)
+        Me.Label17.Size = New System.Drawing.Size(72, 20)
         Me.Label17.TabIndex = 41
         Me.Label17.Text = "Tramos"
         '
         'TOrden
         '
         Me.TOrden.BackColor = System.Drawing.Color.Yellow
-        Me.TOrden.Location = New System.Drawing.Point(149, 37)
+        Me.TOrden.Location = New System.Drawing.Point(172, 37)
         Me.TOrden.Name = "TOrden"
         Me.TOrden.ReadOnly = True
-        Me.TOrden.Size = New System.Drawing.Size(100, 22)
+        Me.TOrden.Size = New System.Drawing.Size(100, 26)
         Me.TOrden.TabIndex = 40
         '
         'Label16
@@ -338,7 +338,7 @@ Partial Class FrmConsultasExt
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(6, 40)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(132, 16)
+        Me.Label16.Size = New System.Drawing.Size(160, 20)
         Me.Label16.TabIndex = 39
         Me.Label16.Text = "Orden Producción"
         '
@@ -364,9 +364,9 @@ Partial Class FrmConsultasExt
         Me.GB_Totales.Controls.Add(Me.TProdKilos)
         Me.GB_Totales.Controls.Add(Me.Label9)
         Me.GB_Totales.Controls.Add(Me.Label8)
-        Me.GB_Totales.Location = New System.Drawing.Point(571, 0)
+        Me.GB_Totales.Location = New System.Drawing.Point(627, 0)
         Me.GB_Totales.Name = "GB_Totales"
-        Me.GB_Totales.Size = New System.Drawing.Size(846, 224)
+        Me.GB_Totales.Size = New System.Drawing.Size(531, 224)
         Me.GB_Totales.TabIndex = 9
         Me.GB_Totales.TabStop = False
         Me.GB_Totales.Text = "Totales"
@@ -377,7 +377,7 @@ Partial Class FrmConsultasExt
         Me.TScrapPorc.Location = New System.Drawing.Point(372, 121)
         Me.TScrapPorc.Name = "TScrapPorc"
         Me.TScrapPorc.ReadOnly = True
-        Me.TScrapPorc.Size = New System.Drawing.Size(67, 22)
+        Me.TScrapPorc.Size = New System.Drawing.Size(67, 26)
         Me.TScrapPorc.TabIndex = 57
         Me.TScrapPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -387,7 +387,7 @@ Partial Class FrmConsultasExt
         Me.TSobPesoPorc.Location = New System.Drawing.Point(372, 93)
         Me.TSobPesoPorc.Name = "TSobPesoPorc"
         Me.TSobPesoPorc.ReadOnly = True
-        Me.TSobPesoPorc.Size = New System.Drawing.Size(67, 22)
+        Me.TSobPesoPorc.Size = New System.Drawing.Size(67, 26)
         Me.TSobPesoPorc.TabIndex = 56
         Me.TSobPesoPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -406,7 +406,7 @@ Partial Class FrmConsultasExt
         Me.TScrapPurPorc.Location = New System.Drawing.Point(372, 149)
         Me.TScrapPurPorc.Name = "TScrapPurPorc"
         Me.TScrapPurPorc.ReadOnly = True
-        Me.TScrapPurPorc.Size = New System.Drawing.Size(67, 22)
+        Me.TScrapPurPorc.Size = New System.Drawing.Size(67, 26)
         Me.TScrapPurPorc.TabIndex = 54
         Me.TScrapPurPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -415,7 +415,7 @@ Partial Class FrmConsultasExt
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(18, 152)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(49, 16)
+        Me.Label14.Size = New System.Drawing.Size(58, 20)
         Me.Label14.TabIndex = 53
         Me.Label14.Text = "Purga"
         '
@@ -425,7 +425,7 @@ Partial Class FrmConsultasExt
         Me.TScrapPurKilos.Location = New System.Drawing.Point(135, 149)
         Me.TScrapPurKilos.Name = "TScrapPurKilos"
         Me.TScrapPurKilos.ReadOnly = True
-        Me.TScrapPurKilos.Size = New System.Drawing.Size(100, 22)
+        Me.TScrapPurKilos.Size = New System.Drawing.Size(100, 26)
         Me.TScrapPurKilos.TabIndex = 52
         Me.TScrapPurKilos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -434,7 +434,7 @@ Partial Class FrmConsultasExt
         Me.Label13.AutoSize = True
         Me.Label13.Location = New System.Drawing.Point(18, 124)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(49, 16)
+        Me.Label13.Size = New System.Drawing.Size(58, 20)
         Me.Label13.TabIndex = 50
         Me.Label13.Text = "Scrap"
         '
@@ -444,7 +444,7 @@ Partial Class FrmConsultasExt
         Me.TScrapKilos.Location = New System.Drawing.Point(135, 121)
         Me.TScrapKilos.Name = "TScrapKilos"
         Me.TScrapKilos.ReadOnly = True
-        Me.TScrapKilos.Size = New System.Drawing.Size(100, 22)
+        Me.TScrapKilos.Size = New System.Drawing.Size(100, 26)
         Me.TScrapKilos.TabIndex = 49
         Me.TScrapKilos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -453,7 +453,7 @@ Partial Class FrmConsultasExt
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(18, 96)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(85, 16)
+        Me.Label12.Size = New System.Drawing.Size(98, 20)
         Me.Label12.TabIndex = 47
         Me.Label12.Text = "Sobrepeso"
         '
@@ -463,7 +463,7 @@ Partial Class FrmConsultasExt
         Me.TSobPesoKilos.Location = New System.Drawing.Point(135, 93)
         Me.TSobPesoKilos.Name = "TSobPesoKilos"
         Me.TSobPesoKilos.ReadOnly = True
-        Me.TSobPesoKilos.Size = New System.Drawing.Size(100, 22)
+        Me.TSobPesoKilos.Size = New System.Drawing.Size(100, 26)
         Me.TSobPesoKilos.TabIndex = 46
         Me.TSobPesoKilos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -473,7 +473,7 @@ Partial Class FrmConsultasExt
         Me.TProcUnidades.Location = New System.Drawing.Point(254, 65)
         Me.TProcUnidades.Name = "TProcUnidades"
         Me.TProcUnidades.ReadOnly = True
-        Me.TProcUnidades.Size = New System.Drawing.Size(100, 22)
+        Me.TProcUnidades.Size = New System.Drawing.Size(100, 26)
         Me.TProcUnidades.TabIndex = 45
         Me.TProcUnidades.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -482,7 +482,7 @@ Partial Class FrmConsultasExt
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(18, 68)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(66, 16)
+        Me.Label11.Size = New System.Drawing.Size(78, 20)
         Me.Label11.TabIndex = 44
         Me.Label11.Text = "Proceso"
         '
@@ -492,7 +492,7 @@ Partial Class FrmConsultasExt
         Me.TProcKilos.Location = New System.Drawing.Point(135, 65)
         Me.TProcKilos.Name = "TProcKilos"
         Me.TProcKilos.ReadOnly = True
-        Me.TProcKilos.Size = New System.Drawing.Size(100, 22)
+        Me.TProcKilos.Size = New System.Drawing.Size(100, 26)
         Me.TProcKilos.TabIndex = 43
         Me.TProcKilos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -502,7 +502,7 @@ Partial Class FrmConsultasExt
         Me.TProdUnidades.Location = New System.Drawing.Point(254, 37)
         Me.TProdUnidades.Name = "TProdUnidades"
         Me.TProdUnidades.ReadOnly = True
-        Me.TProdUnidades.Size = New System.Drawing.Size(100, 22)
+        Me.TProdUnidades.Size = New System.Drawing.Size(100, 26)
         Me.TProdUnidades.TabIndex = 42
         Me.TProdUnidades.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -511,7 +511,7 @@ Partial Class FrmConsultasExt
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(15, 40)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(86, 16)
+        Me.Label10.Size = New System.Drawing.Size(103, 20)
         Me.Label10.TabIndex = 41
         Me.Label10.Text = "Producción"
         '
@@ -521,7 +521,7 @@ Partial Class FrmConsultasExt
         Me.TProdKilos.Location = New System.Drawing.Point(135, 37)
         Me.TProdKilos.Name = "TProdKilos"
         Me.TProdKilos.ReadOnly = True
-        Me.TProdKilos.Size = New System.Drawing.Size(100, 22)
+        Me.TProdKilos.Size = New System.Drawing.Size(100, 26)
         Me.TProdKilos.TabIndex = 39
         Me.TProdKilos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -553,7 +553,7 @@ Partial Class FrmConsultasExt
         Me.GB_Cant.Controls.Add(Me.TEnt)
         Me.GB_Cant.Controls.Add(Me.TProg)
         Me.GB_Cant.Controls.Add(Me.Label4)
-        Me.GB_Cant.Location = New System.Drawing.Point(309, 0)
+        Me.GB_Cant.Location = New System.Drawing.Point(365, 0)
         Me.GB_Cant.Name = "GB_Cant"
         Me.GB_Cant.Size = New System.Drawing.Size(256, 224)
         Me.GB_Cant.TabIndex = 7
@@ -565,7 +565,7 @@ Partial Class FrmConsultasExt
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(19, 124)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 16)
+        Me.Label7.Size = New System.Drawing.Size(102, 20)
         Me.Label7.TabIndex = 38
         Me.Label7.Text = "Pendientes"
         '
@@ -574,7 +574,7 @@ Partial Class FrmConsultasExt
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(17, 96)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(88, 16)
+        Me.Label6.Size = New System.Drawing.Size(106, 20)
         Me.Label6.TabIndex = 37
         Me.Label6.Text = "En Proceso"
         '
@@ -583,7 +583,7 @@ Partial Class FrmConsultasExt
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(17, 68)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(88, 16)
+        Me.Label5.Size = New System.Drawing.Size(104, 20)
         Me.Label5.TabIndex = 36
         Me.Label5.Text = "Entregadas"
         '
@@ -592,7 +592,7 @@ Partial Class FrmConsultasExt
         Me.TPend.Location = New System.Drawing.Point(136, 121)
         Me.TPend.Name = "TPend"
         Me.TPend.ReadOnly = True
-        Me.TPend.Size = New System.Drawing.Size(100, 22)
+        Me.TPend.Size = New System.Drawing.Size(100, 26)
         Me.TPend.TabIndex = 35
         Me.TPend.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -601,7 +601,7 @@ Partial Class FrmConsultasExt
         Me.TProc.Location = New System.Drawing.Point(136, 93)
         Me.TProc.Name = "TProc"
         Me.TProc.ReadOnly = True
-        Me.TProc.Size = New System.Drawing.Size(100, 22)
+        Me.TProc.Size = New System.Drawing.Size(100, 26)
         Me.TProc.TabIndex = 34
         Me.TProc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -610,7 +610,7 @@ Partial Class FrmConsultasExt
         Me.TEnt.Location = New System.Drawing.Point(136, 65)
         Me.TEnt.Name = "TEnt"
         Me.TEnt.ReadOnly = True
-        Me.TEnt.Size = New System.Drawing.Size(100, 22)
+        Me.TEnt.Size = New System.Drawing.Size(100, 26)
         Me.TEnt.TabIndex = 33
         Me.TEnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -619,7 +619,7 @@ Partial Class FrmConsultasExt
         Me.TProg.Location = New System.Drawing.Point(136, 37)
         Me.TProg.Name = "TProg"
         Me.TProg.ReadOnly = True
-        Me.TProg.Size = New System.Drawing.Size(100, 22)
+        Me.TProg.Size = New System.Drawing.Size(100, 26)
         Me.TProg.TabIndex = 32
         Me.TProg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -628,7 +628,7 @@ Partial Class FrmConsultasExt
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(17, 40)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(102, 16)
+        Me.Label4.Size = New System.Drawing.Size(120, 20)
         Me.Label4.TabIndex = 31
         Me.Label4.Text = "Programadas"
         '
@@ -636,9 +636,9 @@ Partial Class FrmConsultasExt
         '
         Me.Panel2.Controls.Add(Me.GB_Pesajes)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 329)
+        Me.Panel2.Location = New System.Drawing.Point(0, 330)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1684, 532)
+        Me.Panel2.Size = New System.Drawing.Size(1914, 531)
         Me.Panel2.TabIndex = 7
         '
         'GB_Pesajes
@@ -649,7 +649,7 @@ Partial Class FrmConsultasExt
         Me.GB_Pesajes.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.GB_Pesajes.Name = "GB_Pesajes"
         Me.GB_Pesajes.Padding = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.GB_Pesajes.Size = New System.Drawing.Size(1684, 532)
+        Me.GB_Pesajes.Size = New System.Drawing.Size(1914, 531)
         Me.GB_Pesajes.TabIndex = 2
         Me.GB_Pesajes.TabStop = False
         Me.GB_Pesajes.Text = "Pesajes"
@@ -663,18 +663,18 @@ Partial Class FrmConsultasExt
         Me.DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGV.Location = New System.Drawing.Point(6, 20)
+        Me.DGV.Location = New System.Drawing.Point(6, 24)
         Me.DGV.Margin = New System.Windows.Forms.Padding(4)
         Me.DGV.Name = "DGV"
         Me.DGV.ReadOnly = True
-        Me.DGV.Size = New System.Drawing.Size(1672, 507)
+        Me.DGV.Size = New System.Drawing.Size(1902, 502)
         Me.DGV.TabIndex = 0
         '
         'FrmConsultasExt
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1684, 861)
+        Me.ClientSize = New System.Drawing.Size(1914, 861)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)

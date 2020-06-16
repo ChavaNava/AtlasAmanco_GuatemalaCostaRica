@@ -134,6 +134,7 @@ Public Class NotificationProcess
     Public Shared Sub Notifica_RTO(ByVal StrCadenas As String, Fecha_SAP As String, Piezas As String, ODF As String, Peso As String, _
                                    TBDocumento As TextBox, TBConsecutivo As TextBox, BtnPesar As Button, BtnImp As Button, TBOrd As TextBox, _
                                    StrFolio As String)
+
         Dim reg As String
         Dim Cod_Err As String = ""
 
@@ -147,6 +148,11 @@ Public Class NotificationProcess
             If SessionUser._sAmbiente = "D" Then
                 Doc_Noti = WS_P.Tbl_resultado_d.RUECK
                 Con_Noti = WS_P.Tbl_resultado_d.RMZHL
+                Err = WS_P.Return_SAP.ZTYPE
+                Mns = WS_P.Return_SAP.ZMESSAGE
+            ElseIf SessionUser._sAmbiente = "Q" Then
+                Doc_Noti = WS_P.Tbl_resultado_q.RUECK
+                Con_Noti = WS_P.Tbl_resultado_q.RMZHL
                 Err = WS_P.Return_SAP.ZTYPE
                 Mns = WS_P.Return_SAP.ZMESSAGE
             Else

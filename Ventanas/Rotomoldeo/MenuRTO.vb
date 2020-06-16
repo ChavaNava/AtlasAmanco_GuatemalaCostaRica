@@ -192,6 +192,7 @@ Public Class MenuRTO
             '    Peso_Bolsas = "0" & arryEmbalajes(3)
             '    BNotificar.Enabled = True
             'End If
+            BNotificar.Enabled = True
         End If
         CB_Rack.Focus()
     End Sub
@@ -465,7 +466,7 @@ Public Class MenuRTO
         Permiso.SAP_Status("R", tsImagen)
         'Identificar Supervisor en Turno ----------------------------------------------------------
         'SQL.Inyeccion.Identifies_shift_supervisor(Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
-        N_Supervisor = SQL_DATA.Inyeccion.Identifies_shift_supervisor(SessionUser._sCentro.Trim, CodOperador.Text.Trim, Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
+        N_Supervisor = SQL_DATA.ProcesInyeccion.Identifies_shift_supervisor(SessionUser._sCentro.Trim, CodOperador.Text.Trim, Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
 
         '------------------------------------------------------------------------------------------
         BNotificar.Enabled = False
@@ -683,12 +684,12 @@ Public Class MenuRTO
             Dim Orden_Prod As String = ""
             Orden_Prod = TC_Orden.Text.Trim
             '--------------------------------------------------------------------------------------
-            strOrden = ProductionOrder.Existe(Orden_Prod, EXTINY)
-            aryTextFile = strOrden.Split("|")
-            Exist_Ord = aryTextFile(0)
-            Producto = aryTextFile(1)
-            Select Case Exist_Ord
-                Case Is = 1
+            'strOrden = ProductionOrder.Existe(Orden_Prod, EXTINY)
+            'aryTextFile = strOrden.Split("|")
+            'Exist_Ord = aryTextFile(0)
+            'Producto = aryTextFile(1)
+            Select Case ProductionOrder.Existe(Orden_Prod, EXTINY)
+                Case Is = True
                     Me.Cursor = Cursors.WaitCursor
                     'Verficia la existencia del producto
                     Exist_Prd = ProductionOrder.Existencia_Producto(EXTINY)
@@ -698,7 +699,7 @@ Public Class MenuRTO
                                                           TPtoTrabajo, TGrpprod, TGrupo, TGrpproddesc, TNomPtoTrabajo)
                     If P_CC = True Then
                         'Activa Combo Box de compuestos 1
-                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, P_CC1)
+                        Catalogo_Compuestos.CB_Compuesto1(CB_Com1, EXTINY, TipoProd, True)
                         CB_Com1.Enabled = True
                     Else
                         GB_Comp.Enabled = False
@@ -715,7 +716,7 @@ Public Class MenuRTO
                     'Porcentaje de avance de la orden
                     ProductionOrder.Porcentaje_Orden(TCantEntre.Text, TCantEnproce.Text, TCantProgra.Text, Label8, Btn_Notificar)
                     Me.Cursor = Cursors.Default
-                Case Is = 0
+                Case Is = False
                     Me.Cursor = Cursors.WaitCursor
                     'Dar de alta la orden
                     MensajeBox.Mostrar("Orden de Producción no existe en A-tlas se procede a darla de alta ", "Aviso", MensajeBox.TipoMensaje.Information)
@@ -845,7 +846,7 @@ Public Class MenuRTO
     End Sub
 
     Private Sub Limpiar()
-        SQL_DATA.Inyeccion.LimpiarForm(Me)
+        SQL_DATA.ProcesInyeccion.LimpiarForm(Me)
         DGV_Emb.Columns.Clear()
         CB_Ope.DataSource = Nothing
         CB_Com1.DataSource = Nothing

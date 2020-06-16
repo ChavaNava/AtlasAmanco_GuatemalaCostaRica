@@ -52,6 +52,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SQL_DATA">
+      <HintPath>..\SQL\SQL\bin\Debug\SQL_DATA.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -59,9 +62,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="WS_Generic, Version=1.0.6486.25546, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WebServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\WS_Generic.dll</HintPath>
+      <HintPath>..\WebServices\bin\Debug\WebServices.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -117,12 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_SAPOk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
-      <Project>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</Project>
-      <Name>Atlas.SQL_DATA</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

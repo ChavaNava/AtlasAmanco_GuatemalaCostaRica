@@ -113,7 +113,7 @@ Public Class Reportes
             Return
         End Try
 
-        If Centro.Trim = "A022" Then
+        If Centro.Trim = "A022" Or Centro.Trim = "A014" Then
             Dim RPT As New Boleta_PTE_D
             Datos = RPT.SummaryInfo
             Datos.ReportComments = "" & Centro.Trim & ""

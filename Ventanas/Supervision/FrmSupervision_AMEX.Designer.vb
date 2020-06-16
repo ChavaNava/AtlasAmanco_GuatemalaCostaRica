@@ -25,15 +25,15 @@ Partial Class FrmSupervision_AMEX
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmSupervision_AMEX))
-        Dim ChartArea1 As ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
+        'Dim ChartArea1 As ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
+        'Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
+        'Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
+        'Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
+        'Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
+        'Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
+        'Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
+        'Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
+        'Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.CerrarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.RolSupervisoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -54,33 +54,33 @@ Partial Class FrmSupervision_AMEX
         Me.TabPage3 = New System.Windows.Forms.TabPage
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart
+        'Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart
         Me.TabPage4 = New System.Windows.Forms.TabPage
-        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart
+        'Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart
         Me.TabPage6 = New System.Windows.Forms.TabPage
-        Me.Chart4 = New System.Windows.Forms.DataVisualization.Charting.Chart
+        'Me.Chart4 = New System.Windows.Forms.DataVisualization.Charting.Chart
         Me.GB_Grafico = New System.Windows.Forms.GroupBox
         Me.CB_Tipo = New System.Windows.Forms.ComboBox
         Me.RB1 = New System.Windows.Forms.RadioButton
         Me.RB2 = New System.Windows.Forms.RadioButton
-        Me.MenuStrip1.SuspendLayout()
-        Me.GB_Consulta.SuspendLayout()
-        Me.TC1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.GB_Resumen.SuspendLayout()
-        CType(Me.DGV_Resumen, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GB_Detalle.SuspendLayout()
-        CType(Me.DGV_Sup, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage3.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage4.SuspendLayout()
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage6.SuspendLayout()
-        CType(Me.Chart4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GB_Grafico.SuspendLayout()
-        Me.SuspendLayout()
+        'Me.MenuStrip1.SuspendLayout()
+        'Me.GB_Consulta.SuspendLayout()
+        'Me.TC1.SuspendLayout()
+        'Me.TabPage1.SuspendLayout()
+        'Me.GB_Resumen.SuspendLayout()
+        'CType(Me.DGV_Resumen, System.ComponentModel.ISupportInitialize).BeginInit()
+        'Me.GB_Detalle.SuspendLayout()
+        'CType(Me.DGV_Sup, System.ComponentModel.ISupportInitialize).BeginInit()
+        'Me.TabPage3.SuspendLayout()
+        'Me.TabControl1.SuspendLayout()
+        'Me.TabPage2.SuspendLayout()
+        'CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        'Me.TabPage4.SuspendLayout()
+        'CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
+        'Me.TabPage6.SuspendLayout()
+        'CType(Me.Chart4, System.ComponentModel.ISupportInitialize).BeginInit()
+        'Me.GB_Grafico.SuspendLayout()
+        'Me.SuspendLayout()
         '
         'MenuStrip1
         '
@@ -293,7 +293,7 @@ Partial Class FrmSupervision_AMEX
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Chart1)
+        'Me.TabPage2.Controls.Add(Me.Chart1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -308,7 +308,7 @@ Partial Class FrmSupervision_AMEX
         '
         'TabPage4
         '
-        Me.TabPage4.Controls.Add(Me.Chart2)
+        'Me.TabPage4.Controls.Add(Me.Chart2)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
@@ -319,24 +319,24 @@ Partial Class FrmSupervision_AMEX
         '
         'Chart2
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea2)
-        Me.Chart2.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend2)
-        Me.Chart2.Location = New System.Drawing.Point(3, 3)
-        Me.Chart2.Name = "Chart2"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart2.Series.Add(Series2)
-        Me.Chart2.Size = New System.Drawing.Size(1185, 535)
-        Me.Chart2.TabIndex = 1
-        Me.Chart2.Text = "Chart2"
+        'ChartArea2.Name = "ChartArea1"
+        'Me.Chart2.ChartAreas.Add(ChartArea2)
+        'Me.Chart2.Dock = System.Windows.Forms.DockStyle.Fill
+        'Legend2.Name = "Legend1"
+        'Me.Chart2.Legends.Add(Legend2)
+        'Me.Chart2.Location = New System.Drawing.Point(3, 3)
+        'Me.Chart2.Name = "Chart2"
+        'Series2.ChartArea = "ChartArea1"
+        'Series2.Legend = "Legend1"
+        'Series2.Name = "Series1"
+        'Me.Chart2.Series.Add(Series2)
+        'Me.Chart2.Size = New System.Drawing.Size(1185, 535)
+        'Me.Chart2.TabIndex = 1
+        'Me.Chart2.Text = "Chart2"
         '
         'TabPage6
         '
-        Me.TabPage6.Controls.Add(Me.Chart4)
+        'Me.TabPage6.Controls.Add(Me.Chart4)
         Me.TabPage6.Location = New System.Drawing.Point(4, 4)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
@@ -347,20 +347,20 @@ Partial Class FrmSupervision_AMEX
         '
         'Chart4
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart4.ChartAreas.Add(ChartArea3)
-        Me.Chart4.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.Chart4.Legends.Add(Legend3)
-        Me.Chart4.Location = New System.Drawing.Point(3, 3)
-        Me.Chart4.Name = "Chart4"
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.Chart4.Series.Add(Series3)
-        Me.Chart4.Size = New System.Drawing.Size(1185, 535)
-        Me.Chart4.TabIndex = 1
-        Me.Chart4.Text = "Chart4"
+        'ChartArea3.Name = "ChartArea1"
+        'Me.Chart4.ChartAreas.Add(ChartArea3)
+        'Me.Chart4.Dock = System.Windows.Forms.DockStyle.Fill
+        'Legend3.Name = "Legend1"
+        'Me.Chart4.Legends.Add(Legend3)
+        'Me.Chart4.Location = New System.Drawing.Point(3, 3)
+        'Me.Chart4.Name = "Chart4"
+        'Series3.ChartArea = "ChartArea1"
+        'Series3.Legend = "Legend1"
+        'Series3.Name = "Series1"
+        'Me.Chart4.Series.Add(Series3)
+        'Me.Chart4.Size = New System.Drawing.Size(1185, 535)
+        'Me.Chart4.TabIndex = 1
+        'Me.Chart4.Text = "Chart4"
         '
         'GB_Grafico
         '
@@ -431,21 +431,21 @@ Partial Class FrmSupervision_AMEX
         Me.GB_Consulta.PerformLayout()
         Me.TC1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
-        Me.GB_Resumen.ResumeLayout(False)
-        CType(Me.DGV_Resumen, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GB_Detalle.ResumeLayout(False)
-        CType(Me.DGV_Sup, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage4.ResumeLayout(False)
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage6.ResumeLayout(False)
-        CType(Me.Chart4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GB_Grafico.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        'Me.GB_Resumen.ResumeLayout(False)
+        'CType(Me.DGV_Resumen, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.GB_Detalle.ResumeLayout(False)
+        'CType(Me.DGV_Sup, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.TabPage3.ResumeLayout(False)
+        'Me.TabControl1.ResumeLayout(False)
+        'Me.TabPage2.ResumeLayout(False)
+        'CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.TabPage4.ResumeLayout(False)
+        'CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.TabPage6.ResumeLayout(False)
+        'CType(Me.Chart4, System.ComponentModel.ISupportInitialize).EndInit()
+        'Me.GB_Grafico.ResumeLayout(False)
+        'Me.ResumeLayout(False)
+        'Me.PerformLayout()
 
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
@@ -470,9 +470,9 @@ Partial Class FrmSupervision_AMEX
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
-    Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
-    Friend WithEvents Chart2 As System.Windows.Forms.DataVisualization.Charting.Chart
-    Friend WithEvents Chart4 As System.Windows.Forms.DataVisualization.Charting.Chart
+    'Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
+    'Friend WithEvents Chart2 As System.Windows.Forms.DataVisualization.Charting.Chart
+    'Friend WithEvents Chart4 As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents GB_Grafico As System.Windows.Forms.GroupBox
     Friend WithEvents CB_Tipo As System.Windows.Forms.ComboBox
     Friend WithEvents RB2 As System.Windows.Forms.RadioButton

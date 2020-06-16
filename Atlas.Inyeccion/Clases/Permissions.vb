@@ -1,4 +1,4 @@
-﻿Imports Atlas.Accesos
+﻿Imports Atlas.Accesos.CLVarGlobales
 Imports SQL_DATA
 Imports Utili_Generales
 Imports System.Windows.Forms

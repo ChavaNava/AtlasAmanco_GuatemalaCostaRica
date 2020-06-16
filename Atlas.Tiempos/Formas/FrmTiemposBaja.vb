@@ -13,17 +13,21 @@ Public Class FrmTiemposBaja
 
         LoadingForm.ShowLoading()
         Try
-            Tiemposabc.iIdTiempo = txtIdTiempo.Text.Trim
+            Tiemposabc.iIdTiempo = txtIdFolio.Text.Trim
             Tiemposabc.iPuestoTrabajo = ""
             Tiemposabc.iOrden_Produccion = ""
-            Tiemposabc.iTurno = ""
+            Tiemposabc.iTurno = 0
             Tiemposabc.iHorasProdParo = ""
             Tiemposabc.iFechaRegistra = ""
             Tiemposabc.iUserRegistra = ""
-            Tiemposabc.iIdGrupo = 0
-            Tiemposabc.iIdSeccion = 0
-            Tiemposabc.iIdGrupoMaterial = 0
-            OperacionTiempos.abc(5)
+            Tiemposabc.iIdGrupo = ""
+            Tiemposabc.iIdSeccion = ""
+            Tiemposabc.iIdGrupoMaterial = ""
+            Tiemposabc.iFechaAlta = ""
+            Tiemposabc.iIdCausa = ""
+            Tiemposabc.iHoraRegistra = ""
+            Tiemposabc.iFolio = dgv_DetalleHoras._Folio
+            OperacionTiempos.abc(4)
             LoadingForm.CloseForm()
             Accion = 1
             Close()
@@ -40,13 +44,13 @@ Public Class FrmTiemposBaja
 
 #Region "Metodos"
     Private Sub FillSetData()
-        txtIdTiempo.Text = dgv_DetalleHoras._IdTiempo
-        txtFecha.Text = dgv_DetalleHoras._Fecha
+        txtIdFolio.Text = dgv_DetalleHoras._Folio
+        txtFecha.Text = dgv_DetalleHoras._FechaRegistro
         txtOrden.Text = dgv_DetalleHoras._OrdenProduccion
-        txtEquipo.Text = dgv_DetalleHoras._PuestoTrabajo
+        txtEquipo.Text = dgv_DetalleHoras._IdPuestoTrabajo
         txtTurno.Text = dgv_DetalleHoras._Turno
         txtHoras.Text = dgv_DetalleHoras._Horas
-        txtConcepto.Text = dgv_DetalleHoras._ConceptoParo
+        txtConcepto.Text = dgv_DetalleHoras._Causa
     End Sub
 #End Region
 

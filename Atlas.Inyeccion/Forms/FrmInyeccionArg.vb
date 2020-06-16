@@ -582,7 +582,7 @@ Public Class FrmInyeccionArg
         'Permiso.SAP_Status("I", tsImagen)
         'Identificar Supervisor en Turno ----------------------------------------------------------
         'SQL.Inyeccion.Identifies_shift_supervisor(Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
-        N_Supervisor = SQL_DATA.Inyeccion.Identifies_shift_supervisor(SessionUser._sCentro.Trim, CodOperador.Text.Trim, Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
+        N_Supervisor = SQL_DATA.ProcesInyeccion.Identifies_shift_supervisor(SessionUser._sCentro.Trim, CodOperador.Text.Trim, Date.Today.ToString("yyyy-MM-dd"), cmbTurnos.Text.Trim)
         'Identificar Compuesto original de la bom ------------------------------------------------
         CompOriginal = Produccion_Scrap_Inyeccion.Valida_Bom(SessionUser._sCentro.Trim, SessionUser._sAlias.Trim, TCodPT.Text.Trim)
         If CompOriginal.Trim = "0" Then
@@ -593,7 +593,7 @@ Public Class FrmInyeccionArg
         btnNotificar.Enabled = False
         BLimpiar.Enabled = False
         'Se ingresa información de notificacion en la base de datos ------------------------------
-        NotificacionPtIny.Orden = TOrden.Text.Trim
+        NotificacionPtIny.OrdenProduccion = TOrden.Text.Trim
         NotificacionPtIny.FechaPesaje = Date.Today.ToString("yyyy-MM-dd")
         NotificacionPtIny.HoraPesaje = Date.Now.TimeOfDay.ToString()
         NotificacionPtIny.Bascula = strNumeroBascula
@@ -659,7 +659,7 @@ Public Class FrmInyeccionArg
                         Label12.Visible = True
                         Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
                         Dim Head As String
-                        Head = "28|" + NotificacionPtIny._Orden.Trim + "|" + NotificacionPtIny._Piezas.Trim + "|" + FechaPesajeSAP + "|" + CompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioSiguiente
+                        Head = "28|" + NotificacionPtIny._OrdenProduccion.Trim + "|" + NotificacionPtIny._Piezas.Trim + "|" + FechaPesajeSAP + "|" + CompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioSiguiente
                         'NotificationProcess.Notifica_PTE(Head, Lista, FolioSiguiente.Trim, TNumNoti, TConsNoti, btnNotificar, BImprimir, TOrden, CodOperador.Text.Trim)
                         Label12.Visible = False
                         Label12.Text = ""
@@ -1158,7 +1158,7 @@ Public Class FrmInyeccionArg
     End Sub
 
     Private Sub Limpiar()
-        SQL_DATA.Inyeccion.LimpiarForm(Me)
+        SQL_DATA.ProcesInyeccion.LimpiarForm(Me)
         CB_Com1.DataSource = Nothing
         CB_Com2.DataSource = Nothing
         CB_Com3.DataSource = Nothing

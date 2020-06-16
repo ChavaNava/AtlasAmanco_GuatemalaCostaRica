@@ -81,6 +81,18 @@
     <Compile Include="Entidades\ResumenOrdenProduccion.vb" />
     <Compile Include="Entidades\ResumenSeg.vb" />
     <Compile Include="Entidades\Resumen_dia_Turno.vb" />
+    <Compile Include="Formas\FrmConsultaProduccion.Designer.vb">
+      <DependentUpon>FrmConsultaProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FrmConsultaProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FrmConsultaPT.Designer.vb">
+      <DependentUpon>FrmConsultaPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FrmConsultaPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formas\FrmConsultasExt.Designer.vb">
       <DependentUpon>FrmConsultasExt.vb</DependentUpon>
     </Compile>
@@ -134,6 +146,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formas\FrmConsultaProduccion.resx">
+      <DependentUpon>FrmConsultaProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FrmConsultaPT.resx">
+      <DependentUpon>FrmConsultaPT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formas\FrmConsultasExt.resx">
       <DependentUpon>FrmConsultasExt.vb</DependentUpon>
     </EmbeddedResource>

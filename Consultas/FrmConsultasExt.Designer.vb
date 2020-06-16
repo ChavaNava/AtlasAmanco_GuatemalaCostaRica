@@ -40,15 +40,6 @@ Partial Class FrmConsultasExt
         Me.DTP_FF = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DTP_FI = New System.Windows.Forms.DateTimePicker()
-        Me.GB_Not = New System.Windows.Forms.GroupBox()
-        Me.lblGraba = New System.Windows.Forms.Label()
-        Me.Btn_Notif = New System.Windows.Forms.Button()
-        Me.TPN = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.TTramos = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TOrden = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.GB_Totales = New System.Windows.Forms.GroupBox()
         Me.TScrapPorc = New System.Windows.Forms.TextBox()
         Me.TSobPesoPorc = New System.Windows.Forms.TextBox()
@@ -84,7 +75,6 @@ Partial Class FrmConsultasExt
         Me.Panel1.SuspendLayout()
         Me.GB_Msges.SuspendLayout()
         Me.GB_Consulta.SuspendLayout()
-        Me.GB_Not.SuspendLayout()
         Me.GB_Totales.SuspendLayout()
         Me.GB_Cant.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -142,7 +132,6 @@ Partial Class FrmConsultasExt
         '
         Me.Panel1.Controls.Add(Me.GB_Msges)
         Me.Panel1.Controls.Add(Me.GB_Consulta)
-        Me.Panel1.Controls.Add(Me.GB_Not)
         Me.Panel1.Controls.Add(Me.GB_Totales)
         Me.Panel1.Controls.Add(Me.GB_Cant)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -248,102 +237,6 @@ Partial Class FrmConsultasExt
         Me.DTP_FI.Size = New System.Drawing.Size(109, 22)
         Me.DTP_FI.TabIndex = 17
         '
-        'GB_Not
-        '
-        Me.GB_Not.Controls.Add(Me.lblGraba)
-        Me.GB_Not.Controls.Add(Me.Btn_Notif)
-        Me.GB_Not.Controls.Add(Me.TPN)
-        Me.GB_Not.Controls.Add(Me.Label18)
-        Me.GB_Not.Controls.Add(Me.TTramos)
-        Me.GB_Not.Controls.Add(Me.Label17)
-        Me.GB_Not.Controls.Add(Me.TOrden)
-        Me.GB_Not.Controls.Add(Me.Label16)
-        Me.GB_Not.Location = New System.Drawing.Point(1423, 0)
-        Me.GB_Not.Name = "GB_Not"
-        Me.GB_Not.Size = New System.Drawing.Size(261, 224)
-        Me.GB_Not.TabIndex = 8
-        Me.GB_Not.TabStop = False
-        Me.GB_Not.Text = "Notificación"
-        '
-        'lblGraba
-        '
-        Me.lblGraba.AutoSize = True
-        Me.lblGraba.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGraba.ForeColor = System.Drawing.Color.Black
-        Me.lblGraba.Location = New System.Drawing.Point(166, 191)
-        Me.lblGraba.Name = "lblGraba"
-        Me.lblGraba.Size = New System.Drawing.Size(69, 17)
-        Me.lblGraba.TabIndex = 170
-        Me.lblGraba.Text = "Notificar"
-        '
-        'Btn_Notif
-        '
-        Me.Btn_Notif.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Btn_Notif.BackgroundImage = Global.Atlas.My.Resources.Resources.sap_notificar
-        Me.Btn_Notif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Btn_Notif.Enabled = False
-        Me.Btn_Notif.Location = New System.Drawing.Point(169, 132)
-        Me.Btn_Notif.Name = "Btn_Notif"
-        Me.Btn_Notif.Size = New System.Drawing.Size(60, 56)
-        Me.Btn_Notif.TabIndex = 168
-        Me.Btn_Notif.UseVisualStyleBackColor = False
-        '
-        'TPN
-        '
-        Me.TPN.BackColor = System.Drawing.Color.Yellow
-        Me.TPN.Location = New System.Drawing.Point(149, 93)
-        Me.TPN.Name = "TPN"
-        Me.TPN.ReadOnly = True
-        Me.TPN.Size = New System.Drawing.Size(100, 22)
-        Me.TPN.TabIndex = 44
-        Me.TPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(6, 96)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(81, 16)
-        Me.Label18.TabIndex = 43
-        Me.Label18.Text = "Peso Neto"
-        '
-        'TTramos
-        '
-        Me.TTramos.BackColor = System.Drawing.Color.Yellow
-        Me.TTramos.Location = New System.Drawing.Point(149, 65)
-        Me.TTramos.Name = "TTramos"
-        Me.TTramos.ReadOnly = True
-        Me.TTramos.Size = New System.Drawing.Size(100, 22)
-        Me.TTramos.TabIndex = 42
-        Me.TTramos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 68)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(61, 16)
-        Me.Label17.TabIndex = 41
-        Me.Label17.Text = "Tramos"
-        '
-        'TOrden
-        '
-        Me.TOrden.BackColor = System.Drawing.Color.Yellow
-        Me.TOrden.Location = New System.Drawing.Point(149, 37)
-        Me.TOrden.Name = "TOrden"
-        Me.TOrden.ReadOnly = True
-        Me.TOrden.Size = New System.Drawing.Size(100, 22)
-        Me.TOrden.TabIndex = 40
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 40)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(132, 16)
-        Me.Label16.TabIndex = 39
-        Me.Label16.Text = "Orden Producción"
-        '
         'GB_Totales
         '
         Me.GB_Totales.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -368,7 +261,7 @@ Partial Class FrmConsultasExt
         Me.GB_Totales.Controls.Add(Me.Label8)
         Me.GB_Totales.Location = New System.Drawing.Point(571, 0)
         Me.GB_Totales.Name = "GB_Totales"
-        Me.GB_Totales.Size = New System.Drawing.Size(846, 224)
+        Me.GB_Totales.Size = New System.Drawing.Size(567, 224)
         Me.GB_Totales.TabIndex = 9
         Me.GB_Totales.TabStop = False
         Me.GB_Totales.Text = "Totales"
@@ -693,8 +586,6 @@ Partial Class FrmConsultasExt
         Me.GB_Msges.PerformLayout()
         Me.GB_Consulta.ResumeLayout(False)
         Me.GB_Consulta.PerformLayout()
-        Me.GB_Not.ResumeLayout(False)
-        Me.GB_Not.PerformLayout()
         Me.GB_Totales.ResumeLayout(False)
         Me.GB_Totales.PerformLayout()
         Me.GB_Cant.ResumeLayout(False)
@@ -744,7 +635,6 @@ Partial Class FrmConsultasExt
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GB_Pesajes As System.Windows.Forms.GroupBox
     Friend WithEvents DGV As System.Windows.Forms.DataGridView
-    Friend WithEvents GB_Not As System.Windows.Forms.GroupBox
     Friend WithEvents GB_Consulta As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TOrdProd As System.Windows.Forms.TextBox
@@ -752,14 +642,6 @@ Partial Class FrmConsultasExt
     Friend WithEvents DTP_FF As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents DTP_FI As System.Windows.Forms.DateTimePicker
-    Friend WithEvents TOrden As System.Windows.Forms.TextBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents TPN As System.Windows.Forms.TextBox
-    Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents TTramos As System.Windows.Forms.TextBox
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents lblGraba As System.Windows.Forms.Label
-    Friend WithEvents Btn_Notif As System.Windows.Forms.Button
     Friend WithEvents GB_Msges As System.Windows.Forms.GroupBox
     Friend WithEvents TObservaciones As System.Windows.Forms.TextBox
     Friend WithEvents TMensajes As System.Windows.Forms.TextBox
