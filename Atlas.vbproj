@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -38,7 +38,7 @@
     <TargetZone>LocalIntranet</TargetZone>
     <OldToolsVersion>3.5</OldToolsVersion>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>C:\Users\jsalinasm\OneDrive - Mexichem\Publicaciones\Atlas_Fluent\</PublishUrl>
     <Install>true</Install>
@@ -87,6 +87,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -107,22 +108,19 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Atlas.Accesos">
       <HintPath>Atlas.Accesos\bin\Debug\Atlas.Accesos.dll</HintPath>
     </Reference>
-    <Reference Include="Atlas.Consultations">
-      <HintPath>Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Atlas.Inyeccion">
-      <HintPath>Atlas.Inyeccion\bin\Debug\Atlas.Inyeccion.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -152,8 +150,8 @@
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
-    <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-    <Reference Include="System.Windows.Forms.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
@@ -2567,6 +2565,10 @@
       <Project>{83D8CC5D-7CDC-4470-AD56-FEE98637ED4F}</Project>
       <Name>Atlas.AutorizaSobrePesos</Name>
     </ProjectReference>
+    <ProjectReference Include="Atlas.Consultations\Atlas.Consultations.vbproj">
+      <Project>{54b8cc10-a7e8-4144-a468-ca9585d2a80a}</Project>
+      <Name>Atlas.Consultations</Name>
+    </ProjectReference>
     <ProjectReference Include="Atlas.EstatusSAP\Atlas.EstatusSAP.vbproj">
       <Project>{42F0ED88-5CAE-4D50-9C55-72F3472B822C}</Project>
       <Name>Atlas.EstatusSAP</Name>
@@ -2578,6 +2580,10 @@
     <ProjectReference Include="Atlas.ExtrusionProcess\Atlas.ExtrusionProcess.vbproj">
       <Project>{5151BC31-4476-470C-8EA9-E5E1F3991AF8}</Project>
       <Name>Atlas.ExtrusionProcess</Name>
+    </ProjectReference>
+    <ProjectReference Include="Atlas.Inyeccion\Atlas.Inyeccion.vbproj">
+      <Project>{f1b96d72-712d-447b-ae27-70cf460cab97}</Project>
+      <Name>Atlas.Inyeccion</Name>
     </ProjectReference>
     <ProjectReference Include="Atlas.Planeacion\Atlas.Planeacion.vbproj">
       <Project>{6670ab73-6a1f-4db7-abef-aa7dcab9ea07}</Project>

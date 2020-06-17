@@ -10,7 +10,7 @@
     <AssemblyName>Atlas.ExtrusionPeru</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,6 +21,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Atlas.ExtrusionPeru.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Atlas.ExtrusionPeru.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -44,9 +46,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atlas.Consultations">
-      <HintPath>..\Atlas.Consultations\bin\Debug\Atlas.Consultations.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -137,6 +136,10 @@
     <ProjectReference Include="..\Atlas.AutorizaSobrePesos\Atlas.AutorizaSobrePesos.vbproj">
       <Project>{83d8cc5d-7cdc-4470-ad56-fee98637ed4f}</Project>
       <Name>Atlas.AutorizaSobrePesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Consultations\Atlas.Consultations.vbproj">
+      <Project>{54b8cc10-a7e8-4144-a468-ca9585d2a80a}</Project>
+      <Name>Atlas.Consultations</Name>
     </ProjectReference>
     <ProjectReference Include="..\Reporting\Atlas.Reporting.vbproj">
       <Project>{780b0efb-251f-4774-9497-6fb6336d6552}</Project>

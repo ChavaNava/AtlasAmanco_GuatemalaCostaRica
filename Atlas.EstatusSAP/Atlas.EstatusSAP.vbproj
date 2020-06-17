@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,7 +13,7 @@
     <AssemblyName>Atlas.EstatusSAP</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -24,6 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Atlas.EstatusSAP.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Atlas.EstatusSAP.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -47,9 +49,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atlas.Accesos">
-      <HintPath>..\Atlas.Accesos\bin\Debug\Atlas.Accesos.dll</HintPath>
-    </Reference>
     <Reference Include="SQL_DATA">
       <HintPath>..\SQL\SQL\bin\Debug\SQL_DATA.dll</HintPath>
     </Reference>
@@ -122,6 +121,10 @@
     <None Include="Resources\BtnAceptar.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
+      <Project>{a7edc457-1fcc-4720-89ed-d6caf9095cec}</Project>
+      <Name>Atlas.Accesos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utili_Generales\Atlas.Utili_Generales.vbproj">
       <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
       <Name>Atlas.Utili_Generales</Name>
