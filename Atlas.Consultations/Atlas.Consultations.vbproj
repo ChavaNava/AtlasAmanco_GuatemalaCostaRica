@@ -13,7 +13,7 @@
     <AssemblyName>Atlas.Consultations</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,9 +49,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SQL_DATA">
-      <HintPath>..\SQL\SQL\bin\Debug\SQL_DATA.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -135,6 +132,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -254,6 +252,10 @@
     <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
       <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
       <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
+      <Project>{79ffa609-fe96-4c22-9b69-3cbb551695a2}</Project>
+      <Name>Atlas.SQL_DATA</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utili_Generales\Atlas.Utili_Generales.vbproj">
       <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
