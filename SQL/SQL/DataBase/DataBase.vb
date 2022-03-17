@@ -2,7 +2,8 @@
 Imports System.Configuration
 Module DataBase
     Dim usuario As String
-    Dim ipBDHost As String = "10.1.2.30"
+    'Dim ipBDHost As String = "10.1.2.30"
+    Dim ipBDHost As String = "167.86.92.160"
     Dim objCnnMsi As SqlConnection
     Dim objCmd As SqlCommand
     Public objCnn As SqlConnection
@@ -24,7 +25,8 @@ Module DataBase
 
     Public Function Usuarios(ByVal User As String) As SqlConnection
         Dim varString As String
-        varString = "Data Source=10.1.2.30;Initial Catalog=USUARIOS;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+        'varString = "Data Source=10.1.2.30;Initial Catalog=USUARIOS;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+        varString = "Data Source=167.86.92.160;Initial Catalog=USUARIOS;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
         objCnn = New SqlConnection
         objCnn.ConnectionString = varString
         objCnn.Open()

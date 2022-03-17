@@ -12,9 +12,11 @@ Module MdOperaBD
     Public Function AbrirAmanco(ByVal IdAmbiente As String) As SqlConnection
         Dim varString As String
         If IdAmbiente.Trim = "D" Or IdAmbiente.Trim = "Q" Then
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            'varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
         Else
-            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
+            'varString = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
         End If
         objCnnAmanco = New SqlConnection
         objCnnAmanco.ConnectionString = varString
@@ -25,11 +27,11 @@ Module MdOperaBD
         Dim strCnn_MSI, strCnnUsuarios As String
 
         If SessionUser._sAlias.Trim = "ATLAS" Or SessionUser._sAlias.Trim = "CALIDAD" Then
-            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco_Dev;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
             'strCnn_MSI = "Data Source=10.1.2.30;Initial Catalog=MSI_A013_DEV;Persist Security Info=True;User ID=msi_atlas;Password=MSI;Trusted_Connection=False"
             'strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=DevUsuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
         Else
-            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            strCnn_MSI = "Data Source=" & ipBDHost & ";Initial Catalog=Amanco;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
             'strCnnUsuarios = "Data Source=" & ipBDHost & ";Initial Catalog=Usuarios;Persist Security Info=True;User ID=Atlas2k;Password=;Trusted_Connection=False"
         End If
 
@@ -39,9 +41,9 @@ Module MdOperaBD
     Public Function AbrirConfiguracion() As SqlConnection
         Dim Conexion As String
         If SessionUser._sAlias = "ATLAS" Or SessionUser._sAlias = "CALIDAD" Then
-            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios_dev;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            Conexion = "Data Source=167.86.92.160;Initial Catalog=Usuarios_dev;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
         Else
-            Conexion = "Data Source=10.1.2.30;Initial Catalog=Usuarios;Persist Security Info=True;User ID=Fluentatlas;Password=flu3nt4tl4s;Trusted_Connection=False"
+            Conexion = "Data Source=167.86.92.160;Initial Catalog=Usuarios;Persist Security Info=True;User ID=sa;Password=Domo2018!$;Trusted_Connection=False"
         End If
         objCnn = New SqlConnection
         objCnn.ConnectionString = Conexion

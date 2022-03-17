@@ -241,7 +241,7 @@ Module MdVarPublic
     Public Err As String
     Public Mns As String
     'Variables cadena de conexion
-    Public ipBDHost As String = "10.1.2.30"
+    Public ipBDHost As String = "167.86.92.160" '"10.1.2.30"
     Public userBDHost As String = "atlas"
     'Variables para registrar el sobre o bajo peso
     Public SP As Decimal            'Variable para sobrepes

@@ -22,9 +22,17 @@ Public Class Users
         LecturaBD_ADM.Close()
     End Sub
 
-    Public Shared Function Login(ByVal Usuario As String, ByVal Password As String)
+    Public Shared Function Login(ByVal Usuario As String, ByVal Password As String, Optional ByVal sso As Boolean = False)
         Dim Contador As Integer = 0
-        LecturaQry_ADM("PA_Login_User '" & Usuario.Trim & "', '" & Password.Trim & "'", Usuario)
+
+        If sso = True Then
+            LecturaQry_ADM("PA_Login_UserSSO '" & Usuario.Trim & "'", Usuario)
+        Else
+            LecturaQry_ADM("PA_Login_User '" & Usuario.Trim & "', '" & Password.Trim & "'", Usuario)
+        End If
+
+
+
         Do While (LecturaBD_ADM.Read)
             Contador = Contador + 1
             SessionUser.sStatus = LecturaBD_ADM(0)
