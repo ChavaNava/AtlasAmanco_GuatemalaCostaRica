@@ -19,6 +19,7 @@ namespace WinFormsSSO
         {
             base.CreateSink();
 
+            _cookie = null;
             _helper = new ExtendedWebBrowserEventHelper(this);
             _cookie = new AxHost.ConnectionPointCookie(ActiveXInstance, _helper, typeof(DWebBrowserEvents2));
         }

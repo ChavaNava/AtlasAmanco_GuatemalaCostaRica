@@ -26,7 +26,7 @@ namespace WinFormsSSO
                 Name = "WebAuthentication",
                 Text = title,
                 Width = width,
-                Height = height
+                Height = height,                
             })
         { }
 
@@ -83,7 +83,8 @@ namespace WinFormsSSO
                 }
                 finally
                 {
-                    form.Hide();
+                    form.Close();
+                    browser.Dispose();
                     browser.Hide();
                 }
 

@@ -123,7 +123,7 @@ Public Class UC_Login
 		Dim options As New OidcClientOptions With
 		{
 			.Authority = "https://sso.domoapps.mx/sts",
-			.ClientId = "winFormsClient",
+			.ClientId = "Atlas_Amanco",
 			.Scope = "openid email client_api offline_access",
 			.RedirectUri = "https://localhost/winforms.client",
 			.Browser = New WinFormsWebView()
