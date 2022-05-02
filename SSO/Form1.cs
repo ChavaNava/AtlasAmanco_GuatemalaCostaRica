@@ -1,77 +1,90 @@
 ﻿using IdentityModel.OidcClient;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
 namespace WinFormsSSO
 {
-	public partial class Form1 : Form
-	{
-		OidcClient _oidcClient;
+    public partial class Form1 : Form
+    {
+        OidcClient _oidcClient;
 
-		public Form1()
-		{
-			InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
 
-			//var options = new OidcClientOptions
-			//{
-			//	Authority = "https://demo.identityserver.io",
-			//	ClientId = "interactive.public",
-			//	Scope = "openid email api offline_access",
-			//	RedirectUri = "http://localhost/winforms.client",
+            //var options = new OidcClientOptions
+            //{
+            //    Authority = "https://demo.identityserver.io",
+            //    ClientId = "interactive.public",
+            //    Scope = "openid email api offline_access",
+            //    RedirectUri = "http://localhost/winforms.client",
+            //    Browser = new WinFormsWebView()
+            //};
 
-			//	Browser = new WinFormsWebView()
-			//};
+            var options = new OidcClientOptions
+            {
+                Authority = "https://sso.domoapps.mx/sts",
+                ClientId = "Atlas_Amanco",
+                Scope = "openid email client_api offline_access",
+                RedirectUri = "https://localhost/winforms.client",
 
-			var options = new OidcClientOptions
-			{
-				Authority = "https://sso.domoapps.mx/sts",
-				ClientId = "winFormsClient",
-				Scope = "openid email client_api offline_access",
-				RedirectUri = "https://localhost/winforms.client",
+                Browser = new WinFormsWebView()
+            };
 
-				Browser = new WinFormsWebView()
-			};
+            _oidcClient = new OidcClient(options);
 
-			_oidcClient = new OidcClient(options);
-		}
+            Login();
+        }
 
-		private async void LoginButton_Click(object sender, EventArgs e)
-		{
-			var result = await _oidcClient.LoginAsync();
+        private async void Login()
+        {
+            LoginResult loginResult;
 
-			if (result.IsError)
-			{
-				MessageBox.Show(this, result.Error, "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			else
-			{
-				var sb = new StringBuilder(128);
-				foreach (var claim in result.User.Claims)
-				{
-					sb.AppendLine($"{claim.Type}: {claim.Value}");
-				}
+            try
+            {
+                loginResult = await _oidcClient.LoginAsync();
+            }
+            catch (Exception exception)
+            {
+                Output.Text = $"Unexpected Error: {exception.Message}";
+                return;
+            }
 
-				if (!string.IsNullOrWhiteSpace(result.RefreshToken))
-				{
-					sb.AppendLine();
-					sb.AppendLine($"refresh token: {result.RefreshToken}");
-				}
 
-				if (!string.IsNullOrWhiteSpace(result.IdentityToken))
-				{
-					sb.AppendLine();
-					sb.AppendLine($"identity token: {result.IdentityToken}");
-				}
+            if (loginResult.IsError)
+            {
+                MessageBox.Show(this, loginResult.Error, "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var sb = new StringBuilder(128);
+                foreach (var claim in loginResult.User.Claims)
+                {
+                    sb.AppendLine($"{claim.Type}: {claim.Value}");
+                }
 
-				if (!string.IsNullOrWhiteSpace(result.AccessToken))
-				{
-					sb.AppendLine();
-					sb.AppendLine($"access token: {result.AccessToken}");
-				}
+                if (!string.IsNullOrWhiteSpace(loginResult.RefreshToken))
+                {
+                    sb.AppendLine();
+                    sb.AppendLine($"refresh token: {loginResult.RefreshToken}");
+                }
 
-				Output.Text = sb.ToString();
-			}
-		}
-	}
+                if (!string.IsNullOrWhiteSpace(loginResult.IdentityToken))
+                {
+                    sb.AppendLine();
+                    sb.AppendLine($"identity token: {loginResult.IdentityToken}");
+                }
+
+                if (!string.IsNullOrWhiteSpace(loginResult.AccessToken))
+                {
+                    sb.AppendLine();
+                    sb.AppendLine($"access token: {loginResult.AccessToken}");
+                }
+
+                Output.Text = sb.ToString();
+            }
+        }
+    }
 }

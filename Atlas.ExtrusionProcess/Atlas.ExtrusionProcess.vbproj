@@ -49,9 +49,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SQL">
-      <HintPath>..\SQL\SQL\bin\Debug\SQL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -162,6 +159,14 @@
     <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
       <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
       <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.AutorizaSobrePesos\Atlas.AutorizaSobrePesos.vbproj">
+      <Project>{83d8cc5d-7cdc-4470-ad56-fee98637ed4f}</Project>
+      <Name>Atlas.AutorizaSobrePesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reporting\Atlas.Reporting.vbproj">
+      <Project>{780b0efb-251f-4774-9497-6fb6336d6552}</Project>
+      <Name>Atlas.Reporting</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
       <Project>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</Project>
