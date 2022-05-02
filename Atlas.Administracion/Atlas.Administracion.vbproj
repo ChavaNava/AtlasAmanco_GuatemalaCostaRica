@@ -25,6 +25,7 @@
     <DocumentationFile>Atlas.Administracion.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -162,20 +163,6 @@
     <None Include="Resources\Btn_Consulta.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
-      <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
-      <Name>Atlas.Accesos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
-      <Project>{79FFA609-FE96-4C22-9B69-3CBB551695A2}</Project>
-      <Name>Atlas.SQL_DATA</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utili_Generales\Atlas.Utili_Generales.vbproj">
-      <Project>{EA29C01C-682B-436A-85BD-39A820994405}</Project>
-      <Name>Atlas.Utili_Generales</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Aceptar.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +182,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Btn_Save_Mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
+      <Project>{a7edc457-1fcc-4720-89ed-d6caf9095cec}</Project>
+      <Name>Atlas.Accesos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
+      <Project>{79ffa609-fe96-4c22-9b69-3cbb551695a2}</Project>
+      <Name>Atlas.SQL_DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utili_Generales\Atlas.Utili_Generales.vbproj">
+      <Project>{ea29c01c-682b-436a-85bd-39a820994405}</Project>
+      <Name>Atlas.Utili_Generales</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

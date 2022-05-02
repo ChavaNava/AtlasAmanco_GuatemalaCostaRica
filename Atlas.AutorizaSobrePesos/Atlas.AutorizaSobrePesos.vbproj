@@ -25,6 +25,7 @@
     <DocumentationFile>Atlas.AutorizaSobrePesos.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -139,7 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atlas.Accesos\Atlas.Accesos.vbproj">
-      <Project>{A7EDC457-1FCC-4720-89ED-D6CAF9095CEC}</Project>
+      <Project>{a7edc457-1fcc-4720-89ed-d6caf9095cec}</Project>
       <Name>Atlas.Accesos</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQL\SQL\Atlas.SQL_DATA.vbproj">
