@@ -101,6 +101,13 @@ Public Class NotificationProcess
                 InQry = "Update " & SessionUser._sCentro.Trim & "_PesoProductoTerminado Set MsgSAP = '" & Mns.Trim & "' "
                 InQry = InQry & " Where Folio = '" & strFolio.Trim & "'"
                 InsertQry(InQry)
+
+                'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                Dim msg As String = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}: {Mns.Trim}"
+                InQry = ""
+                InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
+                InsertQry(InQry)
+
                 Exit Sub
             Else
                 If (SAP.DocumentoSAP = "" Or SAP.DocumentoSAP = "NULL" Or SAP.DocumentoSAP = "0000000000") And (SAP.ConsecutivoSAP = "" Or SAP.ConsecutivoSAP = "NULL" Or SAP.ConsecutivoSAP = "00000000") Then
@@ -111,6 +118,13 @@ Public Class NotificationProcess
                     BtnImp.Enabled = True
                     TBOrd.Enabled = False
                     SuperAutoSobrepeso = ""
+
+                    'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                    Dim msg As String = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}, pero no se puede reconocer el motivo."
+                    InQry = ""
+                    InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
+                    InsertQry(InQry)
+
                     Return
                 Else
                     reg = "1"
@@ -121,8 +135,15 @@ Public Class NotificationProcess
                     BtnImp.Enabled = True
                     TBOrd.Enabled = False
                     SuperAutoSobrepeso = ""
+
+                    'Crea un insert en la tabla de log de SAP por el movimiento exitoso
+                    Dim msg As String = $"Se notificó a SAP el folio {FolioNotifica.rIdFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
+                    InQry = ""
+                    InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
+                    InsertQry(InQry)
+
                     LoadingForm.CloseForm()
-                    MensajeBox.Mostrar("La notificación de la Orden '" & TBOrd.Text & "' a sido Exitosa ", "Notificación Exitosa", MensajeBox.TipoMensaje.Good)
+                    MensajeBox.Mostrar("La notificación de la Orden '" & TBOrd.Text & "' ha sido Exitosa ", "Notificación Exitosa", MensajeBox.TipoMensaje.Good)
                 End If
             End If
         Catch ex As Exception
