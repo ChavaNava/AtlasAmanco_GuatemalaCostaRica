@@ -1140,6 +1140,21 @@ Public Class MenuPTI
         Dim reg As String = ""
         Dim Cod_Err As String = ""
 
+        Dim log As New AtlasSapLogRequest
+        With log
+            .Application = "Atlas Amanco"
+            .Username = SessionUser.sNombre
+            '.Action = ""
+            '.Description = ""
+            .DateHourAction = DateTime.Now
+            .Version = "1.0"
+            .ClientIP = ""
+            .Centro = SessionUser.sIdCentro
+            '.DocumentoSAP =
+            '.ConsecutivoSAP = 
+            .FolioAtlas = folio.Trim
+        End With
+
         If ID.Trim = "D" Or ID.Trim = "Q" Then
             'Variables Desarrollo
             Dim lo_wsamancomxr As New PTConsumos.ZPPMXF001Service
@@ -1170,6 +1185,11 @@ Public Class MenuPTI
                 Err = ls_returnr.ZTYPE
                 Mns = ls_returnr.ZMESSAGE
             Catch ex As Exception
+                'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                log.Description = $"Excepción al notificar Folio {folio.Trim}: {ex.Message}"
+                log.Action = "Error"
+                NotifySapLog.WriteLog(log)
+
                 MsgBox("No se realizar notificación a SAP ", MsgBoxStyle.Critical, ex.Message)
             End Try
         ElseIf ID.Trim = "P" Then
@@ -1207,6 +1227,12 @@ Public Class MenuPTI
                 InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
                 InQry = InQry & " Where Folio = '" & folio.Trim & "'"
                 InsertQry(InQry)
+
+                'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                log.Description = $"Error al notificar a SAP Folio {folio.Trim}: {Mns}"
+                log.Action = "Error"
+                NotifySapLog.WriteLog(log)
+
                 Exit Sub
             Else
                 If (TNumNoti = "" Or TNumNoti = "NULL" Or TNumNoti = "0000000000") And (TConsNoti = "" Or TConsNoti = "NULL" Or TConsNoti = "00000000") Then
@@ -1218,6 +1244,12 @@ Public Class MenuPTI
                     LecturaQry("PA_Update_Not_Masiva_Scrap " & SessionUser._sCentro.Trim & "_PesoScrap, '" & TNumNoti & "', '" & TConsNoti & "', '" & reg & "', '" & reg & "', '" & Mns & "',  '" & folio & "' ")
                     TD.Text = TNumNoti
                     TC.Text = TConsNoti
+
+                    'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                    log.Description = $"Se notificó a SAP el folio {folio.Trim} de forma exitosa. DocumentoSAP {TNumNoti}. Consecutivo {TConsNoti}"
+                    log.Action = "Success"
+                    NotifySapLog.WriteLog(log)
+
                     MensajeBox.Mostrar("Se realizó notificación a SAP de forma exitosa ", "Aviso", MensajeBox.TipoMensaje.Information)
                 End If
             End If

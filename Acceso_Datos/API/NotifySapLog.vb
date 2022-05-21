@@ -12,8 +12,8 @@ Public Class NotifySapLog
         request.AddJsonBody(log)
         Dim response = client.ExecuteAsPost(Of ApiResponse(Of String))(request, "post")
 
-        Dim jobj = JObject.Parse(response.Content)
-        Dim respuesta = jobj("Mensaje").ToString
+        'Dim jobj = JObject.Parse(response.Content)
+        'Dim respuesta = jobj("Mensaje").ToString
 
         If response.StatusCode = System.Net.HttpStatusCode.OK Or response.StatusCode = System.Net.HttpStatusCode.Created Then
             Return True

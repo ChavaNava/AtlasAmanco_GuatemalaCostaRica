@@ -151,7 +151,7 @@ Public Class NotificationProcess
                     SuperAutoSobrepeso = ""
 
                     'Crea un insert en la tabla de log de SAP por el movimiento exitoso
-                    log.Description = $"Se notificó a SAP el folio {FolioNotifica.rIdFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
+                    log.Description = $"Se notificó a SAP el folio {strFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
                     log.Action = "Success"
                     NotifySapLog.WriteLog(log)
 
@@ -277,6 +277,22 @@ Public Class NotificationProcess
         Dim Cod_Err As String = ""
         Dim SAP As New Generic_SAP
         Dim reg As String
+
+        Dim log As New AtlasSapLogRequest
+        With log
+            .Application = "Atlas Amanco"
+            .Username = SessionUser.sNombre
+            '.Action = ""
+            '.Description = ""
+            .DateHourAction = DateTime.Now
+            .Version = "1.0"
+            .ClientIP = ""
+            .Centro = SessionUser.sIdCentro
+            '.DocumentoSAP =
+            '.ConsecutivoSAP = 
+            .FolioAtlas = strFolio.Trim
+        End With
+
         Try
             WS_P.Consume_WS(strHead, List, SessionUser._sAmbiente)
             Tbl = WS_P.Tbl_resultado
@@ -294,6 +310,12 @@ Public Class NotificationProcess
                 InQry = "Update " & SessionUser._sCentro.Trim & "_PesoScrap Set MsgSAP = '" & Mns.Trim & "' "
                 InQry = InQry & " Where Folio = '" & strFolio.Trim & "'"
                 InsertQry(InQry)
+
+                'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                log.Description = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}: {Mns.Trim}"
+                log.Action = "Error"
+                NotifySapLog.WriteLog(log)
+
                 Exit Sub
             Else
                 If (SAP.DocumentoSAP = "" Or SAP.DocumentoSAP = "NULL" Or SAP.DocumentoSAP = "0000000000") And (SAP.ConsecutivoSAP = "" Or SAP.ConsecutivoSAP = "NULL" Or SAP.ConsecutivoSAP = "00000000") Then
@@ -304,6 +326,12 @@ Public Class NotificationProcess
                     BtnImp.Enabled = True
                     TBOrd.Enabled = False
                     SuperAutoSobrepeso = ""
+
+                    'Crea un insert en la tabla de log de SAP por el movimiento erroneo
+                    log.Description = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}, pero no se puede reconocer el motivo."
+                    log.Action = "Error"
+                    NotifySapLog.WriteLog(log)
+
                     Return
                 Else
                     reg = "1"
@@ -313,8 +341,14 @@ Public Class NotificationProcess
                     BtnImp.Enabled = True
                     TBOrd.Enabled = False
                     SuperAutoSobrepeso = ""
+
+                    'Crea un insert en la tabla de log de SAP por el movimiento exitoso
+                    log.Description = $"Se notificó a SAP el folio {strFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
+                    log.Action = "Success"
+                    NotifySapLog.WriteLog(log)
+
                     LoadingForm.CloseForm()
-                    MensajeBox.Mostrar("La notificación de la Orden '" & TBOrd.Text & "' a sido Exitosa ", "Notificación Exitosa", MensajeBox.TipoMensaje.Good)
+                    MensajeBox.Mostrar("La notificación de la Orden '" & TBOrd.Text & "' ha sido Exitosa ", "Notificación Exitosa", MensajeBox.TipoMensaje.Good)
                 End If
             End If
         Catch ex As Exception
