@@ -83,6 +83,21 @@ Public Class NotificationProcess
         Dim SAP As New Generic_SAP
         Dim reg As String
 
+        Dim log As New AtlasSapLogRequest
+        With log
+            .Application = "Atlas Amanco"
+            .Username = SessionUser.sNombre
+            '.Action = ""
+            '.Description = ""
+            .DateHourAction = DateTime.Now
+            .Version = "1.0"
+            .ClientIP = ""
+            .Centro = SessionUser.sIdCentro
+            '.DocumentoSAP =
+            '.ConsecutivoSAP = 
+            .FolioAtlas = strFolio.Trim
+        End With
+
         Try
             WS_P.Consume_WS(strHead, List, SessionUser._sAmbiente)
             Tbl = WS_P.Tbl_resultado
@@ -103,10 +118,10 @@ Public Class NotificationProcess
                 InsertQry(InQry)
 
                 'Crea un insert en la tabla de log de SAP por el movimiento erroneo
-                Dim msg As String = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}: {Mns.Trim}"
-                InQry = ""
-                InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
-                InsertQry(InQry)
+                log.Description = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}: {Mns.Trim}"
+                log.Action = "Error"
+                NotifySapLog.WriteLog(log)
+
 
                 Exit Sub
             Else
@@ -120,10 +135,9 @@ Public Class NotificationProcess
                     SuperAutoSobrepeso = ""
 
                     'Crea un insert en la tabla de log de SAP por el movimiento erroneo
-                    Dim msg As String = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}, pero no se puede reconocer el motivo."
-                    InQry = ""
-                    InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
-                    InsertQry(InQry)
+                    log.Description = $"Se generó un error al notificar el folio Atlas {strFolio.Trim}, pero no se puede reconocer el motivo."
+                    log.Action = "Error"
+                    NotifySapLog.WriteLog(log)
 
                     Return
                 Else
@@ -137,10 +151,9 @@ Public Class NotificationProcess
                     SuperAutoSobrepeso = ""
 
                     'Crea un insert en la tabla de log de SAP por el movimiento exitoso
-                    Dim msg As String = $"Se notificó a SAP el folio {FolioNotifica.rIdFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
-                    InQry = ""
-                    InQry = $"PA_Insert_SapLogs '{SessionUser.sNombre}','E','{msg}','{SessionUser.sCentro}','{SessionUser.sPuesto}',{FolioNotifica.rIdFolio}"
-                    InsertQry(InQry)
+                    log.Description = $"Se notificó a SAP el folio {FolioNotifica.rIdFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
+                    log.Action = "Success"
+                    NotifySapLog.WriteLog(log)
 
                     LoadingForm.CloseForm()
                     MensajeBox.Mostrar("La notificación de la Orden '" & TBOrd.Text & "' ha sido Exitosa ", "Notificación Exitosa", MensajeBox.TipoMensaje.Good)

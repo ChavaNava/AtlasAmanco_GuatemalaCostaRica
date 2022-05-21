@@ -87,5 +87,8 @@
     <Setting Name="Bascula_3" Type="System.String" Scope="User">
       <Value Profile="(Default)">M</Value>
     </Setting>
+    <Setting Name="ApiAtlas" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://sso.orbia.com/Atlas</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
