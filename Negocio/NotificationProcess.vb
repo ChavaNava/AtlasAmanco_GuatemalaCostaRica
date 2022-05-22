@@ -89,7 +89,7 @@ Public Class NotificationProcess
             .Username = SessionUser.sNombre
             '.Action = ""
             '.Description = ""
-            .DateHourAction = DateTime.Now
+            .DateHourAction = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
             .Version = "1.0"
             .ClientIP = ""
             .Centro = SessionUser.sIdCentro
@@ -165,8 +165,8 @@ Public Class NotificationProcess
         End Try
     End Sub
 
-    Public Shared Sub Notifica_RTO(ByVal StrCadenas As String, Fecha_SAP As String, Piezas As String, ODF As String, Peso As String, _
-                                   TBDocumento As TextBox, TBConsecutivo As TextBox, BtnPesar As Button, BtnImp As Button, TBOrd As TextBox, _
+    Public Shared Sub Notifica_RTO(ByVal StrCadenas As String, Fecha_SAP As String, Piezas As String, ODF As String, Peso As String,
+                                   TBDocumento As TextBox, TBConsecutivo As TextBox, BtnPesar As Button, BtnImp As Button, TBOrd As TextBox,
                                    StrFolio As String)
 
         Dim reg As String
@@ -268,7 +268,7 @@ Public Class NotificationProcess
         End Try
     End Sub
 
-    Public Shared Sub Notifica_SCE(ByVal strHead As String, List As Generic.List(Of String), strFolio As String, TBDocumento As TextBox, _
+    Public Shared Sub Notifica_SCE(ByVal strHead As String, List As Generic.List(Of String), strFolio As String, TBDocumento As TextBox,
                                    TBConsecutivo As TextBox, BtnPesar As Button, BtnImp As Button, TBOrd As TextBox, UsrOperador As String)
         Dim Tbl As String()
         Dim Tbl_LM As New Generic.List(Of String)
@@ -284,7 +284,7 @@ Public Class NotificationProcess
             .Username = SessionUser.sNombre
             '.Action = ""
             '.Description = ""
-            .DateHourAction = DateTime.Now
+            .DateHourAction = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
             .Version = "1.0"
             .ClientIP = ""
             .Centro = SessionUser.sIdCentro

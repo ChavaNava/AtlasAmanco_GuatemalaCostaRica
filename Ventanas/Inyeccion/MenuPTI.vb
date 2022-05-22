@@ -1146,7 +1146,7 @@ Public Class MenuPTI
             .Username = SessionUser.sNombre
             '.Action = ""
             '.Description = ""
-            .DateHourAction = DateTime.Now
+            .DateHourAction = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
             .Version = "1.0"
             .ClientIP = ""
             .Centro = SessionUser.sIdCentro
