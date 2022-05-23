@@ -283,6 +283,12 @@
     <Compile Include="Produccion Piso\FrmPisoPT.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Users Control Main\ChangePassword.Designer.vb">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Users Control Main\ChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Users Control Main\UC_Login.Designer.vb">
       <DependentUpon>UC_Login.vb</DependentUpon>
     </Compile>
@@ -1112,6 +1118,9 @@
     <EmbeddedResource Include="Produccion Piso\FrmPisoPT.resx">
       <DependentUpon>FrmPisoPT.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users Control Main\ChangePassword.resx">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users Control Main\UC_Login.resx">
       <DependentUpon>UC_Login.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1887,7 +1896,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Acceso_Datos\DAO\" />
-    <Folder Include="SSOHelpers\" />
     <Folder Include="Utili_Generales\" />
     <Folder Include="Ventanas\Inyeccion\Entidades\" />
     <Folder Include="Ventanas\Notifica Extrusión\Clases\" />

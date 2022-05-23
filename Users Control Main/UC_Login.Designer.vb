@@ -43,12 +43,13 @@ Partial Class UC_Login
 		Me.GB_Login.Controls.Add(Me.Label1)
 		Me.GB_Login.Controls.Add(Me.TUser)
 		Me.GB_Login.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.GB_Login.Location = New System.Drawing.Point(3, 3)
+		Me.GB_Login.Location = New System.Drawing.Point(194, 3)
 		Me.GB_Login.Name = "GB_Login"
 		Me.GB_Login.Size = New System.Drawing.Size(321, 112)
 		Me.GB_Login.TabIndex = 313
 		Me.GB_Login.TabStop = False
 		Me.GB_Login.Text = "Validación Usuario"
+		Me.GB_Login.Visible = False
 		'
 		'CB_Centro
 		'
@@ -110,7 +111,7 @@ Partial Class UC_Login
 		'
 		Me.BtnLoginSSO.BackgroundImage = CType(resources.GetObject("BtnLoginSSO.BackgroundImage"), System.Drawing.Image)
 		Me.BtnLoginSSO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-		Me.BtnLoginSSO.Location = New System.Drawing.Point(344, 21)
+		Me.BtnLoginSSO.Location = New System.Drawing.Point(3, 3)
 		Me.BtnLoginSSO.Name = "BtnLoginSSO"
 		Me.BtnLoginSSO.Size = New System.Drawing.Size(170, 80)
 		Me.BtnLoginSSO.TabIndex = 314
@@ -123,7 +124,7 @@ Partial Class UC_Login
 		Me.Controls.Add(Me.BtnLoginSSO)
 		Me.Controls.Add(Me.GB_Login)
 		Me.Name = "UC_Login"
-		Me.Size = New System.Drawing.Size(540, 128)
+		Me.Size = New System.Drawing.Size(540, 203)
 		Me.GB_Login.ResumeLayout(False)
 		Me.GB_Login.PerformLayout()
 		Me.ResumeLayout(False)

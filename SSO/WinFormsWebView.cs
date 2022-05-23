@@ -25,7 +25,7 @@ namespace WinFormsSSO
         public WinFormsWebView(string title = "Authenticating ...", int width = 1024, int height = 768)
             : this(() => new Form
             {
-                Name = "WebAuthentication",
+                Name = "Atlas SSO",
                 Text = title,
                 Width = width,
                 Height = height
