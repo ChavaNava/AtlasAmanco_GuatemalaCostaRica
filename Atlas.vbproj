@@ -29,7 +29,7 @@
     <MyType>WindowsForms</MyType>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
     <ManifestCertificateThumbprint>2911CF38538CAFBA478ACCA323747E66E6272750</ManifestCertificateThumbprint>
     <ManifestKeyFile>
     </ManifestKeyFile>
@@ -40,9 +40,9 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\jsalinasm\OneDrive - Mexichem\Publicaciones\Atlas_Fluent\</PublishUrl>
+    <PublishUrl>E:\Publicaciones\Publicacion Atlas Fluent SSO\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -50,16 +50,17 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://10.1.2.31/MSI/</UpdateUrl>
-    <ProductName>Fluent</ProductName>
+    <InstallUrl>http://10.1.2.31/MSI_SSO/</InstallUrl>
+    <UpdateUrl>http://10.1.2.31/MSI_SSO/</UpdateUrl>
+    <ProductName>Atlas Fluent SSO</ProductName>
     <PublisherName>Mexichem</PublisherName>
     <SuiteName>Atlas Fluent</SuiteName>
-    <MinimumRequiredVersion>2.0.0.40</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>84</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>

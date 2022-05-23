@@ -10,17 +10,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("A - tlas")> 
-<Assembly: AssemblyDescription("All Total load Application System")> 
-<Assembly: AssemblyCompany("Mexichem, S.A.B. de C.V.")> 
-<Assembly: AssemblyProduct("Mexichem Control Interfaces Electronicas")> 
-<Assembly: AssemblyCopyright("Copyright ©  Mexichem 2013")> 
-<Assembly: AssemblyTrademark("Mexichem Control de Interfaces")> 
+<Assembly: AssemblyTitle("Atlas SSO")>
+<Assembly: AssemblyDescription("Atlas Single Sign On")>
+<Assembly: AssemblyCompany("Orbia")>
+<Assembly: AssemblyProduct("Orbia Control Interfaces Electronicas")>
+<Assembly: AssemblyCopyright("Copyright © Orbia 2022")>
+<Assembly: AssemblyTrademark("OrbiaControl de Interfaces")>
 
-<Assembly: ComVisible(True)> 
+<Assembly: ComVisible(True)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("eac562c5-d0d9-44f8-b0c3-4e4935c0179f")> 
+<Assembly: Guid("c6189651-36a4-411f-aac5-52325bb9489b")>
 
 ' Version information for an assembly consists of the following four values:
 '
