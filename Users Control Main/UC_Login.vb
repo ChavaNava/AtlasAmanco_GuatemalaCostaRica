@@ -75,6 +75,18 @@ Public Class UC_Login
 
 		IdSession = Users.Login(LoginUser._Login_Alias, LoginUser._Login_Pass, sso)
 		If IdSession = True Then
+
+			If sso = True Then
+				If SessionUser.sPassword = Crypto.MD5Calculate("Atlas" & DateTime.Now.Year) Then
+					Dim cambioPass As New frmChangePassword With {
+						.Email = email
+					}
+
+					cambioPass.ShowDialog()
+
+				End If
+			End If
+
 			TUser.Enabled = False
 			TPass.Enabled = False
 			Logo(SessionUser.sCadena)
@@ -120,6 +132,16 @@ Public Class UC_Login
 	End Sub
 
 	Private Async Sub BtnLoginSSO_Click(sender As Object, e As EventArgs) Handles BtnLoginSSO.Click
+		Cursor = Cursors.WaitCursor
+		'Dim options As New OidcClientOptions With
+		'{
+		'	.Authority = "https://localhost:44310",
+		'	.ClientId = "Atlas_Amanco",
+		'	.Scope = "openid email client_api offline_access",
+		'	.RedirectUri = "https://localhost/winforms.client",
+		'	.Browser = New WinFormsWebView()
+		'}
+
 		Dim options As New OidcClientOptions With
 		{
 			.Authority = "https://ssoatlas.orbia.com/sts",
@@ -128,6 +150,15 @@ Public Class UC_Login
 			.RedirectUri = "https://localhost/winforms.client",
 			.Browser = New WinFormsWebView()
 		}
+
+		'Dim options As New OidcClientOptions With
+		'{
+		'	.Authority = "https://sso.domoapps.mx/Sts",
+		'	.ClientId = "Atlas_Amanco",
+		'	.Scope = "openid email client_api offline_access",
+		'	.RedirectUri = "https://localhost/winforms.client",
+		'	.Browser = New WinFormsWebView()
+		'}
 
 		_oidcClient = New OidcClient(options)
 
@@ -148,29 +179,9 @@ Public Class UC_Login
 
 
 			LoginValidate(True)
-			'Dim sb = New StringBuilder(128)
 
-			'For Each claim As Security.Claims.Claim In result.User.Claims
-			'	sb.AppendLine($"{claim.Type}: {claim.Value}")
-			'Next
-
-			'If Not String.IsNullOrWhiteSpace(result.RefreshToken) Then
-			'	sb.AppendLine()
-			'	sb.AppendLine($"refresh token: {result.RefreshToken}")
-			'End If
-
-			'If Not String.IsNullOrWhiteSpace(result.IdentityToken) Then
-			'	sb.AppendLine()
-			'	sb.AppendLine($"identity token: {result.IdentityToken}")
-			'End If
-
-			'If Not String.IsNullOrWhiteSpace(result.AccessToken) Then
-			'	sb.AppendLine()
-			'	sb.AppendLine($"access token: {result.AccessToken}")
-			'End If
-
-			'Dim text As String = sb.ToString()
 		End If
+		Cursor = Cursors.Default
 	End Sub
 
 
