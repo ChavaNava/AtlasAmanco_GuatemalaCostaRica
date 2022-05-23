@@ -122,7 +122,7 @@ Public Class UC_Login
 	Private Async Sub BtnLoginSSO_Click(sender As Object, e As EventArgs) Handles BtnLoginSSO.Click
 		Dim options As New OidcClientOptions With
 		{
-			.Authority = "https://sso.domoapps.mx/sts",
+			.Authority = "https://ssoatlas.orbia.com/sts",
 			.ClientId = "Atlas_Amanco",
 			.Scope = "openid email client_api offline_access",
 			.RedirectUri = "https://localhost/winforms.client",
