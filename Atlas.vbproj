@@ -1048,6 +1048,9 @@
     </Compile>
     <Compile Include="Web Services\ReadOrder.vb" />
     <Content Include="Fonts\IDAUHC39.TTF" />
+    <Content Include="WebView2Loader.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Resources\Monitor 03.png" />
     <None Include="Resources\Monitor 02.png" />
@@ -2638,6 +2641,16 @@
       <PublishState>Exclude</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WebView2Loader.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
