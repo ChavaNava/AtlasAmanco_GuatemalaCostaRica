@@ -73,7 +73,7 @@ Public Class NotificationProcess
 
     End Sub
 
-    Public Shared Sub Notifica_PTE(ByVal strHead As String, List As Generic.List(Of String), strFolio As String, TBDocumento As TextBox, _
+    Public Shared Sub Notifica_PTE(ByVal strHead As String, List As Generic.List(Of String), strFolio As String, TBDocumento As TextBox,
                                    TBConsecutivo As TextBox, BtnPesar As Button, BtnImp As Button, TBOrd As TextBox, UsrOperador As String)
         Dim Tbl As String()
         Dim Tbl_LM As New Generic.List(Of String)
@@ -86,7 +86,7 @@ Public Class NotificationProcess
         Dim log As New AtlasSapLogRequest
         With log
             .Application = "Atlas Amanco"
-            .Username = SessionUser.sNombre
+            .Username = UsrOperador
             '.Action = ""
             '.Description = ""
             .DateHourAction = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
@@ -153,6 +153,8 @@ Public Class NotificationProcess
                     'Crea un insert en la tabla de log de SAP por el movimiento exitoso
                     log.Description = $"Se notificó a SAP el folio {strFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
                     log.Action = "Success"
+                    log.DocumentoSAP = SAP.DocumentoSAP
+                    log.ConsecutivoSAP = SAP.ConsecutivoSAP
                     NotifySapLog.WriteLog(log)
 
                     LoadingForm.CloseForm()
@@ -281,7 +283,7 @@ Public Class NotificationProcess
         Dim log As New AtlasSapLogRequest
         With log
             .Application = "Atlas Amanco"
-            .Username = SessionUser.sNombre
+            .Username = UsrOperador
             '.Action = ""
             '.Description = ""
             .DateHourAction = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
@@ -345,6 +347,8 @@ Public Class NotificationProcess
                     'Crea un insert en la tabla de log de SAP por el movimiento exitoso
                     log.Description = $"Se notificó a SAP el folio {strFolio.Trim} de forma exitosa. DocumentoSAP {SAP.DocumentoSAP}. Consecutivo {SAP.ConsecutivoSAP}"
                     log.Action = "Success"
+                    log.DocumentoSAP = SAP.DocumentoSAP
+                    log.ConsecutivoSAP = SAP.ConsecutivoSAP
                     NotifySapLog.WriteLog(log)
 
                     LoadingForm.CloseForm()

@@ -618,7 +618,7 @@ Public Class MenuPTE
                                     Label12.Text = "Se esta Notificando la orden '" & TOrden.Text.Trim & "' a SAP"
                                     Dim Head As String
                                     Head = "28|" + TOrden.Text.Trim + "|" + NPTExtrusion._iTramos.ToString + "|" + NPTExtrusion._iFechaPesajeSAP.Trim + "|" + CompuestoVirgen._IdCompOriginal.Trim + "|" + "P" + "|" + SessionUser._sAlias.Trim + "|" + FolioNotifica._rIdFolio.Trim
-                                    NotificationProcess.Notifica_PTE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, PassNotifier.Text.Trim)
+                                    NotificationProcess.Notifica_PTE(Head, Lista, FolioNotifica._rIdFolio.Trim, TDocSAP, TConSAP, BPesar, BImprimir, TOrden, CodOperador.Text.Trim)
                                     Label12.Visible = False
                                     Label12.Text = ""
                                 Case Else
