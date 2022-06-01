@@ -55,11 +55,11 @@
     <ProductName>Atlas Fluent SSO</ProductName>
     <PublisherName>Mexichem</PublisherName>
     <SuiteName>Atlas Fluent</SuiteName>
-    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

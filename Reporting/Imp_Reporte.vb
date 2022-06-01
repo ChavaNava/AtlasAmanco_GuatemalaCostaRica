@@ -19,10 +19,10 @@ Public Class IMP_Reporte
         If Centro = "CR01" Then
             If Formato <> "BPE" Or Formato <> "BSCE" Then
                 'Reporte.SetParameterValue("@LogoEmpresa", AppDomain.CurrentDomain.BaseDirectory.ToString() + "Resources\Mexichem.png")
-                'Reporte.SetParameterValue("@LogoEmpresa", "C:\App Settings\Reportes\Mexichem.png")
+                'Reporte.SetParameterValue("@LogoEmpresa", "C:\AppSettings\Reportes\Mexichem.png")
             End If
         Else
-            'Reporte.SetParameterValue("@LogoEmpresa", AppDomain.CurrentDomain.BaseDirectory.ToString() + "Resources\Mexichem.png")
+            Reporte.SetParameterValue("@LogoEmpresa", AppDomain.CurrentDomain.BaseDirectory.ToString() + "Resources\Mexichem.png")
             'Reporte.SetParameterValue("@LogoEmpresa", "C:\App Settings\Reportes\Mexichem.png")
         End If
 
